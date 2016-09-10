@@ -1,0 +1,29 @@
+{
+  "name": "angularjs-ee-ll-boilerplate",
+  "version": "0.0.3",
+  "private": true,
+  "description": "angularjs enterprise edition load modules on demand (lazy load) boilerplate",
+  "keywords": [
+    "angular.js",
+    "javascript",
+    "boilerplate",
+    "require.js",
+    "ocLazyLoad"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/the-front/angularjs-ee-ll-boilerplate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/the-front/angularjs-ee-ll-boilerplate/issues"
+  },
+  "author": "Erko Bridee de Almeida Cabrera <erko.bridee@gmail.com>",
+  "collaborators": [
+    "Arlindo Pereira Jr. <nighto@nighto.net>",
+    "Janderson Fernandes Cardoso <jandersonfc.com@gmail.com>",
+    "Jota Feldmann <eusoujf@hotmail.com>",
+    "Mario de Souza Junior <mrdesouzajunior@gmail.com>",
+    "Vinicius Camara de Oliveira <viniciuscamara@gmail.com>"
+  ]
+}
