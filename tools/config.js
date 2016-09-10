@@ -85,7 +85,7 @@ module.exports = function() {
   var backend = {
 
     host: 'localhost',
-    port: 9000,
+    port: 3000,
     context: 'rest'
 
   }; // @end: backend
