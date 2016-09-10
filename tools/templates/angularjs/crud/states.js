@@ -12,54 +12,45 @@ define(function(require) {
   function configureStates($stateProvider, $urlRouterProvider) {
 
     $urlRouterProvider
-      .when('/<%= route %>', '/<%= route %>/list'); // default
+      .when('/<%= route %>', '/intranet/<%= route %>/list'); // default
 
     $stateProvider
-      .state('<%= name %>', {
-        abstract: true,
+      .state('intranet.<%= name %>', {
         url: '/<%= route %>',
         views: {
-          'master': {
-            templateUrl   : 'app/main/templates/layout.html'
-          }
-        }
-      })
-      .state('<%= name %>.list', {
-        url: '/list',
-        views: {
-          'content@<%= name %>': {
-            templateUrl   : '<%= location %>/templates/list.html',
+          'content@intranet': {
+            templateUrl   : 'app/modules/useCases/<%= name %>/templates/list.html',
             controller    : '<%= helpers.capitalize( name ) %>ListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('<%= name %>.search', {
-        url: '/search',
+      .state('intranet.<%= name %>.list', {
+        url: '/list',
         views: {
-          'content@<%= name %>': {
-            templateUrl   : '<%= location %>/templates/search.html',
-            controller    : '<%= helpers.capitalize( name ) %>SearchCtrl',
+          'content@intranet': {
+            templateUrl   : 'app/modules/useCases/<%= name %>/templates/list.html',
+            controller    : '<%= helpers.capitalize( name ) %>ListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('<%= name %>.new', {
+      .state('intranet.<%= name %>.new', {
         url: '/new',
         views: {
-          'content@<%= name %>': {
-            templateUrl   : '<%= location %>/templates/form.html',
-            controller    : '<%= helpers.capitalize( name ) %>NewCtrl',
+          'content@intranet': {
+            templateUrl   : 'app/modules/useCases/<%= name %>/templates/form.html',
+            controller    : '<%= helpers.capitalize( name ) %>Ctrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('<%= name %>.edit', {
+      .state('intranet.<%= name %>.edit', {
         url: '/edit/:id',
         views: {
-          'content@<%= name %>': {
-            templateUrl   : '<%= location %>/templates/form.html',
-            controller    : '<%= helpers.capitalize( name ) %>EditCtrl',
+          'content@intranet': {
+            templateUrl   : 'app/modules/useCases/<%= name %>/templates/form.html',
+            controller    : '<%= helpers.capitalize( name ) %>Ctrl',
             controllerAs  : 'vm'
           }
         }

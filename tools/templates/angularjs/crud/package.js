@@ -2,10 +2,9 @@ define(function(require) {
   'use strict';
 
   var module = require('./module');
-  require('./controllers/edit');
+  require('./controllers/form');
   require('./controllers/list');
-  require('./controllers/new');
-  require('./controllers/search');
+  require('./factories/service');
   require('./resources/rest');
   require('./resources/search');
   require('./states');
