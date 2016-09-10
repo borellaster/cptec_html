@@ -10,7 +10,8 @@ define(function(require) {
 
     // module dependencies
     [
-      require('./bookmarks/package').name
+      require('./bookmarks/package').name,
+      require('./countries/package').name
     ]
   );
 

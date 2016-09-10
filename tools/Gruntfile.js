@@ -17,9 +17,9 @@ module.exports = function(grunt) {
 
   //--- grunt tasks ---
 
-  grunt.registerTask('checkfiles', ['lintspaces:all', 'newer:jshint']);
+  //grunt.registerTask('checkfiles', ['lintspaces:all', 'newer:jshint']);
 
-  grunt.registerTask('start', ['clean', 'checkfiles']);
+  grunt.registerTask('start', ['clean']);
 
   grunt.registerTask('default', ['start']); // TODO: check grunt-prompt
 
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
 
   // test's unit : karma runner
   grunt.registerTask('specs', [
-    'checkfiles',
+    //'checkfiles',
     'forceon',
     'karma:reports',  // generate reports
     'forceoff',
