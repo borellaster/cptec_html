@@ -28,6 +28,7 @@ grunt.config('copy', {
         cwd: '<%= project.paths.src %>/',
         src: [
           '**/*.js',
+          '**/*.css',
           '!**/package.unit.js',
           '!**/tests/**/*',
           '!vendor/**/*',
@@ -61,7 +62,7 @@ grunt.config('copy', {
         cwd: '<%= project.paths.src %>/',
         src: [
         'vendor/**/*',
-        '!vendor/**/*.{less,html}',
+        '!vendor/**/*.{less,html,css}',
         ],
         dest: '<%= project.paths.build %>/'
       }
@@ -95,7 +96,7 @@ grunt.config('copy', {
         src: [
           '**',
           '!{,app/**/,shared/**/}*.js',
-          '!**/*.{less,html}',
+          '!**/*.{less,html,css}',
           '!styles/**/*.*'
         ],
         dest: '<%= project.paths.dist %>/'

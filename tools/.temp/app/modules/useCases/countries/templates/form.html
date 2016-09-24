@@ -1,0 +1,63 @@
+<meta charset="utf-8">
+<ol class="breadcrumb">
+  <li><a href="#/">Home</a></li>
+  <li>Countries</li>
+  <li class="active">{{vm.title}}</li>
+</ol>
+<div class="container-fluid row">
+  <div>
+    <div class="col-xs-12">
+      <div class="panel panel-default"
+        style="visibility: visible; opacity: 1; display: block; transform: translateY(0px);">
+        <div class="panel-heading">
+          <h2 class="ng-binding">{{vm.title}}</h2>
+          <div class="panel-ctrls"></div>
+        </div>
+        <div class="panel-body">
+          
+      <form role="form" name="form">
+        <div class="row" ng-class="{'has-error': form.nome.$invalid && !form.nome.$pristine}">
+          <div class="col-md-1">
+            <div class="pull-right">
+			<label for="nomeInput">Nome</label>
+			<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i> 			
+            </div>
+          </div>
+          <div class="col-md-4">
+            <input type="text" class="form-control error" id="nomeInput" name="nome" ng-model="vm.countries.nome" required focus>
+          </div>
+        </div>
+        
+        <div class="row" ng-hide="showConfirm" style="margin-bottom: 15px;">&nbsp;</div>
+
+        <div class="row" ng-hide="vm.showConfirm">
+          <div class="col-md-5">
+            <a ui-sref="intranet.countries" class="btn">Cancelar</a>
+            <button ng-click="vm.save()"
+              ng-disabled="isClean() || form.$invalid"
+              class="btn btn-primary">Salvar</button>
+            <button ng-click="vm.remove()" ng-show="vm.countries.id"
+              class="btn btn-danger">Deletar</button>
+          </div>
+        </div>
+
+
+        <div class="bs-callout bs-callout-danger" ng-show="vm.showConfirm">
+          <h4>Confirmação</h4>
+          <p>
+            Deletar <code>{{vm.countries.nome}}</code> ?
+          </p>
+          <button ng-click="vm.delete(vm.countries.id)" class="btn btn-danger">Deletar</button>
+          <button ng-click="vm.cancelRemove()" class="btn btn-default">Cancelar</button>
+        </div>
+
+      </form>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+<span class="list-unstyled rodape" ng-controller="FooterCtrl as vm">&copy;{{vm.footerPba}}</span>
