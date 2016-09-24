@@ -1,19 +1,16 @@
 <div class="container">
   <div class="row">&nbsp;</div>
-
-  <!-- @begin: buttons -->
   <div class="row">
-
     <ul class="list-inline">
       <li>
         <a href="#bookmarks/search">
-          <i class="glyphicon glyphicon-search"></i> Search
+          <i class="glyphicon glyphicon-search"></i> Pesquisar
         </a>
       </li>
       <li>|</li>
       <li>
         <a href="#bookmarks/new">
-          <i class="glyphicon glyphicon-plus-sign"></i> New
+          <i class="glyphicon glyphicon-plus-sign"></i> Novo
         </a>
       </li>
       <li>&nbsp;</li>
@@ -28,19 +25,12 @@
           ng-class="{'active': vm.showOptions}">
           <i class="glyphicon glyphicon-wrench"></i> {{vm.optionsBtnLabel}}
         </button>
-
       </li>
-    </ul> <!-- / .list-inline -->
-
+    </ul>
   </div>
-  <!-- @end: buttons -->
 
-
-  <!-- @begin: options -->
   <div class="row" ng-show="vm.showOptions">
-
     <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
-
     <span ng-if="vm.showFilterBtn">
       <button
         id="filterBtn"
@@ -71,7 +61,7 @@
         ng-submit="vm.updatePageSizeFormSubmit()"
         role="form" novalidate>
         <div class="input-group input-group-sm">
-          <span class="input-group-addon">Page Size</span>
+          <span class="input-group-addon">Tamanho da página</span>
           <input
             class="form-control"
             type="number"
@@ -84,7 +74,7 @@
             <button
               ng-click="vm.updatePageSize()"
               ng-disabled="vm.updatePageSizeInvalid(vm.pageSize)"
-              class="btn btn-default" type="button">Update</button>
+              class="btn btn-default" type="button">Alterar</button>
           </span>
         </div>
         <div>
@@ -92,7 +82,7 @@
             id="pageSizeMessage"
             ng-if="updateSizeForm.pageSize.$error.min || updateSizeForm.pageSize.$error.max"
             class="text-center">
-            The value must be in range {{vm.pageMinSize}} to {{vm.pageMaxSize}}!
+            O valor deve ser entre {{vm.pageMinSize}} e {{vm.pageMaxSize}}!
           </p>
         </div>
       </form>
@@ -103,14 +93,8 @@
   <div class="row">
     <span>&nbsp;</span>
   </div>
-  <!-- @end: options -->
-
   <div class="row" ng-include="'app/modules/useCases/bookmarks/templates/table.html'"></div>
 
-
-  <!-- @begin: pagination -->
-
-  <!-- https://angular-ui.github.io/bootstrap/#/pagination -->
   <div class="row" ng-if="vm.showPagination">
     <div class="text-center" ng-if="vm.result.pages > 1">
       <pagination
@@ -131,7 +115,5 @@
       <i class="glyphicon glyphicon-filter"></i> : {{vm.filter.search}}
     </p>
   </div>
-  <!-- @end: pagination -->
-
 
 </div>

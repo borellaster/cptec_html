@@ -5,11 +5,9 @@ define(function(require) {
 
   module.controller('HelpCtrl', HelpCtrl);
 
-  //---
+  HelpCtrl.$inject = ['githubUser'];
 
-  HelpCtrl.$inject = ['githubUser']; //'$http'
-
-  function HelpCtrl(githubUser) { // $http
+  function HelpCtrl(githubUser) {
     var vm = this;
 
     vm.pageName = 'Help Page';

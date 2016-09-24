@@ -7,12 +7,8 @@ define(function(require) {
   require('uiRouter');
   require('uiBootstrap');
 
-  // angular module definition
   return angular.module(
-    // module name
     'bookmarks',
-
-    // module dependencies
     [
       'ngResource',
 

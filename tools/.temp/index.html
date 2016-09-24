@@ -34,7 +34,7 @@
   <![endif]-->
 
   <!-- favicon -->
-  <link rel="shortcut icon" href="shared/img/favicon.ico">
+  <link rel="shortcut icon" href="shared/img/logo_mini.ico">
 
 </head>
 <body>
@@ -60,48 +60,27 @@
 <![endif]-->
 <!-- @begin: ie warning alert -->
 
-<!--Modal Default-->
 <div ng-class="header.boxed" class="fluid">
-  <!--BEGIN TEMPLATE SETTING-->
   <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div>
-  <!--END TEMPLATE SETTING-->
-  <!--BEGIN TOPBAR-->
   <div ng-include="'app/core/main/templates/topbar.html'" class="page-header-topbar"></div>
-  <!--END TOPBAR-->
-  <!--BEGIN HORIZONTAL MENU-->
   <div ng-include="'app/core/main/templates/horizontal-menu.html'" class="page-horizontal-menu"></div>
-  <!--END HORIZONTAL MENU-->
   <div id="wrapper">
-    <!--BEGIN PAGE WRAPPER-->
     <div id="page-wrapper">
-      <!--BEGIN SIDEBAR MAIN-->
       <div ng-include="'app/core/main/templates/sidebar-main.html'" class="sidebar-main sidebar"></div>
-      <!--END SIDEBAR MAIN-->
-      <!--BEGIN CHAT FORM-->
       <div ng-include="'app/core/main/templates/chat-form.html'" class="chat-form-wrapper"></div>
-      <!--END CHAT FORM-->
-      <!--BEGIN PAGE CONTENT-->
       <div ng-class="[header.animation]" ng-generaltab="" class="page-content animated">
-        <!--BEGIN TITLE & BREADCRUMB PAGE-->
         <div ng-include="'app/core/main/templates/title-breadcrumb.html'" class="page-title-breadcrumb"></div>
-        <!--END TITLE & BREADCRUMB PAGE-->
         <div class="box-content">
-          <!--BEGIN CONTENT-->
-          <div ui-view="" class="content"></div>
-          <!--END CONTENT-->
+          <div ui-view="master" class="content"></div>
         </div>
       </div>
-      <!--END PAGE CONTENT-->
     </div>
-    <!--END PAGE WRAPPER-->
   </div>
-  <!--BEGIN FOOTER-->
   <div id="footer">
-    <div class="copyright"> Create by: Nextthemes
-      <div class="pull-left">©2014 mTek - Bootstrap Admin Template</div>
+    <div class="copyright">
+      <div class="pull-left">©2017 CPTEC/INPE: Centro de Previsão de Tempo e Estudos Climáticos</div>
     </div>
   </div>
-  <!--END FOOTER-->
 </div>
 
 

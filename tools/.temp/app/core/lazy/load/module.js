@@ -6,15 +6,10 @@ define(function(require) {
   require('uiRouter');
   require('ocLazyLoad');
 
-  // angular module definition
   return angular.module(
-    // module name
     'core.lazy.load',
-
-    // module dependencies
     [
       'ui.router',
-
       'oc.lazyLoad'
     ]
   );

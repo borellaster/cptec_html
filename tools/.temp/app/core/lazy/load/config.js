@@ -5,8 +5,6 @@ define(function(require) {
 
   module.config(configureLazyLoad);
 
-  //---
-
   configureLazyLoad.$inject = ['$ocLazyLoadProvider'];
 
   function configureLazyLoad($ocLazyLoadProvider) {
@@ -16,9 +14,6 @@ define(function(require) {
         module.name,
         require('app/core/home/package').name,
         require('app/core/main/package').name,
-
-        // TODO: review
-
       ],
       asyncLoader: require
     });

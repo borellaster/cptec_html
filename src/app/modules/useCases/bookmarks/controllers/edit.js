@@ -6,8 +6,6 @@ define(function(require) {
 
   module.controller('BookmarksEditCtrl', BookmarksEditCtrl);
 
-  //---
-
   BookmarksEditCtrl.$inject = [
     '$rootScope', '$scope',
     'BookmarksResource', '$stateParams',
@@ -16,22 +14,13 @@ define(function(require) {
 
   function BookmarksEditCtrl($rootScope, $scope, resource, params, input) {
     var vm = this;
-
-    vm.title = 'Edit Bookmark : ' + params.id;
-
+    vm.title = 'Editar Bookmark : ' + params.id;
     vm.bookmark = undefined;
-
     vm.showConfirm = false;
-
     vm.save = save;
-
     vm.remove = remove;
-
     vm.cancelRemove = cancelRemove;
-
     vm.destroy = destroy;
-
-    //---
 
     var ctrlName = 'BookmarksEditCtrl';
     input = input.get(ctrlName);
@@ -42,17 +31,10 @@ define(function(require) {
         'focusBookmarkNameInput'
       ]);
 
-    //console.debug(input);
-
-    //---
-
-    // TODO: move to route resolve?
     resource.get({id: params.id}, function(result) {
       vm.bookmark = result;
       input.setFocus('focusBookmarkNameInput', 200);
     });
-
-    //---
 
     function save() {
       vm.bookmark.$update({id: params.id}, function(res) {

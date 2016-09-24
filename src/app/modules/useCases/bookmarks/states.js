@@ -5,14 +5,11 @@ define(function(require) {
 
   module.config(configureStates);
 
-  //---
-
   configureStates.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function configureStates($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider
-      .when('/bookmarks', '/bookmarks/list'); // default
+    $urlRouterProvider.when('/bookmarks', '/bookmarks/list');
 
     $stateProvider
       .state('bookmarks', {
@@ -64,7 +61,6 @@ define(function(require) {
           }
         }
       });
-
   }
 
 });

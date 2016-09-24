@@ -1,7 +1,6 @@
 function getConfig() {
   return {
 
-    // libraries dependencies (fallback support)
     paths: {
 
       jquery: [

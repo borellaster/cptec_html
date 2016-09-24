@@ -1,4 +1,3 @@
-<!-- @begin: filter -->
 <div class="row" ng-if="!vm.showOptions &#38;&#38; !vm.showPagination &#38;&#38; vm.filter.search">
   <p class="text-center">
     <i class="glyphicon glyphicon-filter"></i> : {{vm.filter.search}}
@@ -21,22 +20,20 @@
       <button
         id="filterClearButton"
         ng-click="vm.clearFilter()"
-        class="btn btn-default" type="button">Clear</button>
+        class="btn btn-default" type="button">Limpar</button>
     </span>
   </div>
 
   <div class="row">&nbsp;</div>
 </div>
-<!-- @end: filter -->
 
-<!-- @begin: table -->
 <div class="panel-body">
   <table class="table table-striped">
     <thead>
       <tr>
         <th class="visible-xs"></th>
-        <th>Name <i class="glyphicon glyphicon-new-window" title="Open in new window"></i></th>
-        <th>Description</th>
+        <th>Nome</th>
+        <th>Descrição</th>
         <th class="hidden-xs"></th>
       </tr>
     </thead>
@@ -58,4 +55,3 @@
     </tbody>
   </table>
 </div>
-<!-- @end: table -->

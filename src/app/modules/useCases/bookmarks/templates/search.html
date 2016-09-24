@@ -1,22 +1,16 @@
 <div class="container">
   <div class="row">&nbsp;</div>
 
-  <!-- @begin: search option -->
   <div class="row">
-
     <div class="col-md-3">
-
       <ul class="list-inline">
         <li>
-
           <a href="#bookmarks">
             <i class="glyphicon glyphicon-chevron-left"></i>
-            All Bookmarks
+            Listagem de Bookmarks
           </a>
-
         </li>
         <li>
-
           <button
             id="optionsBtn"
             type="button"
@@ -28,13 +22,10 @@
           </button>
 
         </li>
-      </ul> <!-- / .list-inline -->
-
-    </div> <!-- / .col-md-2 -->
-
+      </ul>
+    </div>
     <div class="col-md-6 col-md-offset-3">
 
-      <!-- @begin: searchForm -->
       <form role="form" name="searchForm" ng-submit="vm.doSearch()">
         <div class="input-group" ng-class="{'has-error': searchForm.searchInput.$invalid}">
           <span class="input-group-addon">
@@ -54,24 +45,18 @@
               class="btn btn-default"
               ng-click="vm.doSearch()"
               ng-disabled="vm.isClean() || searchForm.$invalid"
-              type="button">Search</button>
+              type="button">Pesquisar</button>
           </span>
         </div>
       </form>
-      <!-- @end: searchForm -->
-
     </div>
 
   </div>
-  <!-- @end: search option -->
-
-  <!-- @begin: options -->
   <div class="visible-xs">
     <span ng-if="vm.showOptions &#38;&#38; (vm.showFilterBtn || vm.result.count > 0)">&nbsp;</span>
   </div>
 
   <div class="row" ng-show="vm.showOptions">
-
     <span ng-if="vm.showFilterBtn">
       <span>
         &nbsp;&nbsp;&nbsp;&nbsp;
@@ -98,7 +83,7 @@
       </span>
 
       <span ng-if="vm.result.pages > 1">
-        Pages: <span class="badge">{{vm.result.pages}}</span> &nbsp;&nbsp;
+        Páginas: <span class="badge">{{vm.result.pages}}</span> &nbsp;&nbsp;
       </span>
       <span ng-if="vm.result.count > 0">
         Total: <span class="badge">{{vm.result.count}}</span>
@@ -112,7 +97,7 @@
         ng-submit="vm.updatePageSizeFormSubmit()"
         role="form" novalidate>
         <div class="input-group input-group-sm">
-          <span class="input-group-addon">Page Size</span>
+          <span class="input-group-addon">Tamanho da página</span>
           <input
             class="form-control"
             type="number"
@@ -125,7 +110,7 @@
             <button
               ng-click="vm.updatePageSize()"
               ng-disabled="vm.updatePageSizeInvalid(vm.pageSize)"
-              class="btn btn-default" type="button">Update</button>
+              class="btn btn-default" type="button">Alterar</button>
           </span>
         </div>
         <div>
@@ -133,7 +118,7 @@
             id="pageSizeMessage"
             ng-if="updateSizeForm.pageSize.$error.min || updateSizeForm.pageSize.$error.max"
             class="text-center">
-            The value must be in range {{vm.pageMinSize}} to {{vm.pageMaxSize}}!
+            Valor deve ser entre {{vm.pageMinSize}} e {{vm.pageMaxSize}}!
           </p>
         </div>
       </form>
@@ -144,14 +129,9 @@
   <div class="row">
     <span>&nbsp;</span>
   </div>
-  <!-- @end: options -->
 
   <div class="row" ng-include="'app/modules/useCases/bookmarks/templates/table.html'"></div>
 
-
-  <!-- @begin: pagination -->
-
-  <!-- https://angular-ui.github.io/bootstrap/#/pagination -->
   <div class="row" ng-if="vm.showPagination">
     <div class="text-center" ng-if="vm.result.pages > 1">
       <pagination
@@ -172,7 +152,4 @@
       <i class="glyphicon glyphicon-filter"></i> : {{vm.filter.search}}
     </p>
   </div>
-  <!-- @end: pagination -->
-
-
 </div>

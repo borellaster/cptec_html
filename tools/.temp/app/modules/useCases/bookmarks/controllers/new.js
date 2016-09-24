@@ -6,8 +6,6 @@ define(function(require) {
 
   module.controller('BookmarksNewCtrl', BookmarksNewCtrl);
 
-  //---
-
   BookmarksNewCtrl.$inject = [
     '$rootScope', '$scope',
     'BookmarksResource', 'InputFocusFactory'
@@ -15,8 +13,7 @@ define(function(require) {
 
   function BookmarksNewCtrl($rootScope, $scope, Resource, input) {
     var vm = this;
-
-    vm.title = 'New Bookmark';
+    vm.title = 'Novo Bookmark';
 
     vm.bookmark = new Resource({
       'id':0,
@@ -26,8 +23,6 @@ define(function(require) {
     });
 
     vm.save = save;
-
-    //---
 
     var ctrlName = 'BookmarksNewCtrl';
     input = input.get(ctrlName);
@@ -39,10 +34,6 @@ define(function(require) {
       ]);
 
     input.setFocus('focusBookmarkNameInput', 200);
-
-    //console.debug(input);
-
-    //---
 
     function save() {
       vm.bookmark.$save(function(res) {

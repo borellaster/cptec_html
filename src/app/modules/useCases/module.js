@@ -3,12 +3,8 @@ define(function(require) {
 
   var angular = require('angular');
 
-  // angular module definition
-  return angular.module(
-    // module name
+    return angular.module(
     'useCases',
-
-    // module dependencies
     [
       require('./bookmarks/package').name,
       require('./countries/package').name
