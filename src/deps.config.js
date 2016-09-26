@@ -4,24 +4,75 @@ function getConfig() {
     paths: {
 
       jquery: [
-        'vendor/jquery/2.1.3/jquery.min'
+        'vendor/global/js/jquery-1.10.2.min'
+      ],    
+
+      jqueryUi: [
+        'vendor/global/js/jquery-ui'
+      ],  
+
+      jqueryMigrate: [
+        'vendor/global/js/jquery-migrate-1.2.1.min'
       ],
 
       bootstrap: [
-        'vendor/bootstrap/3.3.2/js/bootstrap.min'
+        'vendor/global/vendors/bootstrap/js/bootstrap.min'
       ],
 
+      html5shiv: [
+        'vendor/global/js/html5shiv'
+      ],
+
+      respond: [
+        'vendor/global/js/respond.min'
+      ],
+
+      metisMenu: [
+        'vendor/global/vendors/metisMenu/jquery.metisMenu'
+      ],
+
+      slimscroll: [
+        'vendor/global/vendors/slimScroll/jquery.slimscroll'
+      ],   
+
+      icheck: [
+        'vendor/global/vendors/iCheck/icheck.min'
+      ],       
+
+      icheckCustom: [
+        'vendor/global/vendors/iCheck/custom.min'
+      ],  
+
+      bootstrapHover: [
+        'vendor/global/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown'
+      ],
+
+      jqueryCookie: [
+        'vendor/global/assets/vendors/jquery-cookie/jquery.cookie'
+      ],
+
+      bootstrapDatePaginator: [
+        'vendor/global/assets/vendors/bootstrap-datepaginator/moment'
+      ],
+
+      jqueryDataTables: [
+        'vendor/global/assets/vendors/DataTables/media/js/jquery.dataTables'
+      ],
+
+      jqueryFlot: [
+        'vendor/global/assets/vendors/flot-chart/jquery.flot'
+      ],      
 
       angular: [
-        'vendor/angular.js/1.3.11/angular.min'
+        'vendor/angular.js/1.5.8/angular.min'
       ],
 
       angularResource: [
-        'vendor/angular.js/1.3.11/angular-resource.min'
+        'vendor/angular.js/1.5.8/angular-resource.min'
       ],
 
       angularAnimate: [
-        'vendor/angular.js/1.3.11/angular-animate.min'
+        'vendor/angular.js/1.5.8/angular-animate.min'
       ],
 
       ocLazyLoad: [
@@ -44,17 +95,13 @@ function getConfig() {
         'vendor/ngProgress/1.0.3/ngProgress.min'
       ],
 
-
-      // @begin: mock libs
       angularMocks: [
-        'vendor/angular.js/1.3.11/angular-mocks'
+        'vendor/angular.js/1.5.8/angular-mocks'
       ],
 
       angularMocksBackend: [
         'vendor/angular-mocks-backend/0.1.7/angular-mocks-backend'
       ],
-      // @end: mock libs
-
 
       lokijs: [
         'vendor/lokijs/1.0.1/lokijs.min'
@@ -62,11 +109,10 @@ function getConfig() {
 
     },
 
-    // define js scripts dependencies
     shim: {
 
       'bootstrap': {
-        deps: ['jquery']
+        deps: ['jquery','jqueryUi', 'jqueryMigrate','bootstrapHover','html5shiv','respond','metisMenu','slimscroll','icheck','icheckCustom','jqueryCookie','bootstrapDatePaginator','jqueryDataTables','jqueryFlot']
       },
 
       'angular': {

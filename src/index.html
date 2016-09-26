@@ -26,39 +26,10 @@
   <link type="text/css" rel="stylesheet" href="assets/css/system.css"/>
   <link type="text/css" rel="stylesheet" href="assets/css/system-responsive.css"/>
 
-  <!-- For IE less than 10 -->
-  <!--[if lt IE 10]>
-  <script src="shared/fallback/ie.js"></script>
-  <script src="vendor/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="vendor/respond.js/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- favicon -->
   <link rel="shortcut icon" href="shared/img/logo_mini.ico">
 
 </head>
 <body>
-
-<!-- @begin: ie warning alert -->
-<!--[if lt IE 7]>
-  <br><br><br><br>
-  <div class="alert alert-danger container">
-  <p>Your browser is <em>ancient!</em>
-    <a href="http://browsehappy.com/">Upgrade to a different browser</a> or
-    <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.
-  </p>
-  </div>
-<![endif]-->
-
-<!--[if lt IE 9]>
-  <br><br><br><br>
-  <div class="alert alert-warning container">
-    You are using an old version of Internet Explorer.
-    For better and safer browsing experience please <a href="http://www.microsoft.com/IE9">upgrade IE</a>
-    or install <a href="http://google.com/chrome">Google Chrome browser</a>.
-  </div>
-<![endif]-->
-<!-- @begin: ie warning alert -->
 
 <div ng-class="header.boxed" class="fluid">
   <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div>
@@ -82,15 +53,6 @@
     </div>
   </div>
 </div>
-
-
-<!--<div ui-view="master">
-  <div class="loading_app">
-    <p style="text-align:center">
-      <img src="shared/img/loading.gif"><br>Loading...
-    </p>
-  </div>
-</div>-->
 
 <script data-main="require.config" src="vendor/require.js/2.1.15/require.min.js"></script>
 
