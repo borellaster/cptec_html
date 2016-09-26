@@ -50,9 +50,9 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $location.path('/intranet/countries/edit/' + id);
+        $location.path('/countries/edit/' + id);
       } else {
-        $location.path('/intranet/countries/new');
+        $location.path('/countries/new');
       }
     }
 

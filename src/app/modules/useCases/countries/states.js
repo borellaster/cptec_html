@@ -5,23 +5,19 @@ define(function(require) {
 
   module.config(configureStates);
 
-  //---
-
   configureStates.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function configureStates($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider
-      .when('/countries', '/countries/list'); // default
+    $urlRouterProvider.when('/countries', '/countries/list');
 
     $stateProvider
       .state('countries', {
+        abstract: true,
         url: '/countries',
         views: {
-          'content@countries': {
-            templateUrl   : 'app/modules/useCases/countries/templates/list.html',
-            controller    : 'CountriesListCtrl',
-            controllerAs  : 'vm'
+          'master': {
+            templateUrl   : 'app/core/main/templates/layout.html'
           }
         }
       })
@@ -55,7 +51,6 @@ define(function(require) {
           }
         }
       });
-
   }
 
 });

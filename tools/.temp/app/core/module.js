@@ -8,8 +8,7 @@ define(function(require) {
     [
       require('./lazy/load/package').name,
       require('./main/package').name,
-      require('./home/package').name,
-      require('../modules/useCases/countries/package').name
+      require('./home/package').name
     ]
   );
 

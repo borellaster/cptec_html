@@ -18,7 +18,8 @@ define(function(require) {
       require('shared/fend/navbar/package').name,
 
       require('app/core/home/package').name,
-      require('app/modules/useCases/countries/package').name
+      require('../../modules/useCases/countries/package').name
+
     ]
   );
 });

@@ -13,19 +13,21 @@ define(function(require) {
   function CountriesCtrl(params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
-
+    
     vm.updateLocation = function() {
-      $location.path('/intranet/countries/list');
+      $location.path('/countries/list');
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Countries';
+        vm.title = 'Cadastrar país';
         vm.acao = 'incluído';
         vm.countries = new resource({
-          'id':0 
+          'id': undefined,
+          'name': '',
+          'abbreviation': ''
         });        
     } else {
-        vm.title = 'Editar Countries';
+        vm.title = 'Editar país';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.countries = data;
@@ -42,8 +44,8 @@ define(function(require) {
       .catch(function error(msg) {
         setError('Erro ao salvar o registro.');
       });
-    }
-
+    }   
+    
     vm.cancel = function() {
         vm.updateLocation();
         vm.showConfirm = false;
