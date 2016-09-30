@@ -5,6 +5,8 @@ define(function(require) {
 
   require('uiRouter');
   require('uiBootstrap');
+  require('mapBox');
+  require('leaflet');
 
   return angular.module(
 
@@ -12,6 +14,7 @@ define(function(require) {
     [
       'ui.router',
       'ui.bootstrap',
+      'leaflet-directive',
 
       require('./templates/cache').name,
       require('shared/fend/progressbar-loading/package').name,

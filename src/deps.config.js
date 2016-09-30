@@ -105,7 +105,15 @@ function getConfig() {
 
       lokijs: [
         'vendor/lokijs/1.0.1/lokijs.min'
-      ]
+      ],
+
+      mapBox: [
+        'vendor/mapbox/angular-leaflet-directive.min'
+      ],     
+
+      leaflet: [
+        'vendor/mapbox/leaflet'
+      ]      
 
     },
 
@@ -148,16 +156,21 @@ function getConfig() {
         deps:['angularAnimate']
       },
 
-
-      // @begin: mock js shim/deps
       'angularMocks': {
         deps: ['angular']
       },
 
       'angularMocksBackend': {
         deps: ['angularMocks']
-      }
-      // @end: mock js shim/deps
+      },
+
+      'mapBox': {
+        deps: ['angular']
+      },    
+
+      'leaflet': {
+        deps: ['jquery']
+      },          
 
     },
 
