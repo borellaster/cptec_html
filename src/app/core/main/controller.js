@@ -14,20 +14,10 @@ define(function(require) {
     progressConfig.color('#428bca');
     progressConfig.height('3px');
     
-
-    menu.addMenuItem('Home', 'home');
-    menu.addMenuItem('Bookmarks', 'bookmarks');
-
-
-    menu.addMenuItem('About', 'about');
-    menu.addMenuItem('Help', 'help', 'right');
-
     lazyLoad
       .load(['pages', 'useCases'])
       .then(function( results ) {
 
-        console.log( 'modules loaded...' );
-        console.log( results );
         if(ngee && ngee.oldLocation) {
           var urlParts = ngee.oldLocation.href.split('#');
           var path = $location.path();
@@ -35,9 +25,6 @@ define(function(require) {
             $location.path( urlParts[1] );
           }
         }
-
       });
-
   }
-
 });

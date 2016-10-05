@@ -2,14 +2,9 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  require('../resources/rest');
-
   module.controller('CountriesCtrl', CountriesCtrl);
 
-  CountriesCtrl.$inject = [
-    '$stateParams', '$location', 'CountriesFactory', 'CountriesResource'
-  ];
-
+  CountriesCtrl.$inject = ['$stateParams', '$location', 'CountriesFactory', 'CountriesResource'];
   function CountriesCtrl(params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
@@ -36,7 +31,19 @@ define(function(require) {
         });         
     }
 
-    vm.save = function() {
+    vm.save = function(form) {
+      angular.forEach(form.$error, function (field) {
+        angular.forEach(field, function(errorField){
+          console.log(errorField)
+            errorField.$setTouched();
+            errorField.$setDirty();
+        })
+      });
+
+      if (form.$invalid) {
+        return true;
+      }
+
       dataService.save(vm.countries).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');

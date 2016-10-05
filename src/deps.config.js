@@ -1,67 +1,17 @@
 function getConfig() {
   return {
 
+    // libraries dependencies (fallback support)
     paths: {
 
       jquery: [
-        'vendor/global/js/jquery-1.10.2.min'
-      ],    
-
-      jqueryUi: [
-        'vendor/global/js/jquery-ui'
-      ],  
-
-      jqueryMigrate: [
-        'vendor/global/js/jquery-migrate-1.2.1.min'
+        'vendor/jquery/2.1.3/jquery.min'
       ],
 
       bootstrap: [
-        'vendor/global/vendors/bootstrap/js/bootstrap.min'
+        'vendor/bootstrap/3.3.2/js/bootstrap.min'
       ],
 
-      html5shiv: [
-        'vendor/global/js/html5shiv'
-      ],
-
-      respond: [
-        'vendor/global/js/respond.min'
-      ],
-
-      metisMenu: [
-        'vendor/global/vendors/metisMenu/jquery.metisMenu'
-      ],
-
-      slimscroll: [
-        'vendor/global/vendors/slimScroll/jquery.slimscroll'
-      ],   
-
-      icheck: [
-        'vendor/global/vendors/iCheck/icheck.min'
-      ],       
-
-      icheckCustom: [
-        'vendor/global/vendors/iCheck/custom.min'
-      ],  
-
-      bootstrapHover: [
-        'vendor/global/vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown'
-      ],
-
-      jqueryCookie: [
-        'vendor/global/assets/vendors/jquery-cookie/jquery.cookie'
-      ],
-
-      bootstrapDatePaginator: [
-        'vendor/global/assets/vendors/bootstrap-datepaginator/moment'
-      ],
-
-      jqueryDataTables: [
-        'vendor/global/assets/vendors/DataTables/media/js/jquery.dataTables'
-      ],
-
-      jqueryFlot: [
-        'vendor/global/assets/vendors/flot-chart/jquery.flot'
-      ],      
 
       angular: [
         'vendor/angular.js/1.5.8/angular.min'
@@ -114,13 +64,13 @@ function getConfig() {
       leaflet: [
         'vendor/mapbox/leaflet'
       ]      
-
     },
 
+    // define js scripts dependencies
     shim: {
 
       'bootstrap': {
-        deps: ['jquery','jqueryUi', 'jqueryMigrate','bootstrapHover','html5shiv','respond','metisMenu','slimscroll','icheck','icheckCustom','jqueryCookie','bootstrapDatePaginator','jqueryDataTables','jqueryFlot']
+        deps: ['jquery']
       },
 
       'angular': {
@@ -170,8 +120,7 @@ function getConfig() {
 
       'leaflet': {
         deps: ['jquery']
-      },          
-
+      }         
     },
 
     priority: [

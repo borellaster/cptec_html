@@ -6,7 +6,6 @@ define(function(require) {
     return angular.module(
     'useCases',
     [
-      require('./bookmarks/package').name,
       require('./countries/package').name
     ]
   );
