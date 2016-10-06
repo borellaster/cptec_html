@@ -12,7 +12,6 @@ function getConfig() {
         'vendor/bootstrap/3.3.2/js/bootstrap.min'
       ],
 
-
       angular: [
         'vendor/angular.js/1.5.8/angular.min'
       ],
@@ -37,10 +36,6 @@ function getConfig() {
         'vendor/angular-ui/ui-router/0.2.13/angular-ui-router.min'
       ],
 
-      toaster: [
-        'vendor/toaster/0.3.0/toaster'
-      ],
-
       ngProgress: [
         'vendor/ngProgress/1.0.3/ngProgress.min'
       ],
@@ -63,7 +58,11 @@ function getConfig() {
 
       leaflet: [
         'vendor/mapbox/leaflet'
-      ]      
+      ],
+
+      toastr: [
+        'vendor/toaster/new/toastr'
+      ]           
     },
 
     // define js scripts dependencies
@@ -102,9 +101,10 @@ function getConfig() {
         deps: ['angular']
       },
 
-      'toaster': {
-        deps:['angularAnimate']
-      },
+      'toastr': {
+          deps: ['jquery'],
+          exports: 'toastr'
+      },  
 
       'angularMocks': {
         deps: ['angular']

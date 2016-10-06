@@ -3,19 +3,13 @@ define(function(require) {
 
   var angular = require('angular');
 
-  require('uiRouter');
-
-  require('toastr');
-
   // angular module definition
   return angular.module(
     // module name
-    'core.home',
+    'fend.tema',
 
     // module dependencies
-    [
-      'ui.router'
-    ]
+    []
   );
 
 });
