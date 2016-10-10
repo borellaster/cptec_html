@@ -15,6 +15,21 @@ define(function(require) {
       .otherwise("/404");
 
     $stateProvider
+      .state('pagina', {
+        views: {
+          'master': {
+            templateUrl   : 'app/core/main/templates/layout-pagina.html'
+          }
+        }
+      })
+      .state('home', {
+        url: '/admin',
+        views: {
+          'master': {
+            templateUrl   : 'app/core/main/templates/layout.html'
+          }
+        }
+      })
       .state('404', {
         url: '/404',
         views: {

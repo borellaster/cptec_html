@@ -12,7 +12,6 @@ define(function(require) {
     $ocLazyLoadProvider.config({
       loadedModules: [
         module.name,
-        require('app/core/home/package').name,
         require('app/core/main/package').name,
       ],
       asyncLoader: require

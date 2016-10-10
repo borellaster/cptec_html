@@ -6,9 +6,10 @@ define(function(require) {
   return angular.module(
     'core',
     [
+      require('../admin/package').name,
+      require('../pagina/package').name,
       require('./lazy/load/package').name,
       require('./main/package').name,
-      require('./home/package').name
     ]
   );
 

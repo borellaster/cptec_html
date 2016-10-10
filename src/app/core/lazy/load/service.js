@@ -60,7 +60,7 @@ define(function(require) {
 
     function load(name, path) {
 
-      path = path || 'app/modules/';
+      path = path || 'app/';
       var packageFile = path + name + '/package';
 
       return ocLazyLoad.load({

@@ -26,6 +26,8 @@
   <link type="text/css" rel="stylesheet" href="assets/css/system.css"/>
   <link type="text/css" rel="stylesheet" href="assets/css/system-responsive.css"/>
   <link type="text/css" href="vendor/toaster/new/toastr.css" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="vendor/mapbox/leaflet.css" >
+  <link type="text/css" rel="stylesheet" href="vendor/mapbox/leaflet.fullscreen.css" >
   <link type="text/css" rel="stylesheet" href="assets/css/custom.css"/>
 
   <link rel="shortcut icon" href="shared/img/logo_mini.ico">
@@ -33,20 +35,13 @@
 </head>
 <body>
 
-<div ng-class="header.boxed" class="fluid">
+<div ng-class="header.boxed" class="fluid container-principal">
   <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div>
   <div ng-include="'app/core/main/templates/topbar.html'" class="page-header-topbar"></div>
   <div ng-include="'app/core/main/templates/horizontal-menu.html'" class="page-horizontal-menu"></div>
   <div id="wrapper">
     <div id="page-wrapper">
-      <div ng-include="'app/core/main/templates/sidebar-main.html'" class="sidebar-main sidebar"></div>
-      <div ng-include="'app/core/main/templates/chat-form.html'" class="chat-form-wrapper"></div>
-      <div ng-class="[header.animation]" ng-generaltab="" class="page-content animated">
-        <div ng-include="'app/core/main/templates/title-breadcrumb.html'" class="page-title-breadcrumb"></div>
-        <div class="box-content">
-          <div ui-view="master" class="content"></div>
-        </div>
-      </div>
+        <div ui-view="master"></div>
     </div>
   </div>
   <div id="footer">

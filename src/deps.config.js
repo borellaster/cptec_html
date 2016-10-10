@@ -36,9 +36,9 @@ function getConfig() {
         'vendor/angular-ui/ui-router/0.2.13/angular-ui-router.min'
       ],
 
-      ngProgress: [
-        'vendor/ngProgress/1.0.3/ngProgress.min'
-      ],
+      // ngProgress: [
+      //   'vendor/ngProgress/1.0.3/ngProgress.min'
+      // ],
 
       angularMocks: [
         'vendor/angular.js/1.5.8/angular-mocks'
@@ -97,9 +97,9 @@ function getConfig() {
         deps: ['angular']
       },
 
-      'ngProgress': {
-        deps: ['angular']
-      },
+      // 'ngProgress': {
+      //   deps: ['angular']
+      // },
 
       'toastr': {
           deps: ['jquery'],
