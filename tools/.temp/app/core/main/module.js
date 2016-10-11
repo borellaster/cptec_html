@@ -6,7 +6,7 @@ define(function(require) {
   require('uiRouter');
   require('uiBootstrap');
   require('mapBox');
-  require('leaflet');
+  require('leaflet');  
 
   return angular.module(
 
@@ -17,12 +17,9 @@ define(function(require) {
       'leaflet-directive',
 
       require('./templates/cache').name,
-      require('shared/fend/progressbar-loading/package').name,
+      // require('shared/fend/progressbar-loading/package').name,
       require('shared/fend/navbar/package').name,
-
-      require('app/core/home/package').name,
-      require('../../modules/useCases/countries/package').name
-
+      require('shared/fend/tema/package').name
     ]
   );
 });

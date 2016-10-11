@@ -4,13 +4,13 @@ define(function(require) {
   var module = require('../module');
   module.controller('CountriesCtrl', CountriesCtrl);
 
-  CountriesCtrl.$inject = ['$state', '$stateParams', '$location', 'CountriesFactory', 'CountriesResource'];
-  function CountriesCtrl($state, params, $location, dataService, resource) {
+  CountriesCtrl.$inject = ['$stateParams', '$location', 'CountriesFactory', 'CountriesResource'];
+  function CountriesCtrl(params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
     
     vm.updateLocation = function() {
-      $state.go('home.countries.list');
+      $location.path('/countries/list');
     }
 
     if(params.id == undefined){
