@@ -8,7 +8,7 @@
         <div class="panel-body">
           <div class="row" style="margin-bottom:10px;">
             <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
-              <a ui-sref="countries.new" class="btn btn-primary"> 
+              <a ui-sref="home.countries.new" class="btn btn-primary"> 
                 <i class="icon-plus"></i> Novo
               </a>
             </div>
@@ -38,7 +38,7 @@
             <tbody>
               <tr ng-repeat="countries in vm.result.data | filter:filter.search">
                 <td>{{countries.name}}</td>
-                <td class="hidden-xs"><a ui-sref="countries.edit({id:countries.id})">Editar</a></td>
+                <td class="hidden-xs"><a ui-sref="home.countries.edit({id:countries.id})">Editar</a></td>
               </tr>
               <tr>
             </tbody>
