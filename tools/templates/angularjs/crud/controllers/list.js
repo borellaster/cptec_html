@@ -3,14 +3,10 @@ define(function(require) {
 
   var module = require('../module');
 
-  require('../resources/rest');
   module.controller('<%= helpers.capitalize( name ) %>ListCtrl', <%= helpers.capitalize( name ) %>ListCtrl);
+  <%= helpers.capitalize( name ) %>ListCtrl.$inject = ['$state', 'PaginationFactory', '<%= helpers.capitalize( name ) %>SearchResource', '<%= helpers.capitalize( name ) %>Factory'];
 
-  <%= helpers.capitalize( name ) %>ListCtrl.$inject = [
-    '$location', 'PaginationFactory', '<%= helpers.capitalize( name ) %>SearchResource', '<%= helpers.capitalize( name ) %>Factory'
-  ];
-
-  function <%= helpers.capitalize( name ) %>ListCtrl($location, pagination, ResourceSearch, dataService) {
+  function <%= helpers.capitalize( name ) %>ListCtrl($state, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -50,9 +46,9 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $location.path('/intranet/<%= name %>/edit/' + id);
+        $state.go('home.<%= name %>.edit', {id: id});
       } else {
-        $location.path('/intranet/<%= name %>/new');
+        $state.go('home.<%= name %>.new');        
       }
     }
 

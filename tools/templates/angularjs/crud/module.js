@@ -10,7 +10,7 @@ define(function(require) {
   // angular module definition
   return angular.module(
     // module name
-    '<%= name %>',
+    'admin.<%= name %>',
 
     // module dependencies
     [

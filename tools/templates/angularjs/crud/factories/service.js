@@ -22,10 +22,10 @@ define(function(require) {
     return service;
 
     function save(<%= name %>) {
-      if(<%= name %>.id > 0){
-          return resource.update({'id': <%= name %>.id}, <%= name %>).$promise;
-        }else{
+      if(<%= name %>.id == undefined){
           return resource.save(<%= name %>).$promise;
+        }else{
+          return resource.update({'id': <%= name %>.id}, <%= name %>).$promise;
         }
     }
 

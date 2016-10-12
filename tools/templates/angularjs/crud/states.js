@@ -5,57 +5,53 @@ define(function(require) {
 
   module.config(configureStates);
 
-  //---
-
   configureStates.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function configureStates($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider
-      .when('/<%= route %>', '/intranet/<%= route %>/list'); // default
+    $urlRouterProvider.when('/<%= route %>', '/<%= route %>/list'); // default
 
     $stateProvider
-      .state('intranet.<%= name %>', {
+      .state('home.<%= name %>', {
         url: '/<%= route %>',
         views: {
-          'content@intranet': {
-            templateUrl   : 'app/modules/useCases/<%= name %>/templates/list.html',
+          'content@home': {
+            templateUrl   : 'app/admin/<%= name %>/templates/list.html',
             controller    : '<%= helpers.capitalize( name ) %>ListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('intranet.<%= name %>.list', {
+      .state('home.<%= name %>.list', {
         url: '/list',
         views: {
-          'content@intranet': {
-            templateUrl   : 'app/modules/useCases/<%= name %>/templates/list.html',
+          'content@home': {
+            templateUrl   : 'app/admin/<%= name %>/templates/list.html',
             controller    : '<%= helpers.capitalize( name ) %>ListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('intranet.<%= name %>.new', {
+      .state('home.<%= name %>.new', {
         url: '/new',
         views: {
-          'content@intranet': {
-            templateUrl   : 'app/modules/useCases/<%= name %>/templates/form.html',
+          'content@home': {
+            templateUrl   : 'app/admin/<%= name %>/templates/form.html',
             controller    : '<%= helpers.capitalize( name ) %>Ctrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('intranet.<%= name %>.edit', {
+      .state('home.<%= name %>.edit', {
         url: '/edit/:id',
         views: {
-          'content@intranet': {
-            templateUrl   : 'app/modules/useCases/<%= name %>/templates/form.html',
+          'content@home': {
+            templateUrl   : 'app/admin/<%= name %>/templates/form.html',
             controller    : '<%= helpers.capitalize( name ) %>Ctrl',
             controllerAs  : 'vm'
           }
         }
       });
-
   }
 
 });

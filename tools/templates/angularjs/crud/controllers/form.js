@@ -2,27 +2,22 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  require('../resources/rest');
-
   module.controller('<%= helpers.capitalize( name ) %>Ctrl', <%= helpers.capitalize( name ) %>Ctrl);
 
-  <%= helpers.capitalize( name ) %>Ctrl.$inject = [
-    '$stateParams', '$location', '<%= helpers.capitalize( name ) %>Factory', '<%= helpers.capitalize( name ) %>Resource'
-  ];
-
-  function <%= helpers.capitalize( name ) %>Ctrl(params, $location, dataService, resource) {
+  <%= helpers.capitalize( name ) %>Ctrl.$inject = ['$state', '$stateParams', '$location', '<%= helpers.capitalize( name ) %>Factory', '<%= helpers.capitalize( name ) %>Resource'];
+  function <%= helpers.capitalize( name ) %>Ctrl($state, params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $location.path('/intranet/<%= name %>/list');
+      $state.go('home.<%= name %>.list');
     }
 
     if(params.id == undefined){
         vm.title = 'Cadastrar <%= helpers.capitalize( name ) %>';
         vm.acao = 'incluído';
         vm.<%= name %> = new resource({
-          'id':0 
+          'id': undefined
         });        
     } else {
         vm.title = 'Editar <%= helpers.capitalize( name ) %>';
@@ -35,6 +30,18 @@ define(function(require) {
     }
 
     vm.save = function() {
+      angular.forEach(form.$error, function (field) {
+        angular.forEach(field, function(errorField){
+          console.log(errorField)
+            errorField.$setTouched();
+            errorField.$setDirty();
+        })
+      });
+
+      if (form.$invalid) {
+        return true;
+      }
+
       dataService.save(vm.<%= name %>).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
