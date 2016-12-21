@@ -22,7 +22,7 @@ define(function(require) {
 
           pagination.updateMetainf(
             result.count,
-            result.data.length,
+            result.length,
             result.page,
             result.pages
           );
@@ -36,7 +36,7 @@ define(function(require) {
 
           pagination.updateMetainf(
             result.count,
-            result.data.length,
+            result.length,
             result.page,
             result.pages
           );

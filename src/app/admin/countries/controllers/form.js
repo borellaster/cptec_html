@@ -43,7 +43,7 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }
-
+      //console.log('CUUUUU--->>>>'+ document.body);
       dataService.save(vm.countries).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
