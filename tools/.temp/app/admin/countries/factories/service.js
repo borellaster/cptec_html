@@ -23,9 +23,11 @@ define(function(require) {
 
     function save(countries) {
       if(countries.id == undefined){
+          console.log(countries);
           return resource.save(countries).$promise;
         }else{
-          return resource.update({'id': countries.id}, countries).$promise;          
+          console.log(countries);
+          return resource.update(countries).$promise;          
         }
     }
 
@@ -42,7 +44,7 @@ define(function(require) {
     }
 
     function list(page, size){
-        return resource.get({'page': page, 'size': size}).$promise;
+        return resource.query({'page': page, 'size': size}).$promise;
     }
   };
 });

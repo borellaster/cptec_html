@@ -11,5 +11,5 @@
 # Node.js ignore
 
 node_modules
-.tools
+.temp
 npm-debug.log

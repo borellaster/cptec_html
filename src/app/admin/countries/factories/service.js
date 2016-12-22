@@ -6,10 +6,10 @@ define(function(require) {
   module.factory('CountriesFactory', CountriesFactory);
 
   CountriesFactory.$inject = [
-    'CountriesResource', '$location', 'CountriesSearchResource'
+    'CountriesResource', '$location', 'CountriesSearchResource', 'CountriesPaginationResource'
   ];
 
-  function CountriesFactory(resource, $location, resourceSearch) {
+  function CountriesFactory(resource, $location, resourceSearch, resourcePagination) {
 
     var service = {
       save: save,
@@ -23,11 +23,13 @@ define(function(require) {
 
     function save(countries) {
       if(countries.id == undefined){
+          console.log(countries);
           return resource.save(countries).$promise;
         }else{
+          console.log(countries);
           return resource.update({'id': countries.id}, countries).$promise;          
         }
-    }
+    } 
 
     function findById(id) {
       return resource.get({'id': id}).$promise;
@@ -42,7 +44,7 @@ define(function(require) {
     }
 
     function list(page, size){
-        return resource.get({'page': page, 'size': size}).$promise;
+        return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
   };
 });

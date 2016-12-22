@@ -7,10 +7,10 @@ define(function(require) {
   module.controller('CountriesListCtrl', CountriesListCtrl);
 
   CountriesListCtrl.$inject = [
-    '$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
+    '$q','$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
   ];
 
-  function CountriesListCtrl($location, pagination, ResourceSearch, dataService) {
+  function CountriesListCtrl($q, $location, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -22,7 +22,7 @@ define(function(require) {
 
           pagination.updateMetainf(
             result.count,
-            result.data.length,
+            result.length,
             result.page,
             result.pages
           );
@@ -36,7 +36,7 @@ define(function(require) {
 
           pagination.updateMetainf(
             result.count,
-            result.data.length,
+            result.length,
             result.page,
             result.pages
           );
