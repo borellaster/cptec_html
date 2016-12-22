@@ -3,14 +3,10 @@ define(function(require) {
 
   var module = require('../module');
 
-  require('../resources/rest');
-  module.controller('CountriesListCtrl', CountriesListCtrl);
+  module.controller('StatesListCtrl', StatesListCtrl);
+  StatesListCtrl.$inject = ['$state', 'PaginationFactory', 'StatesSearchResource', 'StatesFactory'];
 
-  CountriesListCtrl.$inject = [
-    '$q','$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
-  ];
-
-  function CountriesListCtrl($q, $location, pagination, ResourceSearch, dataService) {
+  function StatesListCtrl($state, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -22,7 +18,7 @@ define(function(require) {
 
           pagination.updateMetainf(
             result.count,
-            result.length,
+            result.data.length,
             result.page,
             result.pages
           );
@@ -30,13 +26,13 @@ define(function(require) {
           setError('Erro ao pesquisar os registros.');
         });        
       }else{
-        dataService.search(page, pagination.getPageSize(), vm.searchFilter).then(function success(result) {
+        dataService.search(vm.searchFilter, page, pagination.getPageSize()).then(function success(result) {
           vm.result = result;
           vm.currentPage = result.page;
 
           pagination.updateMetainf(
             result.count,
-            result.length,
+            result.data.length,
             result.page,
             result.pages
           );
@@ -50,9 +46,9 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $location.path('/countries/edit/' + id);
+        $state.go('home.states.edit', {id: id});
       } else {
-        $location.path('/countries/new');
+        $state.go('home.states.new');        
       }
     }
 
@@ -67,11 +63,11 @@ define(function(require) {
     };    
 
     function init() {
-      var ctrlName = 'CountriesListCtrl';
+      var ctrlName = 'StatesListCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();
       vm.paginationPageSize = pagination.getPageSize();
       vm.paginationItemsSize = 5;
-    }         
+    }
   }
 });

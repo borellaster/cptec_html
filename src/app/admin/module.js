@@ -7,7 +7,8 @@ define(function(require) {
     'admin',
     [
       require('./home/package').name,
-      require('./countries/package').name
+      require('./countries/package').name,
+      require('./states/package').name
     ]
   );
 

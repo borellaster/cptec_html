@@ -22,7 +22,10 @@ define(function(require) {
   CountriesPaginationResource.$inject = ['$resource'];
   function CountriesPaginationResource($resource) {
     var rest = $resource(
-      'rest/countries/:page/:size', {'page': 1, 'size': 10}
+      'rest/countries/:page/:size', 
+      {
+        'page': 1, 'size': 10
+      }
     );
     return rest;
   }  
