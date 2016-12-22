@@ -19,7 +19,7 @@ define(function(require) {
       function defaultMetainf(_pageSize) {
 
         function PaginationMetaInfo() {
-          this.pageSize = _pageSize || 10;
+          this.pageSize = _pageSize || 2;
           this.count = 0;
           this.nextPage = 1;
           this.lastPage = 0;

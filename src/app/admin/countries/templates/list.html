@@ -36,7 +36,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="countries in vm.result | filter:filter.search">
+              <tr ng-repeat="countries in vm.result.data | filter:filter.search">
                 <td>{{countries.name}}</td>
                 <td class="hidden-xs"><a ui-sref="home.countries.edit({id:countries.id})">Editar</a></td>
               </tr>

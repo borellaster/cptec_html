@@ -7,10 +7,10 @@ define(function(require) {
   module.controller('CountriesListCtrl', CountriesListCtrl);
 
   CountriesListCtrl.$inject = [
-    '$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
+    '$q','$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
   ];
 
-  function CountriesListCtrl($location, pagination, ResourceSearch, dataService) {
+  function CountriesListCtrl($q, $location, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 

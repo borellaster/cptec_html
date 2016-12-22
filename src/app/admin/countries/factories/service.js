@@ -6,10 +6,10 @@ define(function(require) {
   module.factory('CountriesFactory', CountriesFactory);
 
   CountriesFactory.$inject = [
-    'CountriesResource', '$location', 'CountriesSearchResource'
+    'CountriesResource', '$location', 'CountriesSearchResource', 'CountriesPaginationResource'
   ];
 
-  function CountriesFactory(resource, $location, resourceSearch) {
+  function CountriesFactory(resource, $location, resourceSearch, resourcePagination) {
 
     var service = {
       save: save,
@@ -44,7 +44,7 @@ define(function(require) {
     }
 
     function list(page, size){
-        return resource.query({'page': page, 'size': size}).$promise;
+        return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
   };
 });
