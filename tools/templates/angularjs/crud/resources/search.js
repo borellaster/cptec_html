@@ -4,19 +4,16 @@ define(function(require) {
   var module = require('../module');
 
   module.factory('<%= helpers.capitalize( name ) %>SearchResource', <%= helpers.capitalize( name ) %>SearchResource);
-
-  //---
-
   <%= helpers.capitalize( name ) %>SearchResource.$inject = ['$resource'];
-
+  
   function <%= helpers.capitalize( name ) %>SearchResource($resource) {
-
     var rest = $resource(
-      '<%= endpoint %>/search/:name'
+      '<%= endpoint %>/search/:page/:size/:name', 
+      {
+        'page': 1, 'size': 10, 'name': ''
+      }
     );
-
     return rest;
-
   }
 
 });

@@ -6,10 +6,10 @@ define(function(require) {
   module.factory('<%= helpers.capitalize( name ) %>Factory', <%= helpers.capitalize( name ) %>Factory);
 
   <%= helpers.capitalize( name ) %>Factory.$inject = [
-    '<%= helpers.capitalize( name ) %>Resource', '$location', '<%= helpers.capitalize( name ) %>SearchResource'
+    '<%= helpers.capitalize( name ) %>Resource', '$location', '<%= helpers.capitalize( name ) %>SearchResource', '<%= helpers.capitalize( name ) %>PaginationResource'
   ];
 
-  function <%= helpers.capitalize( name ) %>Factory(resource, $location, resourceSearch) {
+  function <%= helpers.capitalize( name ) %>Factory(resource, $location, resourceSearch, resourcePagination) {
 
     var service = {
       save: save,
@@ -37,12 +37,12 @@ define(function(require) {
       return resource.delete({'id': id}).$promise;
     }
 
-    function search(name, page, size){
-        return resourceSearch.get({'name': name, 'page': page, 'size': size}).$promise;
+    function search(page, size, name){
+        return resourceSearch.get({'page': page, 'size': size, 'name': name}).$promise;
     }
 
     function list(page, size){
-        return resource.get({'page': page, 'size': size}).$promise;
+        return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
   };
 });

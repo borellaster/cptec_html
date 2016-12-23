@@ -26,7 +26,7 @@ define(function(require) {
           setError('Erro ao pesquisar os registros.');
         });        
       }else{
-        dataService.search(page, pagination.getPageSize(), vm.searchFilter).then(function success(result) {
+        dataService.search(vm.searchFilter, page, pagination.getPageSize()).then(function success(result) {
           vm.result = result;
           vm.currentPage = result.page;
 

@@ -5,8 +5,8 @@ define(function(require) {
 
   module.factory('CountriesSearchResource', CountriesSearchResource);
   CountriesSearchResource.$inject = ['$resource'];
-  function CountriesSearchResource($resource) {
 
+  function CountriesSearchResource($resource) {
     var rest = $resource(
       'rest/countries/search/:page/:size/:name', 
       {
@@ -15,5 +15,4 @@ define(function(require) {
     );
     return rest;
   }
-
 });

@@ -6,10 +6,10 @@ define(function(require) {
   module.factory('StatesFactory', StatesFactory);
 
   StatesFactory.$inject = [
-    'StatesResource', '$location', 'StatesSearchResource', 'StatesPaginationResource'
+    'StatesResource', '$location', 'StatesSearchResource'
   ];
 
-  function StatesFactory(resource, $location, resourceSearch, resourcePagination) {
+  function StatesFactory(resource, $location, resourceSearch) {
 
     var service = {
       save: save,
@@ -37,12 +37,12 @@ define(function(require) {
       return resource.delete({'id': id}).$promise;
     }
 
-    function search(page, size, name){
-        return resourceSearch.get({'page': page, 'size': size, 'name': name}).$promise;
+    function search(name, page, size){
+        return resourceSearch.get({'name': name, 'page': page, 'size': size}).$promise;
     }
 
     function list(page, size){
-        return resourcePagination.get({'page': page, 'size': size}).$promise;
+        return resource.get({'page': page, 'size': size}).$promise;
     }
   };
 });
