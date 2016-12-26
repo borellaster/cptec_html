@@ -30,4 +30,13 @@ define(function(require) {
     return rest;
   }  
 
+  module.factory('CountriesComboResource', CountriesComboResource);
+  CountriesComboResource.$inject = ['$resource'];
+  function CountriesComboResource($resource) {
+    var rest = $resource(
+      'rest/native/countries/wrapper', {}
+    );
+    return rest;
+  }    
+
 });

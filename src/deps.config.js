@@ -8,6 +8,10 @@ function getConfig() {
         'vendor/jquery/2.1.3/jquery.min'
       ],
 
+      jqueryUi: [
+        'vendor/jquery/ui/jqueryui-1.10.3.min'     
+      ],       
+
       bootstrap: [
         'vendor/bootstrap/3.3.2/js/bootstrap.min'
       ],
@@ -36,9 +40,9 @@ function getConfig() {
         'vendor/angular-ui/ui-router/0.2.13/angular-ui-router.min'
       ],
 
-      // ngProgress: [
-      //   'vendor/ngProgress/1.0.3/ngProgress.min'
-      // ],
+      uiSelect: [
+        'vendor/angular-ui/ui-select/select.min'
+      ],
 
       angularMocks: [
         'vendor/angular.js/1.5.8/angular-mocks'
@@ -72,6 +76,10 @@ function getConfig() {
         deps: ['jquery']
       },
 
+      'jqueryUi': {
+          deps: ['jquery']
+      },      
+
       'angular': {
         deps: ['bootstrap'],
         exports: 'angular'
@@ -97,9 +105,9 @@ function getConfig() {
         deps: ['angular']
       },
 
-      // 'ngProgress': {
-      //   deps: ['angular']
-      // },
+      'uiSelect': {
+        deps: ['angular']
+      },
 
       'toastr': {
           deps: ['jquery'],

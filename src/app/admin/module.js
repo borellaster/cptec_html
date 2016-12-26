@@ -3,9 +3,13 @@ define(function(require) {
 
   var angular = require('angular');
 
+    require('uiSelect');
+
     return angular.module(
-    'admin',
+    'admin',  
     [
+      'ui.select',
+      
       require('./home/package').name,
       require('./countries/package').name,
       require('./states/package').name,

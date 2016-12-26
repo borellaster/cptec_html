@@ -4,8 +4,8 @@ define(function(require) {
   var module = require('../module');
   module.controller('StatesCtrl', StatesCtrl);
 
-  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource'];
-  function StatesCtrl($state, params, $location, dataService, resource) {
+  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource', 'CountriesFactory'];
+  function StatesCtrl($state, params, $location, dataService, resource, dataServiceCountry) {
     var vm = this;
     vm.showConfirm = false;
 
@@ -28,6 +28,12 @@ define(function(require) {
           setError('Erro ao carregar registro.')
         });         
     }
+
+    dataServiceCountry.combo().then(function success(data) {
+      vm.countries = data;
+    }).catch(function error(msg) {
+      setError('Erro ao carregar países.')
+    });     
 
     vm.save = function() {
       angular.forEach(form.$error, function (field) {
