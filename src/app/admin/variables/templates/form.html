@@ -1,0 +1,46 @@
+<div class="demo-form-component">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="caption">{{vm.title}}</div>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
+            <div class="form-body">
+              <div class="form-group" ng-class="{'has-error': form.description.$invalid && !form.description.$pristine}">
+                <label for="description" class="col-md-3 control-label">Descrição<span class="require">*</span></label>
+                <div class="col-md-6">
+                  <input required type="text" name="description" placeholder="Descrição" ng-model="vm.variables.description" class="required form-control" focus/>
+                </div>
+              </div>
+
+             <div class="form-group" ng-class="{'has-error': form.nickname.$invalid && !form.nickname.$pristine}">
+                <label for="nickname" class="col-md-3 control-label">Sigla<span class="require">*</span></label>
+                <div class="col-md-2">
+                  <input required type="text" name="nickname" placeholder="Sigla" ng-model="vm.variables.nickname" class="required form-control" focus/>
+                </div>
+              </div>              
+
+
+
+              <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
+                <a ui-sref="home.variables.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
+                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
+                <a ng-click="vm.remove()" ng-show="vm.variables.id" class="btn btn-danger"><i class="icon-close"></i> Excluir</a>                
+              </div>
+              <div class="form-group" style="margin-top:10px;" ng-show="vm.showConfirm">
+                <h4>Confirmação</h4>
+                <p>
+                  Excluir <code>{{vm.variables.name}}</code> ?
+                </p>                
+                <a ng-click="vm.delete(vm.variables.id)" class="btn btn-danger"><i class="icon-close"></i> Sim</a>                
+                <a ng-click="vm.cancelRemove()" class="btn btn-default"><i class="icon-reload"></i> Não</a>
+              </div>
+            </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

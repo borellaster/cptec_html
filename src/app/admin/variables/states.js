@@ -9,45 +9,45 @@ define(function(require) {
 
   function configureStates($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/states', '/states/list'); // default
+    $urlRouterProvider.when('/variables', '/variables/list'); // default
 
     $stateProvider
-      .state('home.states', {
-        url: '/states',
+      .state('home.variables', {
+        url: '/variables',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/states/templates/list.html',
-            controller    : 'StatesListCtrl',
+            templateUrl   : 'app/admin/variables/templates/list.html',
+            controller    : 'VariablesListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.states.list', {
+      .state('home.variables.list', {
         url: '/list',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/states/templates/list.html',
-            controller    : 'StatesListCtrl',
+            templateUrl   : 'app/admin/variables/templates/list.html',
+            controller    : 'VariablesListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.states.new', {
+      .state('home.variables.new', {
         url: '/new',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/states/templates/form.html',
-            controller    : 'StatesCtrl',
+            templateUrl   : 'app/admin/variables/templates/form.html',
+            controller    : 'VariablesCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.states.edit', {
+      .state('home.variables.edit', {
         url: '/edit/:id',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/states/templates/form.html',
-            controller    : 'StatesCtrl',
+            templateUrl   : 'app/admin/variables/templates/form.html',
+            controller    : 'VariablesCtrl',
             controllerAs  : 'vm'
           }
         }

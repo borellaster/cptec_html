@@ -10,7 +10,7 @@ define(function(require) {
   // angular module definition
   return angular.module(
     // module name
-    'admin.states',
+    'admin.variables',
 
     // module dependencies
     [

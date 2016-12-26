@@ -3,10 +3,10 @@ define(function(require) {
 
   var module = require('../module');
 
-  module.controller('StatesListCtrl', StatesListCtrl);
-  StatesListCtrl.$inject = ['$state', 'PaginationFactory', 'StatesSearchResource', 'StatesFactory'];
+  module.controller('VariablesListCtrl', VariablesListCtrl);
+  VariablesListCtrl.$inject = ['$state', 'PaginationFactory', 'VariablesSearchResource', 'VariablesFactory'];
 
-  function StatesListCtrl($state, pagination, ResourceSearch, dataService) {
+  function VariablesListCtrl($state, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -26,7 +26,7 @@ define(function(require) {
           setError('Erro ao pesquisar os registros.');
         });        
       }else{
-        dataService.search(vm.searchFilter, page, pagination.getPageSize()).then(function success(result) {
+        dataService.search(page, pagination.getPageSize(), vm.searchFilter).then(function success(result) {
           vm.result = result;
           vm.currentPage = result.page;
 
@@ -46,9 +46,9 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $state.go('home.states.edit', {id: id});
+        $state.go('home.variables.edit', {id: id});
       } else {
-        $state.go('home.states.new');        
+        $state.go('home.variables.new');        
       }
     }
 
@@ -63,7 +63,7 @@ define(function(require) {
     };    
 
     function init() {
-      var ctrlName = 'StatesListCtrl';
+      var ctrlName = 'VariablesListCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();
       vm.paginationPageSize = pagination.getPageSize();

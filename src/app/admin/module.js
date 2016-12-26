@@ -8,7 +8,8 @@ define(function(require) {
     [
       require('./home/package').name,
       require('./countries/package').name,
-      require('./states/package').name
+      require('./states/package').name,
+      require('./variables/package').name
     ]
   );
 

@@ -2,28 +2,28 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('StatesCtrl', StatesCtrl);
+  module.controller('VariablesCtrl', VariablesCtrl);
 
-  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource'];
-  function StatesCtrl($state, params, $location, dataService, resource) {
+  VariablesCtrl.$inject = ['$state', '$stateParams', '$location', 'VariablesFactory', 'VariablesResource'];
+  function VariablesCtrl($state, params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $state.go('home.states.list');
+      $state.go('home.variables.list');
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar States';
+        vm.title = 'Cadastrar Variável';
         vm.acao = 'incluído';
-        vm.states = new resource({
+        vm.variables = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar States';
+        vm.title = 'Editar Variável';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
-          vm.states = data;
+          vm.variables = data;
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
@@ -42,7 +42,7 @@ define(function(require) {
         return true;
       }
 
-      dataService.save(vm.states).then(function success(data) {
+      dataService.save(vm.variables).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
       })
