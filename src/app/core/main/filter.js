@@ -1,21 +1,9 @@
 define(function(require) {
   'use strict';
 
-  var module = require('../module');
+  var angular = require('angular');
 
-  module.directive('focus', focus);
-
-  //---
-  function focus() {
-    return {
-      link: function(scope, element, attr) {
-        element[0].focus();
-      }
-    }
-  }
-
-  module.filter('propsFilter', propsFilter);
-  function propsFilter() {
+  angular.register.filter('propsFilter', function() {
     return function(items, props) {
       var out = [];
 
@@ -38,11 +26,11 @@ define(function(require) {
           }
         });
       } else {
+        // Let the output be the input untouched
         out = items;
       }
 
       return out;
     }
-  }
-  
+  });
 });

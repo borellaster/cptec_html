@@ -20,6 +20,10 @@ function getConfig() {
         'vendor/angular.js/1.5.8/angular.min'
       ],
 
+      ngSanitize: [
+        'vendor/angular.js/1.5.8/angular-sanitize.min'
+      ],      
+
       angularResource: [
         'vendor/angular.js/1.5.8/angular-resource.min'
       ],
@@ -85,6 +89,10 @@ function getConfig() {
         exports: 'angular'
       },
 
+      'ngSanitize': {
+        deps: ['angular']
+      },      
+
       'angularResource': {
         deps: ['angular']
       },
@@ -94,7 +102,7 @@ function getConfig() {
       },
 
       'uiBootstrap': {
-        deps: ['bootstrap',  'angular']
+        deps: ['bootstrap', 'angular', 'jqueryUi']
       },
 
       'uiRouter': {
