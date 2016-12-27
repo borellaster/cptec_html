@@ -3,30 +3,29 @@ define(function(require) {
 
   var module = require('../module');
 
-  module.factory('StatesFactory', StatesFactory);
+  module.factory('CitiesFactory', CitiesFactory);
 
-  StatesFactory.$inject = [
-    'StatesResource', '$location', 'StatesSearchResource', 'StatesPaginationResource', 'StatesComboResource'
+  CitiesFactory.$inject = [
+    'CitiesResource', '$location', 'CitiesSearchResource', 'CitiesPaginationResource'
   ];
 
-  function StatesFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
+  function CitiesFactory(resource, $location, resourceSearch, resourcePagination) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list,
-      combo: combo
+      list: list
     };
 
     return service;
 
-    function save(states) {
-      if(states.id == undefined){
-          return resource.save(states).$promise;
+    function save(cities) {
+      if(cities.id == undefined){
+          return resource.save(cities).$promise;
         }else{
-          return resource.update({'id': states.id}, states).$promise;
+          return resource.update({'id': cities.id}, cities).$promise;
         }
     }
 
@@ -45,9 +44,5 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
-
-    function combo(){
-        return resourceCombo.get().$promise;
-    }    
   };
 });

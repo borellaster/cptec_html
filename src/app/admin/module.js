@@ -13,6 +13,7 @@ define(function(require) {
       require('./home/package').name,
       require('./countries/package').name,
       require('./states/package').name,
+      require('./cities/package').name,
       require('./variables/package').name
     ]
   );

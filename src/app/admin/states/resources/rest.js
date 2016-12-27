@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }  
+
+  module.factory('StatesComboResource', StatesComboResource);
+  StatesComboResource.$inject = ['$resource'];
+  function StatesComboResource($resource) {
+    var rest = $resource(
+      'rest/native/states/wrapper', {}
+    );
+    return rest;
+  }     
 
 });

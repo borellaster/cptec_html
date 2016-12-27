@@ -16,24 +16,17 @@
                 </div>
               </div>
 
-              <div class="col-md-12">
-                <div class="row col-cmp" ng-class="{'has-error': form.country.$invalid && !form.country.$pristine}">
-                  <div class="col-md-2">
-                    <div class="pull-right">
-                    <label>País</label>
-                    <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i> 
-                    </div>
-                  </div>
-                  <div class="col-md-4">
+              <div class="form-group" ng-class="{'has-error': form.country.$invalid && !form.country.$pristine}">
+                <label for="country" class="col-md-3 control-label">País<span class="require">*</span></label>
+                <div class="col-md-6">
                     <ui-select ng-model="vm.states.country" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
                       <ui-select-match placeholder="Selecione um país">{{$select.selected.name}}</ui-select-match>
                       <ui-select-choices repeat="country in vm.countries.data | propsFilter: {name: $select.search}">
                         <div ng-bind-html="country.name | highlight: $select.search"></div>
                       </ui-select-choices>
                     </ui-select>
-                  </div>
                 </div>
-              </div> 
+              </div>              
 
               <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
                 <a ui-sref="home.states.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>

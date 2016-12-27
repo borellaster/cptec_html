@@ -3,12 +3,12 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">Estados</div>
+          <div class="caption">Cidades</div>
         </div>
         <div class="panel-body">
           <div class="row" style="margin-bottom:10px;">
             <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
-              <a ui-sref="home.states.new" class="btn btn-primary"> 
+              <a ui-sref="home.cities.new" class="btn btn-primary"> 
                 <i class="icon-plus"></i> Novo
               </a>
             </div>
@@ -32,15 +32,15 @@
             <thead>
               <tr>
                 <th>Nome</th>
-                <th width="200px">País</th>
+                <th width="200px">Estado</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="states in vm.result.data | filter:filter.search">
-                <td>{{states.name}}</td>
-                <td>{{states.country.name}}</td>
-                <td class="hidden-xs"><a ui-sref="home.states.edit({id:states.id})">Editar</a></td>
+              <tr ng-repeat="cities in vm.result.data | filter:filter.search">
+                <td>{{cities.name}}</td>
+                <td>{{cities.state.name}}</td>
+                <td class="hidden-xs"><a ui-sref="home.cities.edit({id:cities.id})">Editar</a></td>
               </tr>
               <tr>
             </tbody>

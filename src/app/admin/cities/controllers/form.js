@@ -2,35 +2,35 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('StatesCtrl', StatesCtrl);
+  module.controller('CitiesCtrl', CitiesCtrl);
 
-  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource', 'CountriesFactory'];
-  function StatesCtrl($state, params, $location, dataService, resource, dataServiceCountry) {
+  CitiesCtrl.$inject = ['$state', '$stateParams', '$location', 'CitiesFactory', 'CitiesResource', 'StatesFactory'];
+  function CitiesCtrl($state, params, $location, dataService, resource, dataServiceState) {
     var vm = this;
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $state.go('home.states.list');
+      $state.go('home.cities.list');
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar estado';
+        vm.title = 'Cadastrar cidade';
         vm.acao = 'incluído';
-        vm.states = new resource({
+        vm.cities = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar estado';
+        vm.title = 'Editar cidade';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
-          vm.states = data;
+          vm.cities = data;
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
     }
 
-    dataServiceCountry.combo().then(function success(data) {
-      vm.countries = data;
+    dataServiceState.combo().then(function success(data) {
+      vm.states = data;
     }).catch(function error(msg) {
       setError('Erro ao carregar países.')
     });     
@@ -47,8 +47,8 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }
-      vm.states.country_id = vm.states.country.id;
-      dataService.save(vm.states).then(function success(data) {        
+      vm.cities.state_id = vm.cities.state.id;
+      dataService.save(vm.cities).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
       })
