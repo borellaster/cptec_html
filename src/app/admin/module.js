@@ -14,6 +14,7 @@ define(function(require) {
       require('./countries/package').name,
       require('./states/package').name,
       require('./cities/package').name,
+      require('./types/package').name,
       require('./variables/package').name
     ]
   );
