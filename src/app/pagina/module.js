@@ -6,7 +6,8 @@ define(function(require) {
     return angular.module(
     'pagina',
     [
-      require('./home/package').name
+      require('./home/package').name,
+      require('./unique/package').name
     ]
   );
 

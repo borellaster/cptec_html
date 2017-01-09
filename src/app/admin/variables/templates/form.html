@@ -20,7 +20,14 @@
                 <div class="col-md-2">
                   <input required type="text" name="nickname" placeholder="Sigla" ng-model="vm.variables.nickname" class="required form-control"/>
                 </div>
-              </div>              
+              </div>   
+
+             <div class="form-group" ng-class="{'has-error': form.type.$invalid && !form.type.$pristine}">
+                <label for="type" class="col-md-3 control-label">Tipo<span class="require">*</span></label>
+                <div class="col-md-2">
+                  <input required type="text" name="type" placeholder="Tipo" ng-model="vm.variables.type" class="required form-control"/>
+                </div>
+              </div>                          
 
 
 

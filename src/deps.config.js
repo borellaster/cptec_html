@@ -8,6 +8,10 @@ function getConfig() {
         'vendor/jquery/2.1.3/jquery.min'
       ],
 
+      ngLocale: [
+        'vendor/angular.js/1.5.8/i18n/angular-locale_pt-br'
+      ],      
+
       jqueryUi: [
         'vendor/jquery/ui/jqueryui-1.10.3.min'     
       ],       
@@ -37,7 +41,7 @@ function getConfig() {
       ],
 
       uiBootstrap: [
-        'vendor/angular-ui/bootstrap/0.12.0/ui-bootstrap-tpls.min'
+        'vendor/angularui/bootstrap/0.12.0/ui-bootstrap-tpls.min'
       ],
 
       uiRouter: [
@@ -70,7 +74,11 @@ function getConfig() {
 
       toastr: [
         'vendor/toaster/new/toastr'
-      ]           
+      ],
+
+      moment: [
+        'vendor/moment/moment.min'
+      ]                 
     },
 
     // define js scripts dependencies
@@ -82,7 +90,11 @@ function getConfig() {
 
       'jqueryUi': {
           deps: ['jquery']
-      },      
+      }, 
+
+      'ngLocale': {
+        deps: ['angular']
+      },           
 
       'angular': {
         deps: ['bootstrap'],
@@ -136,7 +148,12 @@ function getConfig() {
 
       'leaflet': {
         deps: ['jquery']
-      }         
+      },
+
+      'moment': {
+        deps: ['jquery'],
+        exports: 'moment'
+      }               
     },
 
     priority: [

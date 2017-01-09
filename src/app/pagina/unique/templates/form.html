@@ -1,0 +1,65 @@
+<div class="demo-form-component">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="caption">Teste</div>
+        </div>
+        <div class="panel-body">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
+            <div class="form-body">
+
+              <div class="form-group" ng-class="{'has-error': form.latitude.$invalid && !form.latitude.$pristine}">
+                <label for="latitude" class="col-md-3 control-label">Latitude<span class="require">*</span></label>
+                <div class="col-md-6">
+                  <input required type="text" name="latitude" placeholder="Latitude" ng-model="vm.requisicao.latitude" class="required form-control" focus/>
+                </div>
+              </div>      
+
+              <div class="form-group" ng-class="{'has-error': form.longitude.$invalid && !form.longitude.$pristine}">
+                <label for="longitude" class="col-md-3 control-label">Longitude<span class="require">*</span></label>
+                <div class="col-md-6">
+                  <input required type="text" name="longitude" placeholder="Longitude" ng-model="vm.requisicao.longitude" class="required form-control"/>
+                </div>
+              </div>  
+
+              <div class="form-group" ng-class="{'has-error': form.variable.$invalid && !form.variable.$pristine}">
+                <label for="variable" class="col-md-3 control-label">Variável<span class="require">*</span></label>
+                <div class="col-md-6">
+                    <ui-select ng-model="vm.requisicao.variable" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione uma varíavel">{{$select.selected.nickname + ' - '+ $select.selected.description}}</ui-select-match>
+                      <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {nickname: $select.search, description: $select.search}">
+                        <div ng-bind-html="variable.nickname + ' - '+ variable.description  | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
+                </div>
+              </div> 
+
+              <div class="form-group" ng-class="{'has-error': form.dataInicio.$invalid && !form.dataInicio.$pristine}">
+                <label for="dataInicio" class="col-md-3 control-label">Data início<span class="require">*</span></label>
+                <div class="col-md-2">
+                  <cptec-date name="dataInicioInput" ng-model="vm.requisicao.dataInicio" required></cptec-date>
+                </div>
+              </div> 
+
+              <div class="form-group" ng-class="{'has-error': form.dataFim.$invalid && !form.dataFim.$pristine}">
+                <label for="dataFim" class="col-md-3 control-label">Data fim<span class="require">*</span></label>
+                <div class="col-md-2">
+                  <cptec-date name="dataFimInput" ng-model="vm.requisicao.dataFim" required></cptec-date>
+                </div>
+              </div>                            
+
+              <!--<pre>{{vm.requisicao.variable}}</pre>-->
+               
+              <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
+                <a ui-sref="home.countries.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
+                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
+              </div>
+              
+            </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

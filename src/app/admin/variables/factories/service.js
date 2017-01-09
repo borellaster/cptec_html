@@ -6,17 +6,18 @@ define(function(require) {
   module.factory('VariablesFactory', VariablesFactory);
 
   VariablesFactory.$inject = [
-    'VariablesResource', '$location', 'VariablesSearchResource', 'VariablesPaginationResource'
+    'VariablesResource', '$location', 'VariablesSearchResource', 'VariablesPaginationResource','VariablesComboResource'
   ];
 
-  function VariablesFactory(resource, $location, resourceSearch, resourcePagination) {
+  function VariablesFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list
+      list: list,
+      combo: combo
     };
 
     return service;
@@ -44,5 +45,10 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
+
+    function combo(){
+        return resourceCombo.get().$promise;
+    }  
+
   };
 });

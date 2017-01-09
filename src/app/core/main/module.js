@@ -8,6 +8,7 @@ define(function(require) {
   require('mapBox');
   require('leaflet');  
   require('ngSanitize');
+  require('ngLocale');
 
   return angular.module(
 
@@ -17,6 +18,7 @@ define(function(require) {
       'ui.bootstrap',
       'leaflet-directive',
       'ngSanitize',
+      'ngLocale',
 
       require('./templates/cache').name,
       // require('shared/fend/progressbar-loading/package').name,

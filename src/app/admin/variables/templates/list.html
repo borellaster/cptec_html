@@ -32,7 +32,8 @@
             <thead>
               <tr>
                 <th>Descrição</th>
-                <th width="80px">Sigla</th>
+                <th width="90px">Sigla</th>
+                <th width="90px">Tipo</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
@@ -40,6 +41,7 @@
               <tr ng-repeat="variables in vm.result.data | filter:filter.search">
                 <td>{{variables.description}}</td>
                 <td>{{variables.nickname}}</td>
+                <td>{{variables.type}}</td>
                 <td class="hidden-xs"><a ui-sref="home.variables.edit({id:variables.id})">Editar</a></td>
               </tr>
               <tr>

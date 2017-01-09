@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }
+
+  module.factory('VariablesComboResource', VariablesComboResource);
+  VariablesComboResource.$inject = ['$resource'];
+  function VariablesComboResource($resource) {
+    var rest = $resource(
+      'rest/native/variables/wrapper', {}
+    );
+    return rest;
+  }         
 
 });
