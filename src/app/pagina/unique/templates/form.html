@@ -47,7 +47,11 @@
                 <div class="col-md-2">
                   <cptec-date name="dataFimInput" ng-model="vm.requisicao.dataFim" required></cptec-date>
                 </div>
-              </div>                            
+              </div> 
+
+              <div class="container">
+                  <duallist template-url="template.html" duallist-option="vm.options" leftscope="vm.leftValue" rightscope="vm.rightValue"></duallist>
+              </div>                                         
 
               <!--<pre>{{vm.requisicao.variable}}</pre>-->
                

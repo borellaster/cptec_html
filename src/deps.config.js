@@ -78,7 +78,11 @@ function getConfig() {
 
       moment: [
         'vendor/moment/moment.min'
-      ]                 
+      ],
+
+      dualList: [
+        'vendor/duallist/ngduallist'
+      ]                        
     },
 
     // define js scripts dependencies
@@ -124,6 +128,10 @@ function getConfig() {
       'ocLazyLoad': {
         deps: ['angular']
       },
+
+      'dualList': {
+        deps: ['angular']
+      },      
 
       'uiSelect': {
         deps: ['angular']

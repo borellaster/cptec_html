@@ -9,6 +9,7 @@ define(function(require) {
   require('leaflet');  
   require('ngSanitize');
   require('ngLocale');
+  require('dualList');
 
   return angular.module(
 
@@ -19,6 +20,7 @@ define(function(require) {
       'leaflet-directive',
       'ngSanitize',
       'ngLocale',
+      'ng-duallist',
 
       require('./templates/cache').name,
       // require('shared/fend/progressbar-loading/package').name,
