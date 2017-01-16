@@ -59,19 +59,16 @@ define(function(require) {
                     'name': text
                 })
             },
-            leftContainerLabel: 'Available Lists',
-            rightContainerLabel: 'Selected Lists',
+            leftContainerLabel: 'Disponíveis',
+            rightContainerLabel: 'Selecionados',
             onMoveRight: function () {
-                console.log('right')
 
             },
             onMoveLeft: function () {
-                console.log('left')
 
             }
 
         };
-        console.log(vm.options)
         loadMoreLeft();
         loadMoreRight();
 

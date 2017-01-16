@@ -2,13 +2,12 @@
     <div class="col-sm-4 left-container">
         <label>{{duallistOption.leftContainerLabel}}</label>
         <span class="info-container">     
-            <span class="info" ng-if="leftscope.length > 0">Showing all {{leftscope.length}}</span>
-        <span class="info" ng-if="leftscope.length == 0">Empty List</span>
+        <span class="info" ng-if="leftscope.length == 0">Lista vazia</span>
         </span>
         <form class="form-inline">
             <div>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="leftsearch" placeholder="Search">
+                    <input type="text" class="form-control" id="leftsearch" placeholder="pesquisar">
                     <div class="input-group-addon">
                         <input title="toggle all" class="all pull-right" ng-model="leftSelectAll" ng-change="selectAllLeftContainer()" type="checkbox"> </div>
                 </div>
@@ -31,12 +30,12 @@
         <label>{{duallistOption.rightContainerLabel}}</label>
         <span class="info-container">     
             <span class="info" ng-if="rightscope.length > 0">Showing all {{rightscope.length}}</span>
-        <span class="info" ng-if="rightscope.length == 0">Empty List</span>
+        <span class="info" ng-if="rightscope.length == 0">Lista vazia</span>
         </span>
         <form class="form-inline">
             <div>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="rightsearch" placeholder="Search">
+                    <input type="text" class="form-control" id="rightsearch" placeholder="pesquisar">
                     <div class="input-group-addon">
                         <input ng-model="rightSelectAll" ng-change="selectAllRightContainer()" title="toggle all" class="all pull-right" type="checkbox"> </div>
                 </div>
