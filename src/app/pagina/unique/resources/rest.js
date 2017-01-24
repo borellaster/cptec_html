@@ -7,9 +7,9 @@ define(function(require) {
   UniqueResource.$inject = ['$resource'];
   function UniqueResource($resource) {
     var rest = $resource(
-      'rest/countries/:id',
+      'rest/public/json/:longitude/:latitude/:variables',
       {
-        'id': ''
+        'longitude': '', 'latitude': '', 'variables': ''
       },
       {
         'update': { 'method': 'PUT' }
