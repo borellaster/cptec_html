@@ -26,38 +26,40 @@
               <div class="form-group" ng-class="{'has-error': form.variable.$invalid && !form.variable.$pristine}">
                 <label for="variable" class="col-md-3 control-label">Variável<span class="require">*</span></label>
                 <div class="col-md-6">
-                    <ui-select ng-model="vm.requisicao.variable" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione uma varíavel">{{$select.selected.nickname + ' - '+ $select.selected.description}}</ui-select-match>
+                    <ui-select multiple ng-model="vm.requisicao.variables" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-remove="ctrl.removed($item, $model)" close-on-select="false">
+                      <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
                       <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {nickname: $select.search, description: $select.search}">
-                        <div ng-bind-html="variable.nickname + ' - '+ variable.description  | highlight: $select.search"></div>
+                      <div ng-bind-html="variable.nickname | highlight: $select.search"></div>
+                      <small>
+                        {{variable.nickname}}
+                        <span ng-bind-html="''+variable.description | highlight: $select.search"></span>
+                      </small>
                       </ui-select-choices>
                     </ui-select>
                 </div>
-              </div> 
-
-              <div class="form-group" ng-class="{'has-error': form.dataInicio.$invalid && !form.dataInicio.$pristine}">
-                <label for="dataInicio" class="col-md-3 control-label">Data início<span class="require">*</span></label>
-                <div class="col-md-2">
-                  <cptec-date name="dataInicioInput" ng-model="vm.requisicao.dataInicio" required></cptec-date>
-                </div>
-              </div> 
-
-              <div class="form-group" ng-class="{'has-error': form.dataFim.$invalid && !form.dataFim.$pristine}">
-                <label for="dataFim" class="col-md-3 control-label">Data fim<span class="require">*</span></label>
-                <div class="col-md-2">
-                  <cptec-date name="dataFimInput" ng-model="vm.requisicao.dataFim" required></cptec-date>
-                </div>
-              </div> 
-
-              <div class="container">
-                  <duallist template-url="template.html" duallist-option="vm.options" leftscope="vm.leftValue" rightscope="vm.rightValue" style="height: 300px"></duallist>
-              </div>                                         
-
-              <!--<pre>{{vm.requisicao.variable}}</pre>-->
+              </div>
                
               <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
-                <a ui-sref="home.countries.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
-                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
+              <button class="btn btn-default" ng-click="vm.loadData(1)"
+                ng-disabled="isClean() || searchForm.$invalid" type="button">Pesquisar
+              </button>
+
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th>Nome</th>
+                    <th width="100px">Abreviação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="countries in vm.result.data | filter:filter.search">
+                    <td>{{countries.name}}</td>
+                    <td>{{countries.nickname}}</td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+
               </div>
               
             </div>
