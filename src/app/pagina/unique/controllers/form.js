@@ -16,15 +16,26 @@ define(function(require) {
     }); 
 
     vm.loadData = function () {
-        dataService.list(vm.requisicao.longitude,vm.requisicao.latitude, getVariables()).then(function success(result) {
-          vm.result = result;          
-        }).catch(function error(msg) {
-          setError('Erro ao pesquisar os registros.');
-        });      
+      dataService.list(vm.requisicao.longitude,vm.requisicao.latitude, getVariables()).then(function success(result) {
+        vm.result = result;          
+      }).catch(function error(msg) {
+        setError('Erro ao pesquisar os registros.');
+      });      
     } 
 
+    //-28.263/-52.407/('OCIS')
+
     function getVariables() {
-        return "('OCIS')";
+      var str = "(";
+      var values = vm.requisicao.variables;      
+      angular.forEach(values, function(value, key) {
+        str += "'"+ value.nickname +"'," 
+      }); 
+      str = str.substring(0, str.length -1);
+      str += ")";      
+      console.log(str);
+      
+      return str;
     };               
 
   }
