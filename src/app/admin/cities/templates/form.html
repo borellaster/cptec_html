@@ -17,10 +17,10 @@
               </div>
 
               <div class="form-group" ng-class="{'has-error': form.state.$invalid && !form.state.$pristine}">
-                <label for="state" class="col-md-3 control-label">País<span class="require">*</span></label>
+                <label for="state" class="col-md-3 control-label">Estado<span class="require">*</span></label>
                 <div class="col-md-6">
                     <ui-select ng-model="vm.cities.state" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um país">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-match placeholder="Selecione um estado">{{$select.selected.name}}</ui-select-match>
                       <ui-select-choices repeat="state in vm.states.data | propsFilter: {name: $select.search}">
                         <div ng-bind-html="state.name | highlight: $select.search"></div>
                       </ui-select-choices>

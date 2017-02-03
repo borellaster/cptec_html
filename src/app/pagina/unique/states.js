@@ -17,7 +17,17 @@ define(function(require) {
             controllerAs  : 'vm'
           }
         }
-      });
+      })      
+      .state('pagina.city', {
+        url: '/city',
+        views: {
+          'content@pagina': {
+            templateUrl   : 'app/pagina/unique/templates/city.html',
+            controller    : 'CityCtrl',
+            controllerAs  : 'vm'
+          }
+        }
+      });;
   }
 
 });

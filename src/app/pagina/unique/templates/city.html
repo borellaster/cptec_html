@@ -3,25 +3,24 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">Ponto único</div>
+          <div class="caption">Por cidade</div>
         </div>
         <div class="panel-body">
           <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
             <div class="form-body">
 
-              <div class="form-group" ng-class="{'has-error': form.latitude.$invalid && !form.latitude.$pristine}">
-                <label for="latitude" class="col-md-3 control-label">Latitude<span class="require">*</span></label>
+              <div class="form-group" ng-class="{'has-error': form.city.$invalid && !form.city.$pristine}">
+                <label for="city" class="col-md-3 control-label">Cidade<span class="require">*</span></label>
                 <div class="col-md-6">
-                  <input required type="text" name="latitude" placeholder="Latitude" ng-model="vm.requisicao.latitude" class="required form-control" focus required/>
+                    <ui-select ng-model="vm.city" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione uma cidade">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="city.name | highlight: $select.search"></div>
+                      </ui-select-choices>
+                    </ui-select>
                 </div>
-              </div>      
+              </div>             
 
-              <div class="form-group" ng-class="{'has-error': form.longitude.$invalid && !form.longitude.$pristine}">
-                <label for="longitude" class="col-md-3 control-label">Longitude<span class="require">*</span></label>
-                <div class="col-md-6">
-                  <input required type="text" name="longitude" placeholder="Longitude" ng-model="vm.requisicao.longitude" class="required form-control" required/>
-                </div>
-              </div>  
 
               <div class="form-group" ng-class="{'has-error': form.variable.$invalid && !form.variable.$pristine}">
                 <label for="variable" class="col-md-3 control-label">Variável<span class="require">*</span></label>
