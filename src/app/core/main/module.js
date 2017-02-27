@@ -5,8 +5,9 @@ define(function(require) {
 
   require('uiRouter');
   require('uiBootstrap');
-  require('mapBox');
+  require('ngLeaflet');
   require('leaflet');  
+  require('leafletDraw');
   require('ngSanitize');
   require('ngLocale');
   require('dualList');

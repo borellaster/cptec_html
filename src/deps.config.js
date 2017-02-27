@@ -64,13 +64,17 @@ function getConfig() {
         'vendor/lokijs/1.0.1/lokijs.min'
       ],
 
-      mapBox: [
-        'vendor/mapbox/angular-leaflet-directive.min'
+      ngLeaflet: [
+        'vendor/leaflet/angular-leaflet-directive.min'
       ],     
 
       leaflet: [
-        'vendor/mapbox/leaflet'
+        'vendor/leaflet/leaflet'
       ],
+
+      leafletDraw: [
+        'vendor/leaflet/leaflet.draw'
+      ],      
 
       toastr: [
         'vendor/toaster/new/toastr'
@@ -150,13 +154,17 @@ function getConfig() {
         deps: ['angularMocks']
       },
 
-      'mapBox': {
+      'ngLeaflet': {
         deps: ['angular']
       },    
 
       'leaflet': {
         deps: ['jquery']
       },
+
+      'leafletDraw': {
+        deps: ['jquery']
+      },      
 
       'moment': {
         deps: ['jquery'],
