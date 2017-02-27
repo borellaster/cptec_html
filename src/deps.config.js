@@ -163,7 +163,7 @@ function getConfig() {
       },
 
       'leafletDraw': {
-        deps: ['jquery']
+        deps: ['jquery','leaflet']
       },      
 
       'moment': {
