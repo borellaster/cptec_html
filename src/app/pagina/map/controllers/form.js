@@ -4,33 +4,96 @@ define(function(require) {
   var module = require('../module');
   module.controller('MapCtrl', MapCtrl);
 
-  MapCtrl.$inject = ['$state', '$stateParams', '$location', 'MapFactory', 'VariablesFactory'];
-  function MapCtrl($state, params, $location, dataService, dataServiceVariable) {
+  MapCtrl.$inject = ['$state', '$stateParams', '$location', 'MapFactory', 'VariablesFactory', 'leafletData'];
+  function MapCtrl($state, params, $location, dataService, dataServiceVariable, leafletData ) {
     var vm = this;    
-    vm.showConfirm = false;  
 
-    vm.center = {
-        lat: -17.518344,
-        lng: -52.207031,
-        zoom: 4
-    };
-
-    vm.tiles = {
-        name: 'Mapbox Park',
-        url: 'http://api.tiles.mapbox.com/v4/{mapid}/{z}/{x}/{y}.png?access_token={apikey}',
-        type: 'xyz',
-        options: {
-            apikey: 'pk.eyJ1IjoiZmVlbGNyZWF0aXZlIiwiYSI6Ik1Gak9FXzAifQ.9eB142zVCM4JMg7btDDaZQ',
-            mapid: 'feelcreative.llm8dpdk'
+    vm.savedItems = [{
+        "id": 721,
+            "geoJSON": {
+            "type": "Feature",
+                "geometry": {
+                "type": "Point",
+                    "coordinates": [-0.626220703125,
+                48.1367666796927]
+            }
         }
-    };
+    }, {
+        "id": 724,
+            "geoJSON": {
+            "type": "Feature",
+                "geometry": {
+                "type": "Point",
+                    "coordinates": [-0.274658203125,
+                49.13859653703879]
+            }
+        }
+    }];
+    var drawnItems = new L.FeatureGroup();
+    for (var i = 0; i < vm.savedItems.length; i++) {
+        L.geoJson(vm.savedItems[i].geoJSON, {
+            style: function(feature) {
+                return {
+                    color: '#bada55'
+                };
+            },
+            onEachFeature: function (feature, layer) {
+                drawnItems.addLayer(layer);
+            }
+        });
+    }
 
-    vm.legend = {
-        position: 'bottomleft',
-        colors: ['#FFFF00', '#FF0000', '#FF0000', '#FF0000'],
-        labels: ['Soja voluntária', '1-9 ocorrências', '10-99 ocorrências', '> 99 ocorrências']
-    };   
+    angular.extend(vm, {
+        center: {
+            lat: -17.518344,
+            lng: -52.207031,
+            zoom: 4
+        },
+        controls: {
+            draw: {},
+            edit: {
+                featureGroup: drawnItems
+            }
+        }
+    });
 
+
+    leafletData.getMap().then(function (map) {
+        var drawnItems = vm.controls.edit.featureGroup;
+        drawnItems.addTo(map);
+        map.on('draw:created', function (e) {
+            var layer = e.layer;
+            drawnItems.addLayer(layer);
+
+            vm.savedItems.push({
+                id: layer._leaflet_id,
+                geoJSON: layer.toGeoJSON()
+            });
+        });
+
+        map.on('draw:edited', function (e) {
+            var layers = e.layers;
+            layers.eachLayer(function (layer) {
+
+                for (var i = 0; i < vm.savedItems.length; i++) {
+                    if (vm.savedItems[i].id == layer._leaflet_id) {
+                        vm.savedItems[i].geoJSON = layer.toGeoJSON();
+                    }
+                }
+            });
+        });
+
+        map.on('draw:deleted', function (e) {
+            var layers = e.layers;
+            layers.eachLayer(function (layer) {
+                for (var i = 0; i < vm.savedItems.length; i++) {
+                    if (vm.savedItems[i].id == layer._leaflet_id) {
+                        vm.savedItems.splice(i, 1);
+                    }
+                }
+            });
+        });
+    });
 
     dataServiceVariable.combo().then(function success(data) {
       vm.variables = data;
@@ -70,7 +133,8 @@ define(function(require) {
       console.log(str);
       
       return str;
-    }; 
+    };     
+
 
 
                
