@@ -14,6 +14,6 @@ Abra o Git Bash e entre com os comandos
 git clone https://github.com/borellaster/cptec_html.git
 cd cptec
 cd tools
-npm install
+npm run setup
 ```
 
