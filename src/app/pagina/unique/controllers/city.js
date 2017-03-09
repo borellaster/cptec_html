@@ -9,11 +9,21 @@ define(function(require) {
     var vm = this;    
     vm.showConfirm = false;  
 
-    dataServiceCity.list(1,99).then(function success(data) {
+    /*dataServiceCity.list(1,99).then(function success(data) {
       vm.cities = data;
     }).catch(function error(msg) {
       setError('Erro ao carregar cidades.')
-    }); 
+    });*/ 
+
+    vm.loadCities = function(cidade) {
+      if(cidade.length >= 3){
+        dataServiceCity.combo(cidade).then(function success(data) {
+          vm.cities = data;
+        }).catch(function error(msg) {
+          setError('Erro ao pesquisar os cidades.');
+        });  
+      }
+    };      
 
     dataServiceVariable.combo().then(function success(data) {
       vm.variables = data;

@@ -14,8 +14,9 @@
                 <div class="col-md-6">
                     <ui-select ng-model="vm.city" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
                       <ui-select-match placeholder="Selecione uma cidade">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}">
+                      <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}" refresh="vm.loadCities($select.search)" refresh-delay="1000">
                         <div ng-bind-html="city.name | highlight: $select.search"></div>
+                        <small>{{city.state.name}}</small>                        
                       </ui-select-choices>
                     </ui-select>
                 </div>

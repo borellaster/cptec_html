@@ -6,17 +6,18 @@ define(function(require) {
   module.factory('CitiesFactory', CitiesFactory);
 
   CitiesFactory.$inject = [
-    'CitiesResource', '$location', 'CitiesSearchResource', 'CitiesPaginationResource'
+    'CitiesResource', '$location', 'CitiesSearchResource', 'CitiesPaginationResource', 'CitiesComboResource'
   ];
 
-  function CitiesFactory(resource, $location, resourceSearch, resourcePagination) {
+  function CitiesFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list
+      list: list,
+      combo: combo
     };
 
     return service;
@@ -44,5 +45,9 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
+
+    function combo(name){
+        return resourceCombo.get({'name': name}).$promise;
+    }    
   };
 });

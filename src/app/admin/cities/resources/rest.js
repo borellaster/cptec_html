@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  } 
+
+  module.factory('CitiesComboResource', CitiesComboResource);
+  CitiesComboResource.$inject = ['$resource'];
+  function CitiesComboResource($resource) {
+    var rest = $resource(
+      'rest/native/cities/wrapper/:name', {}
+    );
+    return rest;
+  }       
 
 });
