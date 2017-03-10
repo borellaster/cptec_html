@@ -1,0 +1,59 @@
+<leaflet center="vm.center" controls="vm.controls" style="width: 100%; height: 400px"></leaflet>
+
+<div class="demo-form-component">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
+            <div class="form-body">		  
+
+              <div class="form-group" ng-class="{'has-error': form.variable.$invalid && !form.variable.$pristine}">
+                <label for="variable" class="col-md-3 control-label">Variável<span class="require">*</span></label>
+                <div class="col-md-6">
+                    <ui-select multiple ng-model="vm.requisicao.variables" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-remove="ctrl.removed($item, $model)" close-on-select="false" required>
+                      <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
+                      <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {nickname: $select.search, description: $select.search}">
+                      <div ng-bind-html="variable.nickname | highlight: $select.search"></div>
+                      <small>
+                        {{variable.nickname}}
+                        <span ng-bind-html="''+variable.description | highlight: $select.search"></span>
+                      </small>
+                      </ui-select-choices>
+                    </ui-select>
+                </div>
+              </div>
+               
+              <div class="form-group" style="margin-top:10px;">
+              <button class="btn btn-default" ng-click="vm.loadData()" type="button">Pesquisar
+              </button>
+
+              <table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th width="100px">Data</th>
+                    <th width="100px">Hora</th>
+                    <th>Variável</th>
+                    <th width="100px">Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in vm.result.data | filter:filter.search">
+                    <td>{{data.date | date : 'dd/MM/yyyy'}}</td>
+                    <td>{{data.time}}</td>
+                    <td>{{data.variable}}</td>
+                    <td>{{data.value}}</td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>
+
+              </div>
+              
+            </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

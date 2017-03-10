@@ -2,10 +2,10 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('MapCtrl', MapCtrl);
+  module.controller('MapMarkerCtrl', MapMarkerCtrl);
 
-  MapCtrl.$inject = ['$state', '$stateParams', '$location', 'MapFactory', 'VariablesFactory', 'leafletData'];
-  function MapCtrl($state, params, $location, dataService, dataServiceVariable, leafletData ) {
+  MapMarkerCtrl.$inject = ['$state', '$stateParams', '$location', 'MapFactory', 'VariablesFactory', 'leafletData'];
+  function MapMarkerCtrl($state, params, $location, dataService, dataServiceVariable, leafletData ) {
     var vm = this;    
 
     vm.savedItems = [{
@@ -53,9 +53,10 @@ define(function(require) {
             draw: {
                 draw: {
                     polyline:false,
+                    polygon:false,
                     circle:false,
                     rectangle:false,
-                    marker: false
+                    marker: true
                 },
             },
             edit: {

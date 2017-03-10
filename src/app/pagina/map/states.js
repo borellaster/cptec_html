@@ -17,6 +17,15 @@ define(function(require) {
             controllerAs  : 'vm'
           }
         }
+      }).state('pagina.marker', {
+        url: '/marker',
+        views: {
+          'content@pagina': {
+            templateUrl   : 'app/pagina/map/templates/form.marker.html',
+            controller    : 'MapMarkerCtrl',
+            controllerAs  : 'vm'
+          }
+        }
       });
   }
 

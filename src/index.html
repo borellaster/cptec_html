@@ -36,7 +36,8 @@
   <link rel="shortcut icon" href="shared/img/logo_mini.ico">
 
 </head>
-<body ng-class="{'body-100' : !!$root.isMap}">
+<!--<body ng-class="{'body-100' : !!$root.isMap}">-->
+<body>
 
 <div ng-class="header.boxed" class="fluid container-principal">
   <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div>
@@ -44,17 +45,16 @@
   <div ng-include="'app/core/main/templates/horizontal-menu.html'" class="page-horizontal-menu"></div>
   <div id="wrapper">
     <div id="page-wrapper">
-        <div ui-view="master"></div>
+        <div ui-view="master" style="height: 100%;">
+          <div class="loading_app" style="margin-top:300px;">
+            <p style="text-align:center">
+              <img src="shared/img/loading.gif"><br>Carregando...
+            </p>
+          </div>
+        </div>
     </div>
   </div>
-  <!--<div id="footer">
-    <div class="copyright">
-      <div class="pull-left">©2017 CPTEC/INPE: Centro de Previsão de Tempo e Estudos Climáticos</div>
-    </div>
-  </div>-->
 </div>
-
 <script data-main="require.config" src="vendor/require.js/2.1.15/require.min.js"></script>
-
 </body>
 </html>
