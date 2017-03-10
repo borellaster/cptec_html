@@ -18,6 +18,22 @@ define(function(require) {
     return rest;
   }
 
+
+  module.factory('UniquePagResource', UniquePagResource);
+  UniquePagResource.$inject = ['$resource'];
+  function UniquePagResource($resource) {
+    var rest = $resource(
+      'rest/public/json/:longitude/:latitude/:variables/:page/:size',
+      {
+        'longitude': '', 'latitude': '', 'variables': '', 'page': '', 'size': ''
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }  
+
  
 
 });

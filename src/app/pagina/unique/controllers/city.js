@@ -4,16 +4,10 @@ define(function(require) {
   var module = require('../module');
   module.controller('CityCtrl', CityCtrl);
 
-  CityCtrl.$inject = ['$state', '$stateParams', '$location', 'UniqueFactory', 'CitiesFactory','VariablesFactory'];
-  function CityCtrl($state, params, $location, dataService, dataServiceCity, dataServiceVariable) {
+  CityCtrl.$inject = ['$state', '$stateParams', '$location', 'UniqueFactory', 'CitiesFactory','VariablesFactory', 'PaginationFactory'];
+  function CityCtrl($state, params, $location, dataService, dataServiceCity, dataServiceVariable, pagination) {
     var vm = this;    
-    vm.showConfirm = false;  
-
-    /*dataServiceCity.list(1,99).then(function success(data) {
-      vm.cities = data;
-    }).catch(function error(msg) {
-      setError('Erro ao carregar cidades.')
-    });*/ 
+    init();
 
     vm.loadCities = function(cidade) {
       if(cidade.length >= 3){
@@ -31,20 +25,27 @@ define(function(require) {
       setError('Erro ao carregar variáveis.')
     });     
 
-    vm.loadData = function () {
+    vm.loadData = function (page) {
       angular.forEach(form.$error, function (field) {
         angular.forEach(field, function(errorField){
-          console.log(errorField)
-            errorField.$setTouched();
-            errorField.$setDirty();
+          errorField.$setTouched();
+          errorField.$setDirty();
         })
       });
 
       if (form.$invalid) {
         return true;
       }      
-      dataService.list(vm.city.longitude,vm.city.latitude, getVariables()).then(function success(result) {
-        vm.result = result;          
+      dataService.listpag(vm.city.longitude,vm.city.latitude, getVariables(),page, pagination.getPageSize()).then(function success(result) {
+        vm.result = result;  
+        vm.currentPage = result.page;
+
+        pagination.updateMetainf(
+          result.count,
+          result.data.length,
+          result.page,
+          result.pages
+        );                
       }).catch(function error(msg) {
         setError('Erro ao pesquisar os registros.');
       });      
@@ -60,10 +61,23 @@ define(function(require) {
       }); 
       str = str.substring(0, str.length -1);
       str += ")";      
-      console.log(str);
       
       return str;
-    };               
+    };  
+
+    vm.pageChanged = function() {
+      pagination.setNextPage(vm.result.page);
+      vm.loadData(pagination.getNextPage());
+    }    
+
+    function init() {
+      var ctrlName = 'CityCtrl';
+      pagination = pagination.get(ctrlName);
+      vm.pageSize = pagination.getPageSize();
+      vm.paginationPageSize = pagination.getPageSize();
+      vm.paginationItemsSize = 5;
+      vm.showConfirm = false;
+    }                 
 
   }
 });
