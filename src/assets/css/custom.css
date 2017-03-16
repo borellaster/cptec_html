@@ -14,7 +14,7 @@
     padding: 25px;
 }
 html, .body-100, .body-100>.container-principal {
-    height: 100%;
+    height: calc(100% - 60px);
 }
 #wrapper {
     height: calc(100% - 60px);
@@ -24,8 +24,8 @@ html, .body-100, .body-100>.container-principal {
     height: 100%;
 }
 .page-content > .box-content {
-    min-height: calc(100% - 36px);
-    height: calc(100% - 36px);
+/*    min-height: calc(100% - 36px);
+    height: calc(100% - 36px);*/
 }
 
 /*!
