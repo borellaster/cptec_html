@@ -7,10 +7,10 @@ define(function(require) {
   module.controller('CountriesListCtrl', CountriesListCtrl);
 
   CountriesListCtrl.$inject = [
-    '$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
+    '$q','$location', 'PaginationFactory', 'CountriesSearchResource', 'CountriesFactory'
   ];
 
-  function CountriesListCtrl($location, pagination, ResourceSearch, dataService) {
+  function CountriesListCtrl($q, $location, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -30,7 +30,7 @@ define(function(require) {
           setError('Erro ao pesquisar os registros.');
         });        
       }else{
-        dataService.search(vm.searchFilter, page, pagination.getPageSize()).then(function success(result) {
+        dataService.search(page, pagination.getPageSize(), vm.searchFilter).then(function success(result) {
           vm.result = result;
           vm.currentPage = result.page;
 

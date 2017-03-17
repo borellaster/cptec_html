@@ -2,74 +2,17 @@
 <div class="sidebar-collapse sidebar-scroll">
   <ul id="sidebar-main" ng-menu="" class="nav">
     <li class="sidebar-hide">
-      <h4 class="sidebar-title-section">Main</h4>
+      <h4 class="sidebar-title-section">Menu principal</h4>
     </li>
-    <li ui-sref-active="active"><a ui-sref="home.countries.list"><i class="icon-home"></i><span class="menu-title">Países</span></a></li>
-    <li ui-sref-active="active"><a ui-sref="home.states.list"><i class="icon-home"></i><span class="menu-title">Estados</span></a></li>
-    <li class="sidebar-hide">
-      <h4 class="sidebar-title-section">All Components</h4>
-    </li>
-    <li><a href="javascript:void(0);"><i class="icon-screen-desktop"></i><span class="menu-title">Quick Use</span><span class="arrow"></span></a>
+    <li><a href="javascript:void(0);"><i class="icon-screen-desktop"></i><span class="menu-title">Cadastros</span><span class="arrow"></span></a>
       <ul class="nav nav-second-level">
-        <li><a ui-sref="layout_full_width"><span class="submenu-title">Full width</span></a></li>
-        <li><a ui-sref="layout_boxed"><span class="submenu-title">Boxed</span></a></li>
-        <li class="hidden-sm"><a ui-sref="layout_sidebar_collapsed"><span class="submenu-title">Sidebar Collapsed</span></a></li>
-        <li class="hidden-sm"><a ui-sref="layout_sidebar_fixed"><span class="submenu-title">Sidebar fixed</span></a></li>
-        <li class="hidden-sm"><a ui-sref="layout_sidebar_collapsed_fixed"><span class="submenu-title">Sidebar collapsed & fixed</span></a></li>
-        <li><a ui-sref="layout_horizontal_menu"><span class="submenu-title">Horizontal Menu</span></a></li>
-        <li><a ui-sref="layout_header_fixed"><span class="submenu-title">Header Fixed</span></a></li>
+        <li ui-sref-active="active"><a ui-sref="home.cities.list"><i class="icon-book-open"></i><span class="menu-title">Cidades</span></a></li>
+        <li ui-sref-active="active"><a ui-sref="home.states.list"><i class="icon-speech"></i><span class="menu-title">Estados</span></a></li>
+        <li ui-sref-active="active"><a ui-sref="home.countries.list"><i class="icon-direction"></i><span class="menu-title">Países</span></a></li>    
+        <li ui-sref-active="active"><a ui-sref="home.variables.list"><i class="icon-layers"></i><span class="menu-title">Variáveis</span></a></li>
+        <li ui-sref-active="active"><a ui-sref="home.types.list"><i class="icon-docs"></i><span class="menu-title">Tipos de Saída</span></a></li>  
       </ul>
     </li>
-    <li><a href="javascript:void(0);"><i class="icon-magic-wand"></i><span class="menu-title">UI Elements</span><span class="arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li><a ui-sref="ui_general"><span class="submenu-title">General</span><span class="badge badge-success">10</span></a></li>
-        <li><a ui-sref="ui_buttons"><span class="submenu-title">Buttons</span></a></li>
-        <li><a ui-sref="ui_typography"><span class="submenu-title">Typography</span></a></li>
-        <li><a ui-sref="ui_tabs_accordions"><span class="submenu-title">Tabs & Accordions</span></a></li>
-        <li><a ui-sref="ui_icons"><span class="submenu-title">Icons</span></a></li>
-        <li><a ui-sref="ui_panels"><span class="submenu-title">Panels</span></a></li>
-        <li><a ui-sref="ui_nestable_list"><span class="submenu-title">Nestable List</span></a></li>
-        <li><a ui-sref="ui_datepaginator"><span class="submenu-title">Date Paginator</span></a></li>
-      </ul>
-    </li>
-    <li><a href="javascript:void(0);"><i class="icon-note"></i><span class="menu-title">Forms</span><span class="arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li><a ui-sref="form_components"><span class="submenu-title">Form Components</span><span class="label label-info">8</span></a></li>
-        <li><a ui-sref="form_wizard"><span class="submenu-title">Form Wizard</span></a></li>
-        <li><a ui-sref="form_select"><span class="submenu-title">Dropdown & Select</span></a></li>
-        <li><a ui-sref="form_picker"><span class="submenu-title">Picker</span></a></li>
-        <li><a ui-sref="form_dropzone"><span class="submenu-title">Dropzone File Upload</span></a></li>
-      </ul>
-    </li>
-    <li><a href="javascript:void(0);"><i class="icon-grid"></i><span class="menu-title">Tables</span><span class="arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li><a ui-sref="table_basic"><span class="submenu-title">Basic table</span></a></li>
-        <li><a ui-sref="table_responsive"><span class="submenu-title">Responsive table</span></a></li>
-        <li><a ui-sref="table_advanced"><span class="submenu-title">Advanced table</span></a></li>
-        <li><a ui-sref="table_treegrid"><span class="submenu-title">Treegrid table</span></a></li>
-      </ul>
-    </li>
-    <li><a href="javascript:void(0);"><i class="icon-book-open"></i><span class="menu-title">Pages</span><span class="arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li><a ui-sref="page_timeline"><span class="submenu-title">Timeline</span></a></li>
-        <li><a ui-sref="page_gallery"><span class="submenu-title">Gallery</span></a></li>
-        <li><a ui-sref="page_calendar"><span class="submenu-title">Calendar</span></a></li>
-        <li><a ui-sref="page_invoice"><span class="submenu-title">Invoice</span></a></li>
-        <li><a ui-sref="page_pricing_table"><span class="submenu-title">Pricing Table</span></a></li>
-        <li><a ui-sref="page_search"><span class="submenu-title">Search</span></a></li>
-        <li><a ui-sref="page_signin"><span class="submenu-title">Sign in</span></a></li>
-        <li><a ui-sref="page_signup"><span class="submenu-title">Sign up</span></a></li>
-        <li><a ui-sref="page_lock_screen"><span class="submenu-title">Lock screen</span></a></li>
-        <li><a ui-sref="page_404"><span class="submenu-title">Page 404</span></a></li>
-        <li><a ui-sref="page_500"><span class="submenu-title">Page 500</span></a></li>
-      </ul>
-    </li>
-    <li><a href="javascript:void(0);"><i class="icon-bar-chart"></i><span class="menu-title">Charts</span><span class="arrow"></span></a>
-      <ul class="nav nav-second-level">
-        <li><a ui-sref="charts_chartjs"><span class="submenu-title">ChartJs</span></a></li>
-        <li><a ui-sref="charts_flot"><span class="submenu-title">Flot Charts</span></a></li>
-        <li><a ui-sref="charts_sparklines"><span class="submenu-title">Sparklines Charts</span></a></li>
-      </ul>
-    </li>
+
   </ul>
 </div>

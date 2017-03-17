@@ -4,8 +4,8 @@ define(function(require) {
   var module = require('../module');
   module.controller('StatesCtrl', StatesCtrl);
 
-  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource'];
-  function StatesCtrl($state, params, $location, dataService, resource) {
+  StatesCtrl.$inject = ['$state', '$stateParams', '$location', 'StatesFactory', 'StatesResource', 'CountriesFactory'];
+  function StatesCtrl($state, params, $location, dataService, resource, dataServiceCountry) {
     var vm = this;
     vm.showConfirm = false;
 
@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar States';
+        vm.title = 'Cadastrar estado';
         vm.acao = 'incluído';
         vm.states = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar States';
+        vm.title = 'Editar estado';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.states = data;
@@ -28,6 +28,12 @@ define(function(require) {
           setError('Erro ao carregar registro.')
         });         
     }
+
+    dataServiceCountry.combo().then(function success(data) {
+      vm.countries = data;
+    }).catch(function error(msg) {
+      setError('Erro ao carregar países.')
+    });     
 
     vm.save = function() {
       angular.forEach(form.$error, function (field) {
@@ -41,8 +47,8 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }
-
-      dataService.save(vm.states).then(function success(data) {
+      vm.states.country_id = vm.states.country.id;
+      dataService.save(vm.states).then(function success(data) {        
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
       })

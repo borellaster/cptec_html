@@ -4,19 +4,16 @@ define(function(require) {
   var module = require('../module');
 
   module.factory('StatesSearchResource', StatesSearchResource);
-
-  //---
-
   StatesSearchResource.$inject = ['$resource'];
-
+  
   function StatesSearchResource($resource) {
-
     var rest = $resource(
-      'rest/states/search/:name'
+      'rest/states/search/:page/:size/:name', 
+      {
+        'page': 1, 'size': 10, 'name': ''
+      }
     );
-
     return rest;
-
   }
 
 });

@@ -2,11 +2,7 @@ define(function(require) {
   'use strict';
 
   var module = require('./module');
-
   module.config(configureStates);
-
-  //---
-
   configureStates.$inject = ['$stateProvider', '$urlRouterProvider'];
 
   function configureStates($stateProvider, $urlRouterProvider) {
@@ -22,7 +18,6 @@ define(function(require) {
           }
         }
       });
-
   }
 
 });

@@ -19,13 +19,15 @@ define(function(require) {
         vm.countries = new resource({
           'id': undefined,
           'name': '',
-          'abbreviation': ''
+          'nickname': '',
+          'created_at': new Date()
         });        
     } else {
         vm.title = 'Editar país';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.countries = data;
+          vm.updated_at = new Date();
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
@@ -34,7 +36,6 @@ define(function(require) {
     vm.save = function(form) {
       angular.forEach(form.$error, function (field) {
         angular.forEach(field, function(errorField){
-          console.log(errorField)
             errorField.$setTouched();
             errorField.$setDirty();
         })
@@ -43,7 +44,6 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }
-
       dataService.save(vm.countries).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');

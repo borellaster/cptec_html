@@ -22,22 +22,11 @@
                 <div class="col-md-4">
                   <input required type="text" name="longitude" placeholder="Longitude" ng-model="vm.requisicao.longitude" class="required form-control" required/>
                 </div>
-              </div>  
-
-
-
-              <div class="form-group" ng-class="{'has-error': form.inicio.$invalid && !form.latitude.$pristine}">
-                <label for="inicio" class="col-md-2 control-label">Período Inicial<span class="require">*</span></label>
-                <div class="col-md-4">
-                  <cptec-date required type="text" name="inicio" placeholder="Período Inicial" ng-model="vm.requisicao.inicio" class="required form-control" focus required/>
-                </div>
-                <label for="longitude" class="col-md-2 control-label">Período Final<span class="require">*</span></label>
-                <div class="col-md-4">
-                  <cptec-date required type="text" name="fim" placeholder="Período Final" ng-model="vm.requisicao.fim" class="required form-control" required/>
-                </div>
-              </div>   
-
-
+              </div>      
+<!-- 
+              <div class="form-group" ng-class="{'has-error': form.longitude.$invalid && !form.longitude.$pristine}">
+                
+              </div>  --> 
 
               <div class="form-group" ng-class="{'has-error': form.variable.$invalid && !form.variable.$pristine}">
                 <label for="variable" class="col-md-2 control-label">Variável<span class="require">*</span></label>

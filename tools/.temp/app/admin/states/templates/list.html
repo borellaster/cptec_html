@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">States</div>
+          <div class="caption">Estados</div>
         </div>
         <div class="panel-body">
           <div class="row" style="margin-bottom:10px;">
@@ -32,12 +32,14 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th width="200px">País</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="states in vm.result.data | filter:filter.search">
                 <td>{{states.name}}</td>
+                <td>{{states.country.name}}</td>
                 <td class="hidden-xs"><a ui-sref="home.states.edit({id:states.id})">Editar</a></td>
               </tr>
               <tr>

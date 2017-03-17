@@ -4,7 +4,7 @@ define(function(require) {
   var angular = require('angular');
 
   require('uiRouter');
-
+  require('moment');
   require('toastr');
 
   // angular module definition

@@ -18,40 +18,41 @@
   <link type="text/css" rel="stylesheet" href="global/vendors/font-awesome/css/font-awesome.min.css"/>
   <link type="text/css" rel="stylesheet" href="global/vendors/simple-line-icons/simple-line-icons.css"/>
   <link type="text/css" rel="stylesheet" href="global/vendors/bootstrap/css/bootstrap.min.css"/>
+  <link type="text/css" rel="stylesheet" href="global/vendors/bootstrapv3/css/bootstrap.min.css"/>
   <link type="text/css" rel="stylesheet" href="global/vendors/animate.css/animate.css"/>
   <link type="text/css" rel="stylesheet" href="global/vendors/iCheck/skins/all.css"/>
   <link type="text/css" rel="stylesheet" href="assets/vendors/bootstrap-switch/css/bootstrap-switch.css"/>
   <link type="text/css" rel="stylesheet" href="assets/vendors/google-code-prettify/prettify.css"/>
   <link type="text/css" rel="stylesheet" href="global/css/core.css"/>
+  <link type="text/css" rel="stylesheet" href="global/css/select.min.css"/>
+  <link type="text/css" rel="stylesheet" href="global/css/select2.css"/>
   <link type="text/css" rel="stylesheet" href="assets/css/system.css"/>
   <link type="text/css" rel="stylesheet" href="assets/css/system-responsive.css"/>
   <link type="text/css" rel="stylesheet" href="assets/css/toastr.css">
-  <link type="text/css" rel="stylesheet" href="assets/css/leaflet.css" >
+  <link type="text/css" rel="stylesheet" href="assets/css/leaflet.css">
   <link type="text/css" rel="stylesheet" href="assets/css/leaflet.fullscreen.css" >
+  <link type="text/css" rel="stylesheet" href="assets/css/leaflet.draw.css">
   <link type="text/css" rel="stylesheet" href="assets/css/custom.css"/>
-
   <link rel="shortcut icon" href="shared/img/logo_mini.ico">
 
 </head>
-<body ng-class="{'body-100' : !!$root.isMap}">
+<!--<body ng-class="{'body-100' : !!$root.isMap}">-->
+<body class="body-100">
 
 <div ng-class="header.boxed" class="fluid container-principal">
-  <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div>
+  <!-- <div ng-include="'app/core/main/templates/template-setting.html'" class="hidden-xs hidden-sm"></div> -->
   <div ng-include="'app/core/main/templates/topbar.html'" class="page-header-topbar"></div>
   <div ng-include="'app/core/main/templates/horizontal-menu.html'" class="page-horizontal-menu"></div>
-  <div id="wrapper">
-    <div id="page-wrapper">
-        <div ui-view="master"></div>
-    </div>
+  <!-- <div id="wrapper"> -->
+        <div ui-view="master" id="page-wrapper" style="height: 100%;">
+          <div class="loading_app" style="margin-top:300px;">
+            <p style="text-align:center">
+              <img src="shared/img/loading.gif"><br>Carregando...
+            </p>
+          </div>
+    <!-- </div> -->
   </div>
-  <!--<div id="footer">
-    <div class="copyright">
-      <div class="pull-left">©2017 CPTEC/INPE: Centro de Previsão de Tempo e Estudos Climáticos</div>
-    </div>
-  </div>-->
 </div>
-
 <script data-main="require.config" src="vendor/require.js/2.1.15/require.min.js"></script>
-
 </body>
 </html>
