@@ -8,7 +8,7 @@ define(function(require) {
   
   function VariablesSearchResource($resource) {
     var rest = $resource(
-      'rest/variables/search/:page/:size/:name', 
+      'api/v1/variables/search/:page/:size/:name', 
       {
         'page': 1, 'size': 10, 'name': ''
       }

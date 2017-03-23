@@ -7,7 +7,7 @@ define(function(require) {
   CitiesResource.$inject = ['$resource'];
   function CitiesResource($resource) {
     var rest = $resource(
-      'rest/cities/:id',
+      'api/v1/cities/:id',
       {
         'id': ''
       },
@@ -22,7 +22,7 @@ define(function(require) {
   CitiesPaginationResource.$inject = ['$resource'];
   function CitiesPaginationResource($resource) {
     var rest = $resource(
-      'rest/cities/:page/:size', 
+      'api/v1/cities/:page/:size', 
       {
         'page': 1, 'size': 10
       }
@@ -34,7 +34,7 @@ define(function(require) {
   CitiesComboResource.$inject = ['$resource'];
   function CitiesComboResource($resource) {
     var rest = $resource(
-      'rest/native/cities/wrapper/:name', {}
+      'api/v1/native/cities/wrapper/:name', {}
     );
     return rest;
   }       

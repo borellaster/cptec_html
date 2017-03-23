@@ -3840,3 +3840,153 @@ input#txt-new-list {
   padding: 5px 10px;
   border: none;
 }
+
+.mui-textfield {
+  display: block;
+  padding-top: 15px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.mui-textfield > label {
+  position: absolute;
+  top: -7px;
+  display: block;
+  width: 100%;
+  color: #626262;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 20px;
+  overflow-x: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mui-textfield > textarea {
+  padding-top: 5px;
+  min-height: 64px;
+}
+
+.mui-textfield > input,
+.mui-textfield > textarea {
+  display: block;
+}
+
+.mui-textfield > input,
+.mui-textfield > textarea {
+  -webkit-animation-duration: 0.0001s;
+  animation-duration: 0.0001s;
+  -webkit-animation-name: mui-node-inserted;
+  animation-name: mui-node-inserted;
+  display: block;
+  border: none;
+  border: 1px solid #DCD7DC;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  padding: 0;
+  box-shadow: none;
+  border-radius: 0px;
+  background-image: none;
+  padding:6px 12px;
+  resize: none;
+}
+
+.mui-textfield > input:focus,
+.mui-textfield > textarea:focus {
+  border-color: #999;
+  background-color: #FCFCFC;
+}
+
+.mui-textfield > input:read-only,
+.mui-textfield > textarea:read-only {
+  color: rgba(98, 98, 98, 0.7);
+  border: 1px solid #DCDCDC;
+  opacity: 1;
+}
+
+.mui-textfield > input:disabled,
+.mui-textfield > textarea:disabled{
+  cursor: not-allowed;
+  background-color: #F8F8F8;
+  color: rgba(98, 98, 98, 0.7);
+  border: 1px solid #DCDCDC;
+  opacity: 1;
+}
+
+.mui-textfield > input::-webkit-input-placeholder,
+.mui-textfield > textarea::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 1;
+}
+
+.mui-textfield > input::-moz-placeholder,
+.mui-textfield > textarea::-moz-placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 1;
+}
+
+.mui-textfield > input:-ms-input-placeholder,
+.mui-textfield > textarea:-ms-input-placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 1;
+}
+
+.mui-textfield > input::placeholder,
+.mui-textfield > textarea::placeholder {
+  color: rgba(0, 0, 0, 0.26);
+  opacity: 1;
+}
+
+.ng-dirty.ng-invalid-required.ng-touched, .ng-dirty.ng-invalid-required.ng-touched:focus,
+.ng-dirty.ng-invalid-cpf-invalid.ng-touched, .ng-dirty.ng-invalid-cpf-invalid.ng-touched:focus,
+.ng-dirty.ng-invalid-cnpj-invalid.ng-touched, .ng-dirty.ng-invalid-cnpj-invalid.ng-touched:focus,
+.ng-invalid-minlength.ng-touched, .ng-invalid-minlength.ng-touched:focus,
+.invalid-min-value.ng-touched, .invalid-min-value.ng-touched:focus,
+.tem-required input, .tem-required input:focus {
+  border: 1px solid #e74c3c;
+}
+
+input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
+  border: 1px solid #e74c3c !important;
+}
+
+.ng-dirty.ng-invalid-date.ng-touched, .ng-dirty.ng-invalid-date.ng-touched:focus {
+  border: 1px solid #e74c3c !important;
+}
+.cpfinvalido, .cnpjinvalido {
+  display: none;
+}
+
+.ng-dirty.ng-invalid-required.ng-touched ~ .requerido,
+.ng-dirty.ng-invalid-cpf-invalid.ng-touched ~ .cpfinvalido,
+.ng-dirty.ng-invalid-cnpj-invalid.ng-touched ~ .cnpjinvalido,
+.ng-invalid-minlength.ng-touched ~ .minlength,
+.ng-invalid-maxvalue ~ .maxvalue,
+.invalid-min-value.ng-touched ~ .minvalue,
+.ng-dirty.ng-invalid-date.ng-touched ~ .errodata,
+.tem-required ~ .requerido  {
+  display: inherit;
+  color: #e74c3c;
+  font-size: 11px;
+  line-height: 13px;
+}
+
+.requerido, .minlength, .maxvalue, .minvalue, .errodata {
+  display: none;
+}
+
+
+.ng-dirty.ng-invalid-required.ng-touched ~ .requerido,
+.ng-dirty.ng-invalid-cpf-invalid.ng-touched ~ .cpfinvalido,
+.ng-dirty.ng-invalid-cnpj-invalid.ng-touched ~ .cnpjinvalido,
+.ng-invalid-minlength.ng-touched ~ .minlength,
+.ng-invalid-maxvalue ~ .maxvalue,
+.invalid-min-value.ng-touched ~ .minvalue,
+.ng-dirty.ng-invalid-date.ng-touched ~ .errodata,
+.tem-required ~ .requerido  {
+  display: inherit;
+  color: #e74c3c;
+  font-size: 11px;
+  line-height: 13px;
+}

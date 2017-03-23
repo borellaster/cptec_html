@@ -9,6 +9,11 @@ define(function(require) {
     var vm = this;    
     init();
 
+    vm.requisicao = {
+      'inicio': new Date(),
+      'fim': new Date(),
+    }    
+
     vm.loadCities = function(cidade) {
       if(cidade.length >= 3){
         dataServiceCity.combo(cidade).then(function success(data) {

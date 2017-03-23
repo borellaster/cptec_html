@@ -7,7 +7,7 @@ define(function(require) {
   VariablesResource.$inject = ['$resource'];
   function VariablesResource($resource) {
     var rest = $resource(
-      'rest/variables/:id',
+      'api/v1/variables/:id',
       {
         'id': ''
       },
@@ -22,7 +22,7 @@ define(function(require) {
   VariablesPaginationResource.$inject = ['$resource'];
   function VariablesPaginationResource($resource) {
     var rest = $resource(
-      'rest/variables/:page/:size', 
+      'api/v1/variables/:page/:size', 
       {
         'page': 1, 'size': 10
       }
@@ -34,7 +34,7 @@ define(function(require) {
   VariablesComboResource.$inject = ['$resource'];
   function VariablesComboResource($resource) {
     var rest = $resource(
-      'rest/native/variables/wrapper', {}
+      'api/v1/native/variables/wrapper', {}
     );
     return rest;
   }         

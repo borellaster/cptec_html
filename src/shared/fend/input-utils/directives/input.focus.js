@@ -48,8 +48,12 @@ define(function(require) {
 module.directive('cptecDate', cptecDate);
   function cptecDate() {
     var tpl = '<div style="position:relative">' +
-                '<input class="form-control" aria-label="{{label}}" custom-class="fnhusdfn" type="text" ui-mask="99/99/9999" show-weeks="false" ng-blur="ngBlur()" ng-change="ngChange()" model-view-value="true" ng-disabled="isDisabled" is-open="opened" show-button-bar="false"  datepicker-popup="dd/MM/yyyy" ng-required="isRequired" ui-mask-placeholder-char="space" class=" cmp-date" id="{{name}}Input" name="{{name}}" ng-model="modelo">' +
-                '<a class="btn btn-success btn-date" style="position: absolute;top: 0;right: 0;" ng-disabled="isDisabled" ng-click="open($event); setData();"><i class="fa fa-calendar"></i></a>' +
+              '<div class="mui-textfield">' +
+                '<input class="" aria-label="{{label}}" type="text" ui-mask="99/99/9999" show-weeks="false" ng-blur="ngBlur()" ng-change="ngChange()" model-view-value="true" ng-disabled="isDisabled" is-open="opened" show-button-bar="false"  datepicker-popup="dd/MM/yyyy" ng-required="isRequired" ui-mask-placeholder-char="space" class=" cmp-date" id="{{name}}Input" name="{{name}}" ng-model="modelo">' +
+                '<span ng-if="isRequired" class="requerido">Este campo é obrigatório.</span>' +
+                '<label>{{label}} <i ng-if="isRequired" class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>' +
+                '<a class="btn btn-success btn-date" style="position: absolute;top: 15px;right: 0;" ng-disabled="isDisabled" ng-click="open($event); setData();"><i class="fa fa-calendar"></i></a>' +
+                '</div>' +
               '</div>'
 
     var link = function (scope, iElement, iAttrs, ctrl) {

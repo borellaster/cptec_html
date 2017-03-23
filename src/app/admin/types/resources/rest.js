@@ -7,7 +7,7 @@ define(function(require) {
   TypesResource.$inject = ['$resource'];
   function TypesResource($resource) {
     var rest = $resource(
-      'rest/types/:id',
+      'api/v1/types/:id',
       {
         'id': ''
       },
@@ -22,7 +22,7 @@ define(function(require) {
   TypesPaginationResource.$inject = ['$resource'];
   function TypesPaginationResource($resource) {
     var rest = $resource(
-      'rest/types/:page/:size', 
+      'api/v1/types/:page/:size', 
       {
         'page': 1, 'size': 10
       }

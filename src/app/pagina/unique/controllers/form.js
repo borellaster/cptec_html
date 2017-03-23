@@ -9,6 +9,11 @@ define(function(require) {
     var vm = this;    
     vm.showConfirm = false;  
 
+    vm.requisicao = {
+      'inicio': new Date(),
+      'fim': new Date(),
+    }
+
     dataServiceVariable.combo().then(function success(data) {
       vm.variables = data;
     }).catch(function error(msg) {

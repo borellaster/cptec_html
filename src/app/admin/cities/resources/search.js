@@ -8,7 +8,7 @@ define(function(require) {
   
   function CitiesSearchResource($resource) {
     var rest = $resource(
-      'rest/cities/search/:page/:size/:name', 
+      'api/v1/cities/search/:page/:size/:name', 
       {
         'page': 1, 'size': 10, 'name': ''
       }

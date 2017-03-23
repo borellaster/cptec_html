@@ -8,7 +8,7 @@ define(function(require) {
   
   function TypesSearchResource($resource) {
     var rest = $resource(
-      'rest/types/search/:page/:size/:name', 
+      'api/v1/types/search/:page/:size/:name', 
       {
         'page': 1, 'size': 10, 'name': ''
       }

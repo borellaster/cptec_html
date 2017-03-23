@@ -7,7 +7,7 @@ define(function(require) {
   CountriesResource.$inject = ['$resource'];
   function CountriesResource($resource) {
     var rest = $resource(
-      'rest/countries/:id',
+      'api/v1/countries/:id',
       {
         'id': ''
       },
@@ -22,7 +22,7 @@ define(function(require) {
   CountriesPaginationResource.$inject = ['$resource'];
   function CountriesPaginationResource($resource) {
     var rest = $resource(
-      'rest/countries/:page/:size', 
+      'api/v1/countries/:page/:size', 
       {
         'page': 1, 'size': 10
       }
@@ -34,7 +34,7 @@ define(function(require) {
   CountriesComboResource.$inject = ['$resource'];
   function CountriesComboResource($resource) {
     var rest = $resource(
-      'rest/native/countries/wrapper', {}
+      'api/v1/native/countries/wrapper', {}
     );
     return rest;
   }    

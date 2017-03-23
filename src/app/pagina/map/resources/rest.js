@@ -7,7 +7,7 @@ define(function(require) {
   MapResource.$inject = ['$resource'];
   function MapResource($resource) {
     var rest = $resource(
-      'rest/public/json/:longitude/:latitude/:variables',
+      'api/v1/public/json/:longitude/:latitude/:variables',
       {
         'longitude': '', 'latitude': '', 'variables': ''
       },

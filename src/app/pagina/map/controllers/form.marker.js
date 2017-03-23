@@ -8,6 +8,11 @@ define(function(require) {
   function MapMarkerCtrl($state, params, $location, dataService, dataServiceVariable, leafletData ) {
     var vm = this;    
 
+    vm.requisicao = {
+      'inicio': new Date(),
+      'fim': new Date(),
+    }   
+
     vm.savedItems = [{
         "id": 721,
             "geoJSON": {
