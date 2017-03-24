@@ -8,7 +8,7 @@ define(function(require) {
   
   function StatesSearchResource($resource) {
     var rest = $resource(
-      'rest/states/search/:page/:size/:name', 
+      'api/v1/states/search/:page/:size/:name', 
       {
         'page': 1, 'size': 10, 'name': ''
       }

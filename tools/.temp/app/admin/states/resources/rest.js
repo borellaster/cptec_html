@@ -7,7 +7,7 @@ define(function(require) {
   StatesResource.$inject = ['$resource'];
   function StatesResource($resource) {
     var rest = $resource(
-      'rest/states/:id',
+      'api/v1/states/:id',
       {
         'id': ''
       },
@@ -22,7 +22,7 @@ define(function(require) {
   StatesPaginationResource.$inject = ['$resource'];
   function StatesPaginationResource($resource) {
     var rest = $resource(
-      'rest/states/:page/:size', 
+      'api/v1/states/:page/:size', 
       {
         'page': 1, 'size': 10
       }
@@ -34,7 +34,7 @@ define(function(require) {
   StatesComboResource.$inject = ['$resource'];
   function StatesComboResource($resource) {
     var rest = $resource(
-      'rest/native/states/wrapper', {}
+      'api/v1/native/states/wrapper', {}
     );
     return rest;
   }     

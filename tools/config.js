@@ -86,7 +86,7 @@ module.exports = function() {
 
     host: 'localhost',
     port: 8000,
-    context: 'rest'
+    context: 'api/v1'
 
   }; // @end: backend
 
