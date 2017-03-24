@@ -15,7 +15,8 @@ define(function(require) {
       require('./states/package').name,
       require('./cities/package').name,
       require('./types/package').name,
-      require('./variables/package').name
+      require('./variables/package').name,
+      require('./requests/package').name
     ]
   );
 
