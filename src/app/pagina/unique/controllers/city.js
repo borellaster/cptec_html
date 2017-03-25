@@ -40,8 +40,15 @@ define(function(require) {
 
       if (form.$invalid) {
         return true;
-      }      
-      dataService.listpag(vm.city.longitude,vm.city.latitude, getVariables(),page, pagination.getPageSize()).then(function success(result) {
+      }   
+      dataService.listpag(vm.requisicao.city.longitude,
+                          vm.requisicao.city.latitude, 
+                          getVariables(),
+                          vm.requisicao.inicio, 
+                          vm.requisicao.fim,
+                          page, 
+                          pagination.getPageSize())
+      .then(function success(result) {
         vm.result = result;  
         vm.currentPage = result.page;
 

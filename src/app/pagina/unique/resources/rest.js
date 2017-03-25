@@ -7,9 +7,9 @@ define(function(require) {
   UniqueResource.$inject = ['$resource'];
   function UniqueResource($resource) {
     var rest = $resource(
-      'api/v1/public/json/:longitude/:latitude/:variables',
+      'api/v1/public/json/:longitude/:latitude/:variables/:startdate/:enddate',
       {
-        'longitude': '', 'latitude': '', 'variables': ''
+        'longitude': '', 'latitude': '', 'variables': '', 'startdate': '', 'enddate': ''
       },
       {
         'update': { 'method': 'PUT' }
@@ -23,9 +23,9 @@ define(function(require) {
   UniquePagResource.$inject = ['$resource'];
   function UniquePagResource($resource) {
     var rest = $resource(
-      'api/v1/public/json/:longitude/:latitude/:variables/:page/:size',
+      'api/v1/public/json/:longitude/:latitude/:variables/:startdate/:enddate/:page/:size',
       {
-        'longitude': '', 'latitude': '', 'variables': '', 'page': '', 'size': ''
+        'longitude': '', 'latitude': '', 'variables': '', 'startdate': '', 'enddate': '', 'page': '', 'size': ''
       },
       {
         'update': { 'method': 'PUT' }

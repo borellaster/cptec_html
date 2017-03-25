@@ -32,7 +32,12 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }      
-      dataService.list(vm.requisicao.longitude,vm.requisicao.latitude, getVariables()).then(function success(result) {
+      dataService.list(vm.requisicao.longitude,
+                       vm.requisicao.latitude, 
+                       getVariables(), 
+                       vm.requisicao.inicio, 
+                       vm.requisicao.fim)
+        .then(function success(result) {
         vm.result = result;          
       }).catch(function error(msg) {
         setError('Erro ao pesquisar os registros.');

@@ -15,19 +15,23 @@ define(function(require) {
 
     return service;
 
-    function list(longitude, latitude, variables){
+    function list(longitude, latitude, variables, startdate, enddate){
       return resource.get({
           'longitude': longitude, 
           'latitude': latitude, 
-          'variables': variables
+          'variables': variables,
+          'startdate': startdate,
+          'enddate': enddate
       }).$promise;
     }   
 
-    function listpag(longitude, latitude, variables, page, size){
+    function listpag(longitude, latitude, variables, startdate, enddate, page, size){
       return resourcePag.get({
           'longitude': longitude, 
           'latitude': latitude, 
           'variables': variables,
+          'startdate': startdate,
+          'enddate': enddate,          
           'page': page,
           'size': size
       }).$promise;
