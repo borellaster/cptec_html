@@ -40,7 +40,8 @@ define(function(require) {
 
       if (form.$invalid) {
         return true;
-      }   
+      }  
+
       dataService.listpag(vm.requisicao.city.longitude,
                           vm.requisicao.city.latitude, 
                           getVariables(),
