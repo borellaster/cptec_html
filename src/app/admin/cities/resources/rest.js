@@ -34,7 +34,7 @@ define(function(require) {
   CitiesComboResource.$inject = ['$resource'];
   function CitiesComboResource($resource) {
     var rest = $resource(
-      'api/v1/native/cities/wrapper/:name', {}
+      'api/v1/public/cities/:name', {}
     );
     return rest;
   }       

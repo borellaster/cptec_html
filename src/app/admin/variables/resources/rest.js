@@ -34,7 +34,7 @@ define(function(require) {
   VariablesComboResource.$inject = ['$resource'];
   function VariablesComboResource($resource) {
     var rest = $resource(
-      'api/v1/native/variables/wrapper', {}
+      'api/v1/public/variables', {}
     );
     return rest;
   }         
