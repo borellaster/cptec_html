@@ -24,6 +24,10 @@ function getConfig() {
         'vendor/angular.js/1.5.8/angular.min'
       ],
 
+      ngCookies: [
+        'vendor/angular.js/1.5.8/angular-cookies.min'
+      ],      
+
       ngSanitize: [
         'vendor/angular.js/1.5.8/angular-sanitize.min'
       ],      
@@ -108,6 +112,10 @@ function getConfig() {
         deps: ['bootstrap'],
         exports: 'angular'
       },
+
+      'ngCookies': {
+          deps: ['angular']
+      },      
 
       'ngSanitize': {
         deps: ['angular']

@@ -16,7 +16,9 @@ define(function(require) {
       require('./cities/package').name,
       require('./types/package').name,
       require('./variables/package').name,
-      require('./requests/package').name
+      require('./requests/package').name,
+      require('./models/package').name,
+      require('./login/package').name
     ]
   );
 

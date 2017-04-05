@@ -1,0 +1,43 @@
+<meta charset="utf-8">
+<div class="container" id="login-form" style="text-align: center;">
+    <a href="index.html" class="login-logo"><img
+        src="assets/img/icon_100.png" class="img-circle"></a>
+    <div class="row" style="margin-top: 15px;">
+        <div class="col-md-4 col-md-offset-4">
+            <small>
+                Olá, {{vm.usuario.nome}}!<br/>
+                Crie uma nova senha para a sua conta.
+            </small>
+            </p>
+            <form id="form-register" class="p-t-15 form-token" role="form" name="register" novalidate>
+                <div class="form-group mb-md">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"> <i class="ti ti-key"></i>
+                            </span> <input type="password" class="form-control"
+                                id="inputPassword1" placeholder="senha"
+                                ng-model="vm.password.novaSenha">
+                        </div>
+                    </div>
+                </div>
+               <div class="form-group mb-md">
+                    <div class="col-xs-12">
+                        <div class="input-group">
+                            <span class="input-group-addon"> <i class="ti ti-key"></i>
+                            </span> <input type="password" class="form-control"
+                                id="inputPassword2" placeholder="confirmar senha"
+                                ng-model="vm.password.confirmaNovaSenha">
+                        </div>
+                    </div>
+                </div>                
+
+                <br/>
+                Dicas para criar uma senha mais segura: <br/>
+                • Combine letras e números<br/>
+                • Não use informações pessoais<br/><br/>
+                <button style="margin-right:5px;" class="btn btn-primary pull-right" type="submit" ng-click="vm.save()">Salvar</button>  
+            </form>
+        </div>
+    </div>
+</div>
+
