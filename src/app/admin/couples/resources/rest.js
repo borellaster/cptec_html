@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }
+
+  module.factory('CouplesComboResource', CouplesComboResource);
+  CouplesComboResource.$inject = ['$resource'];
+  function CouplesComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/couples', {}
+    );
+    return rest;
+  }        
 
 });

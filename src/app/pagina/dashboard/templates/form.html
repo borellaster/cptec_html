@@ -1,0 +1,162 @@
+<div class="page-title-breadcrumb">
+  <ol class="breadcrumb page-breadcrumb pull-left">
+    <li><i class="fa fa-home"></i>&nbsp;<a href="/#/">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i></li>
+    <li><a href="/#/">&nbsp;&nbsp;Por coordenada</a></li>
+  </ol>
+</div>
+
+<div class="demo-form-component">
+  <div class="row" style="margin: 0;">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-body">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
+            <div class="form-body">
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.model" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione um modelo">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="model in vm.models.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="model.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Modelo <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>  
+
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.couple" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione um modelo acoplado">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="couple in vm.couples.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="couple.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Modelo acoplado <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>   
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.scenario" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione um cenário">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="scenario in vm.scenarios.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="scenario.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Cenário <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>  
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.resolution" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione uma resolução">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="resolution in vm.resolutions.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="resolution.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Resolução <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div> 
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.ensemble" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione um conjunto">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="ensemble in vm.ensembles.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="ensemble.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Conjuntos <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                    <ui-select ng-model="vm.requisicao.interval" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                      <ui-select-match placeholder="Selecione um intervalo">{{$select.selected.name}}</ui-select-match>
+                      <ui-select-choices repeat="interval in vm.intervals.data | propsFilter: {name: $select.search}">
+                        <div ng-bind-html="interval.name | highlight: $select.search"></div>                        
+                      </ui-select-choices>
+                    </ui-select>                  
+                  <label>Intervalos <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>                                                                      
+
+                <!--<div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                  <cptec-date required type="text" name="fim" label="Período Final" ng-model="vm.requisicao.fim" class="required" is-required="true"/>
+                </div>              
+                
+                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                  <div class="mui-textfield">
+                    <input type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" focus>
+                    <span class="requerido">Este campo é obrigatório.</span>
+                    <label>Latitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                  </div>
+                </div>
+
+                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                  <div class="mui-textfield">
+                    <input type="text" id="longitude" name="longitude" ng-model="vm.requisicao.longitude" ng-required="true">
+                    <label>Longitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                  </div>
+                </div>
+
+              </div>  
+
+
+              <div class="form-group">
+
+                <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
+                  <div class="mui-textfield">
+                    <ui-select multiple ng-model="vm.requisicao.variables" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-remove="ctrl.removed($item, $model)" close-on-select="false" required>
+                      <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
+                      <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {nickname: $select.search, description: $select.search}">
+                      <div ng-bind-html="variable.nickname | highlight: $select.search"></div>
+                      <small>
+                        {{variable.nickname}}
+                        <span ng-bind-html="''+variable.description | highlight: $select.search"></span>
+                      </small>
+                      </ui-select-choices>
+                    </ui-select>
+                    <label>Variáveis <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                  </div>
+                </div>
+
+              </div>-->
+               
+              <!--<div class="form-group" style="margin-top:10px;">
+              <button class="btn btn-default" ng-click="vm.loadData()" style="margin-bottom: 15px;float: right;margin-right: 15px;" type="button">Pesquisar
+              </button>-->
+
+              <!--<table class="table table-striped table-bordered">
+                <thead>
+                  <tr>
+                    <th width="100px">Data</th>
+                    <th width="100px">Hora</th>
+                    <th>Variável</th>
+                    <th width="100px">Valor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="data in vm.result.data | filter:filter.search">
+                    <td>{{data.date | date : 'dd/MM/yyyy'}}</td>
+                    <td>{{data.time}}</td>
+                    <td>{{data.variable}}</td>
+                    <td>{{data.value}}</td>
+                  </tr>
+                  <tr>
+                </tbody>
+              </table>-->
+              </div>
+              
+            </div>
+          </form> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

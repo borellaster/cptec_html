@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }  
+
+  module.factory('ScenariosComboResource', ScenariosComboResource);
+  ScenariosComboResource.$inject = ['$resource'];
+  function ScenariosComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/scenarios', {}
+    );
+    return rest;
+  }      
 
 });

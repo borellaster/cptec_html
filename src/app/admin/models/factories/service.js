@@ -6,17 +6,18 @@ define(function(require) {
   module.factory('ModelsFactory', ModelsFactory);
 
   ModelsFactory.$inject = [
-    'ModelsResource', '$location', 'ModelsSearchResource', 'ModelsPaginationResource'
+    'ModelsResource', '$location', 'ModelsSearchResource', 'ModelsPaginationResource', 'ModelsComboResource'
   ];
 
-  function ModelsFactory(resource, $location, resourceSearch, resourcePagination) {
+  function ModelsFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list
+      list: list,
+      combo: combo
     };
 
     return service;
@@ -44,5 +45,9 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
+
+    function combo(){
+        return resourceCombo.get().$promise;
+    }    
   };
 });

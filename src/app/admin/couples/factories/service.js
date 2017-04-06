@@ -6,17 +6,18 @@ define(function(require) {
   module.factory('CouplesFactory', CouplesFactory);
 
   CouplesFactory.$inject = [
-    'CouplesResource', '$location', 'CouplesSearchResource', 'CouplesPaginationResource'
+    'CouplesResource', '$location', 'CouplesSearchResource', 'CouplesPaginationResource', 'CouplesComboResource'
   ];
 
-  function CouplesFactory(resource, $location, resourceSearch, resourcePagination) {
+  function CouplesFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list
+      list: list,
+      combo: combo
     };
 
     return service;
@@ -44,5 +45,9 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
+
+    function combo(){
+        return resourceCombo.get().$promise;
+    }     
   };
 });

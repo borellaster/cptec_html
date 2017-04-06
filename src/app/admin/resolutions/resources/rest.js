@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  } 
+
+  module.factory('ResolutionsComboResource', ResolutionsComboResource);
+  ResolutionsComboResource.$inject = ['$resource'];
+  function ResolutionsComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/resolutions', {}
+    );
+    return rest;
+  }      
 
 });

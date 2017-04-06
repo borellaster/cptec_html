@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }
+
+  module.factory('IntervalsComboResource', IntervalsComboResource);
+  IntervalsComboResource.$inject = ['$resource'];
+  function IntervalsComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/intervals', {}
+    );
+    return rest;
+  }        
 
 });

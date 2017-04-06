@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }
+
+  module.factory('EnsemblesComboResource', EnsemblesComboResource);
+  EnsemblesComboResource.$inject = ['$resource'];
+  function EnsemblesComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/ensembles', {}
+    );
+    return rest;
+  }        
 
 });

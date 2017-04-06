@@ -6,17 +6,18 @@ define(function(require) {
   module.factory('ScenariosFactory', ScenariosFactory);
 
   ScenariosFactory.$inject = [
-    'ScenariosResource', '$location', 'ScenariosSearchResource', 'ScenariosPaginationResource'
+    'ScenariosResource', '$location', 'ScenariosSearchResource', 'ScenariosPaginationResource', 'ScenariosComboResource'
   ];
 
-  function ScenariosFactory(resource, $location, resourceSearch, resourcePagination) {
+  function ScenariosFactory(resource, $location, resourceSearch, resourcePagination, resourceCombo) {
 
     var service = {
       save: save,
       findById: findById,
       remove: remove,
       search: search,
-      list: list
+      list: list,
+      combo: combo
     };
 
     return service;
@@ -44,5 +45,9 @@ define(function(require) {
     function list(page, size){
         return resourcePagination.get({'page': page, 'size': size}).$promise;
     }
+
+    function combo(){
+        return resourceCombo.get().$promise;
+    }     
   };
 });
