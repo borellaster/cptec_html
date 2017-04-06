@@ -18,6 +18,11 @@ define(function(require) {
       require('./variables/package').name,
       require('./requests/package').name,
       require('./models/package').name,
+      require('./couples/package').name,
+      require('./scenarios/package').name,
+      require('./resolutions/package').name,
+      require('./ensembles/package').name,
+      require('./intervals/package').name,
       require('./login/package').name
     ]
   );
