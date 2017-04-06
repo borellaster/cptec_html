@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Couples';
+        vm.title = 'Cadastrar modelo acoplado';
         vm.acao = 'incluído';
         vm.couples = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Couples';
+        vm.title = 'Editar modelo acoplado';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.couples = data;

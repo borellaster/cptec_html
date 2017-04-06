@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Ensembles';
+        vm.title = 'Cadastrar conjunto';
         vm.acao = 'incluído';
         vm.ensembles = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Ensembles';
+        vm.title = 'Editar conjunto';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.ensembles = data;

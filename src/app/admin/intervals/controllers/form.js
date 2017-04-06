@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Intervals';
+        vm.title = 'Cadastrar intervalo';
         vm.acao = 'incluído';
         vm.intervals = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Intervals';
+        vm.title = 'Editar intervalo';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.intervals = data;

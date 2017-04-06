@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Scenarios';
+        vm.title = 'Cadastrar cenário';
         vm.acao = 'incluído';
         vm.scenarios = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Scenarios';
+        vm.title = 'Editar cenário';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.scenarios = data;

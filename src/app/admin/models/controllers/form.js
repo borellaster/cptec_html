@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Models';
+        vm.title = 'Cadastrar modelo';
         vm.acao = 'incluído';
         vm.models = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Models';
+        vm.title = 'Editar modelo';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.models = data;

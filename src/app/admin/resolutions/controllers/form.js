@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Resolutions';
+        vm.title = 'Cadastrar resolução';
         vm.acao = 'incluído';
         vm.resolutions = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Resolutions';
+        vm.title = 'Editar resolução';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.resolutions = data;

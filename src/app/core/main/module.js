@@ -61,7 +61,7 @@ define(function(require) {
               return true;
           }
           return false;
-      }; 
+      };
 
       $rootScope.logout = function () { 
         delete $rootScope.usuario;
@@ -78,7 +78,7 @@ define(function(require) {
         if (usuario == undefined && originalPath.substring(0, 6) == '/admin') {
           $location.path("login");
           if (originalPath != '/login') {
-            setError('Usuário não autorizado');
+            //setError('Usuário não autorizado');
           }
         } else {
           if (usuario != undefined) {
