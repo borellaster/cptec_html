@@ -7524,3 +7524,10 @@ ColVis
 div.ColVis {
   margin-bottom: 0;
 }
+.form-seperated .form-group > div {
+    padding: 3px 0;
+}
+.form-seperated .form-group {
+    margin: 0;
+    border-bottom: 0;
+}

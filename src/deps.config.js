@@ -90,7 +90,23 @@ function getConfig() {
 
       dualList: [
         'vendor/duallist/ngduallist'
-      ]                        
+      ],
+
+      jqueryValidate: [
+        'vendor/jquery-validation/dist/jquery.validate'
+      ],
+
+      jquerySteps: [
+        'vendor/jquery-steps/js/jquery.steps.min'
+      ],
+
+      jqueryWizard: [
+        'vendor/jquery-bootstrap-wizard/jquery.bootstrap.wizard'
+      ],
+
+      formWizard: [
+        'vendor/form-wizard'
+      ]
     },
 
     // define js scripts dependencies
@@ -172,7 +188,27 @@ function getConfig() {
 
       'leafletDraw': {
         deps: ['jquery','leaflet']
-      },      
+      }, 
+
+      'jqueryValidate': {
+        deps: ['jquery'],
+        exports: 'jqueryValidate'
+      }, 
+
+      'jquerySteps': {
+        deps: ['jquery'],
+        exports: 'jquerySteps'
+      }, 
+
+      'jqueryWizard': {
+        deps: ['jquery','bootstrap'],
+        exports: 'jqueryWizard'
+      }, 
+
+      'formWizard': {
+        deps: ['jquery', 'jqueryValidate', 'jquerySteps', 'jqueryWizard'],
+        exports: 'formWizard'
+      },  
 
       'moment': {
         deps: ['jquery'],

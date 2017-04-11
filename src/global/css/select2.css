@@ -594,3 +594,27 @@ disabled look for disabled choices in the results dropdown
 .select2-chosen {
     padding-top: 3px !important;
 }
+.select2-container-multi .select2-choices .select2-search-choice {
+    padding: 3px 5px 3px 18px;
+    margin: 3px 0 3px 5px;
+    position: relative;
+    line-height: 13px;
+    color: #FFF;
+    cursor: default;
+    border: 1px solid #ff4c13;
+    border-radius: 3px;
+     -webkit-box-shadow: none;
+    box-shadow: none;
+    background-clip: padding-box;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-color: #ff5722;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#eeeeee', endColorstr='#f4f4f4', GradientType=0);
+     background-image: none; 
+     background-image: none; 
+    background-image: none;
+    background-image: none;
+}

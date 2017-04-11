@@ -23,6 +23,10 @@ define(function(require) {
       });
     }    
 
+    vm.keyPress = function(event) {
+      if (event.key == 'Enter') vm.authenticate();
+    }
+
     vm.esqueceuSenha = function(){
       dataService.forgot(vm.email).then(function success(usuario) {
         $state.go('login');

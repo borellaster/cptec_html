@@ -12,6 +12,7 @@ define(function(require) {
   require('ngLocale');
   require('dualList');
   require('ngCookies');
+  require('formWizard');
 
   return angular.module(
 

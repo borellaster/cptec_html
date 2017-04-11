@@ -1,4 +1,4 @@
-<meta charset="utf-8">
+<!-- <meta charset="utf-8">
 <div class="container" id="login-form" style="text-align: center;">
 	<a href="index.html" class="login-logo"><img
 		src="assets/images/logo2.png" style="width: 120px;height: 60x;margin-top: 17px;"></a>
@@ -50,4 +50,33 @@
 			</div>
 		</div>
 	</div>
+</div>
+ -->
+
+ <div class="page-form">
+    <form class="form" ng-enter="vm.authenticate()">
+        <div class="header-content text-center"><h1>Login to your account</h1></div>
+        <div class="body-content">
+            <div role="alert" class="alert alert-danger alert-dismissible alert-custom hide">
+                <button type="button" data-dismiss="alert" class="close"><span>&times;</span></button>
+                Enter any username and password.
+            </div>
+            <div class="list-group">
+                <div class="list-group-item"><input ng-keydown="vm.keyPress($event)" type="text" placeholder="E-mail" data-parsley-minlength="6" required ng-model="vm.username" focus class="form-control"></div>
+                <div class="list-group-item"><input ng-keydown="vm.keyPress($event)" type="password" id="exampleInputPassword1" placeholder="Senha" ng-model="vm.password" class="form-control"></div>
+            </div>										
+            <div class="form-group pull-left"><label><input type="checkbox" class="form-control-shadow">&nbsp;
+                Remember me</label></div>
+            <div class="form-group pull-right"><a href="#" class="btn-link">Forgotten your Password?</a></div>
+            <div class="clearfix"></div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <button type="button" ng-click="vm.authenticate()" class="btn btn-success btn-circle btn-block btn-shadow mbs">Log in</button>
+                </div>
+            </div>
+            <hr>
+            <div class="form-group"><p>Don't have an account? <a id="btn-register" href="page_signup.html"
+                                                                 class="btn-link">Create an account</a></p></div>
+        </div>
+    </form>
 </div>

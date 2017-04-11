@@ -10,7 +10,7 @@ define(function(require) {
       .state('login', {
         url: '/login',
         views: {
-          'master': {
+          'login': {
             templateUrl   : 'app/admin/login/templates/login.html',
             controller    : 'LoginCtrl',
             controllerAs  : 'vm'
