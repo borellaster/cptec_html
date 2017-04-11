@@ -3,7 +3,6 @@ define(function(require) {
 
   var module = require('../module');
   module.controller('DashboardCtrl', DashboardCtrl);
-
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', 
                            'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
                            'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
@@ -14,7 +13,6 @@ define(function(require) {
                          dataServiceInterval) {
     var vm = this; 
     init();   
-    vm.showConfirm = false;  
 
     vm.requisicao = {
       'inicio': new Date(),
@@ -111,8 +109,6 @@ define(function(require) {
         setError('Erro ao pesquisar os registros.');
       });      
     } 
-
-    //-28.263/-52.407/('OCIS')
 
     function getVariables() {
       var str = "(";
