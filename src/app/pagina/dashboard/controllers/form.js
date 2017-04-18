@@ -14,11 +14,6 @@ define(function(require) {
     var vm = this; 
     init();   
 
-    vm.requisicao = {
-      'inicio': new Date(),
-      'fim': new Date(),
-    }
-
     /*loading modules*/
     function getModels() {    
       dataServiceModel.combo().then(function success(data) {
@@ -123,13 +118,43 @@ define(function(require) {
       return str;
     };
 
+    vm.tipoConsultaLabel = function (str) {
+      return "Escolha feita por "+dataService.tipoConsultaLabel(str);
+    }
+
+    vm.stepTwo = function () {
+      vm.value = 50;
+      //vm.tab1 = false;
+      //vm.tab1Active = '';
+      //vm.tab2 = true;
+      //vm.tab2Active = 'active';
+    }
+
+    vm.stepThree = function () {
+      vm.value = 75;
+    }
+
+    vm.stepFour = function () {
+      vm.value = 100;
+    }     
+
     function init() {
+      vm.requisicao = {
+        'inicio': new Date(),
+        'fim': new Date(),
+      }
+
       getModels();
       getCoupleModels();
       getScenarios();
       getResolutions();
       getEnsembles();
       getIntervals();
+      vm.tipoConsultas = dataService.getArrayTipoConsulta();
+      vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
+      //vm.tab1 = true;
+      //vm.tab1Active = 'active';
+      vm.value = 25;
     }
 
   }

@@ -13,79 +13,8 @@
           <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
             <div class="form-body">
 
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.model" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um modelo">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="model in vm.models.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="model.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Modelo <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div>  
-
-
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.couple" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um modelo acoplado">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="couple in vm.couples.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="couple.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Modelo acoplado <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div>   
-
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.scenario" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um cenário">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="scenario in vm.scenarios.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="scenario.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Cenário <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div>  
-
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.resolution" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione uma resolução">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="resolution in vm.resolutions.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="resolution.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Resolução <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div> 
-
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.ensemble" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um conjunto">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="ensemble in vm.ensembles.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="ensemble.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Conjuntos <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div>
-
-              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                <div class="mui-textfield">
-                    <ui-select ng-model="vm.requisicao.interval" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                      <ui-select-match placeholder="Selecione um intervalo">{{$select.selected.name}}</ui-select-match>
-                      <ui-select-choices repeat="interval in vm.intervals.data | propsFilter: {name: $select.search}">
-                        <div ng-bind-html="interval.name | highlight: $select.search"></div>                        
-                      </ui-select-choices>
-                    </ui-select>                  
-                  <label>Intervalos <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                </div>
-              </div> 
-
+              <!--Inclusão dos filtros defaults - para diminuir os compoentes da tela-->
+              <div ng-include="'app/pagina/dashboard/templates/form_filtro_default.html'"/>              
 
               <div class="col-md-12" style="padding:0">
                 <div class="panel">
@@ -95,10 +24,13 @@
                         <div class="navbar">
                           <div class="navbar-inner">
                             <ul class="nav">
-                              <li><a href="#tab1-wizard-custom-circle" data-toggle="tab"><i class="icon-speech"></i>
+                              <li class="active"><a href="#tab1-wizard-custom-circle" data-toggle="tab"><i class="icon-speech"></i>
                                   <p><span>1º Passo</span>Período, variável e tipo</p></a></li>
-                              <li><a href="#tab2-wizard-custom-circle" data-toggle="tab"><i class="icon-book-open"></i>
-                                  <p><span>2º Passo</span>Visualização</p></a></li>
+                              <li class="disabled">
+                                  <a href="#tab2-wizard-custom-circle" data-toggle="tab">
+                                    <i class="icon-book-open"></i>
+                                    <p><span>2º Passo</span>Visualização</p>
+                                  </a></li>
                               <li><a href="#tab3-wizard-custom-circle" data-toggle="tab"><i class="icon-list"></i>
                                   <p><span>3º Passo</span>Preenchimento dos dados</p></a></li>
                               <li><a href="#tab4-wizard-custom-circle" data-toggle="tab"><i class="icon-check"></i>
@@ -106,11 +38,11 @@
                             </ul>
                           </div>
                         </div>
-                       <!--  <div id="bar" class="progress active">
-                          <div class="bar progress-bar progress-bar-success"></div>
-                        </div> -->
+                        <div id="bar" class="progress active">
+                          <div style="width: {{vm.value}}%" class="bar progress-bar progress-bar-success" aria-valuenow="{{vm.value}}" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
                         <div class="tab-content" style="padding-top: 0px">
-                          <div id="tab1-wizard-custom-circle" class="tab-pane">
+                          <div id="tab1-wizard-custom-circle" class="tab-pane active">
                             <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Escolha o período, variáveis e tipo da consulta</h3>
                             <form action="#" class="form-horizontal">
 
@@ -122,6 +54,22 @@
                                 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
                                   <cptec-date required type="text" name="fim" label="Período Final" ng-model="vm.requisicao.fim" class="required" is-required="true"/>
                                 </div> 
+
+                                <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                    <ui-select ng-model="vm.requisicao.tipoConsulta" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                      <ui-select-match placeholder="Selecione um tipo de consulta">{{$select.selected.desc}}</ui-select-match>
+                                      <ui-select-choices repeat="tipo in vm.tipoConsultas">
+                                        <div ng-bind-html="tipo.desc"></div>
+                                      </ui-select-choices>
+                                    </ui-select>               
+                                    <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Tipo de Consulta <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>
+                                </div>  
+
+                                  
+
                               </div>
                               <div class="form-group">
                                 <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
@@ -139,12 +87,23 @@
                                     <label>Variáveis <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                                   </div>
                                 </div>
-                              </div>  
+                              </div>
 
+
+                              <ul class="pager wizard">
+                                <li class="next">
+                                  <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.stepTwo()"> Próximo
+                                    <i class="fa fa-arrow-circle-o-right mlx"></i>
+                                  </button>
+                                </li>
+                              </ul>
                             </form>
                           </div>
+
+
+                          <!--TAB 2-->
                           <div id="tab2-wizard-custom-circle" class="tab-pane">
-                            <h3 class="mbxl">Delivery information</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">{{vm.tipoConsultaLabel(vm.requisicao.tipoConsulta.val)}}</h3>
                             <div class="row">
                               <div class="col-md-12">
                                 <div class="form-group">
@@ -226,7 +185,8 @@
                             <p>Congragulation! You have completed checkout steps.</p>
                             <p>Thank you for use our products.</p>
                           </div>
-                          <ul class="pager wizard">
+
+                          <!--<ul class="pager wizard">
                             <li style="display: none;" class="previous first">
                               <button class="btn btn-info button-previous"><i class="fa fa-arrow-circle-o-left mr"></i>First</button>
                             </li>
@@ -239,7 +199,7 @@
                             <li class="next">
                               <button class="btn btn-info button-next mlm">Próximo<i class="fa fa-arrow-circle-o-right mlx"></i></button>
                             </li>
-                          </ul>
+                          </ul>-->
                         </div>
                       </div>
                     </div>
@@ -249,6 +209,8 @@
               </div>
             </div>
           </form> 
+          <!--<pre>{{vm.requisicao | json}}</pre>-->
+          <pre>{{vm.requisicao}}</pre>
         </div>
       </div>
     </div>

@@ -10,7 +10,9 @@ define(function(require) {
   function DashboardFactory(resource, resourcePag) {
     var service = {
       list: list,
-      listpag: listpag
+      listpag: listpag,
+      getArrayTipoConsulta: getArrayTipoConsulta,
+      tipoConsultaLabel: tipoConsultaLabel
     };
 
     return service;
@@ -35,7 +37,25 @@ define(function(require) {
           'page': page,
           'size': size
       }).$promise;
-    }      
+    } 
+
+    function tipoConsultaLabel(str) {
+      var res = undefined;
+      angular.forEach(getArrayTipoConsulta(), function (tipo) {
+        if (tipo.val == str)
+          res = tipo.desc;
+      });
+      return res;
+    }    
+
+    function getArrayTipoConsulta() {
+      var array = [
+        { val: 'CO', desc: 'Coordenadas' },
+        { val: 'CI', desc: 'Cidade' },
+        { val: 'DE', desc: 'Desenho' }
+      ];
+      return array;
+    }         
 
    };
   
