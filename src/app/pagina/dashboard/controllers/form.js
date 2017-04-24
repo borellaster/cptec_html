@@ -6,11 +6,11 @@ define(function(require) {
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', 
                            'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
                            'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
-                           'IntervalsFactory'];
+                           'IntervalsFactory', 'TypesFactory'];
   function DashboardCtrl($state, params, $location, dataService, 
                          dataServiceVariable, dataServiceModel, dataServiceCouple,
                          dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
-                         dataServiceInterval) {
+                         dataServiceInterval, dataServiceTypes) {
     var vm = this; 
     init();   
 
@@ -74,14 +74,24 @@ define(function(require) {
       });
     }
 
+    /*loading types*/
+    function getTypes() {    
+      dataServiceTypes.combo().then(function success(data) {
+        vm.types = data;
+        vm.requisicao.type = vm.types.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar tipos de saída.')
+      });
+    }    
+
     /*loading variables*/
     dataServiceVariable.combo().then(function success(data) {
-      vm.variables = data;
+      vm.variablesAll = data;
     }).catch(function error(msg) {
       setError('Erro ao carregar variáveis.')
     });
 
-    vm.loadData = function () {
+    /*vm.loadData = function () {
       angular.forEach(form.$error, function (field) {
         angular.forEach(field, function(errorField){
           console.log(errorField)
@@ -96,31 +106,52 @@ define(function(require) {
       dataService.list(vm.requisicao.longitude,
                        vm.requisicao.latitude, 
                        getVariables(), 
-                       vm.requisicao.inicio, 
-                       vm.requisicao.fim)
+                       vm.requisicao.start_date, 
+                       vm.requisicao.end_date)
         .then(function success(result) {
         vm.result = result;          
       }).catch(function error(msg) {
         setError('Erro ao pesquisar os registros.');
       });      
-    } 
+    }*/
 
     function getVariables() {
       var str = "(";
-      var values = vm.requisicao.variables;      
+      var values = vm.requisicao.variablesAll;      
       angular.forEach(values, function(value, key) {
         str += "'"+ value.nickname +"'," 
       }); 
       str = str.substring(0, str.length -1);
       str += ")";      
-      console.log(str);
-      
       return str;
     };
+
+    function getVariablesSave() {
+      var str = "";
+      var values = vm.requisicao.variablesAll;      
+      angular.forEach(values, function(value, key) {
+        str += value.nickname +"," 
+      }); 
+      str = str.substring(0, str.length -1);
+      str += "";
+      
+      return str;
+    };    
 
     vm.tipoConsultaLabel = function (str) {
       return "Escolha feita por "+dataService.tipoConsultaLabel(str);
     }
+
+    vm.save = function() {
+      vm.requisicao.variables = getVariablesSave();
+      dataService.save(vm.requisicao).then(function success(data) {
+        vm.updateLocation();
+        setOk('Registro '+vm.acao+' com sucesso.');
+      })
+      .catch(function error(msg) {
+        setError('Erro ao salvar o registro.');
+      });
+    }      
 
     vm.stepTwo = function () {
       vm.value = 50;
@@ -140,8 +171,8 @@ define(function(require) {
 
     function init() {
       vm.requisicao = {
-        'inicio': new Date(),
-        'fim': new Date(),
+        'start_date': new Date(),
+        'end_date': new Date(),
       }
 
       getModels();
@@ -150,8 +181,10 @@ define(function(require) {
       getResolutions();
       getEnsembles();
       getIntervals();
+      getTypes();
       vm.tipoConsultas = dataService.getArrayTipoConsulta();
       vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
+      vm.requisicao.status = 0;
       //vm.tab1 = true;
       //vm.tab1Active = 'active';
       vm.value = 25;

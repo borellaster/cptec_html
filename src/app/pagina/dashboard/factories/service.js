@@ -4,18 +4,27 @@ define(function(require) {
   var module = require('../module');
   module.factory('DashboardFactory', DashboardFactory);
   DashboardFactory.$inject = [
-    'DashboardResource', 'DashboardPagResource'
+    'DashboardResource', 'DashboardPagResource', 'RequestsResource'
   ];
 
-  function DashboardFactory(resource, resourcePag) {
+  function DashboardFactory(resource, resourcePag, resourceRequisicao) {
     var service = {
       list: list,
       listpag: listpag,
       getArrayTipoConsulta: getArrayTipoConsulta,
-      tipoConsultaLabel: tipoConsultaLabel
+      tipoConsultaLabel: tipoConsultaLabel,
+      save: save
     };
 
     return service;
+
+    function save(requests) {
+      if(requests.id == undefined){
+          return resourceRequisicao.save(requests).$promise;
+        }else{
+          return resourceRequisicao.update({'id': requests.id}, requests).$promise;
+        }
+    }     
 
     function list(longitude, latitude, variables, startdate, enddate){
       return resource.get({

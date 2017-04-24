@@ -3,6 +3,21 @@ define(function(require) {
 
   var module = require('../module');
 
+  module.factory('RequestsResource', RequestsResource);
+  RequestsResource.$inject = ['$resource'];
+  function RequestsResource($resource) {
+    var rest = $resource(
+      'api/v1/requests/:id',
+      {
+        'id': ''
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }  
+
   module.factory('DashboardResource', DashboardResource);
   DashboardResource.$inject = ['$resource'];
   function DashboardResource($resource) {

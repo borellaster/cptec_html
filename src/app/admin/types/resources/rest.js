@@ -28,6 +28,15 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }  
+
+  module.factory('TypesComboResource', TypesComboResource);
+  TypesComboResource.$inject = ['$resource'];
+  function TypesComboResource($resource) {
+    var rest = $resource(
+      'api/v1/public/types', {}
+    );
+    return rest;
+  }       
 
 });

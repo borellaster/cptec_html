@@ -48,11 +48,11 @@
 
                               <div class="form-group">
                                 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <cptec-date required type="text" name="inicio" label="Período Inicial" ng-model="vm.requisicao.inicio" class="required" is-required="true"/>                  
+                                  <cptec-date required type="text" name="start_date" label="Período Inicial" ng-model="vm.requisicao.start_date" class="required" is-required="true"/>                  
                                 </div>
 
                                 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <cptec-date required type="text" name="fim" label="Período Final" ng-model="vm.requisicao.fim" class="required" is-required="true"/>
+                                  <cptec-date required type="text" name="end_date" label="Período Final" ng-model="vm.requisicao.end_date" class="required" is-required="true"/>
                                 </div> 
 
                                 <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
@@ -74,9 +74,9 @@
                               <div class="form-group">
                                 <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
                                   <div class="mui-textfield">
-                                    <ui-select multiple ng-model="vm.requisicao.variables" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-remove="ctrl.removed($item, $model)" close-on-select="false" required>
+                                    <ui-select multiple ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-remove="ctrl.removed($item, $model)" close-on-select="false" required>
                                       <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
-                                      <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {nickname: $select.search, description: $select.search}">
+                                      <ui-select-choices repeat="variable in vm.variablesAll.data | propsFilter: {nickname: $select.search, description: $select.search}">
                                       <div ng-bind-html="variable.nickname | highlight: $select.search"></div>
                                       <small>
                                         {{variable.nickname}}
@@ -181,9 +181,55 @@
                             </form>
                           </div>
                           <div id="tab4-wizard-custom-circle" class="tab-pane fadeIn">
-                            <h3 class="mbxl">Thank you!</h3>
-                            <p>Congragulation! You have completed checkout steps.</p>
-                            <p>Thank you for use our products.</p>
+                            <div id="tab1-wizard-custom-circle" class="tab-pane active">
+                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Dados para concluir a requisição</h3>
+                              <form action="#" class="form-horizontal">
+
+                                <div class="form-group">
+                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input required type="text" name="name" placeholder="Nome" ng-model="vm.requisicao.name" class="required form-control" focus/>
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input required type="text" name="email" placeholder="Nome" ng-model="vm.requisicao.email" class="required form-control" focus/>
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>E-mail <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>                                  
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                        <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                          <ui-select-match placeholder="Selecione um tipo de saída">{{$select.selected.name}}</ui-select-match>
+                                          <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
+                                            <div ng-bind-html="type.name | highlight: $select.search"></div>                        
+                                          </ui-select-choices>
+                                        </ui-select>                  
+                                      <label>Tipo de saída <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>                                                    
+                                </div>                                 
+
+                                 
+
+                              <ul class="pager wizard">
+                                <li class="next">
+                                  <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.save()"> Concluir
+                                    <i class="fa fa-check-circle-o mlx"></i>
+                                  </button>
+                                </li>
+                              </ul>
+
+                              </form>
+                          </div>  
+
                           </div>
 
                           <!--<ul class="pager wizard">
@@ -208,9 +254,9 @@
               </div>                                                                                   
               </div>
             </div>
-          </form> 
-          <!--<pre>{{vm.requisicao | json}}</pre>-->
-          <pre>{{vm.requisicao}}</pre>
+          </form>
+          <pre>{{vm.requisicao | json}}</pre>
+          <!--<pre>{{vm.requisicao}}</pre>-->
         </div>
       </div>
     </div>
