@@ -14,6 +14,18 @@ define(function(require) {
     }
   }
 
+module.directive('requireMultiple', requireMultiple);
+  function requireMultiple() {
+    return {
+        require: 'ngModel',
+        link: function postLink(scope, element, attrs, ngModel) {
+            ngModel.$validators.required = function (value) {
+                return angular.isArray(value) && value.length > 0;
+            };
+        }
+    };
+  }
+
   module.filter('propsFilter', propsFilter);
   function propsFilter() {
     return function(items, props) {

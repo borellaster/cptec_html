@@ -3,11 +3,11 @@ define(function(require) {
 
   var module = require('../module');
   module.controller('DashboardCtrl', DashboardCtrl);
-  DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', 
+  DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
                            'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
                            'IntervalsFactory', 'TypesFactory'];
-  function DashboardCtrl($state, params, $location, dataService, 
+  function DashboardCtrl($state, params, $location, dataService, $timeout,
                          dataServiceVariable, dataServiceModel, dataServiceCouple,
                          dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
                          dataServiceInterval, dataServiceTypes) {
@@ -115,6 +115,53 @@ define(function(require) {
       });      
     }*/
 
+    vm.step = function(aba) {
+      if (aba == 'dois') {
+        angular.forEach(vm.formum.$error, function (field) {
+          angular.forEach(field, function(errorField){
+              errorField.$setTouched();
+              errorField.$setDirty();
+          })
+        });
+
+        if (vm.formum.$invalid) {
+          return true;
+        }
+      }
+
+      if (aba == 'tres') {
+        angular.forEach(vm.formdois.$error, function (field) {
+          angular.forEach(field, function(errorField){
+              errorField.$setTouched();
+              errorField.$setDirty();
+          })
+        });
+
+        if (vm.formdois.$invalid) {
+          return true;
+        }
+      }
+
+      if (aba == 'quatro') {
+        angular.forEach(vm.formtres.$error, function (field) {
+          angular.forEach(field, function(errorField){
+              errorField.$setTouched();
+              errorField.$setDirty();
+          })
+        });
+
+        if (vm.formtres.$invalid) {
+          return true;
+        }
+      }
+
+
+      $timeout(function() {
+        $("#click-aba-" + aba).click();
+        $(".aba-" + aba).addClass('active');
+      });
+    }
+
     function getVariables() {
       var str = "(";
       var values = vm.requisicao.variablesAll;      
@@ -153,22 +200,6 @@ define(function(require) {
       });
     }      
 
-    vm.stepTwo = function () {
-      vm.value = 50;
-      //vm.tab1 = false;
-      //vm.tab1Active = '';
-      //vm.tab2 = true;
-      //vm.tab2Active = 'active';
-    }
-
-    vm.stepThree = function () {
-      vm.value = 75;
-    }
-
-    vm.stepFour = function () {
-      vm.value = 100;
-    }     
-
     function init() {
       vm.requisicao = {
         'start_date': new Date(),
@@ -185,9 +216,6 @@ define(function(require) {
       vm.tipoConsultas = dataService.getArrayTipoConsulta();
       vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
       vm.requisicao.status = 0;
-      //vm.tab1 = true;
-      //vm.tab1Active = 'active';
-      vm.value = 25;
     }
 
   }
