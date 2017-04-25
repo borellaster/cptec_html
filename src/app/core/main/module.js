@@ -84,7 +84,7 @@ define(function(require) {
         } else {
           if (usuario != undefined) {
             $rootScope.usuario = usuario;
-            $http.defaults.headers.common['X-Auth-Token'] = usuario.token;
+            $http.defaults.headers.common['Authorization'] = "JWT "+usuario.token;
           }
         } 
       });

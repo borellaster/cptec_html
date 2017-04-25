@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar tipo';
+        vm.title = 'Cadastrar tipo de saída';
         vm.acao = 'incluído';
         vm.types = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar tipo';
+        vm.title = 'Editar tipo de saída';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.types = data;

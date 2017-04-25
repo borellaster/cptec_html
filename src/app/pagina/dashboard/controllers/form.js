@@ -6,11 +6,11 @@ define(function(require) {
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
                            'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
-                           'IntervalsFactory', 'TypesFactory'];
+                           'IntervalsFactory', 'TypesFactory', 'CitiesFactory'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          dataServiceVariable, dataServiceModel, dataServiceCouple,
                          dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
-                         dataServiceInterval, dataServiceTypes) {
+                         dataServiceInterval, dataServiceTypes, dataServiceCity) {
     var vm = this; 
     init();   
 
@@ -115,6 +115,16 @@ define(function(require) {
       });      
     }*/
 
+    vm.loadCities = function(cidade) {
+      if(cidade.length >= 3){
+        dataServiceCity.combo(cidade).then(function success(data) {
+          vm.cities = data;
+        }).catch(function error(msg) {
+          setError('Erro ao pesquisar os cidades.');
+        });  
+      }
+    };     
+
     vm.step = function(aba) {
       if (aba == 'dois') {
         angular.forEach(vm.formum.$error, function (field) {
@@ -186,7 +196,7 @@ define(function(require) {
     };    
 
     vm.tipoConsultaLabel = function (str) {
-      return "Escolha feita por "+dataService.tipoConsultaLabel(str);
+      return dataService.tipoConsultaLabel(str);
     }
 
     vm.save = function() {
@@ -213,8 +223,12 @@ define(function(require) {
       getEnsembles();
       getIntervals();
       getTypes();
+      /*tipo de consulta*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();
       vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
+      /*tipo de requisicao*/
+      vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
+      vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
       vm.requisicao.status = 0;
     }
 

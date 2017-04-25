@@ -13,7 +13,8 @@ define(function(require) {
       listpag: listpag,
       getArrayTipoConsulta: getArrayTipoConsulta,
       tipoConsultaLabel: tipoConsultaLabel,
-      save: save
+      save: save,
+      getArrayTipoRequisicoes: getArrayTipoRequisicoes
     };
 
     return service;
@@ -59,12 +60,21 @@ define(function(require) {
 
     function getArrayTipoConsulta() {
       var array = [
-        { val: 'CO', desc: 'Coordenadas' },
-        { val: 'CI', desc: 'Cidade' },
-        { val: 'DE', desc: 'Desenho' }
+        { val: 'CO', desc: 'Por coordenadas' },
+        { val: 'CI', desc: 'Por cidade' },
+        { val: 'DE', desc: 'Desenho no mapa' }
       ];
       return array;
-    }         
+    }   
+
+    function getArrayTipoRequisicoes() {
+      var array = [
+        { val: 'T', desc: 'Visualização em tabela' },
+        { val: 'M', desc: 'Visualização no mapa' },        
+        { val: 'G', desc: 'Visualização em gráfico'}
+      ];
+      return array;
+    }            
 
    };
   

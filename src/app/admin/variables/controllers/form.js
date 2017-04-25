@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Variável';
+        vm.title = 'Cadastrar variável';
         vm.acao = 'incluído';
         vm.variables = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Variável';
+        vm.title = 'Editar variável';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.variables = data;

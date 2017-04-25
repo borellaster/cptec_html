@@ -77,7 +77,7 @@
 
                               </div>
                               <div class="form-group">
-                                <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
+                                <div class="col-xs-10 col-sm-10 col-md-10 lo-lg-10" style="padding-left: 5px; padding-right: 5px;">
                                   <div class="mui-textfield">
                                     <ui-select multiple ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" require-multiple on-remove="ctrl.removed($item, $model)" close-on-select="false">
                                       <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
@@ -109,10 +109,10 @@
 
                           <!--TAB 2-->
                           <div id="tab2-wizard-custom-circle" class="tab-pane">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">{{vm.tipoConsultaLabel(vm.requisicao.tipoConsulta.val)}}</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Tipo de Consulta: <span class="label label-success" style="font-size: 17px">{{vm.tipoConsultaLabel(vm.requisicao.tipoConsulta.val)}}</span></h3>
                               <form role="form" name="vm.formdois" novalidate>
-                              <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
 
+                              <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
                                 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
                                   <div class="mui-textfield">
                                     <input type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" focus>
@@ -129,6 +129,36 @@
                                   </div>
                                 </div>                            
                               </div>
+
+                              <div ng-if="vm.requisicao.tipoConsulta.val == 'CI'">
+                                <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                      <ui-select ng-model="vm.requisicao.city" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                        <ui-select-match placeholder="Selecione uma cidade">{{$select.selected.name}}</ui-select-match>
+                                        <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}" refresh="vm.loadCities($select.search)" refresh-delay="1000">
+                                          <div ng-bind-html="city.name | highlight: $select.search"></div>
+                                          <small>{{city.state.name}}</small>                        
+                                        </ui-select-choices>
+                                      </ui-select>
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Cidade <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>
+                                </div>
+                              </div> 
+
+                              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                <div class="mui-textfield">
+                                  <ui-select ng-model="vm.requisicao.tipoRequisicao" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                    <ui-select-match placeholder="Selecione um tipo de requisição">{{$select.selected.desc}}</ui-select-match>
+                                    <ui-select-choices repeat="tipo in vm.tipoRequisicoes">
+                                      <div ng-bind-html="tipo.desc"></div>
+                                    </ui-select-choices>
+                                  </ui-select>               
+                                  <span class="requerido">Este campo é obrigatório.</span>
+                                  <label>Tipo de Requisição <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                </div>
+                              </div>                                                              
+
 
 
                               <ul class="pager wizard">
