@@ -1,7 +1,7 @@
 <div class="page-title-breadcrumb">
   <ol class="breadcrumb page-breadcrumb pull-left">
     <li><i class="fa fa-home"></i>&nbsp;<a href="/#/">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i></li>
-    <li><a href="/#/">&nbsp;&nbsp;Por coordenada</a></li>
+    <li><a href="/#/">&nbsp;&nbsp;Dashboard</a></li>
   </ol>
 </div>
 
@@ -13,9 +13,6 @@
           <!-- <form role="form" name="form" class="form-horizontal form-seperated" novalidate> -->
             <div class="form-body">
 
-              <!--Inclusão dos filtros defaults - para diminuir os compoentes da tela-->
-              <div ng-include="'app/pagina/dashboard/templates/form_filtro_default.html'"/>              
-
               <div class="col-md-12" style="padding:0">
                 <div class="panel">
                   <div class="panel-body"  style="padding:0;padding-top:15px;">
@@ -26,20 +23,20 @@
                             <ul class="nav">
                               <li class="aba-um active">
                               <a ><i class="icon-speech"></i>
-                                  <p><span>1º Passo</span>Período, variável e tipo</p></a>
+                                  <p><span>1º Passo</span>Filtragem dos dados</p></a>
                                   <a id="click-aba-um" href="#tab1-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></li>
                               <li class="aba-dois">
                                   <a>
                                     <i class="icon-book-open"></i>
-                                    <p><span>2º Passo</span>Visualização</p>
+                                    <p><span>2º Passo</span>Consulta disponível em tabela</p>
                                   </a></li>
                                   <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
                               <li class="aba-tres">
                               <a><i class="icon-list"></i>
-                                  <p><span>3º Passo</span>Preenchimento dos dados</p></a>
+                                  <p><span>3º Passo</span>Dados pessoais e tipo de saída</p></a>
                                   <a id="click-aba-tres" href="#tab3-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></li>
                               <li class="aba-quatro"><a ><i class="icon-check"></i>
-                                  <p><span>4º Passo</span>Conclusão</p>
+                                  <p><span>4º Passo</span>Concluir requisição</p>
 
                                   <a id="click-aba-quatro" href="#tab4-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></a></li>
                             </ul>
@@ -50,17 +47,13 @@
                         </div>-->
                         <div class="tab-content" style="padding-top: 0px">
                           <div id="tab1-wizard-custom-circle" class="tab-pane active">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Escolha o período, variáveis e tipo da consulta</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o modelo, frequência e demais dados necessários para sua filtragem</h3>
                             <form name="vm.formum" class="form-horizontal">
 
                               <div class="form-group">
-                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <cptec-date required type="text" name="start_date" label="Período Inicial" ng-model="vm.requisicao.start_date" class="required" is-required="true"/>                  
-                                </div>
+                                <!--Inclusão dos filtros defaults - para diminuir os compoentes da tela-->
+                                <div ng-include="'app/pagina/dashboard/templates/form_filtro_default.html'"/>
 
-                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <cptec-date required type="text" name="end_date" label="Período Final" ng-model="vm.requisicao.end_date" class="required" is-required="true"/>
-                                </div> 
 
                                 <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
                                   <div class="mui-textfield">
@@ -73,11 +66,12 @@
                                     <span class="requerido">Este campo é obrigatório.</span>
                                     <label>Tipo de Consulta <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                                   </div>
-                                </div>  
+                                </div>                                 
 
                               </div>
+
                               <div class="form-group">
-                                <div class="col-xs-10 col-sm-10 col-md-10 lo-lg-10" style="padding-left: 5px; padding-right: 5px;">
+                                <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
                                   <div class="mui-textfield">
                                     <ui-select multiple ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" require-multiple on-remove="ctrl.removed($item, $model)" close-on-select="false">
                                       <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
@@ -96,6 +90,51 @@
                               </div>
 
 
+                              <div class="form-group">
+                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                                  <cptec-date required type="text" name="start_date" label="Período Inicial" ng-model="vm.requisicao.start_date" class="required" is-required="true"/>                  
+                                </div>
+
+                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                                  <cptec-date required type="text" name="end_date" label="Período Final" ng-model="vm.requisicao.end_date" class="required" is-required="true"/>
+                                </div>
+
+                                <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
+                                  <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" placeholder="-12.40">
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>Latitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input type="text" id="longitude" name="longitude" ng-model="vm.requisicao.longitude" ng-required="true" placeholder="-49.80">
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>Longitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>                            
+                                </div> 
+
+                                <div ng-if="vm.requisicao.tipoConsulta.val == 'CI'">
+                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                        <ui-select ng-model="vm.requisicao.city" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                          <ui-select-match placeholder="Selecione uma cidade">{{$select.selected.name}}</ui-select-match>
+                                          <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}" refresh="vm.loadCities($select.search)" refresh-delay="1000">
+                                            <div ng-bind-html="city.name | highlight: $select.search"></div>
+                                            <small>{{city.state.name}}</small>                        
+                                          </ui-select-choices>
+                                        </ui-select>
+                                        <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>Cidade <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>
+                                </div>                                                                
+                              </div>
+
+
                               <ul class="pager wizard">
                                 <li class="next">
                                   <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.step('dois')"> Próximo
@@ -109,44 +148,41 @@
 
                           <!--TAB 2-->
                           <div id="tab2-wizard-custom-circle" class="tab-pane">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Tipo de Consulta: <span class="label label-success" style="font-size: 17px">{{vm.tipoConsultaLabel(vm.requisicao.tipoConsulta.val)}}</span></h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Visualizar dados na tabela</h3>
                               <form role="form" name="vm.formdois" novalidate>
 
-                              <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
-                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <div class="mui-textfield">
-                                    <input type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" focus>
-                                    <span class="requerido">Este campo é obrigatório.</span>
-                                    <label>Latitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                  </div>
-                                </div>
+                                  <table class="table table-striped table-bordered">
+                                    <thead>
+                                      <tr>
+                                        <th width="100px">Data</th>
+                                        <th width="100px">Hora</th>
+                                        <th>Variável</th>
+                                        <th width="100px">Valor</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr ng-repeat="data in vm.result.data | filter:filter.search">
+                                        <td>{{data.date | date : 'dd/MM/yyyy'}}</td>
+                                        <td>{{data.time}}</td>
+                                        <td>{{data.variable}}</td>
+                                        <td>{{data.value}}</td>
+                                      </tr>
+                                      <tr>
+                                    </tbody>
+                                  </table>
 
-                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                  <div class="mui-textfield">
-                                    <input type="text" id="longitude" name="longitude" ng-model="vm.requisicao.longitude" ng-required="true">
-                                    <span class="requerido">Este campo é obrigatório.</span>
-                                    <label>Longitude <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                  </div>
-                                </div>                            
-                              </div>
+                                  <div class="tab-content">
+                                    <div class="text-center" ng-if="vm.result.pages > 1">
+                                      <pagination ng-model="vm.result.page" max-size="vm.paginationItemsSize"
+                                        total-items="vm.result.count" num-pages="vm.result.pages"
+                                        items-per-page="vm.paginationPageSize" ng-change="vm.pageChanged()"
+                                        class="pagination-sm" boundary-links="true" rotate="false"
+                                        previous-text="Anterior" next-text="Próxima" first-text="Primeira" last-text="Última">
+                                      </pagination>
+                                    </div>
+                                  </div>                               
 
-                              <div ng-if="vm.requisicao.tipoConsulta.val == 'CI'">
-                                <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
-                                  <div class="mui-textfield">
-                                      <ui-select ng-model="vm.requisicao.city" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                                        <ui-select-match placeholder="Selecione uma cidade">{{$select.selected.name}}</ui-select-match>
-                                        <ui-select-choices repeat="city in vm.cities.data | propsFilter: {name: $select.search}" refresh="vm.loadCities($select.search)" refresh-delay="1000">
-                                          <div ng-bind-html="city.name | highlight: $select.search"></div>
-                                          <small>{{city.state.name}}</small>                        
-                                        </ui-select-choices>
-                                      </ui-select>
-                                      <span class="requerido">Este campo é obrigatório.</span>
-                                    <label>Cidade <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                  </div>
-                                </div>
-                              </div> 
-
-                              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                              <!--<div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
                                 <div class="mui-textfield">
                                   <ui-select ng-model="vm.requisicao.tipoRequisicao" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
                                     <ui-select-match placeholder="Selecione um tipo de requisição">{{$select.selected.desc}}</ui-select-match>
@@ -157,7 +193,7 @@
                                   <span class="requerido">Este campo é obrigatório.</span>
                                   <label>Tipo de Requisição <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                                 </div>
-                              </div>                                                              
+                              </div>-->
 
 
 
@@ -177,9 +213,41 @@
                             
                           </div>
                           <div id="tab3-wizard-custom-circle" class="tab-pane fadeIn">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Dados necessários para concluir a requisiçao</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Informar dados pessoais e escolha do arquivo de saída</h3>
 
                             <form role="form" name="vm.formtres" novalidate>
+
+                                <div class="form-group">
+                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input required type="text" name="name" placeholder="nome" ng-model="vm.requisicao.name" class="required form-control" focus/>
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>
+
+                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                      <input required type="text" name="email" placeholder="e-mail" ng-model="vm.requisicao.email" class="required form-control"/>
+                                      <span class="requerido">Este campo é obrigatório.</span>
+                                      <label>E-mail <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>                                  
+                                </div>
+
+                                <div class="form-group">
+                                  <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                                    <div class="mui-textfield">
+                                        <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                          <ui-select-match placeholder="Selecione um tipo de saída">{{$select.selected.name}}</ui-select-match>
+                                          <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
+                                            <div ng-bind-html="type.name | highlight: $select.search"></div>                        
+                                          </ui-select-choices>
+                                        </ui-select>                  
+                                      <label>Tipo de saída <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                    </div>
+                                  </div>                                                    
+                                </div>  
 
 
                               <ul class="pager wizard">
@@ -199,45 +267,43 @@
                           </div>
                           <div id="tab4-wizard-custom-circle" class="tab-pane fadeIn">
                             <div id="tab1-wizard-custom-circle" class="tab-pane active">
-                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Dados para concluir a requisição</h3>
+                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Confirmar requisição e finalizar</h3>
                               <form action="#"  name="vm.formquatro" class="form-horizontal">
-
                              
-                                <div class="form-group">
-                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
-                                    <div class="mui-textfield">
-                                      <input required type="text" name="name" placeholder="Nome" ng-model="vm.requisicao.name" class="required form-control" focus/>
-                                      <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                <div class="well">
+                                  <div class="row">
+                                    <div class="col-md-6">
+                                      <address>
+                                        <strong>Filtros:</strong>
+                                        <br/>Modelo: {{vm.requisicao.model.name}}
+                                        <br/>Frequência: {{vm.requisicao.interval.name}}
+                                        <br/>Tipo de consulta: {{vm.requisicao.tipoConsulta.desc}}
+                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CO'"><br/>Coordenadas: {{vm.requisicao.latitude}}, {{vm.requisicao.longitude}}</span>
+                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Cidade: {{vm.requisicao.cidade.name}}</span>
+                                        <br/>Variáveis: {{vm.getVariablesFinalizar()}}
+                                        <br/>Período: {{vm.requisicao.start_date | date:'dd/MM/yyyy'}} até {{vm.requisicao.end_date  | date:'dd/MM/yyyy'}}
+                                      </address>
                                     </div>
+                                    <div class="col-md-6">
+                                      <address>
+                                        <strong>Dados pessoais:</strong>
+                                        <br/>Nome: {{vm.requisicao.name}}
+                                        <br/>E-mail: {{vm.requisicao.email}}               
+                                      </address>
+                                    </div>
+                                    <div class="col-md-6">
+                                      <address>
+                                        <strong>Saída:</strong>
+                                        <br/>Arquivo: {{vm.requisicao.type.name}}
+                                      </address>
+                                    </div>                                    
                                   </div>
 
-                                  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
-                                    <div class="mui-textfield">
-                                      <input required type="text" name="email" placeholder="Nome" ng-model="vm.requisicao.email" class="required form-control" focus/>
-                                      <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>E-mail <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                    </div>
-                                  </div>                                  
-                                </div>
-
-                                <div class="form-group">
-                                  <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
-                                    <div class="mui-textfield">
-                                        <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                                          <ui-select-match placeholder="Selecione um tipo de saída">{{$select.selected.name}}</ui-select-match>
-                                          <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
-                                            <div ng-bind-html="type.name | highlight: $select.search"></div>                        
-                                          </ui-select-choices>
-                                        </ui-select>                  
-                                      <label>Tipo de saída <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                    </div>
-                                  </div>                                                    
-                                </div>    
+                                </div>                             
+  
                                  
 
                               <ul class="pager wizard">
-
                                 <li class="next">
                                   <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.save()"> Concluir
                                     <i class="fa fa-check-circle-o mlx"></i>
@@ -255,20 +321,6 @@
 
                           </div>
 
-                          <!--<ul class="pager wizard">
-                            <li style="display: none;" class="previous first">
-                              <button class="btn btn-info button-previous"><i class="fa fa-arrow-circle-o-left mr"></i>First</button>
-                            </li>
-                            <li class="previous">
-                              <button class="btn btn-info button-previous"><i class="fa fa-arrow-circle-o-left mrx"></i>Anterior</button>
-                            </li>
-                            <li style="display: none;" class="next last">
-                              <button class="btn btn-info button-next mlm">Último<i class="fa fa-arrow-circle-o-right mlx"></i></button>
-                            </li>
-                            <li class="next">
-                              <button class="btn btn-info button-next mlm">Próximo<i class="fa fa-arrow-circle-o-right mlx"></i></button>
-                            </li>
-                          </ul>-->
                         </div>
                       </div>
                     </div>
@@ -277,9 +329,6 @@
               </div>                                                                                   
               </div>
             </div>
-          <!-- </form> -->
-          <!--<pre>{{vm.requisicao | json}}</pre>-->
-          <!--<pre>{{vm.requisicao}}</pre>-->
         </div>
       </div>
     </div>

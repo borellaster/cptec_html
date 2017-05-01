@@ -106,7 +106,8 @@ function getConfig() {
 
       formWizard: [
         'vendor/form-wizard'
-      ]
+      ]   
+
     },
 
     // define js scripts dependencies
@@ -203,7 +204,7 @@ function getConfig() {
       'jqueryWizard': {
         deps: ['jquery','bootstrap'],
         exports: 'jqueryWizard'
-      }, 
+      },
 
       'formWizard': {
         deps: ['jquery', 'jqueryValidate', 'jquerySteps', 'jqueryWizard'],

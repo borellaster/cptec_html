@@ -29,10 +29,9 @@ define(function(require) {
         });         
     }
 
-    vm.save = function() {
+    vm.save = function(form) {
       angular.forEach(form.$error, function (field) {
         angular.forEach(field, function(errorField){
-          console.log(errorField)
             errorField.$setTouched();
             errorField.$setDirty();
         })

@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar intervalo';
+        vm.title = 'Cadastrar frequência';
         vm.acao = 'incluído';
         vm.intervals = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar intervalo';
+        vm.title = 'Editar frequência';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.intervals = data;
@@ -29,7 +29,7 @@ define(function(require) {
         });         
     }
 
-    vm.save = function() {
+    vm.save = function(form) {
       angular.forEach(form.$error, function (field) {
         angular.forEach(field, function(errorField){
           console.log(errorField)

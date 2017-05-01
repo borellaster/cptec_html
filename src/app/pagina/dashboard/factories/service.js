@@ -60,18 +60,19 @@ define(function(require) {
 
     function getArrayTipoConsulta() {
       var array = [
-        { val: 'CO', desc: 'Por coordenadas' },
-        { val: 'CI', desc: 'Por cidade' },
-        { val: 'DE', desc: 'Desenho no mapa' }
+        {val: 'CO', desc: 'Por coordenadas'},
+        {val: 'CI', desc: 'Por cidade'},
+        {val: 'DE', desc: 'Desenho no mapa'},
+        {val: 'SF', desc: 'Importar Shapefile'}
       ];
       return array;
     }   
 
     function getArrayTipoRequisicoes() {
       var array = [
-        { val: 'T', desc: 'Visualização em tabela' },
-        { val: 'M', desc: 'Visualização no mapa' },        
-        { val: 'G', desc: 'Visualização em gráfico'}
+        {val: 'T', desc: 'Visualização em tabela'},
+        {val: 'M', desc: 'Visualização no mapa'},        
+        {val: 'G', desc: 'Visualização em gráfico'}
       ];
       return array;
     }            

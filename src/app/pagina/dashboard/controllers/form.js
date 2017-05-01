@@ -25,44 +25,44 @@ define(function(require) {
     }
 
     /*loading couple models*/
-    function getCoupleModels() {    
+    /*function getCoupleModels() {    
       dataServiceCouple.combo().then(function success(data) {
         vm.couples = data;
         vm.requisicao.couple = vm.couples.data[0];
       }).catch(function error(msg) {
         setError('Erro ao carregar modelos acoplados.')
       });
-    }
+    }*/
 
     /*loading scenarios*/
-    function getScenarios() {    
+    /*function getScenarios() {    
       dataServiceScenario.combo().then(function success(data) {
         vm.scenarios = data;
         vm.requisicao.scenario = vm.scenarios.data[0];
       }).catch(function error(msg) {
         setError('Erro ao carregar cenários.')
       });
-    }    
+    }*/   
 
     /*loading resolutions*/
-    function getResolutions() {    
+    /*function getResolutions() {    
       dataServiceResolution.combo().then(function success(data) {
         vm.resolutions = data;
         vm.requisicao.resolution = vm.resolutions.data[0];
       }).catch(function error(msg) {
         setError('Erro ao carregar resoluções.')
       });
-    }
+    }*/
 
     /*loading ensembles*/
-    function getEnsembles() {    
+    /*function getEnsembles() {    
       dataServiceEnsemble.combo().then(function success(data) {
         vm.ensembles = data;
         vm.requisicao.ensemble = vm.ensembles.data[0];
       }).catch(function error(msg) {
         setError('Erro ao carregar conjuntos.')
       });
-    }  
+    }*/ 
 
     /*loading intervals*/
     function getIntervals() {    
@@ -199,14 +199,21 @@ define(function(require) {
       return dataService.tipoConsultaLabel(str);
     }
 
+    vm.getVariablesFinalizar = function () {
+      return getVariablesSave();
+    }    
+
     vm.save = function() {
       vm.requisicao.variables = getVariablesSave();
+      vm.requisicao.type_id = vm.requisicao.type.id;
+      vm.requisicao.model_id = vm.requisicao.model.id;
+      vm.requisicao.interval_id = vm.requisicao.interval.id;
+      vm.requisicao.query_type = vm.requisicao.tipoConsulta.val;
       dataService.save(vm.requisicao).then(function success(data) {
-        vm.updateLocation();
-        setOk('Registro '+vm.acao+' com sucesso.');
+        setOk('Requisição incluída com sucesso.');
       })
       .catch(function error(msg) {
-        setError('Erro ao salvar o registro.');
+        setError('Erro ao salvar o requisição.');
       });
     }      
 
@@ -217,10 +224,10 @@ define(function(require) {
       }
 
       getModels();
-      getCoupleModels();
-      getScenarios();
-      getResolutions();
-      getEnsembles();
+      //getCoupleModels();
+      //getScenarios();
+      //getResolutions();
+      //getEnsembles();
       getIntervals();
       getTypes();
       /*tipo de consulta*/

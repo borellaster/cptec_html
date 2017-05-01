@@ -9,7 +9,7 @@
           <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
             <div class="form-group">
 
-              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+              <div class="col-xs-8 col-sm-8 col-md-8 lo-lg-8" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
                   <input required type="text" name="name" placeholder="Nome" ng-model="vm.models.name" class="required form-control" focus/>
                   <span class="requerido">Este campo é obrigatório.</span>
@@ -23,11 +23,35 @@
 
               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="nickname" placeholder="Abreviatura" ng-model="vm.models.nickname" class="required form-control" focus/>
+                  <input required type="text" name="model" placeholder="Abreviatura" ng-model="vm.models.model" class="required form-control"/>
                   <span class="requerido">Este campo é obrigatório.</span>
-                  <label>Abreviatura <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                  <label>Modelo <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
               </div>     
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="couple" placeholder="Abreviatura" ng-model="vm.models.couple" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Modelo acoplado<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>     
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="scenario" placeholder="Abreviatura" ng-model="vm.models.scenario" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Cenário<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>  
+
+              <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="resolution" placeholder="Abreviatura" ng-model="vm.models.resolution" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Resolução<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div> 
 
             </div>              
 

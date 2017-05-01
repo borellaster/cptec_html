@@ -33,13 +33,7 @@ define(function(require) {
   )
 
 
-  /*.run(function ($rootScope, $location) { //Insert in the function definition the dependencies you need.
-    $rootScope.$on("$locationChangeStart",function(event, next, current){
-        $rootScope.isMap = ($location.$$path == '/home') ? true : false;
-    });
-  })*/
-
-    //operacoes do usuario
+  //operacoes do usuario
   .run(function ($rootScope, $http, $state, $cookies) {
       $rootScope.hasRole = function (role) {
           if ($rootScope.usuario === undefined) {
@@ -57,8 +51,8 @@ define(function(require) {
           return false;
       };
 
-      $rootScope.isAdmin = function (role) {
-          if ($rootScope.usuario.profile === 'ADMINISTRADOR') {
+      $rootScope.isLogged = function (role) {
+          if ($cookies.get('usuario') != undefined) {
               return true;
           }
           return false;
@@ -67,7 +61,7 @@ define(function(require) {
       $rootScope.logout = function () { 
         delete $rootScope.usuario;
         $cookies.remove('usuario');
-        delete $http.defaults.headers.common['X-Auth-Token'];
+        delete $http.defaults.headers.common['Authorization'];
         $state.go('login');
       };
   })
@@ -78,12 +72,9 @@ define(function(require) {
         if ($cookies.get('usuario') != undefined) var usuario = JSON.parse($cookies.get('usuario'));
         if (usuario == undefined && originalPath.substring(0, 6) == '/admin') {
           $location.path("login");
-          if (originalPath != '/login') {
-            //setError('Usuário não autorizado');
-          }
         } else {
           if (usuario != undefined) {
-            $rootScope.usuario = usuario;
+            $rootScope.usuario = usuario;            
             $http.defaults.headers.common['Authorization'] = "JWT "+usuario.token;
           }
         } 

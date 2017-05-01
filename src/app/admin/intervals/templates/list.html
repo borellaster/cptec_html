@@ -3,7 +3,7 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">Intervalos</div>
+          <div class="caption">Frequências</div>
         </div>
         <div class="panel-body">
           <div class="row" style="margin-bottom:10px;">
@@ -32,12 +32,14 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th width="150px">Nome</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="intervals in vm.result.data | filter:filter.search">
                 <td>{{intervals.name}}</td>
+                <td>{{intervals.nickname}}</td>
                 <td class="hidden-xs"><a ui-sref="home.intervals.edit({id:intervals.id})">Editar</a></td>
               </tr>
               <tr>
