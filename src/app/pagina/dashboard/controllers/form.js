@@ -91,20 +91,18 @@ define(function(require) {
       setError('Erro ao carregar variáveis.')
     });
 
-    /*vm.loadData = function () {
-      angular.forEach(form.$error, function (field) {
-        angular.forEach(field, function(errorField){
-          console.log(errorField)
-            errorField.$setTouched();
-            errorField.$setDirty();
-        })
-      });
-
-      if (form.$invalid) {
-        return true;
-      }      
-      dataService.list(vm.requisicao.longitude,
-                       vm.requisicao.latitude, 
+    vm.loadData = function () {
+      var latitude = 0;
+      var longitude = 0;
+      if(vm.requisicao.tipoConsulta.val == "CI"){
+        latitude = vm.requisicao.city.latitude;
+        longitude = vm.requisicao.city.longitude;
+      }else if(vm.requisicao.tipoConsulta.val == "CO"){
+        latitude = vm.requisicao.latitude;
+        longitude = vm.requisicao.longitude;
+      }
+      dataService.list(longitude,
+                       latitude, 
                        getVariables(), 
                        vm.requisicao.start_date, 
                        vm.requisicao.end_date)
@@ -113,7 +111,7 @@ define(function(require) {
       }).catch(function error(msg) {
         setError('Erro ao pesquisar os registros.');
       });      
-    }*/
+    }
 
     vm.loadCities = function(cidade) {
       if(cidade.length >= 3){
@@ -137,6 +135,7 @@ define(function(require) {
         if (vm.formum.$invalid) {
           return true;
         }
+        vm.loadData();
       }
 
       if (aba == 'tres') {
@@ -209,6 +208,20 @@ define(function(require) {
       vm.requisicao.model_id = vm.requisicao.model.id;
       vm.requisicao.interval_id = vm.requisicao.interval.id;
       vm.requisicao.query_type = vm.requisicao.tipoConsulta.val;
+      var points = [];
+      var latitude = 0;
+      var longitude = 0;  
+      var point = {};    
+      if(vm.requisicao.tipoConsulta.val == "CI"){
+        latitude = vm.requisicao.city.latitude;
+        longitude = vm.requisicao.city.longitude;
+        point = { type: 'Point', coordinates: [latitude,longitude]};
+      }else if(vm.requisicao.tipoConsulta.val == "CO"){
+        latitude = vm.requisicao.latitude;
+        longitude = vm.requisicao.longitude;
+        point = { type: 'Point', coordinates: [latitude,longitude]};
+      } 
+      vm.requisicao.location = point;     
       dataService.save(vm.requisicao).then(function success(data) {
         setOk('Requisição incluída com sucesso.');
       })
