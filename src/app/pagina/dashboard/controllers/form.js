@@ -6,11 +6,11 @@ define(function(require) {
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
                            'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
-                           'IntervalsFactory', 'TypesFactory', 'CitiesFactory'];
+                           'IntervalsFactory', 'TypesFactory', 'CitiesFactory', 'PaginationFactory'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          dataServiceVariable, dataServiceModel, dataServiceCouple,
                          dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
-                         dataServiceInterval, dataServiceTypes, dataServiceCity) {
+                         dataServiceInterval, dataServiceTypes, dataServiceCity, pagination) {
     var vm = this; 
     init();   
 
@@ -91,7 +91,12 @@ define(function(require) {
       setError('Erro ao carregar variáveis.')
     });
 
-    vm.loadData = function () {
+    vm.pageChanged = function() {
+      pagination.setNextPage(vm.result.page);
+      vm.loadData(pagination.getNextPage());
+    }    
+
+    vm.loadData = function (page) {
       var latitude = 0;
       var longitude = 0;
       if(vm.requisicao.tipoConsulta.val == "CI"){
@@ -101,13 +106,17 @@ define(function(require) {
         latitude = vm.requisicao.latitude;
         longitude = vm.requisicao.longitude;
       }
-      dataService.list(longitude,
-                       latitude, 
-                       getVariables(), 
-                       vm.requisicao.start_date, 
-                       vm.requisicao.end_date)
+      dataService.listpag(longitude, latitude, getVariables(), vm.requisicao.start_date, 
+                          vm.requisicao.end_date, page, pagination.getPageSize())
         .then(function success(result) {
-        vm.result = result;          
+        vm.result = result;    
+        vm.currentPage = result.page;
+        pagination.updateMetainf(
+          result.count,
+          result.length,
+          result.page,
+          result.pages
+        );              
       }).catch(function error(msg) {
         setError('Erro ao pesquisar os registros.');
       });      
@@ -135,7 +144,7 @@ define(function(require) {
         if (vm.formum.$invalid) {
           return true;
         }
-        vm.loadData();
+        vm.loadData(1);
       }
 
       if (aba == 'tres') {
@@ -250,6 +259,13 @@ define(function(require) {
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
       vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
       vm.requisicao.status = 0;
+
+      var ctrlName = 'DashboardCtrl';
+      pagination = pagination.get(ctrlName);
+      vm.pageSize = pagination.getPageSize();
+      vm.paginationPageSize = pagination.getPageSize();
+      vm.paginationItemsSize = 5;
+
     }
 
   }

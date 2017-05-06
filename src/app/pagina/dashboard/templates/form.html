@@ -165,12 +165,12 @@
                                         <td>{{data.date | date : 'dd/MM/yyyy'}}</td>
                                         <td>{{data.time}}</td>
                                         <td>{{data.variable}}</td>
-                                        <td>{{data.value}}</td>
+                                        <td>{{data.value | number}}</td>
                                       </tr>
                                       <tr>
                                     </tbody>
                                   </table>
-
+                                  <!--style="padding-top: 0px"-->  
                                   <div class="tab-content">
                                     <div class="text-center" ng-if="vm.result.pages > 1">
                                       <pagination ng-model="vm.result.page" max-size="vm.paginationItemsSize"
