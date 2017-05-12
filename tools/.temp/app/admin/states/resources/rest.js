@@ -34,7 +34,7 @@ define(function(require) {
   StatesComboResource.$inject = ['$resource'];
   function StatesComboResource($resource) {
     var rest = $resource(
-      'api/v1/native/states/wrapper', {}
+      'api/v1/public/states', {}
     );
     return rest;
   }     

@@ -5,6 +5,7 @@ define(function(require) {
   require('./controller');
   require('./states');
 
+  require('./templatesCache');
   return module;
 
 });

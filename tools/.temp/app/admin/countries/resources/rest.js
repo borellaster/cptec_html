@@ -34,7 +34,7 @@ define(function(require) {
   CountriesComboResource.$inject = ['$resource'];
   function CountriesComboResource($resource) {
     var rest = $resource(
-      'api/v1/native/countries/wrapper', {}
+      'api/v1/public/countries', {}
     );
     return rest;
   }    

@@ -4,14 +4,93 @@ define(function(require) {
   var module = require('../module');
   module.controller('DashboardCtrl', DashboardCtrl);
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
-                           'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve'];
+                           'VariablesFactory', 'ModelsFactory', 'CouplesFactory',
+                           'ScenariosFactory', 'ResolutionsFactory', 'EnsemblesFactory',
+                           'IntervalsFactory', 'TypesFactory', 'CitiesFactory', 'PaginationFactory'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
-                         variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve) {
+                         dataServiceVariable, dataServiceModel, dataServiceCouple,
+                         dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
+                         dataServiceInterval, dataServiceTypes, dataServiceCity, pagination) {
     var vm = this; 
     vm.novo = true;
     init();   
+
+    /*loading modules*/
+    function getModels() {    
+      dataServiceModel.combo().then(function success(data) {
+        vm.models = data;
+        vm.requisicao.model = vm.models.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar modelos.')
+      });
+    }
+
+    /*loading couple models*/
+    /*function getCoupleModels() {    
+      dataServiceCouple.combo().then(function success(data) {
+        vm.couples = data;
+        vm.requisicao.couple = vm.couples.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar modelos acoplados.')
+      });
+    }*/
+
+    /*loading scenarios*/
+    /*function getScenarios() {    
+      dataServiceScenario.combo().then(function success(data) {
+        vm.scenarios = data;
+        vm.requisicao.scenario = vm.scenarios.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar cenários.')
+      });
+    }*/   
+
+    /*loading resolutions*/
+    /*function getResolutions() {    
+      dataServiceResolution.combo().then(function success(data) {
+        vm.resolutions = data;
+        vm.requisicao.resolution = vm.resolutions.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar resoluções.')
+      });
+    }*/
+
+    /*loading ensembles*/
+    /*function getEnsembles() {    
+      dataServiceEnsemble.combo().then(function success(data) {
+        vm.ensembles = data;
+        vm.requisicao.ensemble = vm.ensembles.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar conjuntos.')
+      });
+    }*/ 
+
+    /*loading intervals*/
+    function getIntervals() {    
+      dataServiceInterval.combo().then(function success(data) {
+        vm.intervals = data;
+        vm.requisicao.interval = vm.intervals.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar intervalos.')
+      });
+    }
+
+    /*loading types*/
+    function getTypes() {    
+      dataServiceTypes.combo().then(function success(data) {
+        vm.types = data;
+        vm.requisicao.type = vm.types.data[0];
+      }).catch(function error(msg) {
+        setError('Erro ao carregar tipos de saída.')
+      });
+    }    
+
+    /*loading variables*/
+    dataServiceVariable.combo().then(function success(data) {
+      vm.variablesAll = data;
+    }).catch(function error(msg) {
+      setError('Erro ao carregar variáveis.')
+    });
 
     vm.pageChanged = function() {
       pagination.setNextPage(vm.result.page);
@@ -153,6 +232,7 @@ define(function(require) {
       } 
       vm.requisicao.location = point;     
       dataService.save(vm.requisicao).then(function success(data) {        
+        //setOk('Requisição incluída com sucesso.');
         initRequisicao();
         vm.novo = false;
         dataService.processRequest(data.id);
@@ -170,21 +250,21 @@ define(function(require) {
 
       vm.requisicao.tipoConsulta = vm.tipoConsultas[0];      
       vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
-      vm.requisicao.status = 0;
-      vm.requisicao.model = vm.models.data[0];
-      vm.requisicao.interval = vm.intervals.data[0];
-      vm.requisicao.type = vm.types.data[0];      
+      vm.requisicao.status = 0;      
     }    
 
     function init() {
-      vm.models = modelsResolve;
-      vm.intervals = intervalsResolve;
-      vm.types = typesResolve;
-      vm.variablesAll = variablesResolve;
-      /*consultas de array no service*/
+      getModels();
+      //getCoupleModels();
+      //getScenarios();
+      //getResolutions();
+      //getEnsembles();
+      getIntervals();
+      getTypes();
+      /*tipo de consulta*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();      
+      /*tipo de requisicao*/
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
-      /*paginacao*/
       var ctrlName = 'DashboardCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();

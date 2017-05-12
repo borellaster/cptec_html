@@ -9,6 +9,7 @@ define(function(require) {
   require('./resources/search');
   require('./states');
 
+  require('./templatesCache');
   return module;
 
 });
