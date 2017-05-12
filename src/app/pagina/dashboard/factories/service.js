@@ -4,17 +4,18 @@ define(function(require) {
   var module = require('../module');
   module.factory('DashboardFactory', DashboardFactory);
   DashboardFactory.$inject = [
-    'DashboardResource', 'DashboardPagResource', 'RequestsResource'
+    'DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource'
   ];
 
-  function DashboardFactory(resource, resourcePag, resourceRequisicao) {
+  function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess) {
     var service = {
       list: list,
       listpag: listpag,
       getArrayTipoConsulta: getArrayTipoConsulta,
       tipoConsultaLabel: tipoConsultaLabel,
       save: save,
-      getArrayTipoRequisicoes: getArrayTipoRequisicoes
+      getArrayTipoRequisicoes: getArrayTipoRequisicoes,
+      processRequest: processRequest
     };
 
     return service;
@@ -75,7 +76,11 @@ define(function(require) {
         {val: 'G', desc: 'Visualização em gráfico'}
       ];
       return array;
-    }            
+    }
+
+    function processRequest(id) {
+      return resourceProcess.get({'id': id});
+    }                
 
    };
   

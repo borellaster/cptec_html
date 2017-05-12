@@ -49,6 +49,21 @@ define(function(require) {
     return rest;
   }  
 
+  module.factory('ProcessRequestResource', ProcessRequestResource);
+  ProcessRequestResource.$inject = ['$resource'];
+  function ProcessRequestResource($resource) {
+    var rest = $resource(
+      'api/v1/public/requests/:id',
+      {
+        'id': ''
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }   
+
  
 
 });

@@ -28,7 +28,7 @@
                               <li class="aba-dois">
                                   <a>
                                     <i class="icon-book-open"></i>
-                                    <p><span>2º Passo</span>Consulta disponível para conferência</p>
+                                    <p><span>2º Passo</span>Consulta para conferência</p>
                                   </a></li>
                                   <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
                               <li class="aba-tres">
@@ -182,21 +182,6 @@
                                     </div>
                                   </div>                               
 
-                              <!--<div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
-                                <div class="mui-textfield">
-                                  <ui-select ng-model="vm.requisicao.tipoRequisicao" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                                    <ui-select-match placeholder="Selecione um tipo de requisição">{{$select.selected.desc}}</ui-select-match>
-                                    <ui-select-choices repeat="tipo in vm.tipoRequisicoes">
-                                      <div ng-bind-html="tipo.desc"></div>
-                                    </ui-select-choices>
-                                  </ui-select>               
-                                  <span class="requerido">Este campo é obrigatório.</span>
-                                  <label>Tipo de Requisição <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                </div>
-                              </div>-->
-
-
-
                               <ul class="pager wizard">
                                 <li class="next">
                                   <button class="btn btn-info button-next mlm" ng-click="vm.step('tres')" style="float: right;"> Próximo
@@ -267,19 +252,20 @@
                           </div>
                           <div id="tab4-wizard-custom-circle" class="tab-pane fadeIn">
                             <div id="tab1-wizard-custom-circle" class="tab-pane active">
-                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;">Confirmar requisição e finalizar</h3>
+                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;" ng-if="vm.novo">Confirmar requisição e finalizar</h3>
+                              <h3 class="mbxl" style="font-size: 19px;margin-bottom: 10px !important;" ng-if="!vm.novo"></h3>
                               <form action="#"  name="vm.formquatro" class="form-horizontal">
                              
-                                <div class="well">
+                                <div class="well" ng-if="vm.novo">
                                   <div class="row">
                                     <div class="col-md-6">
                                       <address>
                                         <strong>Filtros:</strong>
                                         <br/>Modelo: {{vm.requisicao.model.name}}
-                                        <br/>Frequência: {{vm.requisicao.interval.name}}
+                                        <br/>Frequência: {{vm.requisicao.interval.nickname}}
                                         <br/>Tipo de consulta: {{vm.requisicao.tipoConsulta.desc}}
                                         <span ng-if="vm.requisicao.tipoConsulta.val == 'CO'"><br/>Coordenadas: {{vm.requisicao.latitude}}, {{vm.requisicao.longitude}}</span>
-                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Cidade: {{vm.requisicao.cidade.name}}</span>
+                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Cidade: {{vm.requisicao.city.name}} ({{vm.requisicao.city.latitude}}, {{vm.requisicao.city.longitude}})</span>
                                         <br/>Variáveis: {{vm.getVariablesFinalizar()}}
                                         <br/>Período: {{vm.requisicao.start_date | date:'dd/MM/yyyy'}} até {{vm.requisicao.end_date  | date:'dd/MM/yyyy'}}
                                       </address>
@@ -298,18 +284,28 @@
                                       </address>
                                     </div>                                    
                                   </div>
+                                </div>  
 
-                                </div>                             
-  
-                                 
+                                <div id="tab4-wizard-custom-circle" class="tab-pane fadeIn" ng-if="!vm.novo">
+                                  <h3 class="mbxl">Obrigado!</h3>
+                                  <p>Sua requisição foi concluída com sucesso.</p>
+                                  <p>Em breve estaremos enviando um e-mail com o link para download.</p>
+                                  <p></p>
+                                  <p>CPTEC/INPE</p>
+                                </div>                                 
 
                               <ul class="pager wizard">
-                                <li class="next">
+                                <li class="next" ng-if="vm.novo">
                                   <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.save()"> Concluir
                                     <i class="fa fa-check-circle-o mlx"></i>
                                   </button>
                                 </li>
-                                <li class="previous">
+                                <li class="next" ng-if="!vm.novo">
+                                  <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.step('um')"> Nova requisição
+                                    <i class="fa fa-plus-circle-o mlx"></i>
+                                  </button>
+                                </li>                                
+                                <li class="previous" ng-if="vm.novo">
                                   <button class="btn btn-info button-previous mlm" ng-click="vm.step('tres')" style="float: right;"> Anterior
                                     <i class="fa fa-arrow-circle-o-left mlx"></i>
                                   </button>

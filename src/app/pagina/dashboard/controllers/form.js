@@ -12,6 +12,7 @@ define(function(require) {
                          dataServiceScenario, dataServiceResolution, dataServiceEnsemble,
                          dataServiceInterval, dataServiceTypes, dataServiceCity, pagination) {
     var vm = this; 
+    vm.novo = true;
     init();   
 
     /*loading modules*/
@@ -173,7 +174,6 @@ define(function(require) {
         }
       }
 
-
       $timeout(function() {
         $("#click-aba-" + aba).click();
         $(".aba-" + aba).addClass('active');
@@ -231,20 +231,29 @@ define(function(require) {
         point = { type: 'Point', coordinates: [latitude,longitude]};
       } 
       vm.requisicao.location = point;     
-      dataService.save(vm.requisicao).then(function success(data) {
-        setOk('Requisição incluída com sucesso.');
+      dataService.save(vm.requisicao).then(function success(data) {        
+        //setOk('Requisição incluída com sucesso.');
+        initRequisicao();
+        vm.novo = false;
+        dataService.processRequest(data.id);
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
       });
-    }      
+    }  
 
-    function init() {
+    function initRequisicao() {
       vm.requisicao = {
         'start_date': new Date(),
         'end_date': new Date(),
       }
 
+      vm.requisicao.tipoConsulta = vm.tipoConsultas[0];      
+      vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
+      vm.requisicao.status = 0;      
+    }    
+
+    function init() {
       getModels();
       //getCoupleModels();
       //getScenarios();
@@ -253,19 +262,15 @@ define(function(require) {
       getIntervals();
       getTypes();
       /*tipo de consulta*/
-      vm.tipoConsultas = dataService.getArrayTipoConsulta();
-      vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
+      vm.tipoConsultas = dataService.getArrayTipoConsulta();      
       /*tipo de requisicao*/
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
-      vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
-      vm.requisicao.status = 0;
-
       var ctrlName = 'DashboardCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();
       vm.paginationPageSize = pagination.getPageSize();
       vm.paginationItemsSize = 5;
-
+      initRequisicao();
     }
 
   }
