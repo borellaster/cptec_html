@@ -116,7 +116,7 @@ define(function(require) {
       var str = "";
       var values = vm.requisicao.variablesAll;      
       angular.forEach(values, function(value, key) {
-        str += value.nickname +"," 
+        str += "'"+ value.nickname +"'," 
       }); 
       str = str.substring(0, str.length -1);
       str += "";
