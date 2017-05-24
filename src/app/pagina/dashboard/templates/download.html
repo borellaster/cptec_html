@@ -1,0 +1,52 @@
+<div class="page-title-breadcrumb">
+  <ol class="breadcrumb page-breadcrumb pull-left">
+    <li><i class="fa fa-home"></i>&nbsp;<a href="/#/">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i></li>
+    <li><a href="/#/">&nbsp;&nbsp;Download</a></li>
+  </ol>
+</div>
+
+<div class="demo-form-component">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="caption">Download da requisição</div>
+        </div>
+        <div class="panel-body">
+
+
+        <div class="well">
+          <div class="row">
+            <div class="col-md-6">
+              <address>
+                <strong>Filtros:</strong>
+                <br/>Modelo: {{vm.result.data.model.name}}
+                <br/>Frequência: {{vm.result.data.interval.name}}
+                <span><br/>Coordenadas: ({{vm.result.data.location.coordinates[0]}}, {{vm.result.data.location.coordinates[1]}})</span>
+                <br/>Variáveis: {{vm.result.data.variables}}
+                <br/>Período: {{vm.result.data.start_date | date:'dd/MM/yyyy'}} até {{vm.result.data.end_date  | date:'dd/MM/yyyy'}}
+              </address>
+            </div>
+            <div class="col-md-6">
+              <address>
+                <strong>Dados pessoais:</strong>
+                <br/>Nome: {{vm.result.data.name}}
+                <br/>E-mail: {{vm.result.data.email}}               
+              </address>
+            </div>
+            <div class="col-md-6">
+              <address>
+                <strong>Saída:</strong>
+                <br/>Arquivo: {{vm.result.data.type.name}}
+              </address>
+            </div>                                    
+          </div>
+        </div>
+
+        <a ng-click="vm.download()" class="btn btn-success"><i class="icon-cloud-download"></i> Download</a>          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

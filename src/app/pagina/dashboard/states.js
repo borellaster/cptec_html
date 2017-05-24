@@ -23,7 +23,28 @@ define(function(require) {
           TypesResolve: typesList,
           VariablesResolve: variablesList
         }
+      }).state('pagina.download', {
+        url: '/download/:id',
+        views: {
+          'content@pagina': {
+            templateUrl   : 'app/pagina/dashboard/templates/download.html',
+            controller    : 'DownloadRequestCtrl',
+            controllerAs  : 'vm'
+          }
+        },
+        resolve: { 
+          DownloadResolve : requestDownload
+        }
       });
+  } 
+
+  requestDownload.$inject = ['RequestsFactory','$stateParams'];
+  function requestDownload(dataService, params) {
+      return dataService.findByIdDownload(params.id).then(function success(data) {
+        return data;        
+      }).catch(function error(msg) {
+        setError('Erro ao carregar arquivo para download.')
+      });  
   }
 
   modelsList.$inject = ['ModelsFactory'];

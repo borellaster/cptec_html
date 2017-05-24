@@ -28,6 +28,18 @@ define(function(require) {
       }
     );
     return rest;
-  }    
+  }  
+
+  module.factory('RequestsDownloadResource', RequestsDownloadResource);
+  RequestsDownloadResource.$inject = ['$resource'];
+  function RequestsDownloadResource($resource) {
+    var rest = $resource(
+      'api/v1/public/requests/:id', 
+      {
+        'id': 1
+      }
+    );
+    return rest;
+  }     
 
 });
