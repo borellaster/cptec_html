@@ -14,7 +14,6 @@ define(function(require) {
     var service = {
       save: save,
       findById: findById,
-      remove: remove,
       search: search,
       list: list
     };
@@ -31,10 +30,6 @@ define(function(require) {
 
     function findById(id) {
       return resource.get({'id': id}).$promise;
-    }
-
-    function remove(id){
-      return resource.delete({'id': id}).$promise;
     }
 
     function search(page, size, name){

@@ -17,13 +17,52 @@
                 </div>
               </div>
 
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="mail" placeholder="Email" ng-model="vm.configurations.mail" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Email <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div> 
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="smtp" placeholder="Smtp" ng-model="vm.configurations.smtp" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Smtp <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div> 
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="pop" placeholder="Pop" ng-model="vm.configurations.pop" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Pop <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="password" name="password" placeholder="Senha" ng-model="vm.configurations.password" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Senha <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>  
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="link" placeholder="Link Externo" ng-model="vm.configurations.link" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Link Externo <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>                                                                          
+
             </div> 
 
 
               <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
                 <a ui-sref="home.configurations.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
-                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
-                <a ng-click="vm.remove()" ng-show="vm.configurations.id" class="btn btn-danger"><i class="icon-close"></i> Excluir</a>                
+                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>                
               </div>
               <div class="form-group" style="margin-top:10px;" ng-show="vm.showConfirm">
                 <h4>Confirmação</h4>

@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar Configurations';
+        vm.title = 'Cadastrar configuração';
         vm.acao = 'incluído';
         vm.configurations = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Configurations';
+        vm.title = 'Editar configuração';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.configurations = data;
