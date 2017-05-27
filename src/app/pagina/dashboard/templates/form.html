@@ -171,7 +171,7 @@
                                     </tbody>
                                   </table>
                                   <!--style="padding-top: 0px"-->  
-                                  <div class="tab-content">
+                                  <div class="tab-content" style="padding-top: 1px;padding-bottom: 1px;">
                                     <div class="text-center" ng-if="vm.result.pages > 1">
                                       <pagination ng-model="vm.result.page" max-size="vm.paginationItemsSize"
                                         total-items="vm.result.count" num-pages="vm.result.pages"
@@ -182,7 +182,7 @@
                                     </div>
                                   </div>                               
 
-                              <ul class="pager wizard">
+                              <ul class="pager wizard" style="margin-top: 1px;">
                                 <li class="next">
                                   <button class="btn btn-info button-next mlm" ng-click="vm.step('tres')" style="float: right;"> Próximo
                                     <i class="fa fa-arrow-circle-o-right mlx"></i>

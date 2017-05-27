@@ -53,7 +53,7 @@ define(function(require) {
   ProcessRequestResource.$inject = ['$resource'];
   function ProcessRequestResource($resource) {
     var rest = $resource(
-      'api/v1/public/requests/:id',
+      'api/v1/public/requests/process/:id',
       {
         'id': ''
       },
