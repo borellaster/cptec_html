@@ -38,13 +38,14 @@ define(function(require) {
       }).$promise;
     }   
 
-    function listpag(longitude, latitude, variables, startdate, enddate, page, size){
+    function listpag(longitude, latitude, variables, startdate, enddate, model, page, size){
       return resourcePag.get({
           'longitude': longitude, 
           'latitude': latitude, 
           'variables': variables,
           'startdate': startdate,
-          'enddate': enddate,          
+          'enddate': enddate, 
+          'id': model,         
           'page': page,
           'size': size
       }).$promise;

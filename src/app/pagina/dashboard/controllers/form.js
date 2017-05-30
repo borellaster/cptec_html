@@ -29,7 +29,7 @@ define(function(require) {
         longitude = vm.requisicao.longitude;
       }
       dataService.listpag(longitude, latitude, getVariables(), vm.requisicao.start_date, 
-                          vm.requisicao.end_date, page, 5)
+                          vm.requisicao.end_date, vm.requisicao.model.id, page, 5)
         .then(function success(result) {
         vm.result = result;    
         vm.currentPage = result.page;
