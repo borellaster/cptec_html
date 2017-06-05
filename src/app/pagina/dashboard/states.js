@@ -40,7 +40,7 @@ define(function(require) {
 
   requestDownload.$inject = ['RequestsFactory','$stateParams'];
   function requestDownload(dataService, params) {
-      return dataService.findByIdDownload(params.id).then(function success(data) {
+      return dataService.findByHashDownload(params.id).then(function success(data) {
         return data;        
       }).catch(function error(msg) {
         setError('Erro ao carregar arquivo para download.')

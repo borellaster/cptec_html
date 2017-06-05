@@ -17,7 +17,7 @@ define(function(require) {
       remove: remove,
       search: search,
       list: list,
-      findByIdDownload: findByIdDownload
+      findByHashDownload: findByHashDownload
     };
 
     return service;
@@ -34,9 +34,9 @@ define(function(require) {
       return resource.get({'id': id}).$promise;
     }
 
-    function findByIdDownload(id) {
-      return resourceDownload.get({'id': id}).$promise;
-    }    
+    function findByHashDownload(hash) {
+      return resourceDownload.get({'hash': hash}).$promise;
+    }         
 
     function remove(id){
       return resource.delete({'id': id}).$promise;

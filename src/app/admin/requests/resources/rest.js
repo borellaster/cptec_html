@@ -34,9 +34,9 @@ define(function(require) {
   RequestsDownloadResource.$inject = ['$resource'];
   function RequestsDownloadResource($resource) {
     var rest = $resource(
-      'api/v1/public/requests/:id', 
+      'api/v1/public/requests/:hash', 
       {
-        'id': 1
+        'hash': ''
       }
     );
     return rest;
