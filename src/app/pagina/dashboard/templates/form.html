@@ -23,7 +23,7 @@
                             <ul class="nav">
                               <li class="aba-um active">
                               <a ><i class="icon-speech"></i>
-                                  <p><span>1º Passo</span>Filtragem dos dados</p></a>
+                                  <p><span>1º Passo</span>Escolha dos dados</p></a>
                                   <a id="click-aba-um" href="#tab1-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></li>
                               <li class="aba-dois">
                                   <a>
@@ -33,7 +33,7 @@
                                   <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
                               <li class="aba-tres">
                               <a><i class="icon-list"></i>
-                                  <p><span>3º Passo</span>Dados pessoais e tipo de saída</p></a>
+                                  <p><span>3º Passo</span>Dados pessoais e formato dos dados</p></a>
                                   <a id="click-aba-tres" href="#tab3-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></li>
                               <li class="aba-quatro"><a ><i class="icon-check"></i>
                                   <p><span>4º Passo</span>Concluir requisição</p>
@@ -47,7 +47,7 @@
                         </div>-->
                         <div class="tab-content" style="padding-top: 0px">
                           <div id="tab1-wizard-custom-circle" class="tab-pane active">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o modelo, frequência e demais dados necessários para sua filtragem</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o modelo, frequência e demais dados necessários</h3>
                             <form name="vm.formum" class="form-horizontal">
 
                               <div class="form-group">
@@ -198,7 +198,7 @@
                             
                           </div>
                           <div id="tab3-wizard-custom-circle" class="tab-pane fadeIn">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Informar dados pessoais e escolha do arquivo de saída</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Informar dados pessoais e escolha do formato dos arquivos</h3>
 
                             <form role="form" name="vm.formtres" novalidate>
 
@@ -224,12 +224,12 @@
                                   <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
                                     <div class="mui-textfield">
                                         <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                                          <ui-select-match placeholder="Selecione um tipo de saída">{{$select.selected.name}}</ui-select-match>
+                                          <ui-select-match placeholder="Selecione um formato">{{$select.selected.name}}</ui-select-match>
                                           <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
                                             <div ng-bind-html="type.name | highlight: $select.search"></div>                        
                                           </ui-select-choices>
                                         </ui-select>                  
-                                      <label>Tipo de saída <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                      <label>Formato do arquivo dos dados<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                                     </div>
                                   </div>                                                    
                                 </div>  
@@ -260,8 +260,8 @@
                                   <div class="row">
                                     <div class="col-md-6">
                                       <address>
-                                        <strong>Filtros:</strong>
-                                        <br/>Modelo: {{vm.requisicao.model.name}}
+                                        <strong>Resumo da requisição:</strong>
+                                        <br/>Cenário Climático: {{vm.requisicao.model.name}}
                                         <br/>Frequência: {{vm.requisicao.interval.nickname}}
                                         <br/>Tipo de consulta: {{vm.requisicao.tipoConsulta.desc}}
                                         <span ng-if="vm.requisicao.tipoConsulta.val == 'CO'"><br/>Coordenadas: {{vm.requisicao.latitude}}, {{vm.requisicao.longitude}}</span>
@@ -279,7 +279,7 @@
                                     </div>
                                     <div class="col-md-6">
                                       <address>
-                                        <strong>Saída:</strong>
+                                        <strong>Formato do arquivo dos dados:</strong>
                                         <br/>Arquivo: {{vm.requisicao.type.name}}
                                       </address>
                                     </div>                                    
