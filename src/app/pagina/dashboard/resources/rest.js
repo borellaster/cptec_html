@@ -62,7 +62,24 @@ define(function(require) {
       }
     );
     return rest;
-  }   
+  } 
+
+  module.factory('YearResource', YearResource);
+  YearResource.$inject = ['$resource'];
+  function YearResource($resource) {
+    var rest = $resource(
+      'api/v1/public/years',
+      {
+
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }
+
+     
 
  
 

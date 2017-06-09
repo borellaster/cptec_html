@@ -182,6 +182,14 @@ define(function(require) {
       vm.intervals = intervalsResolve;
       vm.types = typesResolve;
       vm.variablesAll = variablesResolve;
+      /*dataService.getYears().then(function success(data) {
+        console.log(data);        
+      }).catch(function error(msg) {
+        
+      });*/        
+      //vm.years = yearsResolve;
+      /*vm.months = monthsResolve;
+      console.log(vm.months);      */
       /*consultas de array no service*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();      
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();

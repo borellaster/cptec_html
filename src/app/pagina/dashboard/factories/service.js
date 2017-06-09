@@ -3,11 +3,8 @@ define(function(require) {
 
   var module = require('../module');
   module.factory('DashboardFactory', DashboardFactory);
-  DashboardFactory.$inject = [
-    'DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource'
-  ];
-
-  function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess) {
+  DashboardFactory.$inject = ['DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource', 'YearResource'];
+  function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess, resourceYear) {
     var service = {
       list: list,
       listpag: listpag,
@@ -15,7 +12,8 @@ define(function(require) {
       tipoConsultaLabel: tipoConsultaLabel,
       save: save,
       getArrayTipoRequisicoes: getArrayTipoRequisicoes,
-      processRequest: processRequest
+      processRequest: processRequest,
+      getYears: getYears
     };
 
     return service;
@@ -81,7 +79,13 @@ define(function(require) {
 
     function processRequest(id) {
       return resourceProcess.get({'id': id});
-    }                
+    }  
+
+    function getYears() {
+      return resourceYear.get();
+    }  
+
+                    
 
    };
   

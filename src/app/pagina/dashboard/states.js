@@ -83,4 +83,15 @@ define(function(require) {
       });
   }
 
+  yearsList.$inject = ['DashboardFactory'];
+  function yearsList(dataService) {
+      return dataService.years().then(function success(data) {
+        return data;        
+      }).catch(function error(msg) {
+        setError('Erro ao carregar anos.')
+      });  
+  } 
+
+  
+
 });
