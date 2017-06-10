@@ -3,8 +3,10 @@ define(function(require) {
 
   var module = require('../module');
   module.factory('DashboardFactory', DashboardFactory);
-  DashboardFactory.$inject = ['DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource', 'YearResource'];
-  function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess, resourceYear) {
+  DashboardFactory.$inject = ['DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource', 
+        'YearRequestResource', 'MonthRequestResource'];
+  function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess, 
+        resourceYear, resourceMonth) {
     var service = {
       list: list,
       listpag: listpag,
@@ -13,7 +15,8 @@ define(function(require) {
       save: save,
       getArrayTipoRequisicoes: getArrayTipoRequisicoes,
       processRequest: processRequest,
-      getYears: getYears
+      getYears: getYears,
+      getMonths: getMonths
     };
 
     return service;
@@ -36,13 +39,15 @@ define(function(require) {
       }).$promise;
     }   
 
-    function listpag(longitude, latitude, variables, startdate, enddate, model, page, size){
+    function listpag(longitude, latitude, variables, startmonth, startyear, endmonth, endyear, model, page, size){
       return resourcePag.get({
           'longitude': longitude, 
           'latitude': latitude, 
           'variables': variables,
-          'startdate': startdate,
-          'enddate': enddate, 
+          'startmonth': startmonth,
+          'startyear': startyear, 
+          'endmonth': endmonth,
+          'endyear': endyear,           
           'id': model,         
           'page': page,
           'size': size
@@ -82,10 +87,13 @@ define(function(require) {
     }  
 
     function getYears() {
-      return resourceYear.get();
+      return resourceYear.get().$promise;
     }  
 
-                    
+
+    function getMonths() {
+      return resourceMonth.get().$promise;
+    }                    
 
    };
   

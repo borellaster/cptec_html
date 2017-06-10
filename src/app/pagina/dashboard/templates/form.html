@@ -33,7 +33,7 @@
                                   <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
                               <li class="aba-tres">
                               <a><i class="icon-list"></i>
-                                  <p><span>3º Passo</span>Dados pessoais e formato dos dados</p></a>
+                                  <p><span>3º Passo</span>Dados e formato dos dados</p></a>
                                   <a id="click-aba-tres" href="#tab3-wizard-custom-circle" data-toggle="tab" style="display:none;"></a></li>
                               <li class="aba-quatro"><a ><i class="icon-check"></i>
                                   <p><span>4º Passo</span>Concluir requisição</p>
@@ -91,13 +91,65 @@
 
 
                               <div class="form-group">
-                                <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+
+                                <!--<div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
                                   <cptec-date required type="text" name="start_date" label="Período Inicial" ng-model="vm.requisicao.start_date" class="required" is-required="true"/>                  
                                 </div>
 
                                 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
                                   <cptec-date required type="text" name="end_date" label="Período Final" ng-model="vm.requisicao.end_date" class="required" is-required="true"/>
+                                </div>-->
+
+                               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                    <ui-select ng-model="vm.requisicao.start_month" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                      <ui-select-match placeholder="Selecione o mês inicial">{{$select.selected.nome}}</ui-select-match>
+                                      <ui-select-choices repeat="month in vm.months.data">
+                                        <div ng-bind-html="month.nome"></div>
+                                      </ui-select-choices>
+                                    </ui-select>               
+                                    <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Mês Inicial <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>               
                                 </div>
+                               <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                    <ui-select ng-model="vm.requisicao.start_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                      <ui-select-match placeholder="Selecione o ano inicial">{{$select.selected.year}}</ui-select-match>
+                                      <ui-select-choices repeat="year in vm.years.data">
+                                        <div ng-bind-html="year.year"></div>
+                                      </ui-select-choices>
+                                    </ui-select>               
+                                    <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Ano Inicial <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>               
+                                </div>                                
+
+                               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                    <ui-select ng-model="vm.requisicao.end_month" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                      <ui-select-match placeholder="Selecione o mês final">{{$select.selected.nome}}</ui-select-match>
+                                      <ui-select-choices repeat="month in vm.months.data">
+                                        <div ng-bind-html="month.nome"></div>
+                                      </ui-select-choices>
+                                    </ui-select>               
+                                    <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Mês Final <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>               
+                                </div>
+                               <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;">
+                                  <div class="mui-textfield">
+                                    <ui-select ng-model="vm.requisicao.end_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                                      <ui-select-match placeholder="Selecione o ano final">{{$select.selected.year}}</ui-select-match>
+                                      <ui-select-choices repeat="year in vm.years.data">
+                                        <div ng-bind-html="year.year"></div>
+                                      </ui-select-choices>
+                                    </ui-select>               
+                                    <span class="requerido">Este campo é obrigatório.</span>
+                                    <label>Ano Final <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                  </div>               
+                                </div> 
+                              
 
                                 <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
                                   <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
@@ -170,6 +222,7 @@
                                       <tr>
                                     </tbody>
                                   </table>
+                                  <pre>{{vm.result.count}}</pre>
                                   <!--style="padding-top: 0px"-->  
                                   <div class="tab-content" style="padding-top: 1px;padding-bottom: 1px;">
                                     <div class="text-center" ng-if="vm.result.pages > 1">

@@ -21,7 +21,9 @@ define(function(require) {
           ModelsResolve : modelsList,
           IntervalsResolve: intervalsList,
           TypesResolve: typesList,
-          VariablesResolve: variablesList
+          VariablesResolve: variablesList,
+          YearsResolve : yearsList,
+          MonthsResolve: monthsList
         }
       }).state('pagina.download', {
         url: '/download/:id',
@@ -85,13 +87,20 @@ define(function(require) {
 
   yearsList.$inject = ['DashboardFactory'];
   function yearsList(dataService) {
-      return dataService.years().then(function success(data) {
+      return dataService.getYears().then(function success(data) {
         return data;        
       }).catch(function error(msg) {
         setError('Erro ao carregar anos.')
       });  
   } 
 
-  
+  monthsList.$inject = ['DashboardFactory'];
+  function monthsList(dataService) {
+      return dataService.getMonths().then(function success(data) {
+        return data;        
+      }).catch(function error(msg) {
+        setError('Erro ao carregar anos.')
+      });  
+  }   
 
 });

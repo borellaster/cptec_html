@@ -38,9 +38,9 @@ define(function(require) {
   DashboardPagResource.$inject = ['$resource'];
   function DashboardPagResource($resource) {
     var rest = $resource(
-      'api/v1/public/json/:longitude/:latitude/:variables/:startdate/:enddate/:id/:page/:size',
+      'api/v1/public/json/:longitude/:latitude/:variables/:startmonth/:startyear/:endmonth/:endyear/:id/:page/:size',
       {
-        'longitude': '', 'latitude': '', 'variables': '', 'startdate': '', 'enddate': '', 'id': '', 'page': '', 'size': ''
+        'longitude': '', 'latitude': '', 'variables': '', 'startmonth': '', 'startyear': '', 'endmonth': '', 'endyear': '', 'id': '', 'page': '', 'size': ''
       },
       {
         'update': { 'method': 'PUT' }
@@ -64,9 +64,9 @@ define(function(require) {
     return rest;
   } 
 
-  module.factory('YearResource', YearResource);
-  YearResource.$inject = ['$resource'];
-  function YearResource($resource) {
+  module.factory('YearRequestResource', YearRequestResource);
+  YearRequestResource.$inject = ['$resource'];
+  function YearRequestResource($resource) {
     var rest = $resource(
       'api/v1/public/years',
       {
@@ -79,8 +79,18 @@ define(function(require) {
     return rest;
   }
 
-     
+  module.factory('MonthRequestResource', MonthRequestResource);
+  MonthRequestResource.$inject = ['$resource'];
+  function MonthRequestResource($resource) {
+    var rest = $resource(
+      'api/v1/public/months',
+      {
 
- 
-
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }
 });

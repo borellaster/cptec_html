@@ -5,10 +5,10 @@ define(function(require) {
   module.controller('DashboardCtrl', DashboardCtrl);
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve'];
+                           'PaginationFactory', 'ModelsResolve', 'YearsResolve', 'MonthsResolve'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve) {
+                         pagination, modelsResolve, yearsResolve, monthsResolve) {
     var vm = this; 
     vm.novo = true;
     init();   
@@ -28,8 +28,12 @@ define(function(require) {
         latitude = vm.requisicao.latitude;
         longitude = vm.requisicao.longitude;
       }
-      dataService.listpag(longitude, latitude, getVariables(), vm.requisicao.start_date, 
-                          vm.requisicao.end_date, vm.requisicao.model.id, page, 5)
+      dataService.listpag(longitude, latitude, getVariables(), 
+                          vm.requisicao.start_month.month,
+                          vm.requisicao.start_year.year, 
+                          vm.requisicao.end_month.month,
+                          vm.requisicao.end_year.year,                           
+                          vm.requisicao.model.id, page, 5)
         .then(function success(result) {
         vm.result = result;    
         vm.currentPage = result.page;
@@ -174,7 +178,11 @@ define(function(require) {
       vm.requisicao.status = 0;
       vm.requisicao.model = vm.models.data[0];
       vm.requisicao.interval = vm.intervals.data[0];
-      vm.requisicao.type = vm.types.data[0];      
+      vm.requisicao.type = vm.types.data[0]; 
+      vm.requisicao.start_month = vm.months.data[0]; 
+      vm.requisicao.start_year = vm.years.data[0];
+      vm.requisicao.end_month = vm.months.data[11];
+      vm.requisicao.end_year = vm.years.data[vm.years.data.length -1];
     }    
 
     function init() {
@@ -182,22 +190,16 @@ define(function(require) {
       vm.intervals = intervalsResolve;
       vm.types = typesResolve;
       vm.variablesAll = variablesResolve;
-      /*dataService.getYears().then(function success(data) {
-        console.log(data);        
-      }).catch(function error(msg) {
-        
-      });*/        
-      //vm.years = yearsResolve;
-      /*vm.months = monthsResolve;
-      console.log(vm.months);      */
+      vm.years = yearsResolve;      
+      vm.months = monthsResolve;
       /*consultas de array no service*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();      
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
       /*paginacao*/
       var ctrlName = 'DashboardCtrl';
       pagination = pagination.get(ctrlName);
-      vm.pageSize = pagination.getPageSize();
-      vm.paginationPageSize = pagination.getPageSize();
+      vm.pageSize = 5;
+      vm.paginationPageSize = 5;
       vm.paginationItemsSize = 5;
       initRequisicao();
     }
