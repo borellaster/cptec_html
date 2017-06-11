@@ -1,0 +1,28 @@
+<!--<div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
+  <div class="mui-textfield">
+    <ui-select multiple ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" require-multiple on-remove="ctrl.removed($item, $model)" close-on-select="false">
+      <ui-select-match placeholder="Selecione as variáveis">{{$item.nickname}}</ui-select-match>
+      <ui-select-choices repeat="variable in vm.variablesAll.data | propsFilter: {nickname: $select.search, description: $select.search}">
+      <div ng-bind-html="variable.nickname | highlight: $select.search"></div>
+      <small>
+        {{variable.nickname}}
+        <span ng-bind-html="''+variable.description | highlight: $select.search"></span>
+      </small>
+      </ui-select-choices>
+    </ui-select>
+    <span class="requerido">Este campo é obrigatório.</span>
+    <label>Variáveis <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+  </div>
+</div>-->
+<div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
+  <div class="mui-textfield">
+    <ui-select multiple ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" require-multiple on-remove="ctrl.removed($item, $model)" close-on-select="false">
+      <ui-select-match placeholder="Selecione as variáveis">{{$item.name}}</ui-select-match>
+      <ui-select-choices repeat="variable in vm.variablesAll.data | propsFilter: {name: $select.search, description: $select.search}">
+        <div ng-bind-html="variable.name"></div>
+      </ui-select-choices>
+    </ui-select>
+    <span class="requerido">Este campo é obrigatório.</span>
+    <label>Variáveis <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+  </div>
+</div>

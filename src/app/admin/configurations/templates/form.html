@@ -41,13 +41,37 @@
                 </div>
               </div>
 
-              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+              <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
                   <input required type="password" name="password" placeholder="Senha" ng-model="vm.configurations.password" class="required form-control"/>
                   <span class="requerido">Este campo é obrigatório.</span>
                   <label>Senha <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
-              </div>  
+              </div>                
+
+              <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="pop" placeholder="Porta" ng-model="vm.configurations.port" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Porta <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div> 
+
+              <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="pop" placeholder="SSL" ng-model="vm.configurations.ssl" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>SSL <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>   
+
+              <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="pop" placeholder="TLS" ng-model="vm.configurations.tls" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>TLS <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                </div>
+              </div>
 
               <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">

@@ -8,6 +8,7 @@ define(function(require) {
   function VariablesCtrl($state, params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
+    vm.situacoes = dataService.getArraySituacao();
 
     vm.updateLocation = function() {
       $state.go('home.variables.list');
@@ -24,6 +25,11 @@ define(function(require) {
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.variables = data;
+          angular.forEach(vm.situacoes, function(value, key) {
+            if(value.val == vm.variables.active){
+              vm.variables.activeobj = value;
+            }
+          });
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
@@ -40,7 +46,7 @@ define(function(require) {
       if (form.$invalid) {
         return true;
       }
-
+      vm.variables.active = vm.variables.activeobj.val;
       dataService.save(vm.variables).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');

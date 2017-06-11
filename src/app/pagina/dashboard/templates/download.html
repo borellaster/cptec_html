@@ -19,12 +19,14 @@
           <div class="row">
             <div class="col-md-6">
               <address>
-                <strong>Filtros:</strong>
-                <br/>Modelo: {{vm.result.data.model.name}}
+                <strong>Resumo da requisição:</strong>
+                <br/>Cenário Climático: {{vm.result.data.model.name}}
                 <br/>Frequência: {{vm.result.data.interval.name}}
                 <span><br/>Coordenadas: ({{vm.result.data.location.coordinates[0]}}, {{vm.result.data.location.coordinates[1]}})</span>
                 <br/>Variáveis: {{vm.result.data.variables}}
-                <br/>Período: {{vm.result.data.start_date | date:'dd/MM/yyyy'}} até {{vm.result.data.end_date  | date:'dd/MM/yyyy'}}
+                <br/>Período: {{vm.result.data.start_month}}/{{vm.result.data.start_year}} até {{vm.result.data.end_month}}/{{vm.result.data.end_year}}   
+                <br/>Utilização do dado: {{vm.result.data.utilizacao}}
+                <br/>Instituição: {{vm.result.data.utilizacao}}                             
               </address>
             </div>
             <div class="col-md-6">
