@@ -7,10 +7,9 @@ define(function(require) {
     'pagina',
     [
       require('./home/package').name,
-      //require('./unique/package').name,
       require('./dashboard/package').name,
+      require('./visualization/package').name,
       require('./about/package').name
-      //require('./map/package').name
     ]
   );
 

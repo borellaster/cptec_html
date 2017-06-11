@@ -23,7 +23,8 @@ define(function(require) {
       require('./resolutions/package').name,
       require('./ensembles/package').name,
       require('./intervals/package').name,
-      require('./login/package').name
+      require('./login/package').name,
+      require('./configurations/package').name
     ]
   );
 

@@ -10,8 +10,8 @@ define(function(require) {
   function configureStates($stateProvider, $urlRouterProvider, $httpProvider) {
 
     $urlRouterProvider
-      .when('', '/home')
-      .when('/', '/home')
+      .when('', '/dashboard')
+      .when('/', '/dashboard')
       .otherwise("/404");
 
     $stateProvider

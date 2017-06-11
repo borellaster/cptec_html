@@ -6,7 +6,6 @@ define(function(require) {
   require('./services');
   require('./states');
 
-  require('./templatesCache');
   return module;
 
 });
