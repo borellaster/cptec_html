@@ -27,7 +27,7 @@ define(function(require) {
       }else if(vm.requisicao.tipoConsulta.val == "CO"){
         latitude = vm.requisicao.latitude;
         longitude = vm.requisicao.longitude;
-      }
+      }      
       dataService.listpag(longitude, latitude, getVariables(), 
                           vm.requisicao.start_month.month,
                           vm.requisicao.start_year.year, 
@@ -143,6 +143,10 @@ define(function(require) {
       vm.requisicao.model_id = vm.requisicao.model.id;
       vm.requisicao.interval_id = vm.requisicao.interval.id;
       vm.requisicao.query_type = vm.requisicao.tipoConsulta.val;
+      vm.requisicao.start_month = vm.requisicao.start_month.month;
+      vm.requisicao.start_year = vm.requisicao.start_year.year;
+      vm.requisicao.end_month = vm.requisicao.end_month.month;
+      vm.requisicao.end_year = vm.requisicao.end_year.year;
       var points = [];
       var latitude = 0;
       var longitude = 0;  
@@ -160,7 +164,7 @@ define(function(require) {
       dataService.save(vm.requisicao).then(function success(data) {        
         initRequisicao();
         vm.novo = false;
-        dataService.processRequest(data.id);
+        dataService.processRequest(data.id); //LEMBRAR DE DESCOMENTAR
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');

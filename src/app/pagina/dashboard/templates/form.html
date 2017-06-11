@@ -222,7 +222,7 @@
                                       <tr>
                                     </tbody>
                                   </table>
-                                  <pre>{{vm.result.count}}</pre>
+                                  Exibindo {{(vm.currentPage - 1) * vm.pageSize + 1}} até {{vm.pageSize > vm.result.count ? vm.result.count : ((vm.currentPage - 1) * vm.pageSize + vm.pageSize > vm.result.count) ? vm.result.count : (vm.currentPage - 1) * vm.pageSize + vm.pageSize}} de {{vm.result.count}} registros.
                                   <!--style="padding-top: 0px"-->  
                                   <div class="tab-content" style="padding-top: 1px;padding-bottom: 1px;">
                                     <div class="text-center" ng-if="vm.result.pages > 1">
