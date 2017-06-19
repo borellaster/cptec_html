@@ -6,12 +6,7 @@
           <div class="caption">Requests</div>
         </div>
         <div class="panel-body">
-          <div class="row" style="margin-bottom:10px;">
-            <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
-              <a ui-sref="home.requests.new" class="btn btn-primary"> 
-                <i class="icon-plus"></i> Novo
-              </a>
-            </div>
+          <div class="row" style="margin-bottom:10px;">            
             <div class="col-sm-12 col-md-6 col-xs-6 pull-right">
               <form role="form" name="searchForm" ng-submit="vm.loadData(1)">
                 <div class="input-group"
@@ -32,13 +27,17 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th width="250px">Instituição</th>
+                <th width="250px">Utilização</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="requests in vm.result.data | filter:filter.search">
                 <td>{{requests.name}}</td>
-                <td class="hidden-xs"><a ui-sref="home.requests.edit({id:requests.id})">Editar</a></td>
+                <td>{{requests.instituicao}}</td>
+                <td>{{requests.utilizacao}}</td>
+                <td class="hidden-xs"><a ui-sref="home.requests.view({id:requests.id})">Ver</a></td>
               </tr>
               <tr>
             </tbody>

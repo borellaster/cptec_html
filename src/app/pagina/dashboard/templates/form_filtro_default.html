@@ -6,7 +6,7 @@
           <div ng-bind-html="model.name | highlight: $select.search"></div>                        
         </ui-select-choices>
       </ui-select>                  
-    <label>Cenário Climático <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+    <label>Cenário Climático</label>
   </div>
 </div>  
 
@@ -18,11 +18,11 @@
           <div ng-bind-html="interval.name | highlight: $select.search"></div>                        
         </ui-select-choices>
       </ui-select>                  
-    <label>Frequência <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+    <label>Frequência</label>
   </div>
 </div> 
 
-<div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+<div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
   <div class="mui-textfield">
     <ui-select ng-model="vm.requisicao.tipoConsulta" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
       <ui-select-match placeholder="Selecione um tipo de consulta">{{$select.selected.desc}}</ui-select-match>
@@ -31,6 +31,19 @@
       </ui-select-choices>
     </ui-select>               
     <span class="requerido">Este campo é obrigatório.</span>
-    <label>Tipo de Consulta <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+    <label>Tipo de Consulta</label>
   </div>
-</div>   
+</div>  
+
+<div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
+  <div class="mui-textfield">
+      <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+        <ui-select-match placeholder="Selecione um formato">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
+          <div ng-bind-html="type.name | highlight: $select.search"></div>                        
+        </ui-select-choices>
+      </ui-select>                  
+    <label>Formato do arquivo dos dados</label>
+  </div>
+</div>
+                

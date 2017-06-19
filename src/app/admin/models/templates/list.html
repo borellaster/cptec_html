@@ -32,12 +32,20 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th width="150px">Modelo</th>
+                <th width="150px">Modelo acoplado</th>
+                <th width="150px">Cenário</th>
+                <th width="150px">Resolução</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="models in vm.result.data | filter:filter.search">
                 <td>{{models.name}}</td>
+                <td>{{models.model}}</td>
+                <td>{{models.couple}}</td>
+                <td>{{models.scenario}}</td>
+                <td>{{models.resolution}}</td>
                 <td class="hidden-xs"><a ui-sref="home.models.edit({id:models.id})">Editar</a></td>
               </tr>
               <tr>

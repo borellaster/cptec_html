@@ -42,8 +42,8 @@ define(function(require) {
           }
         }
       })
-      .state('home.requests.edit', {
-        url: '/edit/:id',
+      .state('home.requests.view', {
+        url: '/view/:id',
         views: {
           'content@home': {
             templateUrl   : 'app/admin/requests/templates/form.html',

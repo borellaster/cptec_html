@@ -46,7 +46,7 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $state.go('home.requests.edit', {id: id});
+        $state.go('home.requests.view', {id: id});
       } else {
         $state.go('home.requests.new');        
       }

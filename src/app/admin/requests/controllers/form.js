@@ -20,10 +20,19 @@ define(function(require) {
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar Requests';
+        vm.title = 'Visualizar requisição';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.requests = data;
+          vm.periodo = vm.requests.start_month+'/'+vm.requests.start_year +" até " +
+                       vm.requests.end_month+'/'+vm.requests.end_year;
+          if(vm.requests.query_type == "CI"){
+            vm.tipo = "Por cidade";
+          }else if (vm.requests.query_type == "CO"){
+            vm.tipo = "Por ponto";
+          }
+
+          vm.variables = vm.requests.variables.replace(/'/g,"");
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         

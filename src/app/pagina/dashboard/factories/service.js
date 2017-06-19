@@ -65,7 +65,7 @@ define(function(require) {
 
     function getArrayTipoConsulta() {
       var array = [
-        {val: 'CO', desc: 'Por coordenadas'},
+        {val: 'CO', desc: 'Por ponto'},
         {val: 'CI', desc: 'Por cidade'},
         {val: 'DE', desc: 'Desenho no mapa'},
         {val: 'SF', desc: 'Importar Shapefile'}

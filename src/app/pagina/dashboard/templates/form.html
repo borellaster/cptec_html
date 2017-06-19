@@ -28,7 +28,7 @@
                               <li class="aba-dois">
                                   <a>
                                     <i class="icon-book-open"></i>
-                                    <p><span>2º Passo</span>Consulta para conferência</p>
+                                    <p><span>2º Passo</span>Visualização da área</p>
                                   </a></li>
                                   <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
                               <li class="aba-tres">
@@ -108,7 +108,7 @@
                                     <div class="mui-textfield">
                                       <input required type="text" name="name" placeholder="nome" ng-model="vm.requisicao.name" class="required form-control" focus/>
                                       <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                      <label>Nome</label>
                                     </div>
                                   </div>
 
@@ -116,7 +116,7 @@
                                     <div class="mui-textfield">
                                       <input required type="text" name="email" placeholder="e-mail" ng-model="vm.requisicao.email" class="required form-control"/>
                                       <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>E-mail <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                      <label>E-mail</label>
                                     </div>
                                   </div> 
 
@@ -124,7 +124,7 @@
                                     <div class="mui-textfield">
                                       <input required type="text" name="utilizacao" placeholder="utilização do dado" ng-model="vm.requisicao.utilizacao" class="required form-control" focus/>
                                       <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>Utilização do dado <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                      <label>Utilização do dado</label>
                                     </div>
                                   </div>                                  
 
@@ -132,25 +132,12 @@
                                     <div class="mui-textfield">
                                       <input required type="text" name="instituicao" placeholder="instituição" ng-model="vm.requisicao.instituicao" class="required form-control" focus/>
                                       <span class="requerido">Este campo é obrigatório.</span>
-                                      <label>Instituição <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                                      <label>Instituição</label>
                                     </div>
                                   </div>
 
                                 </div>
 
-                                <div class="form-group">
-                                  <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
-                                    <div class="mui-textfield">
-                                        <ui-select ng-model="vm.requisicao.type" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-                                          <ui-select-match placeholder="Selecione um formato">{{$select.selected.name}}</ui-select-match>
-                                          <ui-select-choices repeat="type in vm.types.data | propsFilter: {name: $select.search}">
-                                            <div ng-bind-html="type.name | highlight: $select.search"></div>                        
-                                          </ui-select-choices>
-                                        </ui-select>                  
-                                      <label>Formato do arquivo dos dados<i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
-                                    </div>
-                                  </div>                                                    
-                                </div>  
 
 
                               <ul class="pager wizard">

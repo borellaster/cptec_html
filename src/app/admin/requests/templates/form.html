@@ -11,28 +11,80 @@
 
               <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="name" placeholder="Nome" ng-model="vm.requests.name" class="required form-control" focus/>
-                  <span class="requerido">Este campo é obrigatório.</span>
-                  <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
+                  <input type="text" name="name" placeholder="Nome" ng-model="vm.requests.name" focus/>
+                  <label>Nome</label>
                 </div>
               </div>
 
-            </div> 
-
-
-              <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
-                <a ui-sref="home.requests.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
-                <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
-                <a ng-click="vm.remove()" ng-show="vm.requests.id" class="btn btn-danger"><i class="icon-close"></i> Excluir</a>                
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="E-mail" ng-model="vm.requests.email"/>                  
+                  <label>E-mail</label>
+                </div>
               </div>
-              <div class="form-group" style="margin-top:10px;" ng-show="vm.showConfirm">
-                <h4>Confirmação</h4>
-                <p>
-                  Excluir <code>{{vm.requests.name}}</code> ?
-                </p>                
-                <a ng-click="vm.delete(vm.requests.id)" class="btn btn-danger"><i class="icon-close"></i> Sim</a>                
-                <a ng-click="vm.cancelRemove()" class="btn btn-default"><i class="icon-reload"></i> Não</a>
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Cenário Climático" ng-model="vm.requests.model.name"/>                  
+                  <label>Cenário Climático</label>
+                </div>
+              </div>                             
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Frequência" ng-model="vm.requests.interval.name"/>                  
+                  <label>Frequência</label>
+                </div>
               </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Tipo de consulta" ng-model="vm.tipo"/>
+                  <label>Tipo de consulta</label>
+                </div>
+              </div>   
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Variáveis" ng-model="vm.variables"/>
+                  <label>Variáveis</label>
+                </div>
+              </div>                             
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Nome" ng-model="vm.periodo"/>                  
+                  <label>Período</label>
+                </div>
+              </div>
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Utilização" ng-model="vm.requests.utilizacao"/>
+                  <label>Utilização</label>
+                </div>
+              </div> 
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Instituição" ng-model="vm.requests.instituicao"/>
+                  <label>Instituição</label>
+                </div>
+              </div>  
+
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input type="text" name="name" placeholder="Formato do arquivo dos dados" ng-model="vm.requests.type.name"/>
+                  <label>Formato do arquivo dos dados</label>
+                </div>
+              </div>                                                         
+            </div>
+
+                      
+
+            <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
+              <a ui-sref="home.requests.list" class="btn btn-default"><i class="icon-reload"></i> Voltar</a>
+            </div>              
             </div>
           </form> 
         </div>
