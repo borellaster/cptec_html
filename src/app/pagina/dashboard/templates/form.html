@@ -15,7 +15,7 @@
 
               <div class="col-md-12" style="padding:0">
                 <div class="panel">
-                  <div class="panel-body"  style="padding:0;padding-top:15px;">
+                  <div class="panel-body"  style="padding:0;padding-top:0px;">
                     <div id="viewcode-rootwizard-script" class="viewcode-example">
                       <div id="rootwizard" class="wizard-wrapper">
                         <div class="navbar">
@@ -77,20 +77,19 @@
 
 
                           <!--TAB 2-->
-                          <div id="tab2-wizard-custom-circle" class="tab-pane">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Visualizar dados na tabela</h3>
+                          <div id="tab2-wizard-custom-circle" class="tab-pane">                            
                               <form role="form" name="vm.formdois" novalidate>
 
                               <div ng-include="'app/pagina/dashboard/templates/form_passo_dois_table.html'"/>
 
                               <ul class="pager wizard" style="margin-top: 1px;">
                                 <li class="next">
-                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('tres')" style="float: right;"> Próximo
+                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('tres')" style="float: right;margin-top: 15px;"> Próximo
                                     <i class="fa fa-arrow-circle-o-right mlx"></i>
                                   </button>
                                 </li>
                                 <li class="previous">
-                                  <button class="btn btn-info button-previous mlm" ng-click="vm.step('um')" style="float: right;"> Anterior
+                                  <button class="btn btn-info button-previous mlm" ng-click="vm.step('um')" style="float: right;margin-top: 15px;"> Anterior
                                     <i class="fa fa-arrow-circle-o-left mlx"></i>
                                   </button>
                                 </li>                              

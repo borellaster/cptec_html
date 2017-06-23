@@ -1,4 +1,4 @@
-<table class="table table-striped table-bordered">
+<!--<table class="table table-striped table-bordered">
   <thead>
     <tr>
       <th width="100px">Data</th>
@@ -28,4 +28,10 @@ Exibindo {{(vm.currentPage - 1) * vm.pageSize + 1}} até {{vm.pageSize > vm.resu
       previous-text="Anterior" next-text="Próxima" first-text="Primeira" last-text="Última">
     </pagination>
   </div>
-</div>  
+</div>  -->
+
+<!--lado esquerdo-->
+<div style="width:100%;height: calc(100% - 59px);float: left;position:relative;min-height:100%">
+  <leaflet center="vm.center" controls="vm.controls" width="100%" height="345px"></leaflet>
+</div>
+

@@ -3976,7 +3976,6 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
   display: none;
 }
 
-
 .ng-dirty.ng-invalid-required.ng-touched ~ .requerido,
 .ng-dirty.ng-invalid-cpf-invalid.ng-touched ~ .cpfinvalido,
 .ng-dirty.ng-invalid-cnpj-invalid.ng-touched ~ .cnpjinvalido,
@@ -3989,4 +3988,58 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
   color: #e74c3c;
   font-size: 11px;
   line-height: 13px;
+}
+
+.sidebar-main {
+  background-color: #ea9d42;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level {
+    background-color: #e8b171;
+}
+.sidebar-main ul#sidebar-main > li.active > a {
+    background-color: #a07e56;
+}
+#topbar {
+    background-color: #ea9d42;
+}
+.sidebar-main ul#sidebar-main > li > h4.sidebar-title-section {
+    color: #ffffff;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a {
+    color: #2f3238;
+}
+.sidebar-main ul#sidebar-main > li > a, .sidebar-main ul#sidebar-main > li > a:hover {
+    color: #2f3238;
+}
+.sidebar-main ul#sidebar-main > li.active > a:hover {
+    color: #FFFFFF;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a > i[class*="icon-"],
+.sidebar-main ul#sidebar-main > li > a > i[class*="icon-"],
+.sidebar-main ul#sidebar-main > li:hover > a > i[class*="icon-"] {
+    color: #2f3238;
+}
+.sidebar-main ul#sidebar-main > li.active:hover > a > i[class*="icon-"] {
+    color: #FFFFFF;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a:hover, .sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #2f3238;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a {
+    padding: 15px 25px 15px 40px;
+}
+#topbar #topbar-menu {
+    border-bottom: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+#topbar #topbar-menu ul.navbar-nav > li > a:hover, #topbar #topbar-menu ul.navbar-nav > li > a:focus {
+    background-color: #ea9d42;
+}
+#topbar #topbar-menu ul.navbar-nav > li.open > a, #topbar #topbar-menu ul.navbar-nav > li.open > a:hover, #topbar #topbar-menu ul.navbar-nav > li.open > a:focus {
+    background-color: #e8b171;
+}
+#topbar #topbar-menu ul.navbar-nav > li > a > i {
+    color: #2f3238;
 }
