@@ -3990,7 +3990,7 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
   line-height: 13px;
 }
 
-.sidebar-main {
+/*.sidebar-main {
   background-color: #ea9d42;
 }
 .sidebar-main ul#sidebar-main > li > ul.nav-second-level {
@@ -4042,4 +4042,5 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 }
 #topbar #topbar-menu ul.navbar-nav > li > a > i {
     color: #2f3238;
-}
+}*/
+
