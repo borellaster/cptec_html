@@ -14,7 +14,7 @@
   <div class="mui-textfield">
     <ui-select ng-model="vm.requisicao.start_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
       <ui-select-match placeholder="Selecione o ano inicial">{{$select.selected.year}}</ui-select-match>
-      <ui-select-choices repeat="year in vm.years.data">
+      <ui-select-choices repeat="year in vm.years">
         <div ng-bind-html="year.year"></div>
       </ui-select-choices>
     </ui-select>               
@@ -39,7 +39,7 @@
   <div class="mui-textfield">
     <ui-select ng-model="vm.requisicao.end_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
       <ui-select-match placeholder="Selecione o ano final">{{$select.selected.year}}</ui-select-match>
-      <ui-select-choices repeat="year in vm.years.data">
+      <ui-select-choices repeat="year in vm.years">
         <div ng-bind-html="year.year"></div>
       </ui-select-choices>
     </ui-select>               

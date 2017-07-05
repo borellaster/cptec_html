@@ -47,7 +47,7 @@
                         </div>-->
                         <div class="tab-content" style="padding-top: 0px">
                           <div id="tab1-wizard-custom-circle" class="tab-pane active">
-                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o modelo, frequência e demais dados necessários</h3>
+                            <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o cenário climático, frequência e demais dados necessários</h3>
                             <form name="vm.formum" class="form-horizontal">
 
                               <div class="form-group">
@@ -64,6 +64,14 @@
                                 <div ng-include="'app/pagina/dashboard/templates/form_filtro_coordenada_cidade.html'"/>
                               </div>
 
+                              <div class="alert alert-info" style="margin-left: -10px;margin-right: -10px">
+                                <div class="alert-icon fa fa-info-circle"></div>
+                                <div class="alert-content"><strong></strong>
+                                  <p style="margin-top: 11px;margin-left: -50px;">Prezado usuário, recomenda-se realizar a requisição de períodos maiores que 20 anos.</p>
+                                </div>
+                              </div>
+
+                              
 
                               <ul class="pager wizard">
                                 <li class="next">
@@ -167,7 +175,7 @@
                                         <strong>Resumo da requisição:</strong>
                                         <br/>Cenário Climático: {{vm.requisicao.model.name}}
                                         <br/>Frequência: {{vm.requisicao.interval.name}}
-                                        <br/>Tipo de consulta: {{vm.requisicao.tipoConsulta.desc}}
+                                        <br/>Localização: {{vm.requisicao.tipoConsulta.desc}}
                                         <span ng-if="vm.requisicao.tipoConsulta.val == 'CO'"><br/>Coordenadas: {{vm.requisicao.latitude}}, {{vm.requisicao.longitude}}</span>
                                         <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Cidade: {{vm.requisicao.city.name}} ({{vm.requisicao.city.latitude}}, {{vm.requisicao.city.longitude}})</span>
                                         <br/>Variáveis: {{vm.getVariablesFinalizar()}}

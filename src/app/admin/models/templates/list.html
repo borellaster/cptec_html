@@ -41,7 +41,7 @@
             </thead>
             <tbody>
               <tr ng-repeat="models in vm.result.data | filter:filter.search">
-                <td>{{models.name}}</td>
+                <td>{{models.name}} - ({{models.start_year}}-{{models.end_year}})</td>
                 <td>{{models.model}}</td>
                 <td>{{models.couple}}</td>
                 <td>{{models.scenario}}</td>

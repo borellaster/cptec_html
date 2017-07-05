@@ -5,10 +5,10 @@ define(function(require) {
   module.controller('DashboardCtrl', DashboardCtrl);
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve', 'YearsResolve', 'MonthsResolve', 'leafletData'];
+                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve, yearsResolve, monthsResolve, leafletData ) {
+                         pagination, modelsResolve, monthsResolve, leafletData ) {
     var vm = this; 
     vm.novo = true;
     init();  
@@ -44,7 +44,16 @@ define(function(require) {
         if (vm.formum.$invalid) {
           return true;
         }
-        //vm.loadData(1);
+        
+        if(vm.requisicao.start_year.year > vm.requisicao.end_year.year){
+          setWarning('Ano Inicial deve ser menor ou igual ao Ano Final');
+          return true;
+        }else{
+          if(vm.requisicao.start_month.month > vm.requisicao.end_month.month){
+            setWarning('Mês Inicial deve ser menor ou igual ao Ano Final');
+            return true;            
+          }
+        }
       }
 
       if (aba == 'tres') {
@@ -143,7 +152,20 @@ define(function(require) {
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
       });
-    }  
+    } 
+
+    vm.onSelectCallback = function (item){
+      generateYears(item.start_year, item.end_year);
+      vm.requisicao.start_year = {'year': item.start_year};
+      vm.requisicao.end_year = {'year': item.end_year};;
+    };    
+
+    function generateYears(startYear, endYear) {
+      vm.years = [];
+      for (var i = startYear ; i <= endYear; i++) {
+        vm.years.push({'year': i});
+      }
+    }
 
     function initRequisicao() {
       vm.requisicao = {
@@ -155,20 +177,20 @@ define(function(require) {
       vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
       vm.requisicao.status = 0;
       vm.requisicao.model = vm.models.data[0];
+      generateYears(vm.requisicao.model.start_year, vm.requisicao.model.end_year);
       vm.requisicao.interval = vm.intervals.data[0];
       vm.requisicao.type = vm.types.data[0]; 
       vm.requisicao.start_month = vm.months.data[0]; 
-      vm.requisicao.start_year = vm.years.data[0];
+      vm.requisicao.start_year = {'year': vm.requisicao.model.start_year};
       vm.requisicao.end_month = vm.months.data[11];
-      vm.requisicao.end_year = vm.years.data[vm.years.data.length -1];
+      vm.requisicao.end_year = {'year': vm.requisicao.model.end_year};;
     }    
 
     function init() {
       vm.models = modelsResolve;
       vm.intervals = intervalsResolve;
       vm.types = typesResolve;
-      vm.variablesAll = variablesResolve;
-      vm.years = yearsResolve;      
+      vm.variablesAll = variablesResolve;      
       vm.months = monthsResolve;
       /*consultas de array no service*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();      
@@ -184,39 +206,3 @@ define(function(require) {
 
   }
 });
-
-
-    /*vm.pageChanged = function() {
-      pagination.setNextPage(vm.result.page);
-      vm.loadData(pagination.getNextPage());
-    } */   
-
-    /*vm.loadData = function (page) {
-      var latitude = 0;
-      var longitude = 0;
-      if(vm.requisicao.tipoConsulta.val == "CI"){
-        latitude = vm.requisicao.city.latitude;
-        longitude = vm.requisicao.city.longitude;
-      }else if(vm.requisicao.tipoConsulta.val == "CO"){
-        latitude = vm.requisicao.latitude;
-        longitude = vm.requisicao.longitude;
-      }      
-      dataService.listpag(longitude, latitude, getVariables(), 
-                          vm.requisicao.start_month.month,
-                          vm.requisicao.start_year.year, 
-                          vm.requisicao.end_month.month,
-                          vm.requisicao.end_year.year,                           
-                          vm.requisicao.model.id, page, 5)
-        .then(function success(result) {
-        vm.result = result;    
-        vm.currentPage = result.page;
-        pagination.updateMetainf(
-          result.count,
-          result.length,
-          result.page,
-          result.pages
-        );              
-      }).catch(function error(msg) {
-        setError('Erro ao pesquisar os registros.');
-      });      
-    }*/
