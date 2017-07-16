@@ -329,10 +329,10 @@ body.layout-header-dark #topbar #topbar-menu ul.navbar-nav > li.open.open > a {
 .sidebar .sidebar-wrapper {
   width: 250px;
 }
-.sidebar-main {
+/*.sidebar-main {
   float: left;
   background-color: #132035;
-}
+}*/
 .sidebar-main ul#sidebar-main > li > h4.sidebar-title-section {
   margin: 0px;
   padding: 15px 15px;
@@ -1320,7 +1320,7 @@ body.sidebar-color-grey.layout-sidebar-collapsed ul#sidebar-main > li > a > .men
 #footer {
   width: 100%;
   padding-left: 250px;
-  background-color: #132035;
+  background-color: #0d47a1;
   color: #FFFFFF;
   font-size: 12px;
   text-align: right;
@@ -3990,6 +3990,67 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
   line-height: 13px;
 }
 
+
+.sidebar-main {
+  float: left;
+  background-color: #0d47a1;
+}
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level {
+    background-color: #0b3d89;
+}
+.sidebar-main ul#sidebar-main > li.active > a {
+    background-color: #2196f3;
+}
+.sidebar-main ul#sidebar-main > li > h4.sidebar-title-section {
+    color: #ffffff;
+}
+/*.sidebar-main ul#sidebar-main > li > h4.sidebar-title-section {
+    color: #ffffff;
+}*/
+/*.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a {
+    color: #428BCD;
+}*/
+/*.sidebar-main ul#sidebar-main > li > a, .sidebar-main ul#sidebar-main > li > a:hover {
+    color: #2f3238;
+}*/
+/*.sidebar-main ul#sidebar-main > li.active > a:hover {
+    color: #FFFFFF;
+}*/
+.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a > i[class*="icon-"],
+.sidebar-main ul#sidebar-main > li > a > i[class*="icon-"],
+.sidebar-main ul#sidebar-main > li:hover > a > i[class*="icon-"] {
+    color: #ffffff;
+}
+
+/*.sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a:hover, .sidebar-main ul#sidebar-main > li > ul.nav-second-level > li > a:focus {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: #2f3238;
+}*/
+/*#topbar #topbar-menu ul.navbar-nav > li > a:hover, #topbar #topbar-menu ul.navbar-nav > li > a:focus {
+    background-color: #ea9d42;
+}*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*.sidebar-main {
   background-color: #ea9d42;
 }
@@ -4043,4 +4104,12 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 #topbar #topbar-menu ul.navbar-nav > li > a > i {
     color: #2f3238;
 }*/
+
+
+
+
+
+
+
+
 

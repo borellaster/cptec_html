@@ -32,7 +32,8 @@
             <thead>
               <tr>
                 <th>Nome</th>
-                <th width="150px">Nome</th>
+                <th width="150px">Abreviatura </th>
+                <th width="100px">Sequência</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
@@ -40,6 +41,7 @@
               <tr ng-repeat="intervals in vm.result.data | filter:filter.search">
                 <td>{{intervals.name}}</td>
                 <td>{{intervals.nickname}}</td>
+                <td>{{intervals.sequence}}</td>
                 <td class="hidden-xs"><a ui-sref="home.intervals.edit({id:intervals.id})">Editar</a></td>
               </tr>
               <tr>
