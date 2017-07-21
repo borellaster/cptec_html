@@ -9,7 +9,9 @@ define(function(require) {
       require('./home/package').name,
       require('./dashboard/package').name,
       require('./visualization/package').name,
-      require('./about/package').name
+      require('./about/package').name,
+      require('./contact/package').name,
+      require('./tutorial/package').name
     ]
   );
 
