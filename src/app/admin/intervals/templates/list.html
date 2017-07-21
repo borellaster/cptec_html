@@ -32,15 +32,17 @@
             <thead>
               <tr>
                 <th>Nome</th>
-                <th width="150px">Abreviatura </th>
+                <th width="150px">Abreviatura</th>
+                <th width="150px">Nº de variáveis</th>                
                 <th width="100px">Sequência</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
               <tr ng-repeat="intervals in vm.result.data | filter:filter.search">
-                <td>{{intervals.name}}</td>
+                <td>{{intervals.name}}</td>                
                 <td>{{intervals.nickname}}</td>
+                <td>{{intervals.variables}}</td>
                 <td>{{intervals.sequence}}</td>
                 <td class="hidden-xs"><a ui-sref="home.intervals.edit({id:intervals.id})">Editar</a></td>
               </tr>
