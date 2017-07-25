@@ -9,14 +9,46 @@
   <div class="row" style="margin: 0;">
     <div class="col-md-12">
       <div class="panel">
-        <div class="panel-body">
-          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
-            <div class="panel-body">
-                Contato.
-            </div>
- 
 
+
+       <div class="panel-body">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
+
+            <div class="form-group">
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="name" placeholder="Nome" ng-model="vm.contact.name" class="required form-control" focus/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Nome</label>
+                </div>
+              </div>
             </div>
+
+            <div class="form-group">
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <input required type="text" name="email" placeholder="E-mail" ng-model="vm.contact.email" class="required form-control"/>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>E-mail</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+                <div class="mui-textfield">
+                  <textarea  required type="text" name="message" placeholder="Mensagem" ng-model="vm.contact.message" rows="6" class="required form-control"></textarea>                  
+                  <span class="requerido">Este campo é obrigatório.</span>
+                  <label>Mensagem</label>
+                </div>
+              </div>
+            </div>            
+              
+            <div class="form-group" style="margin-top:10px;">
+              <a ng-click="vm.send(form)" class="btn btn-success"><i class="icon-check"></i> Enviar</a>
+              <a ng-click="vm.clear(form)" class="btn btn-default"><i class="icon-reload"></i> Limpar</a>              
+            </div>
+
           </form> 
         </div>
       </div>

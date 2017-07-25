@@ -3,6 +3,8 @@ define(function(require) {
 
   var module = require('./module');
   require('./controllers/form');
+  require('./resources/rest');
+  require('./factories/service');
   require('./states');
 
   return module;

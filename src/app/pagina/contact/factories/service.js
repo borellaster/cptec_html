@@ -3,14 +3,18 @@ define(function(require) {
 
   var module = require('../module');
   module.factory('ContactFactory', ContactFactory);
-  ContactFactory.$inject = [];
+  ContactFactory.$inject = ['ContactResource'];
 
-  function ContactFactory() {
+  function ContactFactory(resource) {
     var service = {
-
+    	send: send
     };
 
     return service;
+
+    function send(mail) {
+	    return resource.save(mail).$promise;
+    }      
 
    };
   

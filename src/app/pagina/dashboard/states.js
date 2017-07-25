@@ -22,7 +22,6 @@ define(function(require) {
           IntervalsResolve: intervalsList,
           TypesResolve: typesList,
           VariablesResolve: variablesList,
-          //YearsResolve : yearsList,
           MonthsResolve: monthsList
         }
       }).state('pagina.download', {

@@ -3,13 +3,13 @@ define(function(require) {
 
   var module = require('../module');
 
-  module.factory('UniqueResource', UniqueResource);
-  UniqueResource.$inject = ['$resource'];
-  function UniqueResource($resource) {
+  module.factory('ContactResource', ContactResource);
+  ContactResource.$inject = ['$resource'];
+  function ContactResource($resource) {
     var rest = $resource(
-      'api/v1/public/json/:longitude/:latitude/:variables/:startdate/:enddate',
+      'api/v1/public/mails',
       {
-        'longitude': '', 'latitude': '', 'variables': '', 'startdate': '', 'enddate': ''
+        
       },
       {
         'update': { 'method': 'PUT' }
@@ -17,23 +17,5 @@ define(function(require) {
     );
     return rest;
   }
-
-
-  module.factory('UniquePagResource', UniquePagResource);
-  UniquePagResource.$inject = ['$resource'];
-  function UniquePagResource($resource) {
-    var rest = $resource(
-      'api/v1/public/json/:longitude/:latitude/:variables/:startdate/:enddate/:page/:size',
-      {
-        'longitude': '', 'latitude': '', 'variables': '', 'startdate': '', 'enddate': '', 'page': '', 'size': ''
-      },
-      {
-        'update': { 'method': 'PUT' }
-      }
-    );
-    return rest;
-  }  
-
- 
 
 });

@@ -21,16 +21,14 @@ define(function(require) {
             templateUrl   : 'app/core/main/templates/layout-pagina.html'
           }
         }
-      })
-      .state('home', {
+      }).state('home', {
         url: '/admin',
         views: {
           'master': {
             templateUrl   : 'app/core/main/templates/layout.html'
           }
         }
-      })
-      .state('404', {
+      }).state('404', {
         url: '/404',
         views: {
           'master': {
