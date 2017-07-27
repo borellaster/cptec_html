@@ -24,7 +24,8 @@ define(function(require) {
       require('./ensembles/package').name,
       require('./intervals/package').name,
       require('./login/package').name,
-      require('./configurations/package').name
+      require('./configurations/package').name,
+      require('./modelfreqs/package').name
     ]
   );
 

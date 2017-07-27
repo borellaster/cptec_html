@@ -3,61 +3,63 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">Variáveis</div>
+          <div class="caption">Variáveis de Saída</div>
         </div>
-        <div class="panel-body">
-          <div class="row" style="margin-bottom:10px;">
-            <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
-              <a ui-sref="home.variables.new" class="btn btn-primary"> 
-                <i class="icon-plus"></i> Novo
-              </a>
-            </div>
-            <div class="col-sm-12 col-md-6 col-xs-6 pull-right">
-              <form role="form" name="searchForm" ng-submit="vm.loadData(1)">
-                <div class="input-group"
-                  ng-class="{'has-error': searchForm.searchInput.$invalid}">
-                  <input type="text" class="form-control" placeholder="Nome" name="searchInput" ng-model="vm.searchFilter"
-                    fend-focus="focusSearchInput"> 
-                    <span class="input-group-btn">
-                    <button class="btn btn-default" ng-click="vm.loadData(1)"
-                      ng-disabled="isClean() || searchForm.$invalid" type="button">Pesquisar
-                    </button>
-                  </span>
-                </div>
-              </form>
-            </div>            
-          </div>  
 
-          <table class="table table-striped table-bordered">
-            <thead>
-              <tr>
-                <th>Descrição</th>
-                <th width="90px">Sigla</th>
-                <th width="90px">Tipo</th>
-                <th width="90px">Situação</th>
-                <th width="70px" class="hidden-xs"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="variables in vm.result.data | filter:filter.search">
-                <td>{{variables.description}}</td>
-                <td>{{variables.nickname}}</td>
-                <td>{{variables.type}}</td>
-                <td>{{variables.active == 'S' ? 'Ativa' : 'Inativa'}}</td>
-                <td class="hidden-xs"><a ui-sref="home.variables.edit({id:variables.id})">Editar</a></td>
-              </tr>
-              <tr>
-            </tbody>
-          </table>
+          <div class="panel-body">
+            <div class="row" style="margin-bottom:10px;">
+              <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
+                <a ui-sref="home.variables.new" class="btn btn-primary"> 
+                  <i class="icon-plus"></i> Novo
+                </a>
+              </div>
+              <div class="col-sm-12 col-md-6 col-xs-6 pull-right">
+                <form role="form" name="searchForm" ng-submit="vm.loadData(1)">
+                  <div class="input-group"
+                    ng-class="{'has-error': searchForm.searchInput.$invalid}">
+                    <input type="text" class="form-control" placeholder="Nome" name="searchInput" ng-model="vm.searchFilter"
+                      fend-focus="focusSearchInput"> 
+                      <span class="input-group-btn">
+                      <button class="btn btn-default" ng-click="vm.loadData(1)"
+                        ng-disabled="isClean() || searchForm.$invalid" type="button">Pesquisar
+                      </button>
+                    </span>
+                  </div>
+                </form>
+              </div>            
+            </div>  
 
-          <div class="tab-content">
-            <div class="text-center" ng-if="vm.result.pages > 1">
-              <pagination ng-model="vm.result.page" max-size="vm.paginationItemsSize"
-                total-items="vm.result.count" num-pages="vm.result.pages"
-                items-per-page="vm.paginationPageSize" ng-change="vm.pageChanged()"
-                class="pagination-sm" boundary-links="true" rotate="false"
-                previous-text="Anterior" next-text="Próxima" first-text="Primeira" last-text="Última">
-              </pagination>
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>Descrição</th>
+                  <th width="90px">Sigla</th>
+                  <th width="90px">Tipo</th>
+                  <th width="90px">Situação</th>
+                  <th width="70px" class="hidden-xs"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="variables in vm.result.data | filter:filter.search">
+                  <td>{{variables.description}}</td>
+                  <td><span class="label label-info">{{variables.nickname}}</span></td>
+                  <td>{{variables.type}}</td>
+                  <td ng-if="variables.active == 'S'"><span class="label label-success">{{variables.active == 'S' ? 'Ativa' : 'Inativa'}}</span></td>
+                  <td ng-if="variables.active != 'S'"><span class="label label-default">{{variables.active == 'S' ? 'Ativa' : 'Inativa'}}</span></td>
+                  <td class="hidden-xs"><a ui-sref="home.variables.edit({id:variables.id})">Editar</a></td>
+                </tr>
+                <tr>
+              </tbody>
+            </table>
+
+            <div class="tab-content">
+              <div class="text-center" ng-if="vm.result.pages > 1">
+                <pagination ng-model="vm.result.page" max-size="vm.paginationItemsSize"
+                  total-items="vm.result.count" num-pages="vm.result.pages"
+                  items-per-page="vm.paginationPageSize" ng-change="vm.pageChanged()"
+                  class="pagination-sm" boundary-links="true" rotate="false"
+                  previous-text="Anterior" next-text="Próxima" first-text="Primeira" last-text="Última">
+                </pagination>
             </div>
           </div>
         </div>

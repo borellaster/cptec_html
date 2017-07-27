@@ -3,10 +3,10 @@ define(function(require) {
 
   var module = require('../module');
 
-  module.controller('IntervalsListCtrl', IntervalsListCtrl);
-  IntervalsListCtrl.$inject = ['$state', 'PaginationFactory', 'IntervalsSearchResource', 'IntervalsFactory'];
+  module.controller('ModelfreqsListCtrl', ModelfreqsListCtrl);
+  ModelfreqsListCtrl.$inject = ['$state', 'PaginationFactory', 'ModelfreqsSearchResource', 'ModelfreqsFactory'];
 
-  function IntervalsListCtrl($state, pagination, ResourceSearch, dataService) {
+  function ModelfreqsListCtrl($state, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -46,9 +46,9 @@ define(function(require) {
 
     vm.path = function(id) {
       if (id > 0) {
-        $state.go('home.frequencies.edit', {id: id});
+        $state.go('home.modelfreqs.edit', {id: id});
       } else {
-        $state.go('home.frequencies.new');        
+        $state.go('home.modelfreqs.new');        
       }
     }
 
@@ -63,7 +63,7 @@ define(function(require) {
     };    
 
     function init() {
-      var ctrlName = 'IntervalsListCtrl';
+      var ctrlName = 'ModelfreqsListCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();
       vm.paginationPageSize = pagination.getPageSize();

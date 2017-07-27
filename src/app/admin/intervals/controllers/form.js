@@ -10,7 +10,7 @@ define(function(require) {
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $state.go('home.intervals.list');
+      $state.go('home.frequencies.list');
     }
 
     if(params.id == undefined){

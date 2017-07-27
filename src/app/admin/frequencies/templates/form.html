@@ -11,7 +11,7 @@
 
               <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="name" placeholder="Nome" ng-model="vm.intervals.name" class="required form-control" focus/>
+                  <input required type="text" name="name" placeholder="Nome" ng-model="vm.frequencies.name" class="required form-control" focus/>
                   <span class="requerido">Este campo é obrigatório.</span>
                   <label>Nome <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
@@ -23,7 +23,7 @@
 
               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="nickname" placeholder="Abreviatura" ng-model="vm.intervals.nickname" class="required form-control"/>
+                  <input required type="text" name="nickname" placeholder="Abreviatura" ng-model="vm.frequencies.nickname" class="required form-control"/>
                   <span class="requerido">Este campo é obrigatório.</span>
                   <label>Abreviatura <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
@@ -31,7 +31,7 @@
 
               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="variables" placeholder="Nº de variáveis" ng-model="vm.intervals.variables" class="required form-control"/>
+                  <input required type="text" name="variables" placeholder="Nº de variáveis" ng-model="vm.frequencies.variables" class="required form-control"/>
                   <span class="requerido">Este campo é obrigatório.</span>
                   <label>Nº de variáveis  <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
@@ -39,7 +39,7 @@
 
               <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
                 <div class="mui-textfield">
-                  <input required type="text" name="sequence" placeholder="Sequência" ng-model="vm.intervals.sequence" class="required form-control"/>
+                  <input required type="text" name="sequence" placeholder="Sequência" ng-model="vm.frequencies.sequence" class="required form-control"/>
                   <span class="requerido">Este campo é obrigatório.</span>
                   <label>Sequência <i class="fa fa-asterisk" style="color:red; font-size:8px;"></i></label>
                 </div>
@@ -51,14 +51,14 @@
               <div class="form-group" style="margin-top:10px;" ng-hide="vm.showConfirm">
                 <a ui-sref="home.frequencies.list" class="btn btn-default"><i class="icon-reload"></i> Cancelar</a>
                 <a ng-click="vm.save(form)" class="btn btn-success"><i class="icon-check"></i> Salvar</a>
-                <a ng-click="vm.remove()" ng-show="vm.intervals.id" class="btn btn-danger"><i class="icon-close"></i> Excluir</a>                
+                <a ng-click="vm.remove()" ng-show="vm.frequencies.id" class="btn btn-danger"><i class="icon-close"></i> Excluir</a>                
               </div>
               <div class="form-group" style="margin-top:10px;" ng-show="vm.showConfirm">
                 <h4>Confirmação</h4>
                 <p>
-                  Excluir <code>{{vm.intervals.name}}</code> ?
+                  Excluir <code>{{vm.frequencies.name}}</code> ?
                 </p>                
-                <a ng-click="vm.delete(vm.intervals.id)" class="btn btn-danger"><i class="icon-close"></i> Sim</a>                
+                <a ng-click="vm.delete(vm.frequencies.id)" class="btn btn-danger"><i class="icon-close"></i> Sim</a>                
                 <a ng-click="vm.cancelRemove()" class="btn btn-default"><i class="icon-reload"></i> Não</a>
               </div>
             </div>

@@ -2,28 +2,43 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('<%= helpers.capitalize( name ) %>Ctrl', <%= helpers.capitalize( name ) %>Ctrl);
+  module.controller('ModelfreqsCtrl', ModelfreqsCtrl);
 
-  <%= helpers.capitalize( name ) %>Ctrl.$inject = ['$state', '$stateParams', '$location', '<%= helpers.capitalize( name ) %>Factory', '<%= helpers.capitalize( name ) %>Resource'];
-  function <%= helpers.capitalize( name ) %>Ctrl($state, params, $location, dataService, resource) {
+  ModelfreqsCtrl.$inject = ['$state', '$stateParams', '$location', 'ModelfreqsFactory', 'ModelfreqsResource', 
+                            'ModelsFactory', 'IntervalsFactory'];
+  function ModelfreqsCtrl($state, params, $location, dataService, resource, 
+                          dataServiceModel, dataServiceInterval) {
     var vm = this;
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $state.go('home.<%= name %>.list');
+      $state.go('home.modelfreqs.list');
     }
 
+    dataServiceModel.combo().then(function success(data) {
+      vm.models = data;
+    }).catch(function error(msg) {
+      setError('Erro ao pesquisar os modelos.');
+    });
+
+    dataServiceInterval.combo().then(function success(data) {
+      vm.intervals = data;
+    }).catch(function error(msg) {
+      setError('Erro ao pesquisar os frequências.');
+    });        
+
+
     if(params.id == undefined){
-        vm.title = 'Cadastrar <%= helpers.capitalize( name ) %>';
+        vm.title = 'Cadastrar combinação Modelo/Frequência';
         vm.acao = 'incluído';
-        vm.<%= name %> = new resource({
+        vm.modelfreqs = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar <%= helpers.capitalize( name ) %>';
+        vm.title = 'Editar combinação Modelo/Frequência';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
-          vm.<%= name %> = data;
+          vm.modelfreqs = data;
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
@@ -42,7 +57,9 @@ define(function(require) {
         return true;
       }
 
-      dataService.save(vm.<%= name %>).then(function success(data) {
+      vm.modelfreqs.model_id = vm.modelfreqs.model.id;
+      vm.modelfreqs.interval_id = vm.modelfreqs.interval.id;
+      dataService.save(vm.modelfreqs).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
       })

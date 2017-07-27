@@ -2,28 +2,28 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('<%= helpers.capitalize( name ) %>Ctrl', <%= helpers.capitalize( name ) %>Ctrl);
+  module.controller('FrequenciesCtrl', FrequenciesCtrl);
 
-  <%= helpers.capitalize( name ) %>Ctrl.$inject = ['$state', '$stateParams', '$location', '<%= helpers.capitalize( name ) %>Factory', '<%= helpers.capitalize( name ) %>Resource'];
-  function <%= helpers.capitalize( name ) %>Ctrl($state, params, $location, dataService, resource) {
+  FrequenciesCtrl.$inject = ['$state', '$stateParams', '$location', 'FrequenciesFactory', 'FrequenciesResource'];
+  function FrequenciesCtrl($state, params, $location, dataService, resource) {
     var vm = this;
     vm.showConfirm = false;
 
     vm.updateLocation = function() {
-      $state.go('home.<%= name %>.list');
+      $state.go('home.frequencies.list');
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar <%= helpers.capitalize( name ) %>';
+        vm.title = 'Cadastrar frequência';
         vm.acao = 'incluído';
-        vm.<%= name %> = new resource({
+        vm.frequencies = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar <%= helpers.capitalize( name ) %>';
+        vm.title = 'Editar frequência';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
-          vm.<%= name %> = data;
+          vm.frequencies = data;
         }).catch(function error(msg) {
           setError('Erro ao carregar registro.')
         });         
@@ -42,7 +42,7 @@ define(function(require) {
         return true;
       }
 
-      dataService.save(vm.<%= name %>).then(function success(data) {
+      dataService.save(vm.frequencies).then(function success(data) {
         vm.updateLocation();
         setOk('Registro '+vm.acao+' com sucesso.');
       })

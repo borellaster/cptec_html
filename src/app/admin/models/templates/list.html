@@ -41,11 +41,11 @@
             </thead>
             <tbody>
               <tr ng-repeat="models in vm.result.data | filter:filter.search">
-                <td>{{models.name}} - ({{models.start_year}}-{{models.end_year}})</td>
+                <td>{{models.name}} - <span class="label label-info">{{models.start_year}}-{{models.end_year}}</span></td>
                 <td>{{models.model}}</td>
                 <td>{{models.couple}}</td>
                 <td>{{models.scenario}}</td>
-                <td>{{models.resolution}}</td>
+                <td><span class="badge badge-info">{{models.resolution}}</span></td>
                 <td class="hidden-xs"><a ui-sref="home.models.edit({id:models.id})">Editar</a></td>
               </tr>
               <tr>

@@ -16,7 +16,7 @@ define(function(require) {
         url: '/frequencies',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/list.html',
+            templateUrl   : 'app/admin/frequencies/templates/list.html',
             controller    : 'IntervalsListCtrl',
             controllerAs  : 'vm'
           }
@@ -26,7 +26,7 @@ define(function(require) {
         url: '/list',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/list.html',
+            templateUrl   : 'app/admin/frequencies/templates/list.html',
             controller    : 'IntervalsListCtrl',
             controllerAs  : 'vm'
           }
@@ -36,7 +36,7 @@ define(function(require) {
         url: '/new',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/form.html',
+            templateUrl   : 'app/admin/frequencies/templates/form.html',
             controller    : 'IntervalsCtrl',
             controllerAs  : 'vm'
           }
@@ -46,7 +46,7 @@ define(function(require) {
         url: '/edit/:id',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/form.html',
+            templateUrl   : 'app/admin/frequencies/templates/form.html',
             controller    : 'IntervalsCtrl',
             controllerAs  : 'vm'
           }

@@ -3,12 +3,12 @@
     <div class="col-md-12">
       <div class="panel">
         <div class="panel-heading">
-          <div class="caption">Tipos de Saída</div>
+          <div class="caption">Combinação Modelo/Frequência</div>
         </div>
         <div class="panel-body">
           <div class="row" style="margin-bottom:10px;">
             <div class="col-sm-12 col-md-6 col-xs-6 pull-left">
-              <a ui-sref="home.types.new" class="btn btn-primary"> 
+              <a ui-sref="home.modelfreqs.new" class="btn btn-primary"> 
                 <i class="icon-plus"></i> Novo
               </a>
             </div>
@@ -31,16 +31,16 @@
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
-                <th>Nome</th>
-                <th width="120px">Extensão</th>
+                <th>Modelo/Frquência</th>
+                <th width="200px">Tabela</th>
                 <th width="70px" class="hidden-xs"></th>
               </tr>
             </thead>
             <tbody>
-              <tr ng-repeat="types in vm.result.data | filter:filter.search">
-                <td>{{types.name}}</td>
-                <td><span class="label label-info">{{types.extension}}</span></td>
-                <td class="hidden-xs"><a ui-sref="home.types.edit({id:types.id})">Editar</a></td>
+              <tr ng-repeat="modelfreqs in vm.result.data | filter:filter.search">
+                <td>{{modelfreqs.model.name}} x {{modelfreqs.interval.name}}</td>
+                <td><span class="label label-success">{{modelfreqs.name}}</span></td>
+                <td class="hidden-xs"><a ui-sref="home.modelfreqs.edit({id:modelfreqs.id})">Editar</a></td>
               </tr>
               <tr>
             </tbody>

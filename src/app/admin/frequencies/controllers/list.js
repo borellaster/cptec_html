@@ -3,10 +3,10 @@ define(function(require) {
 
   var module = require('../module');
 
-  module.controller('IntervalsListCtrl', IntervalsListCtrl);
-  IntervalsListCtrl.$inject = ['$state', 'PaginationFactory', 'IntervalsSearchResource', 'IntervalsFactory'];
+  module.controller('FrequenciesListCtrl', FrequenciesListCtrl);
+  FrequenciesListCtrl.$inject = ['$state', 'PaginationFactory', 'FrequenciesSearchResource', 'FrequenciesFactory'];
 
-  function IntervalsListCtrl($state, pagination, ResourceSearch, dataService) {
+  function FrequenciesListCtrl($state, pagination, ResourceSearch, dataService) {
     var vm = this;
     init();
 
@@ -63,7 +63,7 @@ define(function(require) {
     };    
 
     function init() {
-      var ctrlName = 'IntervalsListCtrl';
+      var ctrlName = 'FrequenciesListCtrl';
       pagination = pagination.get(ctrlName);
       vm.pageSize = pagination.getPageSize();
       vm.paginationPageSize = pagination.getPageSize();

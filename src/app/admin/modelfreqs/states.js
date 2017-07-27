@@ -9,45 +9,45 @@ define(function(require) {
 
   function configureStates($stateProvider, $urlRouterProvider) {
 
-    $urlRouterProvider.when('/frequencies', '/frequencies/list'); // default
+    $urlRouterProvider.when('/modelfreqs', '/modelfreqs/list'); // default
 
     $stateProvider
-      .state('home.frequencies', {
-        url: '/frequencies',
+      .state('home.modelfreqs', {
+        url: '/modelfreqs',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/list.html',
-            controller    : 'IntervalsListCtrl',
+            templateUrl   : 'app/admin/modelfreqs/templates/list.html',
+            controller    : 'ModelfreqsListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.frequencies.list', {
+      .state('home.modelfreqs.list', {
         url: '/list',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/list.html',
-            controller    : 'IntervalsListCtrl',
+            templateUrl   : 'app/admin/modelfreqs/templates/list.html',
+            controller    : 'ModelfreqsListCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.frequencies.new', {
+      .state('home.modelfreqs.new', {
         url: '/new',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/form.html',
-            controller    : 'IntervalsCtrl',
+            templateUrl   : 'app/admin/modelfreqs/templates/form.html',
+            controller    : 'ModelfreqsCtrl',
             controllerAs  : 'vm'
           }
         }
       })
-      .state('home.frequencies.edit', {
+      .state('home.modelfreqs.edit', {
         url: '/edit/:id',
         views: {
           'content@home': {
-            templateUrl   : 'app/admin/intervals/templates/form.html',
-            controller    : 'IntervalsCtrl',
+            templateUrl   : 'app/admin/modelfreqs/templates/form.html',
+            controller    : 'ModelfreqsCtrl',
             controllerAs  : 'vm'
           }
         }
