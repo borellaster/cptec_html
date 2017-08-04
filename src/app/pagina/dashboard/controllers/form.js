@@ -13,15 +13,6 @@ define(function(require) {
     vm.novo = true;
     init();  
 
-   angular.extend(vm, {
-        center: {
-            lat: -17.518344,
-            lng: -52.207031,
-            zoom: 3
-        }
-    });
- 
-
     vm.loadCities = function(cidade) {
       if(cidade.length >= 3){
         dataServiceCity.combo(cidade).then(function success(data) {
@@ -54,6 +45,37 @@ define(function(require) {
             return true;            
           }
         }
+
+        var lat;
+        var lon;
+        var message;
+
+        if(vm.requisicao.tipoConsulta.val == "CI"){
+          lat = vm.requisicao.city.latitude;
+          lon = vm.requisicao.city.longitude;
+          message = vm.requisicao.city.name;
+        }else if(vm.requisicao.tipoConsulta.val == "CO"){
+          lat = vm.requisicao.latitude;
+          message = "Ponto escolhido";
+        }         
+
+        var mainMarker = {
+            lat: lat,
+            lng: lon,            
+            message: message,
+            draggable: false
+        };        
+
+        vm.center = {
+            lat: lat,
+            lng: lon,
+            zoom: 4
+        };
+
+        vm.markers = {
+            mainMarker: angular.copy(mainMarker)
+        }
+
       }
 
       if (aba == 'tres') {
@@ -202,7 +224,14 @@ define(function(require) {
       vm.paginationPageSize = 5;
       vm.paginationItemsSize = 5;
       initRequisicao();
+
     }
+
+    vm.center = {
+        lat: -17.518344,
+        lng: -52.207031,
+        zoom: 4
+    };
 
   }
 });

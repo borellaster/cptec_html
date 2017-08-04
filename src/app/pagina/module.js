@@ -11,7 +11,8 @@ define(function(require) {
       require('./visualization/package').name,
       require('./about/package').name,
       require('./contact/package').name,
-      require('./tutorial/package').name
+      require('./tutorial/package').name,
+      require('./map/package').name
     ]
   );
 

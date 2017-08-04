@@ -53,19 +53,6 @@ define(function(require) {
             lat: -17.518344,
             lng: -52.207031,
             zoom: 4
-        },
-        controls: {
-            draw: {
-                draw: {
-                    polyline:false,
-                    circle:false,
-                    rectangle:false,
-                    marker: false
-                },
-            },
-            edit: {
-                featureGroup: drawnItems
-            }
         }
     });
 
