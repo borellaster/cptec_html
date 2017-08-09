@@ -1,7 +1,7 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'CO'">
   <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
     <div class="mui-textfield">
-      <input type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" placeholder="-12.40">
+      <input style="height: 32px;" type="text" id="latitude" name="latitude" ng-model="vm.requisicao.latitude" ng-required="true" placeholder="-12.40">
       <span class="requerido">Este campo é obrigatório.</span>
       <label>Latitude</label>
     </div>
@@ -9,7 +9,7 @@
 
   <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
     <div class="mui-textfield">
-      <input type="text" id="longitude" name="longitude" ng-model="vm.requisicao.longitude" ng-required="true" placeholder="-49.80">
+      <input style="height: 32px;" type="text" id="longitude" name="longitude" ng-model="vm.requisicao.longitude" ng-required="true" placeholder="-49.80">
       <span class="requerido">Este campo é obrigatório.</span>
       <label>Longitude</label>
     </div>
@@ -30,4 +30,37 @@
       <label>Cidade</label>
     </div>
   </div>
-</div>   
+</div>  
+
+<div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
+  <div class="col-xs-6 col-sm-6 col-md-6 lo-lg-6" style="padding-left: 5px; padding-right: 5px;">
+      <button class="btn btn-primary mlm" style="margin-top: 14px;" ng-click="vm.openModalMap($event)"> Selecionar coordenadas
+        <i class="fa fa-map-o mlx"></i>
+      </button>
+  </div>
+</div>  
+
+
+
+
+<!--########################################################################-->
+
+<input style="width:500px; height:500px" type="hidden" data-target="#modalMapa" id="modalMap" data-toggle="modal">
+<div  class="modal fade slide-up disable-scroll" id="modalMapa" tabindex="-1" 
+    role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="true">
+    <div class="modal-dialog">
+        <div class="modal-content-wrapper">
+            <div class="modal-content">
+                <div class="modal-header clearfix text-left">
+                    <h4>Desenho no mapa</h4>
+                </div>
+                <div style="width:100%;height:600px;">
+                  <leaflet center="vm.center" width="100%" height="100%"></leaflet>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary mlm" style="margin-top: 14px;" ng-click="vm.openModalMap($event)"> Selecionar coordenadas
+      <i class="fa fa-map-o mlx"></i>
+    </button>    
+</div>

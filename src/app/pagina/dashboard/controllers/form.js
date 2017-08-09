@@ -5,10 +5,10 @@ define(function(require) {
   module.controller('DashboardCtrl', DashboardCtrl);
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData'];
+                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$modal'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve, monthsResolve, leafletData ) {
+                         pagination, modelsResolve, monthsResolve, leafletData, modal) {
     var vm = this; 
     vm.novo = true;
     init();  
@@ -232,6 +232,13 @@ define(function(require) {
         lng: -52.207031,
         zoom: 4
     };
+
+    /*mapa dialog*/
+    vm.openModalMap = function(message){
+      $timeout(function() {
+        angular.element('#modalMap').trigger('click');
+      }, 100);
+    };    
 
   }
 });
