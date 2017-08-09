@@ -4118,10 +4118,17 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
   padding-bottom:0;
 }
 
-
-
-
-
-
-
-
+.content.intranet {
+  padding: 0 !important;
+}
+.modal-backdrop.fade.in {
+  z-index:0;
+}
+.select2-container .select2-choice {
+  border-radius: 0 !important;
+}
+.ui-select-multiple.ng-invalid.ng-dirty .select2-choices {
+  border: 0 !important;
+}
+/*
+ui-select-container ui-select-multiple select2 select2-container select2-container-multi ng-not-empty ng-invalid ng-invalid-required*/

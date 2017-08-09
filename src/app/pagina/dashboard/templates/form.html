@@ -9,7 +9,7 @@
   <div class="row" style="margin: 0;">
     <div class="col-md-12">
       <div class="panel">
-        <div class="panel-body" style="padding-left: 0px;padding-right: 0px;">
+        <div class="panel-body" style="padding-left: 0px;padding-right: 0px;padding-bottom: 0;">
           <!-- <form role="form" name="form" class="form-horizontal form-seperated" novalidate> -->
             <div class="form-body">
 
@@ -33,7 +33,7 @@
                                   <i class="icon-book-open"></i>
                                   <p style="font-size: 12px;"><span>2º Passo</span>Visualização de amostra do dado</p>
                                 </a>
-                                <a id="click-aba-dois" href="#tab2-wizard-custom-circle" data-toggle="tab" style="display:none;"></a>
+                                <a id="click-aba-dois" href="#tab2-wizard-custom-circle"  data-toggle="tab" style="display:none;"></a>
                               </li>
                               <li class="aba-tres">
                                 <a>
@@ -55,7 +55,7 @@
                         <!--<div id="bar" class="progress active">
                           <div style="width: {{vm.value}}%" class="bar progress-bar progress-bar-success" aria-valuenow="{{vm.value}}" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>-->
-                        <div class="tab-content" style="padding-top: 0px">
+                        <div class="tab-content" style="padding-top: 0px;padding-bottom:0">
                           <div id="tab1-wizard-custom-circle" class="tab-pane active">
                             <h3 class="mbxl" style="font-size: 19px;margin-bottom: 20px !important;">Escolha o cenário climático, frequência e demais dados necessários</h3>
                             <form name="vm.formum" class="form-horizontal">
@@ -76,7 +76,7 @@
 
                               <ul class="pager wizard" style="float: right; display: inline-block; width: 100px; margin-top: 0px;">
                                 <li class="next">
-                                  <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.step('dois')"> Próximo
+                                  <button class="btn btn-info button-next mlm" style="float: right;" ng-click="vm.step('dois');"> Próximo
                                     <i class="fa fa-arrow-circle-o-right mlx"></i>
                                   </button>
                                 </li>
@@ -105,9 +105,9 @@
 
                               <div ng-include="'app/pagina/dashboard/templates/form_passo_dois_table.html'"/>
 
-                              <ul class="pager wizard" style="margin-top: 1px;">
+                              <ul class="pager wizard" style="margin-top: 1px;margin-bottom: 0;">
                                 <li class="next">
-                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('tres')" style="float: right;margin-top: 15px;"> Próximo
+                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('tres');" style="float: right;margin-top: 15px;"> Próximo
                                     <i class="fa fa-arrow-circle-o-right mlx"></i>
                                   </button>
                                 </li>
@@ -164,12 +164,12 @@
 
                               <ul class="pager wizard">
                                 <li class="next">
-                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('quatro')"style="float: right;"> Próximo
+                                  <button class="btn btn-info button-next mlm" ng-click="vm.step('quatro')" style="float: right;"> Próximo
                                     <i class="fa fa-arrow-circle-o-right mlx"></i>
                                   </button>
                                 </li>
                                 <li class="previous">
-                                  <button class="btn btn-info button-previous mlm" ng-click="vm.step('dois')"style="float: right;"> Anterior
+                                  <button class="btn btn-info button-previous mlm" ng-click="vm.step('dois');" style="float: right;"> Anterior
                                     <i class="fa fa-arrow-circle-o-left mlx"></i>
                                   </button>
                                 </li>                              

@@ -24,7 +24,13 @@ define(function(require) {
     };     
 
     vm.step = function(aba) {
+      if (aba == 'um') {
+        vm.timeoutAbaDois  = false;
+      };
       if (aba == 'dois') {
+        $timeout(function() {
+          vm.timeoutAbaDois  = true;
+        }, 100);
         angular.forEach(vm.formum.$error, function (field) {
           angular.forEach(field, function(errorField){
               errorField.$setTouched();
@@ -79,6 +85,7 @@ define(function(require) {
       }
 
       if (aba == 'tres') {
+        vm.timeoutAbaDois  = false;
         angular.forEach(vm.formdois.$error, function (field) {
           angular.forEach(field, function(errorField){
               errorField.$setTouched();
@@ -214,6 +221,8 @@ define(function(require) {
       vm.types = typesResolve;
       vm.variablesAll = variablesResolve;      
       vm.months = monthsResolve;
+      vm.timeOutMapa = false;
+      vm.timeoutAbaDois = false;
       /*consultas de array no service*/
       vm.tipoConsultas = dataService.getArrayTipoConsulta();      
       vm.tipoRequisicoes = dataService.getArrayTipoRequisicoes();
@@ -234,10 +243,22 @@ define(function(require) {
     };
 
     /*mapa dialog*/
+
+    vm.closeModal = function() {
+      $timeout(function() {
+        angular.element('#modalMap').trigger('click');
+        vm.timeOutMapa = false;
+      });
+    }
+
     vm.openModalMap = function(message){
       $timeout(function() {
         angular.element('#modalMap').trigger('click');
       }, 100);
+
+      $timeout(function() {
+        vm.timeOutMapa = true
+      }, 300);
     };    
 
   }
