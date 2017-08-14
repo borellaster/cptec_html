@@ -61,7 +61,8 @@ define(function(require) {
           lon = vm.requisicao.city.longitude;
           message = vm.requisicao.city.name;
         }else if(vm.requisicao.tipoConsulta.val == "CO"){
-          lat = vm.requisicao.latitude;
+          lat = Number(vm.requisicao.latitude);
+          lon = Number(vm.requisicao.longitude);
           message = "Ponto escolhido";
         }         
 
@@ -75,12 +76,15 @@ define(function(require) {
         vm.center = {
             lat: lat,
             lng: lon,
-            zoom: 4
+            zoom: 5
         };
 
         vm.markers = {
             mainMarker: angular.copy(mainMarker)
         }
+
+        console.log(vm.center);
+        console.log(vm.markers);
 
       }
 
@@ -236,13 +240,44 @@ define(function(require) {
 
     }
 
-    vm.center = {
-        lat: -17.518344,
-        lng: -52.207031,
-        zoom: 4
+    /*OPEN MAP*/
+    vm.savedItems = [];
+
+    var drawnItems = new L.FeatureGroup();
+    for (var i = 0; i < vm.savedItems.length; i++) {
+        L.geoJson(vm.savedItems[i].geoJSON, {
+            style: function(feature) {
+                return {
+                    color: '#bada55'
+                };
+            },
+            onEachFeature: function (feature, layer) {
+                drawnItems.addLayer(layer);
+            }
+        });
     };
 
-    /*mapa dialog*/
+    angular.extend(vm, {
+        center: {
+            lat: -15.518344,
+            lng: -54.207031,
+            zoom: 4
+        },
+        controls: {
+            draw: {
+                draw: {
+                    polyline:false,
+                    polygon:false,
+                    circle:false,
+                    rectangle:true,
+                    marker: false
+                },
+            },
+            edit: {
+                featureGroup: drawnItems
+            }
+        }
+    });    
 
     vm.closeModal = function() {
       $timeout(function() {
@@ -259,7 +294,46 @@ define(function(require) {
       $timeout(function() {
         vm.timeOutMapa = true
       }, 300);
-    };    
+    }; 
+
+   leafletData.getMap().then(function (map) {
+        var drawnItems = vm.controls.edit.featureGroup;
+        drawnItems.addTo(map);
+        map.on('draw:created', function (e) {
+            var layer = e.layer;
+            drawnItems.addLayer(layer);
+
+            vm.savedItems.push({
+                id: layer._leaflet_id,
+                geoJSON: layer.toGeoJSON()
+            });
+        });
+
+        map.on('draw:edited', function (e) {
+            var layers = e.layers;
+            layers.eachLayer(function (layer) {
+
+                for (var i = 0; i < vm.savedItems.length; i++) {
+                    if (vm.savedItems[i].id == layer._leaflet_id) {
+                        vm.savedItems[i].geoJSON = layer.toGeoJSON();
+                    }
+                }
+            });
+        });
+
+        map.on('draw:deleted', function (e) {
+            var layers = e.layers;
+            layers.eachLayer(function (layer) {
+                for (var i = 0; i < vm.savedItems.length; i++) {
+                    if (vm.savedItems[i].id == layer._leaflet_id) {
+                        vm.savedItems.splice(i, 1);
+                    }
+                }
+            });
+        });
+    });  
+    /*CLOSE MAP*/
+    
 
   }
 });

@@ -54,12 +54,15 @@
                 <div class="modal-header clearfix text-left">
                     <h4>Desenho no mapa</h4>
                 </div>
-                <div style="width:100%;height:600px;" ng-if="!!vm.timeOutMapa">
-                  <leaflet center="vm.center" width="100%" height="100%"></leaflet>
+                <div style="width:100%;height:550px;" ng-if="!!vm.timeOutMapa">
+                  <leaflet center="vm.center" controls="vm.controls" width="100%" height="100%"></leaflet>
                 </div>
-              <button class="btn btn-primary mlm" style="margin-top: 14px;position:absolute;z-index:999;bottom: 15px;left: 5px;" ng-click="vm.closeModal($event)"> Selecionar coordenadas
-                <i class="fa fa-map-o mlx"></i>
-              </button>    
+                <button class="btn btn-info mlm" style="margin-top: 14px;position:absolute;z-index:999;bottom: 25px;left: 5px;"   ng-click="vm.closeModal($event)"> Salvar
+                <i class="fa fa-floppy-o mlx"></i>
+                </button>
+                <button class="btn btn-default mlm" style="margin-top: 14px;position:absolute;z-index:999;bottom: 25px;left: 100px;"   ng-click="vm.closeModal($event)"> Fechar
+                <i class="fa fa-times mlx"></i>
+                </button>               
             </div>
         </div>
     </div>

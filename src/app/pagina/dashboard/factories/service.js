@@ -71,7 +71,27 @@ define(function(require) {
         {val: 'SF', desc: 'Importar Shapefile'}
       ];
       return array;
-    }   
+    }
+
+    function getMonths() {
+      var array = [
+        {month: 1, nome: 'Janeiro'},
+        {month: 2, nome: 'Fevereiro'},
+        {month: 3, nome: 'Março'},
+        {month: 4, nome: 'Abril'},
+        {month: 5, nome: 'Maio'},
+        {month: 6, nome: 'Junho'},
+        {month: 7, nome: 'Julho'},
+        {month: 8, nome: 'Agosto'},
+        {month: 9, nome: 'Setembro'},
+        {month: 10, nome: 'Outubro'},
+        {month: 11, nome: 'Novembro'},
+        {month: 12, nome: 'Dezembro'}
+      ];
+      var result = {data:[]};
+      result.data = array;
+      return result;
+    }        
 
     function getArrayTipoRequisicoes() {
       var array = [
@@ -90,10 +110,9 @@ define(function(require) {
       return resourceYear.get().$promise;
     }  
 
-
-    function getMonths() {
+    /*function getMonths() {
       return resourceMonth.get().$promise;
-    }                    
+    }*/                   
 
    };
   

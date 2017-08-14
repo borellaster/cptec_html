@@ -9,14 +9,6 @@ define(function(require) {
 
     vm.result = resolve;
     
-    /*vm.download = function () {
-      var file = document.createElement("a");
-      var fileName = "Requisicao_"+vm.result.data.id+".zip";
-      file.href = "data:application/zip;base64," + vm.result.data.file;
-      file.download = fileName;
-      file.click();      
-    }*/
-
     vm.download = function () {
         var fileName = "Requisicao_"+vm.result.data.id+".zip";
         var zipData = vm.result.data.file;

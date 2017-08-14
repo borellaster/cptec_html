@@ -84,22 +84,9 @@ define(function(require) {
       });
   }
 
-  yearsList.$inject = ['DashboardFactory'];
-  function yearsList(dataService) {
-      return dataService.getYears().then(function success(data) {
-        return data;        
-      }).catch(function error(msg) {
-        setError('Erro ao carregar anos.')
-      });  
-  } 
-
   monthsList.$inject = ['DashboardFactory'];
   function monthsList(dataService) {
-      return dataService.getMonths().then(function success(data) {
-        return data;        
-      }).catch(function error(msg) {
-        setError('Erro ao carregar anos.')
-      });  
+      return dataService.getMonths();
   }   
 
 });
