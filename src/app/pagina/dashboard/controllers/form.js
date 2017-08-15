@@ -5,10 +5,10 @@ define(function(require) {
   module.controller('DashboardCtrl', DashboardCtrl);
   DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$modal'];
+                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$modal', '$scope'];
   function DashboardCtrl($state, params, $location, dataService, $timeout,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve, monthsResolve, leafletData, modal) {
+                         pagination, modelsResolve, monthsResolve, leafletData, modal, $scope) {
     var vm = this; 
     vm.novo = true;
     init();  
@@ -82,9 +82,6 @@ define(function(require) {
         vm.markers = {
             mainMarker: angular.copy(mainMarker)
         }
-
-        console.log(vm.center);
-        console.log(vm.markers);
 
       }
 
@@ -257,27 +254,7 @@ define(function(require) {
         });
     };
 
-    angular.extend(vm, {
-        center: {
-            lat: -15.518344,
-            lng: -54.207031,
-            zoom: 4
-        },
-        controls: {
-            draw: {
-                draw: {
-                    polyline:false,
-                    polygon:false,
-                    circle:false,
-                    rectangle:true,
-                    marker: false
-                },
-            },
-            edit: {
-                featureGroup: drawnItems
-            }
-        }
-    });    
+
 
     vm.closeModal = function() {
       $timeout(function() {
@@ -285,6 +262,30 @@ define(function(require) {
         vm.timeOutMapa = false;
       });
     }
+
+    vm.ajustaMapa = function() {
+      angular.extend(vm, {
+          center: {
+              lat: -15.518344,
+              lng: -54.207031,
+              zoom: 4
+          },
+          controls: {
+              draw: {
+                  draw: {
+                      polyline:false,
+                      polygon:false,
+                      circle:false,
+                      rectangle:true,
+                      marker: false
+                  },
+              },
+              edit: {
+                  featureGroup: drawnItems
+              }
+          }
+      });       
+    }    
 
     vm.openModalMap = function(message){
       $timeout(function() {
@@ -299,14 +300,23 @@ define(function(require) {
    leafletData.getMap().then(function (map) {
         var drawnItems = vm.controls.edit.featureGroup;
         drawnItems.addTo(map);
+        var aux = 0;
         map.on('draw:created', function (e) {
-            var layer = e.layer;
+            var layer = e.layer;          
             drawnItems.addLayer(layer);
 
             vm.savedItems.push({
                 id: layer._leaflet_id,
                 geoJSON: layer.toGeoJSON()
-            });
+            });             
+            var type = e.layerType;
+            if (type === 'rectangle') {
+              //console.log(layer.getLatLngs()); 
+              vm.latitudeCima = layer._latlngs[1].lat;
+              vm.latitudeBaixo = layer._latlngs[0].lat;
+              vm.longitudeEsquerda = layer._latlngs[0].lng;
+              vm.longitudeDireita = layer._latlngs[2].lng;                  
+            }           
         });
 
         map.on('draw:edited', function (e) {
@@ -319,6 +329,7 @@ define(function(require) {
                     }
                 }
             });
+            console.log("draw:edited");
         });
 
         map.on('draw:deleted', function (e) {
@@ -330,6 +341,7 @@ define(function(require) {
                     }
                 }
             });
+            console.log("draw:deleted");
         });
     });  
     /*CLOSE MAP*/
