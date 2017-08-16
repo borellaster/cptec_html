@@ -46,7 +46,8 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
   <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
     <div class="mui-textfield">
-      <input style="height: 32px;" type="text" id="latitudeCima" name="latitudeCima" ng-model="vm.latitudeCima" ng-disabled="true"/>
+      <input style="height: 32px;" type="text" id="latitudeCima" name="latitudeCima" ng-model="vm.latitudeCima" ng-disabled="true" required/>
+      <span class="requerido">Este campo é obrigatório.</span>
       <label>Lat Cima</label>
     </div>  
   </div>
@@ -55,7 +56,8 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
   <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
     <div class="mui-textfield">
-      <input style="height: 32px;" type="text" id="latitudeBaixo" name="latitudeBaixo" ng-model="vm.latitudeBaixo" ng-disabled="true"/>
+      <input style="height: 32px;" type="text" id="latitudeBaixo" name="latitudeBaixo" ng-model="vm.latitudeBaixo" ng-disabled="true" required/>
+      <span class="requerido">Este campo é obrigatório.</span>
       <label>Lat. Baixo</label>
     </div>  
   </div>
@@ -64,7 +66,8 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
   <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
     <div class="mui-textfield">
-      <input style="height: 32px;" type="text" id="longitudeEsquerda" name="longitudeEsquerda" ng-model="vm.longitudeEsquerda" ng-disabled="true"/>
+      <input style="height: 32px;" type="text" id="longitudeEsquerda" name="longitudeEsquerda" ng-model="vm.longitudeEsquerda" ng-disabled="true" required/>
+      <span class="requerido">Este campo é obrigatório.</span>
       <label>Long. Esq.</label>
     </div>  
   </div>
@@ -73,7 +76,8 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
   <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
     <div class="mui-textfield">
-      <input style="height: 32px;" type="text" id="longitudeDireita" name="longitudeDireita" ng-model="vm.longitudeDireita" ng-disabled="true"/>
+      <input style="height: 32px;" type="text" id="longitudeDireita" name="longitudeDireita" ng-model="vm.longitudeDireita" ng-disabled="true" required/>
+      <span class="requerido">Este campo é obrigatório.</span>
       <label>Long. Dir.</label>
     </div>  
   </div>

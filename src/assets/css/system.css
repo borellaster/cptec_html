@@ -4110,6 +4110,8 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 #topbar #topbar-menu ul.navbar-nav > li > a > i {
     color: #2f3238;
 }*/
+
+
 .intranet .tab-content {
   padding:0;
 }
@@ -4117,7 +4119,6 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 .intranet .panel-body {
   padding-bottom:0;
 }
-
 .content.intranet {
   padding: 0 !important;
 }
@@ -4130,5 +4131,3 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 .ui-select-multiple.ng-invalid.ng-dirty .select2-choices {
   border: 0 !important;
 }
-/*
-ui-select-container ui-select-multiple select2 select2-container select2-container-multi ng-not-empty ng-invalid ng-invalid-required*/

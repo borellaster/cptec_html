@@ -1,4 +1,8 @@
-<div style="width:100%;height: calc(100% - 59px);float: left;position:relative;min-height:100%" ng-if="!!vm.timeoutAbaDois">
-	<leaflet center="vm.center" markers="vm.markers" width="100%" height="400px"/>
+<div style="width:100%;height: calc(100% - 59px);float: left;position:relative;min-height:100%" ng-if="!!vm.timeoutAbaDois && vm.requisicao.tipoConsulta.val != 'DE'">
+	<leaflet center="vm.center" markers="vm.markers" geojson="vm.geojson" width="100%" height="400px"/>
+</div>
+
+<div style="width:100%;height: calc(100% - 59px);float: left;position:relative;min-height:100%" ng-if="!!vm.timeoutAbaDois && vm.requisicao.tipoConsulta.val == 'DE'">
+	<leaflet center="vm.center" geojson="vm.geojson" width="100%" height="400px"/>
 </div>
 

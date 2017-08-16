@@ -60,29 +60,83 @@ define(function(require) {
           lat = vm.requisicao.city.latitude;
           lon = vm.requisicao.city.longitude;
           message = vm.requisicao.city.name;
+          var mainMarker = {
+              lat: lat,
+              lng: lon,            
+              message: message,
+              draggable: false
+          };        
+
+          vm.center = {
+              lat: lat,
+              lng: lon,
+              zoom: 5
+          };
+
+          vm.markers = {
+              mainMarker: angular.copy(mainMarker)
+          };
         }else if(vm.requisicao.tipoConsulta.val == "CO"){
           lat = Number(vm.requisicao.latitude);
           lon = Number(vm.requisicao.longitude);
           message = "Ponto escolhido";
-        }         
+          var mainMarker = {
+              lat: lat,
+              lng: lon,            
+              message: message,
+              draggable: false
+          };        
 
-        var mainMarker = {
-            lat: lat,
-            lng: lon,            
-            message: message,
-            draggable: false
-        };        
+          vm.center = {
+              lat: lat,
+              lng: lon,
+              zoom: 5
+          };
 
-        vm.center = {
-            lat: lat,
-            lng: lon,
-            zoom: 5
-        };
+          vm.markers = {
+              mainMarker: angular.copy(mainMarker)
+          };                    
+        }else if(vm.requisicao.tipoConsulta.val == "DE"){
+          lat = Number(vm.requisicao.latitude);
+          lon = Number(vm.requisicao.longitude);
+          message = "Ponto escolhido";
 
-        vm.markers = {
-            mainMarker: angular.copy(mainMarker)
+          var mainMarker = {
+              lat: lat,
+              lng: lon,            
+              message: message,
+              draggable: false
+          }; 
+
+          var geojson = {
+              data: {
+                "type": "FeatureCollection",
+                "features": [
+                  {
+                     "type": "Feature",
+                        "properties": {},
+                        "geometry": {
+                          "type": "Polygon",
+                          "coordinates": [
+                            savedItems[0].geoJSON.geometry.coordinates[0]
+                          ]
+                        }                    
+                  }
+                ]
+              },
+              style: {
+                  fillColor: "blue"
+              }
+          };                
+
+          vm.center = {
+            lat: vm.latitudeCima,
+            lng: vm.longitudeEsquerda,
+            zoom: 4
+          };
+
+          vm.geojson = geojson;
         }
-
       }
 
       if (aba == 'tres') {
@@ -172,12 +226,17 @@ define(function(require) {
         latitude = vm.requisicao.latitude;
         longitude = vm.requisicao.longitude;
         point = { type: 'Point', coordinates: [latitude,longitude]};
-      } 
+      }else if(vm.requisicao.tipoConsulta.val == "DE"){
+        //latitude = vm.requisicao.latitude;
+        //longitude = vm.requisicao.longitude;
+        point = { type: 'Polygon', coordinates: [vm.savedItems[0].geoJSON.geometry.coordinates[0]]};
+      }
+
       vm.requisicao.location = point;     
       dataService.save(vm.requisicao).then(function success(data) {        
         initRequisicao();
         vm.novo = false;
-        dataService.processRequest(data.id); //LEMBRAR DE DESCOMENTAR
+        //dataService.processRequest(data.id);
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
@@ -234,11 +293,12 @@ define(function(require) {
       vm.paginationPageSize = 5;
       vm.paginationItemsSize = 5;
       initRequisicao();
-
+      initMapa();
     }
 
     /*OPEN MAP*/
     vm.savedItems = [];
+    var savedItems = [];
 
     var drawnItems = new L.FeatureGroup();
     for (var i = 0; i < vm.savedItems.length; i++) {
@@ -265,25 +325,31 @@ define(function(require) {
 
     vm.ajustaMapa = function() {
       angular.extend(vm, {
-          center: {
-              lat: -15.518344,
-              lng: -54.207031,
-              zoom: 4
-          },
-          controls: {
-              draw: {
-                  draw: {
-                      polyline:false,
-                      polygon:false,
-                      circle:false,
-                      rectangle:true,
-                      marker: false
-                  },
+        center: {
+          lat: -15.518344,
+          lng: -54.207031,
+          zoom: 4
+        },
+        controls: {
+          draw: {
+            draw: {
+              polyline:false,
+              polygon:false,
+              circle:false,
+              rectangle: {
+                metric: false,
+                showArea: true,
+                shapeOptions: {
+                    color: 'blue'
+                }
               },
-              edit: {
-                  featureGroup: drawnItems
-              }
+              marker: false
+            },
+          },
+          edit: {
+              featureGroup: drawnItems
           }
+        }
       });       
     }    
 
@@ -294,56 +360,61 @@ define(function(require) {
 
       $timeout(function() {
         vm.timeOutMapa = true
-      }, 300);
-    }; 
+      }, 300);      
+    };
 
-   leafletData.getMap().then(function (map) {
-        var drawnItems = vm.controls.edit.featureGroup;
-        drawnItems.addTo(map);
-        var aux = 0;
-        map.on('draw:created', function (e) {
-            var layer = e.layer;          
-            drawnItems.addLayer(layer);
+    function initMapa() {
+      leafletData.getMap().then(function (map) {
+          var drawnItems = vm.controls.edit.featureGroup;
+          drawnItems.addTo(map);
+          var aux = 0;
+          
+          map.on('draw:created', function (e) {
+              var layer = e.layer;          
+              drawnItems.addLayer(layer);
 
-            vm.savedItems.push({
-                id: layer._leaflet_id,
-                geoJSON: layer.toGeoJSON()
-            });             
-            var type = e.layerType;
-            if (type === 'rectangle') {
-              //console.log(layer.getLatLngs()); 
-              vm.latitudeCima = layer._latlngs[1].lat;
-              vm.latitudeBaixo = layer._latlngs[0].lat;
-              vm.longitudeEsquerda = layer._latlngs[0].lng;
-              vm.longitudeDireita = layer._latlngs[2].lng;                  
-            }           
-        });
+              vm.savedItems.push({
+                  id: layer._leaflet_id,
+                  geoJSON: layer.toGeoJSON()
+              });          
+              savedItems = vm.savedItems;   
+              var type = e.layerType;
+              if (type === 'rectangle') {
+                vm.latitudeCima = layer._latlngs[1].lat;
+                vm.latitudeBaixo = layer._latlngs[0].lat;
+                vm.longitudeEsquerda = layer._latlngs[0].lng;
+                vm.longitudeDireita = layer._latlngs[2].lng;                  
+              }   
+              console.log("draw:created");        
+          });
 
-        map.on('draw:edited', function (e) {
-            var layers = e.layers;
-            layers.eachLayer(function (layer) {
+          map.on('draw:edited', function (e) {
+              var layers = e.layers;
+              layers.eachLayer(function (layer) {
+                  for (var i = 0; i < vm.savedItems.length; i++) {
+                      if (vm.savedItems[i].id == layer._leaflet_id) {
+                          vm.savedItems[i].geoJSON = layer.toGeoJSON();
+                      }
+                  }
+              });
+              console.log("draw:edited");
+          });
 
-                for (var i = 0; i < vm.savedItems.length; i++) {
-                    if (vm.savedItems[i].id == layer._leaflet_id) {
-                        vm.savedItems[i].geoJSON = layer.toGeoJSON();
-                    }
-                }
-            });
-            console.log("draw:edited");
-        });
+          map.on('draw:deleted', function (e) {
+              var layers = e.layers;
+              layers.eachLayer(function (layer) {
+                  for (var i = 0; i < vm.savedItems.length; i++) {
+                      if (vm.savedItems[i].id == layer._leaflet_id) {
+                          vm.savedItems.splice(i, 1);
+                      }
+                  }
+              });
+              console.log("draw:deleted");
+          });
+      });        
+    } 
 
-        map.on('draw:deleted', function (e) {
-            var layers = e.layers;
-            layers.eachLayer(function (layer) {
-                for (var i = 0; i < vm.savedItems.length; i++) {
-                    if (vm.savedItems[i].id == layer._leaflet_id) {
-                        vm.savedItems.splice(i, 1);
-                    }
-                }
-            });
-            console.log("draw:deleted");
-        });
-    });  
+
     /*CLOSE MAP*/
     
 
