@@ -236,7 +236,7 @@ define(function(require) {
       dataService.save(vm.requisicao).then(function success(data) {        
         initRequisicao();
         vm.novo = false;
-        //dataService.processRequest(data.id);
+        dataService.processRequest(data.id);
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
