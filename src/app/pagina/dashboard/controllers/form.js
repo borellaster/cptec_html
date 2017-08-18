@@ -3,10 +3,10 @@ define(function(require) {
 
   var module = require('../module');
   module.controller('DashboardCtrl', DashboardCtrl);
-  DashboardCtrl.$inject = ['$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
+  DashboardCtrl.$inject = ['$window', '$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
                            'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$modal', '$scope'];
-  function DashboardCtrl($state, params, $location, dataService, $timeout,
+  function DashboardCtrl($window, $state, params, $location, dataService, $timeout,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
                          pagination, modelsResolve, monthsResolve, leafletData, modal, $scope) {
     var vm = this; 
@@ -26,6 +26,10 @@ define(function(require) {
     vm.step = function(aba) {
       if (aba == 'um') {
         vm.timeoutAbaDois  = false;
+        if(vm.novo==false){
+          $state.reload();
+          vm.novo = true;
+        }
       };
       if (aba == 'dois') {
         $timeout(function() {
@@ -236,7 +240,7 @@ define(function(require) {
       dataService.save(vm.requisicao).then(function success(data) {        
         initRequisicao();
         vm.novo = false;
-        //dataService.processRequest(data.id);
+        dataService.processRequest(data.id);
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
