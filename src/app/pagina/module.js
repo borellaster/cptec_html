@@ -12,6 +12,7 @@ define(function(require) {
       require('./about/package').name,
       require('./contact/package').name,
       require('./tutorial/package').name,
+      require('./api/package').name,
       require('./map/package').name
     ]
   );

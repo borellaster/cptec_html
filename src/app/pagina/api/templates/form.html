@@ -1,0 +1,94 @@
+<div class="page-title-breadcrumb">
+  <ol class="breadcrumb page-breadcrumb pull-left">
+    <li><i class="fa fa-home"></i>&nbsp;<a href="/#/">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i></li>
+    <li><a href="/#/">&nbsp;&nbsp;Api</a></li>
+  </ol>
+</div>
+
+<div class="demo-form-component">
+  <div class="row" style="margin: 0;">
+    <div class="col-md-12">
+      <div class="panel">
+        <div ng-generaltab="" class="row" style="margin-top: 15px;">
+          <div class="col-md-12" style="margin-top: 10px;">
+          
+            <div class="col-xs-4 col-sm-4 col-md-4 lo-lg-4" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                  <ui-select ng-model="vm.api.model" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required on-select="vm.onSelectCallback($item)">
+                    <ui-select-match placeholder="Selecione um cenário climático">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="model in vm.models.data | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="model.name | highlight: $select.search"></div>                        
+                    </ui-select-choices>
+                  </ui-select>                  
+                <label>Cenário Climático</label>
+              </div>
+            </div>  
+
+            <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                  <ui-select ng-model="vm.api.interval" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                    <ui-select-match placeholder="Selecione um intervalo">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="interval in vm.intervals.data | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="interval.name | highlight: $select.search"></div>                        
+                    </ui-select-choices>
+                  </ui-select>                  
+                <label>Frequência</label>
+              </div>
+            </div> 
+
+            <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <ui-select ng-model="vm.api.start_month" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                  <ui-select-match placeholder="Selecione o mês inicial">{{$select.selected.nome}}</ui-select-match>
+                  <ui-select-choices repeat="month in vm.months.data">
+                    <div ng-bind-html="month.nome"></div>
+                  </ui-select-choices>
+                </ui-select>               
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Mês Inicial</label>
+              </div>               
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <ui-select ng-model="vm.api.start_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                  <ui-select-match placeholder="Selecione o ano inicial">{{$select.selected.year}}</ui-select-match>
+                  <ui-select-choices repeat="year in vm.years">
+                    <div ng-bind-html="year.year"></div>
+                  </ui-select-choices>
+                </ui-select>               
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Ano Inicial</label>
+              </div>               
+            </div>                                
+
+            <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <ui-select ng-model="vm.api.end_month" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                  <ui-select-match placeholder="Selecione o mês final">{{$select.selected.nome}}</ui-select-match>
+                  <ui-select-choices repeat="month in vm.months.data">
+                    <div ng-bind-html="month.nome"></div>
+                  </ui-select-choices>
+                </ui-select>               
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Mês Final</label>
+              </div>               
+            </div>
+            <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <ui-select ng-model="vm.api.end_year" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                  <ui-select-match placeholder="Selecione o ano final">{{$select.selected.year}}</ui-select-match>
+                  <ui-select-choices repeat="year in vm.years">
+                    <div ng-bind-html="year.year"></div>
+                  </ui-select-choices>
+                </ui-select>               
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Ano Final</label>
+              </div>               
+            </div> 
+
+          </div>              
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -276,7 +276,7 @@ define(function(require) {
       vm.requisicao.start_month = vm.months.data[0]; 
       vm.requisicao.start_year = {'year': vm.requisicao.model.start_year};
       vm.requisicao.end_month = vm.months.data[11];
-      vm.requisicao.end_year = {'year': vm.requisicao.model.end_year};;
+      vm.requisicao.end_year = {'year': vm.requisicao.model.end_year};
     }    
 
     function init() {
@@ -320,7 +320,7 @@ define(function(require) {
 
 
 
-    vm.closeModal = function() {
+    vm.closeModal = function(teste) {
       $timeout(function() {
         angular.element('#modalMap').trigger('click');
         vm.timeOutMapa = false;
@@ -363,7 +363,7 @@ define(function(require) {
       }, 100);
 
       $timeout(function() {
-        vm.timeOutMapa = true
+        vm.timeOutMapa = true;
       }, 300);      
     };
 
