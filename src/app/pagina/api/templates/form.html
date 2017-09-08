@@ -11,6 +11,7 @@
       <div class="panel">
         <div ng-generaltab="" class="row" style="margin-top: 15px;">
           <div class="col-md-12" style="margin-top: 10px;">
+          <form role="form" name="form" class="form-horizontal form-seperated" novalidate>
           
             <div class="col-xs-4 col-sm-4 col-md-4 lo-lg-4" style="padding-left: 5px; padding-right: 5px;">
               <div class="mui-textfield">
@@ -82,11 +83,50 @@
                   </ui-select-choices>
                 </ui-select>               
                 <span class="requerido">Este campo é obrigatório.</span>
-                <label>Ano Final</label>
+                <label>Ano Final </label>
               </div>               
             </div> 
 
-          </div>              
+            <div class="col-xs-4 col-sm-4 col-md-4 lo-lg-4" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                  <ui-select ng-model="vm.api.variable" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
+                    <ui-select-match placeholder="Selecione uma variável">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-choices repeat="variable in vm.variables.data | propsFilter: {name: $select.search}">
+                      <div ng-bind-html="variable.name | highlight: $select.search"></div>                        
+                    </ui-select-choices>
+                  </ui-select>
+                  <span class="requerido">Este campo é obrigatório.</span>
+                <label>Variável </label>
+              </div>
+            </div>  
+
+            
+            <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <input style="height: 32px;" type="text" id="latitude" name="latitude" ng-model="vm.api.latitude" ng-required="true" placeholder="-12.40">
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Latitude</label>
+              </div>
+            </div>
+
+            <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-left: 5px; padding-right: 5px;">
+              <div class="mui-textfield">
+                <input style="height: 32px;" type="text" id="longitude" name="longitude" ng-model="vm.api.longitude" ng-required="true" placeholder="-49.80">
+                <span class="requerido">Este campo é obrigatório.</span>
+                <label>Longitude</label>
+              </div>
+            </div>
+          </form>
+
+          <div class="form-group" style="margin-top:10px;">            
+            <a style="margin-top: 14px;margin-left: 5px;" ng-click="vm.generateUrl(form)" class="btn btn-success"><i class="icon-check"></i> Gerar URL</a>
+          </div>                       
+
+          <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;text-align: center;padding-top: 50px;font-size: 20px;">
+            <p class="text-info">{{vm.link}}</p>
+          </div> 
+
+          </div>   
         </div>
       </div>
     </div>
