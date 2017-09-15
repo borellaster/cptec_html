@@ -35,7 +35,7 @@
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
   <div class="col-xs-2 col-sm-2 col-md-2 lo-lg-2" style="padding-right: 15px;margin-left: -20px">
     <div class="mui-textfield">
-        <button class="btn btn-primary mlm" style="margin-top: -2px; width: 100%" ng-click="vm.openModalMap($event)"> Mapa
+        <button class="btn btn-primary mlm" style="margin-top: -2px; width: 100%" ng-click="vm.openModalMap()"> Mapa
           <i class="fa fa-map-o mlx"></i>
         </button>
     </div>  
@@ -54,7 +54,7 @@
 </div>  
 
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
-  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
+  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.6%">
     <div class="mui-textfield">
       <input style="height: 32px;" type="text" id="latitudeBaixo" name="latitudeBaixo" ng-model="vm.latitudeBaixo" ng-disabled="true" required/>
       <span class="requerido">Este campo é obrigatório.</span>
@@ -64,7 +64,7 @@
 </div> 
 
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
-  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
+  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.6%">
     <div class="mui-textfield">
       <input style="height: 32px;" type="text" id="longitudeEsquerda" name="longitudeEsquerda" ng-model="vm.longitudeEsquerda" ng-disabled="true" required/>
       <span class="requerido">Este campo é obrigatório.</span>
@@ -74,7 +74,7 @@
 </div>
 
 <div ng-if="vm.requisicao.tipoConsulta.val == 'DE'">
-  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.7%">
+  <div class="col-xs-1 col-sm-1 col-md-1 lo-lg-1" style="padding-left: 5px; padding-right: 5px;width: 8.6%">
     <div class="mui-textfield">
       <input style="height: 32px;" type="text" id="longitudeDireita" name="longitudeDireita" ng-model="vm.longitudeDireita" ng-disabled="true" required/>
       <span class="requerido">Este campo é obrigatório.</span>
@@ -84,24 +84,3 @@
 </div> 
 
 
-
-<!--########################################################################-->
-<input style="width:500px; height:500px" type="hidden" data-target="#modalMapa" id="modalMap" data-toggle="modal">
-<div class="modal fade slide-up disable-scroll" id="modalMapa" tabindex="-1" 
-    role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="true">
-    <div class="modal-dialog">
-        <div class="modal-content-wrapper">
-            <div class="modal-content" style="position:relative;box-shadow: none !important;">
-                <div class="modal-header clearfix text-left">
-                    <h4>Desenho no mapa</h4>
-                </div>
-                <div style="width:100%;height:550px;" ng-if="!!vm.timeOutMapa">
-                  <leaflet center="vm.center" controls="vm.controls" width="100%" height="100%"></leaflet>
-                </div>
-                <button class="btn btn-default mlm" style="margin-top: 14px;position:absolute;z-index:999;bottom: 25px;left: 5;"   ng-click="vm.closeModal($event)"> Fechar
-                <i class="fa fa-times mlx"></i>
-                </button>               
-            </div>
-        </div>
-    </div>
-</div>

@@ -3,12 +3,12 @@ define(function(require) {
 
   var module = require('../module');
   module.controller('DashboardCtrl', DashboardCtrl);
-  DashboardCtrl.$inject = ['$window', '$state', '$stateParams', '$location', 'DashboardFactory', '$timeout',
+  DashboardCtrl.$inject = ['$window', '$state', '$stateParams', '$location', 'DashboardFactory', '$timeout', '$modal',
                            'VariablesResolve', 'IntervalsResolve', 'TypesResolve', 'CitiesFactory', 
-                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$modal', '$scope'];
-  function DashboardCtrl($window, $state, params, $location, dataService, $timeout,
+                           'PaginationFactory', 'ModelsResolve', 'MonthsResolve', 'leafletData', '$scope', '$rootScope'];
+  function DashboardCtrl($window, $state, params, $location, dataService, $timeout, $modal,
                          variablesResolve, intervalsResolve, typesResolve, dataServiceCity, 
-                         pagination, modelsResolve, monthsResolve, leafletData, modal, $scope) {
+                         pagination, modelsResolve, monthsResolve, leafletData, $scope, $rootScope) {
     var vm = this; 
     vm.novo = true;
     init();  
@@ -122,7 +122,7 @@ define(function(require) {
                         "geometry": {
                           "type": "Polygon",
                           "coordinates": [
-                            savedItems[0].geoJSON.geometry.coordinates[0]
+                            vm.savedItems[0].geoJSON.geometry.coordinates[0]
                           ]
                         }                    
                   }
@@ -297,130 +297,45 @@ define(function(require) {
       vm.paginationPageSize = 5;
       vm.paginationItemsSize = 5;
       initRequisicao();
-      initMapa();
     }
 
-    /*OPEN MAP*/
-    vm.savedItems = [];
-    var savedItems = [];
+    $rootScope.$on("latitudeCima", function(event, value) {
+      event.preventDefault();
+      event.stopPropagation();
+      vm.latitudeCima = value;
+    });
 
-    var drawnItems = new L.FeatureGroup();
-    for (var i = 0; i < vm.savedItems.length; i++) {
-        L.geoJson(vm.savedItems[i].geoJSON, {
-            style: function(feature) {
-                return {
-                    color: '#bada55'
-                };
-            },
-            onEachFeature: function (feature, layer) {
-                drawnItems.addLayer(layer);
-            }
+    $rootScope.$on("latitudeBaixo", function(event, value) {
+      event.preventDefault();
+      event.stopPropagation();
+      vm.latitudeBaixo = value;
+    });
+
+    $rootScope.$on("longitudeEsquerda", function(event, value) {
+      event.preventDefault();
+      event.stopPropagation();
+      vm.longitudeEsquerda = value;
+    });
+
+    $rootScope.$on("longitudeDireita", function(event, value) {
+      event.preventDefault();
+      event.stopPropagation();
+      vm.longitudeDireita = value;
+    });
+
+    $rootScope.$on("savedItems", function(event, value) {
+      event.preventDefault();
+      event.stopPropagation();
+      vm.savedItems = value;
+    });    
+
+    vm.openModalMap = function(){
+      var modalInstance = $modal.open({
+          templateUrl: 'app/pagina/dashboard/templates/modal.html',
+          controller: 'ModalController',
+          controllerAs: 'vm',
         });
     };
-
-
-
-    vm.closeModal = function(teste) {
-      $timeout(function() {
-        angular.element('#modalMap').trigger('click');
-        vm.timeOutMapa = false;
-      });
-    }
-
-    vm.ajustaMapa = function() {
-      angular.extend(vm, {
-        center: {
-          lat: -15.518344,
-          lng: -54.207031,
-          zoom: 4
-        },
-        controls: {
-          draw: {
-            draw: {
-              polyline:false,
-              polygon:false,
-              circle:false,
-              rectangle: {
-                metric: false,
-                showArea: true,
-                shapeOptions: {
-                    color: 'blue'
-                }
-              },
-              marker: false
-            },
-          },
-          edit: {
-              featureGroup: drawnItems
-          }
-        }
-      });       
-    }    
-
-    vm.openModalMap = function(message){
-      $timeout(function() {
-        angular.element('#modalMap').trigger('click');
-      }, 100);
-
-      $timeout(function() {
-        vm.timeOutMapa = true;
-      }, 300);      
-    };
-
-    function initMapa() {
-      leafletData.getMap().then(function (map) {
-          var drawnItems = vm.controls.edit.featureGroup;
-          drawnItems.addTo(map);
-          var aux = 0;
-          
-          map.on('draw:created', function (e) {
-              var layer = e.layer;          
-              drawnItems.addLayer(layer);
-
-              vm.savedItems.push({
-                  id: layer._leaflet_id,
-                  geoJSON: layer.toGeoJSON()
-              });          
-              savedItems = vm.savedItems;   
-              var type = e.layerType;
-              if (type === 'rectangle') {
-                vm.latitudeCima = layer._latlngs[1].lat;
-                vm.latitudeBaixo = layer._latlngs[0].lat;
-                vm.longitudeEsquerda = layer._latlngs[0].lng;
-                vm.longitudeDireita = layer._latlngs[2].lng;                  
-              }   
-              console.log("draw:created");        
-          });
-
-          map.on('draw:edited', function (e) {
-              var layers = e.layers;
-              layers.eachLayer(function (layer) {
-                  for (var i = 0; i < vm.savedItems.length; i++) {
-                      if (vm.savedItems[i].id == layer._leaflet_id) {
-                          vm.savedItems[i].geoJSON = layer.toGeoJSON();
-                      }
-                  }
-              });
-              console.log("draw:edited");
-          });
-
-          map.on('draw:deleted', function (e) {
-              var layers = e.layers;
-              layers.eachLayer(function (layer) {
-                  for (var i = 0; i < vm.savedItems.length; i++) {
-                      if (vm.savedItems[i].id == layer._leaflet_id) {
-                          vm.savedItems.splice(i, 1);
-                      }
-                  }
-              });
-              console.log("draw:deleted");
-          });
-      });        
-    } 
-
-
-    /*CLOSE MAP*/
-    
 
   }
 });
