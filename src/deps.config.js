@@ -106,6 +106,10 @@ function getConfig() {
 
       formWizard: [
         'vendor/form-wizard'
+      ],
+
+      clipboard: [
+        'vendor/clipboard/clipboard.min'
       ]   
 
     },
@@ -123,7 +127,7 @@ function getConfig() {
 
       'ngLocale': {
         deps: ['angular']
-      },           
+      },
 
       'angular': {
         deps: ['bootstrap'],
@@ -209,7 +213,11 @@ function getConfig() {
       'formWizard': {
         deps: ['jquery', 'jqueryValidate', 'jquerySteps', 'jqueryWizard'],
         exports: 'formWizard'
-      },  
+      },
+
+      'clipboard': {
+        deps: ['angular']
+      },         
 
       'moment': {
         deps: ['jquery'],

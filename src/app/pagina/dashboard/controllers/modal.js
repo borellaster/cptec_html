@@ -38,7 +38,7 @@ define(function(require) {
 
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
              attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-         }).addTo(mymap);
+      }).addTo(mymap);
 
       var drawnItems = new L.FeatureGroup();
 
@@ -68,9 +68,7 @@ define(function(require) {
         vm.savedItems.push({
             id: layer._leaflet_id,
             geoJSON: layer.toGeoJSON()
-        });
-
-        console.log(vm.savedItems);
+        });        
         clearMap();
         var polygonLimits = new L.polygon([
             [-50.1000000,-100.1000000],
@@ -89,6 +87,15 @@ define(function(require) {
             [layer._latlngs[3].lat, layer._latlngs[3].lng]
         ]).addTo(mymap);
 
+        for(var i=0;i<=layer._latlngs.length-1;i++)
+        {
+          if(layer._latlngs[i].lat < -50.1 || layer._latlngs[i].lng < -100.1 || layer._latlngs[i].lat > 27.9 || layer._latlngs[i].lng > -29.1){
+            mymap.removeLayer(polygon);
+            setWarning('Você selecionou uma área indisponível.');//alert("Você selecionou uma área indisponível")
+            break;
+          }          
+        }        
+
         $rootScope.$emit("latitudeCima", layer._latlngs[1].lat);
         $rootScope.$emit("latitudeBaixo", layer._latlngs[0].lat);
         $rootScope.$emit("longitudeEsquerda", layer._latlngs[0].lng);
@@ -96,64 +103,16 @@ define(function(require) {
         $rootScope.$emit("savedItems", vm.savedItems);           
       });
 
-      vm.visualizeMap = function(){
-        if(vm.latitudeBaixo < -50.1 || vm.longitudeEsquerda < -100.1 || vm.latitudeCima > 27.9 || vm.longitudeDireita > -29.1){
-          alert("Você selecionou uma área indisponível")
-          vm.clearCoordinates();
-        }else
-        {
-          clearMap();
-          var polygonLimits = new L.polygon([
-              [-50.1000000,-100.1000000],
-              [27.9000000,-100.1000000],
-              [27.9000000,-29.1000000],
-              [-50.1000000, -29.1000000]],{
-                color: 'red',
-                fillColor: "transparent",
-                weight: 0.4
-              }
-          ).addTo(mymap);
-
-          vm.mapVis = 1;
-
-          var writtenSQ = [
-          [vm.latitudeBaixo,vm.longitudeEsquerda],
-          [vm.latitudeCima,vm.longitudeEsquerda],
-          [vm.latitudeCima,vm.longitudeDireita],
-          [vm.latitudeBaixo,vm.longitudeDireita]];
-
-          var writtenPolygon = L.polygon(writtenSQ).addTo(mymap);
-        }
-      }
-
-      vm.mapVis = 0;
-      vm.openMap = function(){
-        vm.clearCoordinates();
-        clearMap();
-        var polygonLimits = new L.polygon([
-            [-50.1000000,-100.1000000],
-            [27.9000000,-100.1000000],
-            [27.9000000,-29.1000000],
-            [-50.1000000, -29.1000000]],{
-              color: 'red',
-              fillColor: "transparent",
-              weight: 0.4
-            }
-        ).addTo(mymap);
-
-        vm.mapVis = 1;
-      }
-      
-      vm.closeMap = function(){
-        vm.mapVis = 0;
-      }
-
       vm.clearCoordinates = function(){
         mymap.removeLayer(polygon);
         vm.latitudeCima = " ";
         vm.latitudeBaixo = " ";
         vm.longitudeEsquerda = " ";
         vm.longitudeDireita = " ";
+        $rootScope.$emit("latitudeCima", undefined);
+        $rootScope.$emit("latitudeBaixo", undefined);
+        $rootScope.$emit("longitudeEsquerda", undefined);
+        $rootScope.$emit("longitudeDireita", undefined);
       }
 
       function clearMap() {
@@ -162,8 +121,7 @@ define(function(require) {
             try {
               mymap.removeLayer(mymap._layers[i]);
             }
-            catch(e) {
-              console.log("problem with " + e + mymap._layers[i]);
+            catch(e) {              
             }
           }
         }
@@ -171,9 +129,17 @@ define(function(require) {
 
     }, 200);  
 
-    vm.hide = function() {
+    vm.save = function() {
       $modalInstance.dismiss('cancel');
     };
+
+    vm.close = function() {
+      $modalInstance.dismiss('cancel');
+      $rootScope.$emit("latitudeCima", undefined);
+      $rootScope.$emit("latitudeBaixo", undefined);
+      $rootScope.$emit("longitudeEsquerda", undefined);
+      $rootScope.$emit("longitudeDireita", undefined);      
+    };    
     
 	}
 });

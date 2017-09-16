@@ -13,6 +13,7 @@ define(function(require) {
   require('dualList');
   require('ngCookies');
   require('formWizard');
+  require('clipboard');
 
   return angular.module(
 
@@ -24,7 +25,7 @@ define(function(require) {
       'ngSanitize',
       'ngLocale',
       'ngCookies',
-      'ng-duallist',
+      'ng-duallist',      
 
       require('./templates/cache').name,
       require('shared/fend/navbar/package').name,

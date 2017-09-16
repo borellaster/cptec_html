@@ -123,12 +123,113 @@
           </div>                       
 
           <div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;text-align: center;padding-top: 50px;font-size: 20px;">
-            <p class="text-info">{{vm.link}}</p>
+            <a ng-href="{{vm.genUrl(vm.link)}}" ng-click="vm.redirect(vm.link)">{{vm.genUrl(vm.link)}}</a>
           </div> 
 
           </div>   
         </div>
       </div>
+
+        <div class="panel">
+          <div ng-generaltab="" class="row">
+            <div class="col-md-12" style="margin-top: 10px;">
+              <div id="accordion" class="panel-group accordion">
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h5 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="accordion-toggle"><i class="icon-arrow"></i>Cenário climático</a></h5>
+                  </div>
+                  <div id="collapseOne" class="panel-collapse collapse in">
+                    <div class="panel-body">Exemplo: 
+                      </br>
+                      <a>https://projeta.cptec.inpe.br/api/v1/public/<span class="word-rotate word-rotate-info">ETA/1</span>/DAILY/2/1/2005/12/2005/TP2M/-12/-49/</a>                    
+                      </br>
+                      Atributos: <span class="word-rotate word-rotate-primary">model</span> e <span class="word-rotate word-rotate-primary">id</span>
+                      </br></br>
+                      Link para os cenários climáticos                      
+                      </br>
+                      <a ng-href="{{vm.genUrl(vm.linkModelo)}}" ng-click="vm.redirect(vm.linkModelo)">{{vm.genUrl(vm.linkModelo)}}</a>
+                      </br></br>
+                      <pre>{{vm.models}}</pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h5 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="accordion-toggle collapsed"><i class="icon-arrow"></i>Frequência</a></h5>
+                  </div>
+                  <div id="collapseTwo" style="height: 0px;" class="panel-collapse collapse">
+                    <div class="panel-body">Exemplo: 
+                      </br>
+                      <a>https://projeta.cptec.inpe.br/api/v1/public/ETA/1/<span class="word-rotate word-rotate-info">DAILY/2</span>/1/2005/12/2005/TP2M/-12/-49/</a>                    
+                      </br>
+                      Atributos: <span class="word-rotate word-rotate-primary">nickname</span> e <span class="word-rotate word-rotate-primary">id</span>
+                      </br></br>
+                      Link para as frequências
+                      </br>
+                      <a ng-href="{{vm.genUrl(vm.linkInterval)}}" ng-click="vm.redirect(vm.linkInterval)">{{vm.genUrl(vm.linkInterval)}}</a>
+                      </br></br>
+                      <pre>{{vm.intervals}}</pre>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h5 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" class="accordion-toggle collapsed"><i class="icon-arrow"></i>Período</a></h5>
+                  </div>
+                  <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
+                    <div class="panel-body">Meses de 1 a 12.
+                      </br>
+                      Ano: <span class="word-rotate word-rotate-primary">start_year</span> e <span class="word-rotate word-rotate-primary">end_year</span> do cenário climático selecionado.
+                      </br>
+                      <a ng-href="{{vm.genUrl(vm.linkModelo)}}" ng-click="vm.redirect(vm.linkModelo)">{{vm.genUrl(vm.linkModelo)}}</a>
+                      </br></br>
+                      <pre>{{vm.models}}</pre>                      
+                    </div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h5 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFour" class="accordion-toggle collapsed"><i class="icon-arrow"></i>Variável</a></h5>
+                  </div>
+                  <div id="collapseFour" style="height: 0px;" class="panel-collapse collapse">
+                    <div class="panel-body">Exemplo: 
+                      </br>
+                      <a>https://projeta.cptec.inpe.br/api/v1/public/ETA/1/DAILY/2/1/2005/12/2005/<span class="word-rotate word-rotate-info">TP2M</span>/-12/-49/</a>                    
+                      </br>
+                      Atributo: <span class="word-rotate word-rotate-primary">nickname</span>
+                      </br></br>
+                      Link para as variáveis
+                      </br>
+                      <a ng-href="{{vm.genUrl(vm.linkVariavel)}}" ng-click="vm.redirect(vm.linkVariavel)">{{vm.genUrl(vm.linkVariavel)}}</a>
+                      </br></br>
+                      <pre>{{vm.variables}}</pre>
+                    </div>
+                  </div>
+                </div> 
+
+                <div class="panel">
+                  <div class="panel-heading">
+                    <h5 class="panel-title"><a data-toggle="collapse" data-parent="#accordion" href="#collapseFive" class="accordion-toggle collapsed"><i class="icon-arrow"></i>Coordenadas</a></h5>
+                  </div>
+                  <div id="collapseFive" style="height: 0px;" class="panel-collapse collapse">
+                    <div class="panel-body">Exemplo: 
+                      </br>
+                      <a>https://projeta.cptec.inpe.br/api/v1/public/ETA/1/DAILY/2/1/2005/12/2005/TP2M/<span class="word-rotate word-rotate-info">-12/-49/</span></a>                    
+                      </br>
+                      Informar a <span class="word-rotate word-rotate-primary">latitude</span> e <span class="word-rotate word-rotate-primary">longitude</span>
+                      </br>
+                    </div>
+                  </div>
+                </div>  
+
+              </div>
+            </div>              
+          </div>
+        </div>
+      </div>      
     </div>
   </div>
 </div>

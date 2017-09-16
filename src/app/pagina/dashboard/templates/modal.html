@@ -3,19 +3,23 @@
         <div class="modal-content" style="position:relative;box-shadow: none !important;">
             <div class="modal-header clearfix text-left">
                 <h4>Desenho no mapa</h4>
-            </div><!-- 
-            <div style="width:100%;height:550px;" ng-if="!!vm.timeOutMapa" id="angular-leaflet-map">
-              <leaflet center="vm.center" controls="vm.controls" width="100%" height="100%"></leaflet>
-              <div id="mapid" style="width: 100%; height: 400px; float: left;margin-top: "></div>
-            </div>-->            
+            </div>          
             <div>
                 <div id="mapid" style="width: 100%; height: 540px; float: left;"></div>
+                <div style="margin-left: -7px;">
+                    <button class="btn btn-success mlm" style="margin-top: 2px;margin-bottom:2px;float:left;" ng-click="vm.save()"> Salvar
+                        <i class="fa fa-floppy-o"></i>
+                    </button> 
 
-                <button class="btn btn-default mlm" style="margin-top: 3px;margin-bottom: 3px;" ng-click="vm.hide()"> Fechar
-                    <i class="fa fa-times mlx"></i>
-                </button>                 
-            </div>
-                      
+                    <button class="btn btn-default mlm" style="margin-top: 2px;margin-bottom: 2px;margin-left:2px;" ng-click="vm.clearCoordinates()"> Limpar
+                        <i class="fa fa-refresh mlx"></i>
+                    </button> 
+
+                    <button class="btn btn-default mlm" style="margin-top: 2px;margin-bottom: 2px;float:right;margin-right: 2px;" ng-click="vm.close()"> Fechar
+                        <i class="fa fa-times mlx"></i>
+                    </button>
+                </div>
+            </div>                      
         </div>
     </div>
 </div>

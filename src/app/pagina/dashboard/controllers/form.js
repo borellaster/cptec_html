@@ -69,8 +69,7 @@ define(function(require) {
               lng: lon,            
               message: message,
               draggable: false
-          };        
-
+          };
           vm.center = {
               lat: lat,
               lng: lon,
@@ -333,8 +332,12 @@ define(function(require) {
       var modalInstance = $modal.open({
           templateUrl: 'app/pagina/dashboard/templates/modal.html',
           controller: 'ModalController',
-          controllerAs: 'vm',
-        });
+          controllerAs: 'vm'
+      });
+      vm.latitudeCima = undefined;
+      vm.latitudeBaixo = undefined;
+      vm.longitudeEsquerda = undefined;
+      vm.longitudeDireita = undefined;
     };
 
   }

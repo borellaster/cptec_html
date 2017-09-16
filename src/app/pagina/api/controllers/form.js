@@ -3,9 +3,9 @@ define(function(require) {
 
   var module = require('../module');
   module.controller('ApiCtrl', ApiCtrl);
-  ApiCtrl.$inject = ['$state', '$stateParams', '$location', 'ModelsResolve', 'IntervalsResolve', 'MonthsResolve', 'VariablesResolve', 'ConfigurationResolve'];
+  ApiCtrl.$inject = ['$state', '$stateParams', '$location', 'ModelsResolve', 'IntervalsResolve', 'MonthsResolve', 'VariablesResolve', 'ConfigurationResolve','$window'];
 
-  function ApiCtrl($state, params, $location, modelsResolve, intervalsResolve, monthsResolve, variablesResolve, configurationsResolve) {
+  function ApiCtrl($state, params, $location, modelsResolve, intervalsResolve, monthsResolve, variablesResolve, configurationsResolve, $window) {
     var vm = this;  
 
     init();
@@ -24,8 +24,19 @@ define(function(require) {
       vm.api.end_month = vm.months.data[11];
       vm.api.end_year = {'year': vm.api.model.end_year}; 
       vm.configurations = configurationsResolve;  
-      //vm.link = vm.configurations.data[0].link_api;
+
+      vm.linkModelo = vm.configurations.data[0].link_api + "public/models";
+      vm.linkInterval = vm.configurations.data[0].link_api + "public/intervals";
+      vm.linkVariavel = vm.configurations.data[0].link_api + "public/variables";
     } 
+
+    vm.genUrl = function (url){
+      return url;
+    }
+
+    vm.redirect = function (url){
+      $window.open(url, '_blank');
+    }
 
     vm.onSelectCallback = function (item){
       generateYears(item.start_year, item.end_year);
