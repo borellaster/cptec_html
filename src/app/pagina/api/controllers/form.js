@@ -69,8 +69,12 @@ define(function(require) {
       vm.link += vm.api.end_month.month + "/";      
       vm.link += vm.api.end_year.year + "/";
       vm.link += vm.api.variable.nickname + "/";
-      vm.link += vm.api.latitude + "/";
-      vm.link += vm.api.longitude + "/";
+      if(vm.api.latitude != undefined){
+        vm.link += vm.api.latitude + "/";
+      }
+      if(vm.api.longitude != undefined){
+        vm.link += vm.api.longitude + "/";
+      }
       
     }    
 
