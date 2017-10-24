@@ -67,8 +67,8 @@ define(function(require) {
       var array = [
         {val: 'CO', desc: 'Por ponto'},
         {val: 'CI', desc: 'Por cidade'},
-        {val: 'DE', desc: 'Desenho no mapa'},
-        {val: 'SF', desc: 'Importar Shapefile'}
+        {val: 'DE', desc: 'Por área retangular no mapa'}
+        //{val: 'SF', desc: 'Importar Shapefile'}
       ];
       return array;
     }
