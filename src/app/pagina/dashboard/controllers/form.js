@@ -25,6 +25,7 @@ define(function(require) {
 
     vm.step = function(aba) {
       if (aba == 'um') {
+        
         vm.timeoutAbaDois  = false;
         if(vm.novo==false){
           $state.reload();
@@ -32,6 +33,10 @@ define(function(require) {
         }
       };
       if (aba == 'dois') {
+        if(vm.requisicao.variablesAll.length > vm.requisicao.interval.variables){
+          setWarning('Número máximo de variáveis para frequência '+vm.requisicao.interval.name +' é '+ vm.requisicao.interval.variables);
+          return true;          
+        }
         $timeout(function() {
           vm.timeoutAbaDois  = true;
         }, 100);
