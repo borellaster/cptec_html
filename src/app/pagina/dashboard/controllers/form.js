@@ -116,34 +116,72 @@ define(function(require) {
               draggable: false
           }; 
 
-          var geojson = {
-              data: {
-                "type": "FeatureCollection",
-                "features": [
-                  {
-                     "type": "Feature",
-                        "properties": {},
-                        "geometry": {
-                          "type": "Polygon",
-                          "coordinates": [
-                            vm.savedItems[0].geoJSON.geometry.coordinates[0]
-                          ]
-                        }                    
-                  }
-                ]
-              },
-              style: {
-                  fillColor: "blue"
-              }
-          };                
+          var geojson = {};
+          if(vm.savedItems == undefined){
+            geojson = {
+                data: {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                       "type": "Feature",
+                          "properties": {},
+                          "geometry": {
+                            "type": "Polygon",
+                            "coordinates": [
+                              [
+                                [Number(vm.longitudeEsquerda), Number(vm.latitudeBaixo)],
+                                [Number(vm.longitudeEsquerda), Number(vm.latitudeCima)],
+                                [Number(vm.longitudeDireita), Number(vm.latitudeCima)],
+                                [Number(vm.longitudeDireita), Number(vm.latitudeBaixo)],
+                                [Number(vm.longitudeEsquerda), Number(vm.latitudeBaixo)]
+                              ]
+                            ]
+                          }                    
+                    }
+                  ]
+                },
+                style: {
+                    fillColor: "blue"
+                }
+            };                
 
-          vm.center = {
-            lat: vm.latitudeCima,
-            lng: vm.longitudeEsquerda,
-            zoom: 4
-          };
+            vm.center = {
+              lat: Number(vm.latitudeCima),
+              lng: Number(vm.longitudeEsquerda),
+              zoom: 4
+            };
 
-          vm.geojson = geojson;
+            vm.geojson = geojson;
+          }else{
+            geojson = {
+                data: {
+                  "type": "FeatureCollection",
+                  "features": [
+                    {
+                       "type": "Feature",
+                          "properties": {},
+                          "geometry": {
+                            "type": "Polygon",
+                            "coordinates": [
+                              vm.savedItems[0].geoJSON.geometry.coordinates[0]
+                            ]
+                          }                    
+                    }
+                  ]
+                },
+                style: {
+                    fillColor: "blue"
+                }
+            };                
+
+            vm.center = {
+              lat: vm.latitudeCima,
+              lng: vm.longitudeEsquerda,
+              zoom: 4
+            };
+
+            vm.geojson = geojson;
+          }
         }
       }
 
@@ -235,9 +273,19 @@ define(function(require) {
         longitude = vm.requisicao.longitude;
         point = { type: 'Point', coordinates: [latitude,longitude]};
       }else if(vm.requisicao.tipoConsulta.val == "DE"){
-        //latitude = vm.requisicao.latitude;
-        //longitude = vm.requisicao.longitude;
-        point = { type: 'Polygon', coordinates: [vm.savedItems[0].geoJSON.geometry.coordinates[0]]};
+        if(vm.savedItems == undefined){
+          point = { type: 'Polygon', coordinates: [
+            [
+              [Number(vm.longitudeEsquerda), Number(vm.latitudeBaixo)],
+              [Number(vm.longitudeEsquerda), Number(vm.latitudeCima)],
+              [Number(vm.longitudeDireita), Number(vm.latitudeCima)],
+              [Number(vm.longitudeDireita), Number(vm.latitudeBaixo)],
+              [Number(vm.longitudeEsquerda), Number(vm.latitudeBaixo)]
+            ]
+          ]};
+        }else{
+          point = { type: 'Polygon', coordinates: [vm.savedItems[0].geoJSON.geometry.coordinates[0]]};
+        }
       }
 
       vm.requisicao.location = point;     

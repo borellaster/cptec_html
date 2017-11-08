@@ -22,7 +22,8 @@
                 <strong>Resumo da requisição:</strong>
                 <br/>Cenário Climático: {{vm.result.data.model.name}}
                 <br/>Frequência: {{vm.result.data.interval.name}}
-                <span><br/>Coordenadas: ({{vm.result.data.location.coordinates[0]}}, {{vm.result.data.location.coordinates[1]}})</span>
+                <span ng-if="vm.result.data.query_type != 'DE'"><br/>Coordenadas: ({{vm.result.data.location.coordinates[0]}}, {{vm.result.data.location.coordinates[1]}})</span>
+                <span ng-if="vm.result.data.query_type == 'DE'"><br/>Coordenadas: Por área retangular no mapa</span>
                 <br/>Variáveis: {{vm.result.data.variables}}
                 <br/>Período: {{vm.result.data.start_month}}/{{vm.result.data.start_year}} até {{vm.result.data.end_month}}/{{vm.result.data.end_year}}   
                 <br/>Utilização do dado: {{vm.result.data.utilizacao}}
@@ -44,9 +45,7 @@
             </div>                                    
           </div>
         </div>
-
         <a ng-click="vm.download()" class="btn btn-success"><i class="icon-cloud-download"></i> Download</a>          
-
         </div>
       </div>
     </div>

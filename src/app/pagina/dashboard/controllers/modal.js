@@ -68,9 +68,8 @@ define(function(require) {
         vm.savedItems.push({
             id: layer._leaflet_id,
             geoJSON: layer.toGeoJSON()
-        });
-
-        console.log(vm.savedItems);
+        });        
+        //console.log(JSON.stringify(vm.savedItems));
         clearMap();
         var polygonLimits = new L.polygon([
             [-50.1000000,-100.1000000],
