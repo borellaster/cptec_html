@@ -151,6 +151,12 @@ define(function(require) {
               zoom: 4
             };
 
+            /*vm.center = {
+                lat: -17.518344,
+                lng: -52.207031,
+                zoom: 4
+            };*/            
+
             vm.geojson = geojson;
           }else{
             geojson = {
@@ -179,7 +185,6 @@ define(function(require) {
               lng: vm.longitudeEsquerda,
               zoom: 4
             };
-
             vm.geojson = geojson;
           }
         }
@@ -248,6 +253,10 @@ define(function(require) {
 
     vm.getVariablesFinalizar = function () {
       return getVariablesSave();
+    }  
+
+    vm.focusCoordinates = function() {
+      vm.savedItems = undefined;      
     }    
 
     vm.save = function() {
