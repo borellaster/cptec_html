@@ -17,7 +17,8 @@ define(function(require) {
       remove: remove,
       search: search,
       list: list,
-      combo: combo
+      combo: combo,
+      getArraySituacao: getArraySituacao
     };
 
     return service;
@@ -48,6 +49,14 @@ define(function(require) {
 
     function combo(){
         return resourceCombo.get().$promise;
-    }    
+    }
+
+    function getArraySituacao() {
+      var array = [
+        {val: 'S', desc: 'Sim'},
+        {val: 'N', desc: 'Não'}
+      ];
+      return array;
+    }         
   };
 });
