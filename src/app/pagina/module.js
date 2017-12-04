@@ -10,6 +10,7 @@ define(function(require) {
       require('./dashboard/package').name,
       require('./visualization/package').name,
       require('./about/package').name,
+      require('./reference/package').name,
       require('./contact/package').name,
       require('./tutorial/package').name,
       require('./api/package').name,
