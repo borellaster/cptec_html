@@ -64,6 +64,22 @@ define(function(require) {
     return rest;
   } 
 
+
+  module.factory('ProcessRequestTiffResource', ProcessRequestTiffResource);
+  ProcessRequestTiffResource.$inject = ['$resource'];
+  function ProcessRequestTiffResource($resource) {
+    var rest = $resource(
+      'api/v1/public/requests/process/tiff/:id',
+      {
+        'id': ''
+      },
+      {
+        'update': { 'method': 'PUT' }
+      }
+    );
+    return rest;
+  }   
+
   module.factory('YearRequestResource', YearRequestResource);
   YearRequestResource.$inject = ['$resource'];
   function YearRequestResource($resource) {

@@ -4,9 +4,9 @@ define(function(require) {
   var module = require('../module');
   module.factory('DashboardFactory', DashboardFactory);
   DashboardFactory.$inject = ['DashboardResource', 'DashboardPagResource', 'RequestsResource', 'ProcessRequestResource', 
-        'YearRequestResource', 'MonthRequestResource'];
+        'YearRequestResource', 'MonthRequestResource', 'ProcessRequestTiffResource'];
   function DashboardFactory(resource, resourcePag, resourceRequisicao, resourceProcess, 
-        resourceYear, resourceMonth) {
+        resourceYear, resourceMonth, resourceProcessTiff) {
     var service = {
       list: list,
       listpag: listpag,
@@ -15,6 +15,7 @@ define(function(require) {
       save: save,
       getArrayTipoRequisicoes: getArrayTipoRequisicoes,
       processRequest: processRequest,
+      processRequestTiff: processRequestTiff,
       getYears: getYears,
       getMonths: getMonths
     };
@@ -105,6 +106,10 @@ define(function(require) {
     function processRequest(id) {
       return resourceProcess.get({'id': id});
     }  
+
+    function processRequestTiff(id) {
+      return resourceProcessTiff.get({'id': id});
+    }      
 
     function getYears() {
       return resourceYear.get().$promise;

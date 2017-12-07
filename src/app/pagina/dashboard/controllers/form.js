@@ -299,9 +299,19 @@ define(function(require) {
 
       vm.requisicao.location = point;     
       dataService.save(vm.requisicao).then(function success(data) {        
-        initRequisicao();
         vm.novo = false;
-        dataService.processRequest(data.id);
+        if(vm.requisicao.query_type=='DE'){
+          if(vm.requisicao.type.extension=='.tif'){
+            initRequisicao();
+            //dataService.processRequestTiff(data.id);
+          }else{
+            initRequisicao();
+            dataService.processRequest(data.id);
+          }
+        }else{
+          initRequisicao();
+          dataService.processRequest(data.id);
+        }        
       })
       .catch(function error(msg) {
         setError('Erro ao salvar o requisição.');
