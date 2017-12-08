@@ -303,7 +303,7 @@ define(function(require) {
         if(vm.requisicao.query_type=='DE'){
           if(vm.requisicao.type.extension=='.tif'){
             initRequisicao();
-            //dataService.processRequestTiff(data.id);
+            dataService.processRequestTiff(data.id);
           }else{
             initRequisicao();
             dataService.processRequest(data.id);
