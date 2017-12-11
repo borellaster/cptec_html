@@ -9,6 +9,14 @@ define(function(require) {
 
   function MainCtrl(menu, lazyLoad, $location) {
     var vm = this;
+
+    vm.isLogin = function() {
+      var path = $location.path();
+
+      console.log(path);
+
+      return (path.indexOf('login') >= 0);
+    }
     
     // lazyLoad
     //   .load(['admin', 'pagina'])

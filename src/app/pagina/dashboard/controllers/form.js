@@ -33,10 +33,10 @@ define(function(require) {
         }
       };
       if (aba == 'dois') {
-        if(vm.requisicao.variablesAll.length > vm.requisicao.interval.variables){
+        /*if(vm.requisicao.variablesAll.length > vm.requisicao.interval.variables){
           setWarning('Número máximo de variáveis para frequência '+vm.requisicao.interval.name +' é '+ vm.requisicao.interval.variables);
           return true;          
-        }
+        }*/
         $timeout(function() {
           vm.timeoutAbaDois  = true;
         }, 100);
@@ -224,7 +224,7 @@ define(function(require) {
     
     }
 
-    function getVariables() {
+    /*function getVariables() {
       var str = "(";
       var values = vm.requisicao.variablesAll;      
       angular.forEach(values, function(value, key) {
@@ -233,9 +233,16 @@ define(function(require) {
       str = str.substring(0, str.length -1);
       str += ")";      
       return str;
-    };
+    };*/
 
-    function getVariablesSave() {
+    function getVariables() {
+      var str = "(";           
+      str += "'"+ vm.requisicao.variablesAll.nickname +"'";      
+      str += ")";      
+      return str;
+    };    
+
+    /*function getVariablesSave() {
       var str = "";
       var values = vm.requisicao.variablesAll;      
       angular.forEach(values, function(value, key) {
@@ -244,6 +251,13 @@ define(function(require) {
       str = str.substring(0, str.length -1);
       str += "";
       
+      return str;
+    };*/    
+
+    function getVariablesSave() {
+      var str = "";
+      str += "'"+ vm.requisicao.variablesAll.nickname +"'" 
+      str += "";      
       return str;
     };    
 

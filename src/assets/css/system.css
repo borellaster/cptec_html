@@ -4131,3 +4131,10 @@ input.ng-invalid-maxvalue, input.ng-invalid-maxvalue:focus {
 .ui-select-multiple.ng-invalid.ng-dirty .select2-choices {
   border: 0 !important;
 }
+.box-content {
+  padding-bottom: 50px;
+}
+.row {
+    margin-left: 0;
+    margin-right: 0;
+}
