@@ -11,10 +11,10 @@
   </div>
 </div>-->
 
-<div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 5px;">
+<div class="col-xs-12 col-sm-12 col-md-12 lo-lg-12" style="padding-left: 5px; padding-right: 32px;">
   <div class="mui-textfield">
       <ui-select ng-model="vm.requisicao.variablesAll" theme="select2" ng-disabled="disabled" style="min-width: 100%;" required>
-        <ui-select-match placeholder="Selecione uma variável">{{$select.selected.name}}</ui-select-match>
+        <ui-select-match placeholder="">{{$select.selected.name}}</ui-select-match>
         <ui-select-choices repeat="variable in vm.variablesAll.data | propsFilter: {name: $select.search, description: $select.search}">
           <div ng-bind-html="variable.name"></div>                      
         </ui-select-choices>
