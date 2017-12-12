@@ -12,23 +12,7 @@ define(function(require) {
 
     vm.isLogin = function() {
       var path = $location.path();
-
-      console.log(path);
-
       return (path.indexOf('login') >= 0);
     }
-    
-    // lazyLoad
-    //   .load(['admin', 'pagina'])
-    //   .then(function( results ) {
-
-    //     if(ngee && ngee.oldLocation) {
-    //       var urlParts = ngee.oldLocation.href.split('#');
-    //       var path = $location.path();
-    //       if( urlParts.length > 1 && ( path !== urlParts[1] ) ) {
-    //         $location.path( urlParts[1] );
-    //       }
-    //     }
-    //   });
   }
 });

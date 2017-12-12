@@ -255,10 +255,14 @@ define(function(require) {
     };*/    
 
     function getVariablesSave() {
-      var str = "";
-      str += "'"+ vm.requisicao.variablesAll.nickname +"'" 
-      str += "";      
-      return str;
+      if(vm.requisicao.variablesAll != undefined){
+        var str = "";
+        str += "'"+ vm.requisicao.variablesAll.nickname +"'" 
+        str += "";      
+        return str;
+      }else{
+        return "";
+      }
     };    
 
     vm.tipoConsultaLabel = function (str) {
