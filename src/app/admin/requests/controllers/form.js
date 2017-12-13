@@ -19,11 +19,11 @@ define(function(require) {
         vm.requests = new resource({
           'id': undefined
         });        
-    } else {
-        vm.title = 'Visualizar requisição';
+    } else {        
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.requests = data;
+          vm.title = 'Requisição '+vm.requests.id;
           vm.periodo = vm.requests.start_month+'/'+vm.requests.start_year +" até " +
                        vm.requests.end_month+'/'+vm.requests.end_year;
           if(vm.requests.query_type == "CI"){

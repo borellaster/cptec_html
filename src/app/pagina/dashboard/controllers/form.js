@@ -349,14 +349,37 @@ define(function(require) {
       }
     }
 
+    vm.typesFunction = function (){
+      typesFunction();
+    }
+
+    function typesFunction (){
+      var array = {data:[]};
+      if(vm.requisicao.tipoConsulta.val != 'DE'){
+        for (var i = 0; i < vm.types.data.length; i++) {
+          var item = vm.types.data[i];
+          if(item.extension != '.tif'){
+            array.data.push(item);
+          }
+        }
+        vm.types = array;        
+      }else{
+        vm.types = typesResolve;
+
+      }
+      vm.requisicao.type = vm.types.data[0];
+    }    
+
     function initRequisicao() {
       vm.requisicao = {
         'start_date': new Date(),
         'end_date': new Date(),
       }
 
-      vm.requisicao.tipoConsulta = vm.tipoConsultas[0];      
+      vm.requisicao.tipoConsulta = vm.tipoConsultas[0];
+
       vm.requisicao.tipoRequisicao = vm.tipoRequisicoes[0];
+      typesFunction();
       vm.requisicao.status = 0;
       vm.requisicao.model = vm.models.data[0];
       generateYears(vm.requisicao.model.start_year, vm.requisicao.model.end_year);
@@ -366,12 +389,12 @@ define(function(require) {
       vm.requisicao.start_year = {'year': vm.requisicao.model.start_year};
       vm.requisicao.end_month = vm.months.data[11];
       vm.requisicao.end_year = {'year': vm.requisicao.model.end_year};
-    }    
+    }
 
     function init() {
       vm.models = modelsResolve;
       vm.intervals = intervalsResolve;
-      vm.types = typesResolve;
+      vm.types = typesResolve;      
       vm.variablesAll = variablesResolve;      
       vm.months = monthsResolve;
       vm.timeOutMapa = false;

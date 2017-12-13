@@ -24,7 +24,7 @@
 
 <div class="col-xs-3 col-sm-3 col-md-3 lo-lg-3" style="padding-left: 5px; padding-right: 5px;">
   <div class="mui-textfield">
-    <ui-select ng-model="vm.requisicao.tipoConsulta" theme="select2" ng-disabled="disabled" style="min-width: 100%;" on-select="vm.ajustaMapa()" required>
+    <ui-select ng-model="vm.requisicao.tipoConsulta" theme="select2" ng-disabled="disabled" style="min-width: 100%;" on-select="vm.typesFunction()" required>
       <ui-select-match placeholder="Selecione uma localização">{{$select.selected.desc}}</ui-select-match>
       <ui-select-choices repeat="tipo in vm.tipoConsultas">
         <div ng-bind-html="tipo.desc"></div>
