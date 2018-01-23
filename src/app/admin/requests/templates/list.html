@@ -26,7 +26,8 @@
           <table class="table table-striped table-bordered">
             <thead>
               <tr>
-                <th>Nome</th>
+                <th>Nome</th>                
+                <th width="100px">Data</th>
                 <th width="250px">Instituição</th>
                 <th width="250px">Utilização</th>
                 <th width="70px" class="hidden-xs"></th>
@@ -35,6 +36,7 @@
             <tbody>
               <tr ng-repeat="requests in vm.result.data | filter:filter.search">
                 <td>{{requests.name}}</td>
+                <td>{{requests.created_at | date: 'dd/MM/yyyy'}}</td>
                 <td>{{requests.instituicao}}</td>
                 <td>{{requests.utilizacao}}</td>
                 <td class="hidden-xs"><a ui-sref="home.requests.view({id:requests.id})">Ver</a></td>

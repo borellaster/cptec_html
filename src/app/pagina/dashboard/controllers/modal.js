@@ -88,8 +88,7 @@ define(function(require) {
             [layer._latlngs[3].lat, layer._latlngs[3].lng]
         ]).addTo(mymap);
 
-        for(var i=0;i<=layer._latlngs.length-1;i++)
-        {
+        for(var i=0;i<=layer._latlngs.length-1;i++) {
           if(layer._latlngs[i].lat < -50.1 || layer._latlngs[i].lng < -100.1 || layer._latlngs[i].lat > 27.9 || layer._latlngs[i].lng > -29.1){
             mymap.removeLayer(polygon);
             setWarning('Você selecionou uma área indisponível.');//alert("Você selecionou uma área indisponível")

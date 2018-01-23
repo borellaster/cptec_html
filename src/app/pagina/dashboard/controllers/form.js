@@ -33,10 +33,6 @@ define(function(require) {
         }
       };
       if (aba == 'dois') {
-        /*if(vm.requisicao.variablesAll.length > vm.requisicao.interval.variables){
-          setWarning('Número máximo de variáveis para frequência '+vm.requisicao.interval.name +' é '+ vm.requisicao.interval.variables);
-          return true;          
-        }*/
         $timeout(function() {
           vm.timeoutAbaDois  = true;
         }, 100);
@@ -143,19 +139,13 @@ define(function(require) {
                 style: {
                     fillColor: "blue"
                 }
-            };                
+            };
 
             vm.center = {
               lat: Number(vm.latitudeCima),
               lng: Number(vm.longitudeEsquerda),
               zoom: 4
             };
-
-            /*vm.center = {
-                lat: -17.518344,
-                lng: -52.207031,
-                zoom: 4
-            };*/            
 
             vm.geojson = geojson;
           }else{
@@ -178,7 +168,15 @@ define(function(require) {
                 style: {
                     fillColor: "blue"
                 }
-            };                
+            };
+
+            /*for(var i=0;i<=geojson.data.features[0].geometry.coordinates.length-1;i++) {
+              var item = geojson.data.features[0].geometry.coordinates[i]
+              if(item[i].latitudeCima < -50.1 || item.longitudeDireita < -100.1 || item.latitudeBaixo > 27.9 || item.longitudeEsquerda > -29.1){                
+                setWarning('Você selecionou uma área indisponível.');//alert("Você selecionou uma área indisponível")
+                break;
+              }          
+            } */
 
             vm.center = {
               lat: vm.latitudeCima,
@@ -188,6 +186,8 @@ define(function(require) {
             vm.geojson = geojson;
           }
         }
+
+        console.log('opaaaa')
       }
 
       if (aba == 'tres') {
