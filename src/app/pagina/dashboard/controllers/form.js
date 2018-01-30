@@ -84,6 +84,12 @@ define(function(require) {
           lat = Number(vm.requisicao.latitude);
           lon = Number(vm.requisicao.longitude);
           message = "Ponto escolhido";
+
+          if(vm.requisicao.latitude < -50.1 || vm.requisicao.longitude < -100.1 || vm.requisicao.latitude > 27.9 || vm.requisicao.longitude > -29.1){          
+              setWarning('Você selecionou um ponto indisponível.');              
+              return;            
+          }
+
           var mainMarker = {
               lat: lat,
               lng: lon,            
@@ -141,6 +147,11 @@ define(function(require) {
                 }
             };
 
+            if(vm.latitudeBaixo < -50.1 || vm.longitudeEsquerda < -100.1 || vm.latitudeCima > 27.9 || vm.longitudeDireita > -29.1){
+              setWarning('Você selecionou uma área indisponível.');              
+              return;
+            }            
+
             vm.center = {
               lat: Number(vm.latitudeCima),
               lng: Number(vm.longitudeEsquerda),
@@ -170,13 +181,10 @@ define(function(require) {
                 }
             };
 
-            /*for(var i=0;i<=geojson.data.features[0].geometry.coordinates.length-1;i++) {
-              var item = geojson.data.features[0].geometry.coordinates[i]
-              if(item[i].latitudeCima < -50.1 || item.longitudeDireita < -100.1 || item.latitudeBaixo > 27.9 || item.longitudeEsquerda > -29.1){                
-                setWarning('Você selecionou uma área indisponível.');//alert("Você selecionou uma área indisponível")
-                break;
-              }          
-            } */
+            if(vm.latitudeBaixo < -50.1 || vm.longitudeEsquerda < -100.1 || vm.latitudeCima > 27.9 || vm.longitudeDireita > -29.1){
+              setWarning('Você selecionou uma área indisponível.'); 
+              return;
+            }
 
             vm.center = {
               lat: vm.latitudeCima,
