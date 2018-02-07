@@ -2,10 +2,10 @@ define(function(require) {
   'use strict';
 
   var module = require('../module');
-  module.controller('TutorialCtrl', TutorialCtrl);
-  TutorialCtrl.$inject = ['$state', '$stateParams', '$location', '$window'];
+  module.controller('FormatCtrl', FormatCtrl);
+  FormatCtrl.$inject = ['$state', '$stateParams', '$location', '$window'];
 
-  function TutorialCtrl($state, params, $location, $window) {
+  function FormatCtrl($state, params, $location, $window) {
     var vm = this;   
   	vm.link = function (url){	  
   	  $window.open(url);

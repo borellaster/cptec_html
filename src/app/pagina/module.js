@@ -13,6 +13,7 @@ define(function(require) {
       require('./reference/package').name,
       require('./contact/package').name,
       require('./tutorial/package').name,
+      require('./format/package').name,
       require('./api/package').name,
       require('./map/package').name
     ]

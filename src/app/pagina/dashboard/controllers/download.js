@@ -17,9 +17,8 @@ define(function(require) {
         if (window.navigator.msSaveBlob) {
             navigator.msSaveBlob(blob, fileName);
         } else {
-            var link = document.createElement("a");
-            var csvUrl = URL.createObjectURL(blob);
-            link.href = csvUrl;
+            var link = document.createElement("a");            
+            link.href = "http://ftp1.cptec.inpe.br/etamdl/Projetos/Projeta/converte_csv.R";
             link.style = "visibility:hidden";
             link.download = fileName;
             document.body.appendChild(link);

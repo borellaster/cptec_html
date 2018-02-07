@@ -8,8 +8,9 @@ define(function(require) {
   function AboutCtrl($state, params, $location, $window) {
     var vm = this;    
 
-	vm.link = function (url){	  
-	  $window.open(url);
-	}     
+  	vm.link = function (url){	  
+  	  $window.open(url);
+  	}  
+
   }
 });
