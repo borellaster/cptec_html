@@ -18,7 +18,7 @@ define(function(require) {
         dataServiceCity.combo(cidade).then(function success(data) {
           vm.cities = data;
         }).catch(function error(msg) {
-          setError('Erro ao pesquisar os cidades.');
+          setError('Erro ao pesquisar os municípios.');
         });  
       }
     };     

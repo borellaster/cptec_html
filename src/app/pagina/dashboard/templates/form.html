@@ -192,7 +192,7 @@
                                         <br/>Frequência: {{vm.requisicao.interval.name}}
                                         <br/>Localização: {{vm.requisicao.tipoConsulta.desc}}
                                         <span ng-if="vm.requisicao.tipoConsulta.val == 'CO'"><br/>Coordenadas: {{vm.requisicao.latitude}}, {{vm.requisicao.longitude}}</span>
-                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Cidade: {{vm.requisicao.city.name}} ({{vm.requisicao.city.latitude}}, {{vm.requisicao.city.longitude}})</span>
+                                        <span ng-if="vm.requisicao.tipoConsulta.val == 'CI'"><br/>Município: {{vm.requisicao.city.name}} ({{vm.requisicao.city.latitude}}, {{vm.requisicao.city.longitude}})</span>
                                         <br/>Variáveis: {{vm.getVariablesFinalizar()}}
                                         <br/>Período: {{vm.requisicao.start_month.month}}/{{vm.requisicao.start_year.year}} até {{vm.requisicao.end_month.month}}/{{vm.requisicao.end_year.year}}
                                         <br/>Utilização do dado: {{vm.requisicao.utilizacao}}
