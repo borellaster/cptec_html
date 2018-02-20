@@ -14,13 +14,13 @@ define(function(require) {
     }
 
     if(params.id == undefined){
-        vm.title = 'Cadastrar cidade';
+        vm.title = 'Cadastrar município';
         vm.acao = 'incluído';
         vm.cities = new resource({
           'id': undefined
         });        
     } else {
-        vm.title = 'Editar cidade';
+        vm.title = 'Editar município';
         vm.acao = 'alterado';
         dataService.findById(params.id).then(function success(data) {
           vm.cities = data;

@@ -27,7 +27,7 @@ define(function(require) {
           vm.periodo = vm.requests.start_month+'/'+vm.requests.start_year +" até " +
                        vm.requests.end_month+'/'+vm.requests.end_year;
           if(vm.requests.query_type == "CI"){
-            vm.tipo = "Por cidade";
+            vm.tipo = "Por município";
           }else if (vm.requests.query_type == "CO"){
             vm.tipo = "Por ponto";
           }

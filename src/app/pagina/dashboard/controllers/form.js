@@ -13,9 +13,9 @@ define(function(require) {
     vm.novo = true;
     init();  
 
-    vm.loadCities = function(cidade) {
-      if(cidade.length >= 3){
-        dataServiceCity.combo(cidade).then(function success(data) {
+    vm.loadCities = function(municipio) {
+      if(municipio.length >= 3){
+        dataServiceCity.combo(municipio).then(function success(data) {
           vm.cities = data;
         }).catch(function error(msg) {
           setError('Erro ao pesquisar os municípios.');
